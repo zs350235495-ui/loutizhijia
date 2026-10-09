@@ -289,13 +289,13 @@
       return tableHTML;
     });
 
-    // 转换 H2 与 H3 标题 (带有 ID 供锚点跳转)
+    // 转换 H1, H2 与 H3 标题 (带有 ID 供锚点跳转，将 Markdown 中的 H1 安全降级为 H2 保证 DOM 全局仅 1 个 H1)
     let headingIdx = 0;
     src = src.replace(/^###\s+(.+)$/gm, (m, title) => {
       headingIdx++;
       return `<h3 id="heading-h3-${headingIdx}" class="prose-h3">${title}</h3>`;
     });
-    src = src.replace(/^##\s+(.+)$/gm, (m, title) => {
+    src = src.replace(/^#{1,2}\s+(.+)$/gm, (m, title) => {
       headingIdx++;
       return `<h2 id="heading-h2-${headingIdx}" class="prose-h2">${title}</h2>`;
     });
