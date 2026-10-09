@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" shape-rendering="geometricPrecision">
+  <defs>
+    <!-- 全球网络跑道发光滤镜 -->
+    <filter id="runwayGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- 跑道暖黄渐变 -->
+    <linearGradient id="runwayGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <!-- 航空蓝色渐变 -->
+    <linearGradient id="skyCyan" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 深色背景底盘 (透明兼容模式下保持圆润底色) -->
+  <circle cx="24" cy="24" r="22" fill="#0f172a" stroke="url(#runwayGold)" stroke-width="1.8" opacity="0.95" />
+
+  <!-- 2. 地球网络经线弧线 (Meridian Arcs) -->
+  <!-- 本初子午线 (中央纵向轴线) -->
+  <line x1="24" y1="3.5" x2="24" y2="44.5" stroke="#334155" stroke-width="1.6" stroke-dasharray="2 1.5" />
+  <!-- 西经/东经经线弧 -->
+  <path d="M 24 3.5 C 13 11, 13 37, 24 44.5" stroke="#475569" stroke-width="1.6" fill="none" />
+  <path d="M 24 3.5 C 35 11, 35 37, 24 44.5" stroke="#475569" stroke-width="1.6" fill="none" stroke-opacity="0.85" />
+  <path d="M 24 3.5 C 4 14, 4 34, 24 44.5" stroke="#334155" stroke-width="1.2" fill="none" opacity="0.6" />
+  <path d="M 24 3.5 C 44 14, 44 34, 24 44.5" stroke="#334155" stroke-width="1.2" fill="none" opacity="0.6" />
+
+  <!-- 3. 地球网络纬线弧线 (Latitude Ellipses) -->
+  <!-- 北纬 45° / 南纬 45° -->
+  <path d="M 7.5 15 C 16 19, 32 19, 40.5 15" stroke="#334155" stroke-width="1.4" fill="none" />
+  <path d="M 7.5 33 C 16 29, 32 29, 40.5 33" stroke="#334155" stroke-width="1.4" fill="none" />
+
+  <!-- 4. 赤道跑道主高亮黄虚线 (Equator Runway Line with Glow) -->
+  <!-- 跑道底下发光线 -->
+  <ellipse cx="24" cy="24" rx="21.5" ry="7.5" stroke="#f59e0b" stroke-width="2.5" fill="none" opacity="0.4" filter="url(#runwayGlow)" />
+  <!-- 跑道中心黄虚线 (Runway Centerline) -->
+  <path d="M 2.5 24 C 12 28.5, 36 28.5, 45.5 24" stroke="url(#runwayGold)" stroke-width="2.2" stroke-dasharray="3.5 2" stroke-linecap="round" fill="none" />
+
+  <!-- 5. 全球网络节点星芒 (Network Nodes) -->
+  <circle cx="13" cy="18" r="1.5" fill="#38bdf8" />
+  <circle cx="35" cy="18" r="1.5" fill="#38bdf8" />
+  <circle cx="11" cy="31" r="1.5" fill="#38bdf8" />
+  <circle cx="37" cy="31" r="1.5" fill="#38bdf8" />
+
+  <!-- 6. 大鹅飞行员护目镜与天线徽章 (Aviator Goggles & Goose Crown Emblem) -->
+  <!-- 顶置飞行天线/耳麦带 -->
+  <path d="M 15 12.5 C 19 8.5, 29 8.5, 33 12.5" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" fill="none" />
+  <circle cx="24" cy="8.5" r="1.8" fill="#f97316" />
+
+  <!-- 飞行员护目镜镜框 (Goggles Frames) -->
+  <rect x="14.5" y="11.5" width="8" height="6.5" rx="2" fill="url(#skyCyan)" stroke="#fbbf24" stroke-width="1.6" />
+  <rect x="25.5" y="11.5" width="8" height="6.5" rx="2" fill="url(#skyCyan)" stroke="#fbbf24" stroke-width="1.6" />
+  <!-- 镜框连接桥 -->
+  <line x1="22.5" y1="14.5" x2="25.5" y2="14.5" stroke="#fbbf24" stroke-width="1.8" />
+  <!-- 镜片反光高光斜线 -->
+  <line x1="16" y1="13" x2="18.5" y2="16.5" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.9" />
+  <line x1="27" y1="13" x2="29.5" y2="16.5" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.9" />
+
+  <!-- 亮橘色大鹅小嘴标识 (Mini Orange Beak Indicator) -->
+  <path d="M 24 18 L 27.5 21.5 Q 24 23 20.5 21.5 Z" fill="#f97316" stroke="#ea580c" stroke-width="1" stroke-linejoin="round" />
+</svg>
