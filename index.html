@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跑道上有只鹅 | 梯子之家 tizizhijia.com - 航班推荐、跑道黑匣子与坠毁记录</title>
+  <meta name="description" content="梯子之家 (tizizhijia.com) | 鹅蹲在跑道正中央，看哪架飞机真能飞起来。主打真实测速、晚高峰排雷、去套路化机场推荐。">
+  <meta name="keywords" content="梯子之家, tizizhijia, 跑道上有只鹅, 航班推荐榜, 跑道黑匣子, 坠毁记录簿, IPLC 专线, 机场优惠码">
+
+  <link rel="canonical" href="https://tizizhijia.com/">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 跑道 Canvas 背景 -->
+  <canvas id="radarCanvas"></canvas>
+
+  <!-- 扫描线蒙版 -->
+  <div class="crt-overlay"></div>
+
+  <!-- 顶部悬浮导航栏 (Navbar) -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <!-- 1. 左侧: Logo & 品牌标识 -->
+      <a href="#/flights" class="nav-logo">
+        <div class="goose-avatar" title="跑道上有只鹅 - Mascot Logo">
+          <svg class="nav-goose-svg" viewBox="0 0 100 100" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- 圆形背景底色 -->
+            <circle cx="50" cy="50" r="48" fill="#0f172a" />
+
+            <!-- 鹅脖子与身躯 (White Feather) -->
+            <path d="M 32 98 C 30 72, 32 46, 50 44 C 68 46, 70 72, 68 98 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+
+            <!-- 亮橘色鹅嘴 (Bright Orange Beak) -->
+            <path d="M 58 50 Q 88 52 84 62 Q 58 65 56 57 Z" fill="#f97316" stroke="#ea580c" stroke-width="2" stroke-linejoin="round" />
+
+            <!-- 呆滞斜视眼睛 (Side Glance Eye) -->
+            <circle cx="49" cy="48" r="3.8" fill="#0f172a" />
+            <circle cx="50.2" cy="47" r="1.4" fill="#ffffff" />
+
+            <!-- 复古飞行员皮帽与顶置护目镜 (Pilot Cap & Goggles) -->
+            <path d="M 30 38 C 42 28, 58 28, 70 38" stroke="#78350f" stroke-width="5" stroke-linecap="round" fill="none" />
+            <rect x="33" y="24" width="14" height="12" rx="3.5" fill="#38bdf8" stroke="#fbbf24" stroke-width="2" />
+            <rect x="52" y="24" width="14" height="12" rx="3.5" fill="#38bdf8" stroke="#fbbf24" stroke-width="2" />
+            <line x1="36" y1="26" x2="41" y2="33" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
+            <line x1="55" y1="26" x2="60" y2="33" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
+
+            <!-- 航空通话耳麦 & 麦克风 (Aviation Headset & Mic) -->
+            <path d="M 30 50 C 30 32, 70 32, 70 50" stroke="#334155" stroke-width="3" fill="none" />
+            <rect x="26" y="45" width="7" height="15" rx="2.5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.6" />
+            <rect x="67" y="45" width="7" height="15" rx="2.5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.6" />
+            <path d="M 30 58 Q 36 72 65 65" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round" />
+            <rect x="63" y="62" width="6" height="5" rx="2" fill="#fbbf24" />
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="brand-title">跑道上有只鹅</span>
+          <span class="brand-badge">RUNWAY GOOSE</span>
+        </div>
+      </a>
+
+      <!-- 2. 中间: 核心全局路由导航栏 -->
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="#/flights" class="nav-link active" data-route="/flights">
+            <span class="nav-text">航班推荐榜</span>
+            <span class="nav-tag">FLIGHTS</span>
+          </a>
+        </li>
+        <li>
+          <a href="#/blog" class="nav-link" data-route="/blog">
+            <span class="nav-text">跑道黑匣子</span>
+            <span class="nav-tag">BLACK BOX</span>
+          </a>
+        </li>
+        <li>
+          <a href="#/crashes" class="nav-link nav-link-crash" data-route="/crashes">
+            <span class="nav-text">
+              <span class="crash-flame">🔥</span> 坠毁记录簿
+            </span>
+            <span class="nav-tag tag-crash">[跑路/避坑]</span>
+          </a>
+        </li>
+        <li>
+          <a href="#/about" class="nav-link" data-route="/about">
+            <span class="nav-text">关于本鹅</span>
+            <span class="nav-tag">ABOUT</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- 3. 右侧: 趣味交互与状态小组件 -->
+      <div class="nav-actions">
+        <!-- 跑道通畅状态小徽章 (含 Hover 探针浮层) -->
+        <div class="nav-status-badge" id="navStatusBadge">
+          <span class="pulse-dot" id="badgePulseDot"></span>
+          <span class="status-lbl" id="badgeStatusLbl">跑道通畅 12/12</span>
+          
+          <!-- Hover 展开探针明细 Tooltip 浮层 -->
+          <div class="status-tooltip" id="statusTooltip">
+            <div class="tt-header">
+              <span class="tt-icon">🛰️</span>
+              <span>跑道心跳探针 (24H 实时监测)</span>
+            </div>
+            <div class="tt-body" id="ttBodyText">
+              当前巡查 12 家推荐机场，全员在线中。QoS 丢包率 0%。
+            </div>
+          </div>
+        </div>
+
+        <!-- 叫一声 按钮 -->
+        <button class="nav-btn nav-btn-honk" id="honkBtn" title="触发大鹅叫声与动画">
+          <span class="btn-goose-icon">🪿</span>
+          <span>叫一声</span>
+        </button>
+
+        <!-- 音效 开关按钮 -->
+        <button class="nav-btn nav-btn-icon" id="audioToggleBtn" title="切换背景音效与按键音">
+          <span id="audioStatusText">🔊 音效</span>
+        </button>
+
+        <!-- 移动端汉堡菜单触发按钮 -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="切换移动端菜单">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主内容容器 (SPA 路由视窗) -->
+  <div class="container">
+    
+    <!-- 独立页面 1：航班推荐榜 (/flights) -->
+    <div class="page-view" id="pageFlights">
+      <header class="hero-section">
+        <div class="runway-status-badge">
+          <span class="pulse-dot"></span>
+          <span class="status-text">● 跑道状态：晚高峰全线通畅 (QoS 0% 丢包监测中)</span>
+        </div>
+
+        <div class="hero-title-group">
+          <!-- 核心吉祥物大鹅 Logo (The Aviator Runway Goose) -->
+          <div class="mascot-svg-wrapper" id="heroMascot" title="跑道飞行员大鹅 (点击 嘎嘎叫)">
+            <svg class="goose-svg" viewBox="0 0 160 145" width="130" height="118" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- 鹅身下方纵向跑道虚线 -->
+              <line x1="80" y1="0" x2="80" y2="145" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6,5" opacity="0.3" />
+
+              <!-- 跑道阴影 -->
+              <ellipse cx="80" cy="134" rx="34" ry="6" fill="rgba(0,0,0,0.35)" />
+
+              <!-- 鹅脚掌 (Warm Orange) -->
+              <path d="M 66 115 L 56 133 L 72 133 Z" fill="#f97316" stroke="#ea580c" stroke-width="1.8" stroke-linejoin="round" />
+              <path d="M 94 115 L 88 133 L 104 133 Z" fill="#f97316" stroke="#ea580c" stroke-width="1.8" stroke-linejoin="round" />
+
+              <!-- Chubby 鹅身 (White/Cream) -->
+              <ellipse cx="80" cy="98" rx="35" ry="24" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+
+              <!-- 翅膀 -->
+              <path d="M 50 94 C 52 108, 72 112, 76 100 C 70 90, 54 86, 50 94 Z" fill="#f1f5f9" stroke="#0f172a" stroke-width="2" />
+
+              <!-- 鹅脖子与头部 -->
+              <path d="M 72 82 C 70 56, 66 44, 80 42 C 94 44, 90 56, 88 82 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+
+              <!-- 鹅嘴 (Orange Beak) -->
+              <path d="M 88 50 Q 112 52 108 60 Q 88 62 86 55 Z" fill="#f97316" stroke="#ea580c" stroke-width="2" stroke-linejoin="round" />
+
+              <!-- 鹅眼睛 (呆滞散漫眼神) -->
+              <circle cx="81" cy="48" r="3.2" fill="#0f172a" />
+              <circle cx="82" cy="47" r="1.2" fill="#ffffff" />
+
+              <!-- 复古飞行员护目镜 (在头顶) -->
+              <path d="M 66 38 C 75 32, 85 32, 94 38" stroke="#78350f" stroke-width="4.5" stroke-linecap="round" />
+              <rect x="65" y="27" width="13" height="11" rx="3.5" fill="#38bdf8" stroke="#fbbf24" stroke-width="2" />
+              <rect x="82" y="27" width="13" height="11" rx="3.5" fill="#38bdf8" stroke="#fbbf24" stroke-width="2" />
+              <!-- 镜片高光 -->
+              <line x1="68" y1="29" x2="72" y2="36" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
+              <line x1="85" y1="29" x2="89" y2="36" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
+
+              <!-- 航空通话耳麦 & 麦克风 (Tower ATC Headset) -->
+              <path d="M 64 48 C 64 32, 96 32, 96 48" stroke="#334155" stroke-width="3" fill="none" />
+              <rect x="61" y="45" width="7" height="14" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+              <rect x="92" y="45" width="7" height="14" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+
+              <!-- 麦克风软管与 Tip -->
+              <path d="M 64 54 C 58 66, 74 68, 92 62" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" />
+              <circle cx="94" cy="62" r="3.5" fill="#38bdf8" stroke="#0f172a" stroke-width="1" />
+            </svg>
+          </div>
+          <h1 class="hero-main-title">跑道上有只鹅</h1>
+          <p class="hero-slogan">“鹅蹲在跑道正中央，看哪架飞机真能飞起来。”</p>
+          <p class="hero-subdesc">拒绝套路充值 · 坚决月付保平安 · 晚高峰实测严选排雷</p>
+        </div>
+
+
+      </header>
+
+      <!-- 推荐对比表格 -->
+      <section class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">
+            <svg class="title-svg-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.8 19.2 L16 11 L19 6 L16.5 4 L11 8.5 L4.5 6.5 L3.5 8 L8.5 11.5 L6 16 L3 16.5 L3.5 18 L7 17.5 L10.5 21 L12 20.5 L10.5 17.5 Z"></path>
+            </svg>
+            <span>航班推荐榜 (Flight Board)</span>
+          </h2>
+          <span class="section-subtitle">基于鹅的长期跟测 · 避开虚假噱头 · 拒绝百年套餐</span>
+        </div>
+
+        <div class="board-table-wrapper">
+          <table class="board-table" id="boardTable">
+            <thead>
+              <tr>
+                <th>服务名称 / 跑道号</th>
+                <th>线路属性</th>
+                <th>解锁与支持</th>
+                <th>最低月付</th>
+                <th>鹅的分级评分</th>
+                <th>暗号与办理</th>
+              </tr>
+            </thead>
+            <tbody id="boardTbody">
+              <!-- 动态渲染 -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- 独立页面 2：跑道黑匣子 (/blog) -->
+    <div class="page-view hidden" id="pageBlog">
+      <header class="page-hero">
+        <div class="page-hero-badge">BLACK BOX ARCHIVE</div>
+        <h1 class="page-title">跑道黑匣子</h1>
+        <p class="page-desc">单篇深度测评 · 晚高峰丢包实测与折腾日记</p>
+
+        <!-- 文章分类 Pills -->
+        <div class="post-cat-filters">
+          <button class="post-cat-btn active" data-cat="all">全部文章</button>
+          <button class="post-cat-btn" data-cat="speed">测速报告</button>
+          <button class="post-cat-btn" data-cat="peak">晚高峰体检</button>
+          <button class="post-cat-btn" data-cat="avoid">踩坑避雷</button>
+          <button class="post-cat-btn" data-cat="tech">协议科普</button>
+        </div>
+      </header>
+
+      <section class="section-block">
+        <div class="feed-grid" id="feedGrid">
+          <!-- 登机牌 / 黑匣子卡片瀑布流 -->
+        </div>
+      </section>
+    </div>
+
+    <!-- 独立页面 3：坠毁记录簿 (/crashes) -->
+    <div class="page-view hidden" id="pageCrashes">
+      <header class="page-hero hero-crash">
+        <div class="crash-warning-banner">
+          ⚠️ <strong>跑道禁区警示：</strong>此区域收录已失联、跑路或严重摆烂的航班，入场自求多福。
+        </div>
+        <h1 class="page-title text-danger">
+          <svg class="title-svg-icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z"></path>
+          </svg>
+          <span>坠毁记录簿</span>
+        </h1>
+        <p class="page-desc">跑路、失联与严重翻车机场黑名单警示录</p>
+      </header>
+
+      <section class="section-block">
+        <div class="crash-list-grid" id="crashListGrid">
+          <!-- 动态渲染失联跑路黑名单卡片 -->
+        </div>
+      </section>
+    </div>
+
+    <!-- 独立页面 4：关于本鹅 (/about) -->
+    <div class="page-view hidden" id="pageAbout">
+      <header class="page-hero">
+        <div class="about-avatar-large">
+          <svg viewBox="0 0 100 100" width="60" height="60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="#0f172a" stroke="#fbbf24" stroke-width="2" />
+            <path d="M 32 98 C 30 72, 32 46, 50 44 C 68 46, 70 72, 68 98 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+            <path d="M 58 50 Q 88 52 84 62 Q 58 65 56 57 Z" fill="#f97316" stroke="#ea580c" stroke-width="2" stroke-linejoin="round" />
+            <circle cx="49" cy="48" r="3.8" fill="#0f172a" />
+            <circle cx="50.2" cy="47" r="1.4" fill="#ffffff" />
+            <path d="M 30 38 C 42 28, 58 28, 70 38" stroke="#78350f" stroke-width="5" stroke-linecap="round" fill="none" />
+            <rect x="33" y="24" width="14" height="12" rx="3.5" fill="#38bdf8" stroke="#fbbf24" stroke-width="2" />
+            <rect x="52" y="24" width="14" height="12" rx="3.5" fill="#38bdf8" stroke="#fbbf24" stroke-width="2" />
+            <line x1="36" y1="26" x2="41" y2="33" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
+            <line x1="55" y1="26" x2="60" y2="33" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
+            <path d="M 30 50 C 30 32, 70 32, 70 50" stroke="#334155" stroke-width="3" fill="none" />
+            <rect x="26" y="45" width="7" height="15" rx="2.5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.6" />
+            <rect x="67" y="45" width="7" height="15" rx="2.5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.6" />
+            <path d="M 30 58 Q 36 72 65 65" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round" />
+            <rect x="63" y="62" width="6" height="5" rx="2" fill="#fbbf24" />
+          </svg>
+        </div>
+        <h1 class="page-title">关于“跑道上有只鹅”</h1>
+        <p class="page-desc">蹲在跑道正中央的独立第三方机场观察员</p>
+      </header>
+
+      <section class="section-block">
+        <div class="about-content-card">
+          <div class="about-section">
+            <h3 class="about-sec-title">
+              <svg class="title-svg-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L3 13.5V21h7.5z"></path>
+                <line x1="16" y1="8" x2="2" y2="22"></line>
+                <line x1="17.5" y1="15" x2="9" y2="15"></line>
+              </svg>
+              <span>站长鹅的人设自白</span>
+            </h3>
+            <p>“跑道上有只鹅”是一个去套路化、去虚假夸大的真实实测导航站。我们全天候守在跑道正中央，记录哪些服务商在晚高峰真能起飞，哪些在滑行阶段就跑路趴窝。</p>
+          </div>
+
+          <div class="about-section">
+            <h3 class="about-sec-title">
+              <svg class="title-svg-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span>鹅的飞行守则 (免责声明)</span>
+            </h3>
+            <div class="principles-grid">
+              <div class="p-box">
+                <span class="p-num">01</span>
+                <h4>月付保平安</h4>
+                <p>严禁购买 2 年或百年套餐，优先按月或季度续费，降维防风险。</p>
+              </div>
+              <div class="p-box">
+                <span class="p-num">02</span>
+                <h4>晚高峰真考场</h4>
+                <p>白天速度再快没意义，只有 20:00 - 23:00 晚高峰丢包率才算真本事。</p>
+              </div>
+              <div class="p-box">
+                <span class="p-num">03</span>
+                <h4>不为任何机场背书</h4>
+                <p>保持绝对客观，如遇质量严重下滑或跑路风险将第一时间切入“坠毁记录簿”。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-section">
+            <h3 class="about-sec-title">
+              <svg class="title-svg-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"></path>
+                <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"></path>
+                <circle cx="12" cy="12" r="2"></circle>
+                <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"></path>
+                <path d="M19.1 4.9c3.9 3.9 3.9 10.2 0 14.1"></path>
+              </svg>
+              <span>无线电联络频段</span>
+            </h3>
+            <div class="radio-channels">
+              <a href="https://t.me/huanqiuti8899" target="_blank" rel="noopener" class="radio-btn">
+                <span>💬 Telegram 官方频道</span>
+              </a>
+              <a href="#" onclick="event.preventDefault(); showToast('RSS 订阅源: https://tizizhijia.com/feed.xml');" class="radio-btn">
+                <span>📻 RSS 订阅频段</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 4. 独立文章详情页 (/post/:id 或 /blog/:slug) -->
+    <div id="pagePost" class="page-view hidden">
+      <!-- 顶部面包屑导航 Breadcrumb -->
+      <nav class="breadcrumb-nav">
+        <a href="#/flights" class="bc-link">跑道上有只鹅</a>
+        <span class="bc-sep">›</span>
+        <a href="#/blog" class="bc-link">跑道黑匣子</a>
+        <span class="bc-sep">›</span>
+        <span class="bc-current" id="artBreadcrumbTitle">文章详情</span>
+      </nav>
+
+      <!-- 文章头部 Article Header -->
+      <header class="article-header-block">
+        <div class="article-meta-badges">
+          <span class="article-cat-tag" id="artCatTag">[踩坑避雷]</span>
+          <span class="article-date-tag" id="artDateTag">2026.10</span>
+          <span class="article-code-tag" id="artCodeTag">SEO-ARTICLE-01</span>
+        </div>
+        <h1 class="article-main-title" id="artTitle">文章标题加载中...</h1>
+        <div class="article-sub-meta">
+          <span class="meta-item">⏱️ <span id="artReadTime">阅读耗时约 8 分钟</span></span>
+          <span class="meta-item">✍️ 作者：<strong id="artAuthor">跑道巡检鹅</strong></span>
+          <span class="meta-item">🪿 起降推荐：<span id="artRatingTag" class="tier-5">【顺畅起飞 5/5】</span></span>
+        </div>
+      </header>
+
+      <!-- 文章主体与侧边栏双栏布局 -->
+      <section class="article-layout-grid">
+        <!-- 左侧/主体 Markdown 正文 -->
+        <article class="article-main-body">
+          <!-- 🪿 鹅的直白点评 Callout 框 -->
+          <div class="callout-box callout-goose" id="artCalloutGoose">
+            <div class="callout-header">
+              <span class="callout-icon">🪿</span>
+              <span class="callout-title">鹅的直白点评：</span>
+            </div>
+            <div class="callout-text" id="artProConText">加载中...</div>
+          </div>
+
+          <!-- Markdown 富文本渲染输出区 -->
+          <div class="markdown-prose-content" id="artProseBody"></div>
+
+          <!-- 🛡️ 避坑安全守则 Callout 框 -->
+          <div class="callout-box callout-warning">
+            <div class="callout-header">
+              <span class="callout-icon">🛡️</span>
+              <span class="callout-title">避坑安全守则：</span>
+            </div>
+            <div class="callout-text">
+              <p>1. <strong>坚决月付保平安</strong>：严禁购买 2 年或百年套餐，优先按月或季度续费，降维防风险。</p>
+              <p>2. <strong>晚高峰真考场</strong>：白天速度再快没意义，只有 20:00 - 23:00 晚高峰丢包率才算真本事。</p>
+              <p>3. <strong>不为任何机场背书</strong>：保持绝对客观，如遇质量严重下滑或跑路风险将第一时间切入“坠毁记录簿”。</p>
+            </div>
+          </div>
+
+          <!-- 底部 CTA 导购转化区 -->
+          <div class="article-cta-banner">
+            <div class="cta-content">
+              <h3>看完了黑匣子测评与实操？</h3>
+              <p>去「航班推荐榜」挑选经过鹅实测验证的 IPLC / IEPL 物理专线航班！</p>
+            </div>
+            <a href="#/flights" class="btn-cta-board">前往航班推荐榜 ➔</a>
+          </div>
+
+          <!-- 前后篇翻页导航 (Prev/Next) -->
+          <nav class="article-pagination-nav">
+            <a id="prevPostLink" href="#/blog" class="nav-post-card prev">
+              <span class="nav-direction">← 上一篇</span>
+              <span class="nav-title-text" id="prevPostTitle">返回博客列表</span>
+            </a>
+            <a id="nextPostLink" href="#/blog" class="nav-post-card next">
+              <span class="nav-direction">下一篇 →</span>
+              <span class="nav-title-text" id="nextPostTitle">返回博客列表</span>
+            </a>
+          </nav>
+        </article>
+
+        <!-- 右侧/吸顶 目录 Widget (PC端) -->
+        <aside class="article-sidebar">
+          <div class="toc-widget-box" id="tocWidget">
+            <h4 class="toc-title">
+              <svg class="title-svg-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+              <span>文章目录 (TOC)</span>
+            </h4>
+            <ul class="toc-list-tree" id="tocList"></ul>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <!-- 底部风险提示 Footer -->
+    <footer class="main-footer">
+      <div class="footer-warning-banner">
+        ⚠️ <strong>鹅的跑道安全警告：</strong>网络千万条，稳定第一条；月付保平安，莫贪百年套餐。
+      </div>
+      <div class="footer-meta">
+        <p>© 2026 跑道上有只鹅 RUNWAY GOOSE | 独立第三方评测原则与免责声明</p>
+        <div class="footer-links">
+          <a href="#/about">关于本鹅与推荐原则</a>
+          <span>•</span>
+          <a href="#" onclick="event.preventDefault(); window.resetRadarTargets && window.resetRadarTargets();">重置跑道图</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Toast 消息框 -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- JS 脚本引用 -->
+  <script src="data.js"></script>
+  <script src="audio.js"></script>
+  <script src="radar.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
