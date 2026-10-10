@@ -116,7 +116,7 @@
       renderArticleDetailPage(matchedArticle);
       document.title = `${matchedArticle.title} | 跑道黑匣子 - 跑道上有只鹅`;
     } else {
-      document.title = `跑道上有只鹅 | 航班推荐、跑道黑匣子与坠毁记录`;
+      document.title = `跑道上有只鹅 | 2026 稳定节点评测推荐与跑路避坑预警`;
     }
 
     // 更新 Navbar 当前 Active 导航链接
