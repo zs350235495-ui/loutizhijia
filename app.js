@@ -223,12 +223,37 @@
       }
     }
 
-    // 如果尝试在线抓取本地 md 文件（对于 HTTP 服务器环境增强）
-    if (item.code) {
-      const codeNum = item.code.replace('SEO-ARTICLE-', '');
-      const numFormatted = String(codeNum).padStart(2, '0');
-      const possibleFile = `posts/post-${numFormatted}-*.md`;
-      // 可选扩展：若需异步 Fetch 完整 Markdown 可在此扩展
+    // 异步加载对应 md 文件全文并渲染
+    const postFileMap = {
+      "SEO-ARTICLE-16": "posts/post-16-node-failure-analysis.md",
+      "SEO-ARTICLE-15": "posts/post-15-troubleshooting-dns-sub-errors.md",
+      "SEO-ARTICLE-14": "posts/post-14-router-openwrt-transparent-proxy.md",
+      "SEO-ARTICLE-13": "posts/post-13-android-singbox-vs-clash-meta.md",
+      "SEO-ARTICLE-12": "posts/post-12-ios-shadowrocket-complete-guide.md",
+      "SEO-ARTICLE-11": "posts/post-11-clash-verge-rev-pc-mac-tutorial.md",
+      "SEO-ARTICLE-10": "posts/post-10-beginner-jargon-deconstruction.md",
+      "SEO-ARTICLE-09": "posts/post-09-protocol-benchmark-hysteria2-reality.md",
+      "SEO-ARTICLE-08": "posts/post-08-peak-hours-packet-loss-truth.md",
+      "SEO-ARTICLE-07": "posts/post-07-tiktok-cross-border-guide.md",
+      "SEO-ARTICLE-06": "posts/post-06-streaming-unlock-guide.md",
+      "SEO-ARTICLE-05": "posts/post-05-chatgpt-claude-anti-ban-guide.md",
+      "SEO-ARTICLE-04": "posts/post-04-iepl-iplc-deep-dive.md",
+      "SEO-ARTICLE-03": "posts/post-03-pay-as-you-go-airport-guide.md",
+      "SEO-ARTICLE-02": "posts/post-02-cheap-airport-guide.md",
+      "SEO-ARTICLE-01": "posts/post-01-2026-airport-guide.md"
+    };
+
+    const targetFile = item.file || postFileMap[item.code];
+    if (targetFile) {
+      fetch(targetFile)
+        .then(res => res.ok ? res.text() : null)
+        .then(mdText => {
+          if (mdText) {
+            artProseBody.innerHTML = parseMarkdownToHTML(mdText);
+            buildArticleTOC(artProseBody, tocList);
+          }
+        })
+        .catch(() => {});
     }
   }
 
