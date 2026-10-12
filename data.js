@@ -394,6 +394,17 @@ const boardData = [
 
 const feedData = [
   {
+    id: 84,
+    code: "SEO-ARTICLE-17",
+    file: "posts/post-17-home-gateway-mosdns-transparent-proxy.md",
+    date: "2026.10",
+    cat: "tech",
+    title: "梯子之家 2026 全屋智能与家庭多设备透明网关架构白皮书：软路由、MosDNS 智能分流与防 DNS 泄漏终极实践",
+    summary: "梯子之家·家庭网络拓扑与网关工程实验室 2026 年度技术白皮书。深入剖析单机客户端痛点、单网口旁路由 vs 双网口主路由拓扑与网络回环诱因，详解 MosDNS 预分流配合 Fake-IP TProxy 架构，彻底消除 DNS 污染与解析延迟，附带百兆/千兆/FTTR 硬件选型与故障排查手册。",
+    proCon: "鹅的直白点评：全屋多设备如果每台都单独装客户端，维护起来简直是灾难！折腾透明网关才是终极形态。通过主路由物理冗余、旁路由受控接管、MosDNS 国内外预分流以及 Fake-IP 零延迟解析，彻底告别 DNS 泄露与全家断网风险。",
+    gooseScore: 5
+  },
+  {
     id: 85,
     code: "SEO-ARTICLE-16",
     file: "posts/post-16-node-failure-analysis.md",

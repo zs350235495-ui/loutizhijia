@@ -225,6 +225,7 @@
 
     // 异步加载对应 md 文件全文并渲染
     const postFileMap = {
+      "SEO-ARTICLE-17": "posts/post-17-home-gateway-mosdns-transparent-proxy.md",
       "SEO-ARTICLE-16": "posts/post-16-node-failure-analysis.md",
       "SEO-ARTICLE-15": "posts/post-15-troubleshooting-dns-sub-errors.md",
       "SEO-ARTICLE-14": "posts/post-14-router-openwrt-transparent-proxy.md",
