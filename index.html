@@ -86,6 +86,12 @@
           </a>
         </li>
         <li>
+          <a href="#/reviews" class="nav-link" data-route="/reviews">
+            <span class="nav-text">试飞体检站</span>
+            <span class="nav-tag">FLIGHT TEST</span>
+          </a>
+        </li>
+        <li>
           <a href="#/blog" class="nav-link" data-route="/blog">
             <span class="nav-text">跑道黑匣子</span>
             <span class="nav-tag">BLACK BOX</span>
@@ -246,7 +252,93 @@
       </section>
     </div>
 
-    <!-- 独立页面 2：跑道黑匣子 (/blog) -->
+    <!-- 独立页面 2：试飞体检站 (/reviews) -->
+    <div class="page-view hidden" id="pageReviews">
+      <header class="page-hero">
+        <div class="page-hero-badge">● FLIGHT INSPECTION LAB · 2026 跑道试飞体检</div>
+        <h2 class="page-title">
+          <svg class="title-svg-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+          </svg>
+          <span>试飞体检站</span>
+        </h2>
+        <p class="page-desc">真机宽带实测 · 晚高峰 21:00 丢包压测 · 4K/8K 缓冲速率与原生 IP 洁净度体检报告</p>
+
+        <!-- 试飞体检核心指标速览 Banner -->
+        <div class="inspect-highlight-bar">
+          <div class="ih-item">
+            <span class="ih-icon">📡</span>
+            <div class="ih-text">
+              <strong>晚高峰丢包压测</strong>
+              <small>21:00 实盘连续打点，锁定 Loss &lt; 0.5% 专线</small>
+            </div>
+          </div>
+          <div class="ih-item">
+            <span class="ih-icon">⚡</span>
+            <div class="ih-text">
+              <strong>8K 极速秒开体检</strong>
+              <small>YouTube 8K 首帧缓冲 &lt; 0.3s，拖拽进度条零卡顿</small>
+            </div>
+          </div>
+          <div class="ih-item">
+            <span class="ih-icon">🛡️</span>
+            <div class="ih-text">
+              <strong>原生 IP 洁净体检</strong>
+              <small>ChatGPT 1020 避雷，Netflix 非自制剧原生全解</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 评测分类 Pills -->
+        <div class="post-cat-filters" id="reviewCatFilters">
+          <button class="post-cat-btn active" data-review-cat="all">全部体检报告</button>
+          <button class="post-cat-btn" data-review-cat="speed">测速报告</button>
+          <button class="post-cat-btn" data-review-cat="peak">晚高峰体检</button>
+          <button class="post-cat-btn" data-review-cat="iepl">专线头等舱</button>
+          <button class="post-cat-btn" data-review-cat="budget">平价经济舱</button>
+        </div>
+      </header>
+
+      <!-- 模块 1：主力航班试飞体检档案 -->
+      <section class="section-block">
+        <div class="section-header">
+          <h3 class="section-title">
+            <svg class="title-svg-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+            <span>主力航班实测体检卡 (Flight Benchmark Cards)</span>
+          </h3>
+          <span class="section-subtitle">基于真实宽带压测 · 严禁虚标带宽 · 拒绝百年套路</span>
+        </div>
+
+        <div class="inspect-cards-grid" id="inspectCardsGrid">
+          <!-- 动态渲染或结构化卡片 -->
+        </div>
+      </section>
+
+      <!-- 模块 2：深度体检研报与横评日志 -->
+      <section class="section-block" style="margin-top: 40px;">
+        <div class="section-header">
+          <h3 class="section-title">
+            <svg class="title-svg-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>深度试飞研报库 (Benchmark Reports)</span>
+          </h3>
+          <span class="section-subtitle">单篇深度横评 · 丢包排查日记 · 协议实测</span>
+        </div>
+
+        <div class="feed-grid" id="reviewFeedGrid">
+          <!-- 动态渲染评测文章瀑布流 -->
+        </div>
+      </section>
+    </div>
+
+    <!-- 独立页面 3：跑道黑匣子 (/blog) -->
     <div class="page-view hidden" id="pageBlog">
       <header class="page-hero">
         <div class="page-hero-badge">BLACK BOX ARCHIVE</div>

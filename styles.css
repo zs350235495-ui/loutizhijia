@@ -1243,6 +1243,7 @@ body {
 @keyframes toastIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes toastOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-15px); } }
 
+@media (max-width: 768px) {
   .mobile-menu-toggle { display: flex; }
   .nav-status-badge { display: none; }
   .hero-main-title { font-size: 2rem; }
@@ -1735,6 +1736,309 @@ body {
   .nav-post-card.next {
     text-align: left;
     align-items: flex-start;
+  }
+}
+
+/* -------------------------------------------------------------
+   试飞体检站 (#pageReviews) 航空仪表与实测卡片样式
+   ------------------------------------------------------------- */
+.inspect-highlight-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 22px auto 0;
+  max-width: 1080px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  border-radius: 14px;
+  padding: 18px 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.ih-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.ih-item:hover {
+  background: rgba(251, 191, 36, 0.05);
+}
+
+.ih-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.45));
+}
+
+.ih-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+}
+
+.ih-text strong {
+  color: #ffffff;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.ih-text small {
+  color: var(--text-sub);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* 试飞体检卡网格 */
+.inspect-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+/* 单个试飞体检卡片 */
+.inspect-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.inspect-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-yellow);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55), 0 0 15px rgba(251, 191, 36, 0.12);
+}
+
+.inspect-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.inspect-flight-code {
+  color: var(--runway-yellow);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.inspect-pass-badge {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #4ade80;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.inspect-card-title-group {
+  margin-bottom: 12px;
+}
+
+.inspect-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.inspect-card-sub {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+
+/* 4格实测遥测数据面板 */
+.inspect-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 14px 0;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.telemetry-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.telemetry-label {
+  font-size: 0.74rem;
+  color: var(--text-sub);
+  font-family: var(--font-mono);
+}
+
+.telemetry-val {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 800;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.val-green {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.35);
+}
+
+.val-cyan {
+  color: #38bdf8;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.35);
+}
+
+.val-yellow {
+  color: #fbbf24;
+}
+
+.val-unit {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--text-sub);
+}
+
+/* 特性胶囊 Pills */
+.inspect-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.inspect-tag-pill {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-size: 0.76rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.inspect-tag-pill.pill-highlight {
+  border-color: rgba(251, 191, 36, 0.3);
+  color: var(--runway-yellow);
+}
+
+/* 鹅的体检短评 Callout */
+.inspect-verdict-box {
+  background: rgba(251, 191, 36, 0.06);
+  border-left: 3px solid var(--runway-yellow);
+  padding: 10px 12px;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.inspect-verdict-title {
+  color: var(--runway-yellow);
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* 底部价格与机长暗号 */
+.inspect-footer-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 12px;
+}
+
+.inspect-price-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: var(--goose-orange);
+}
+
+.inspect-promo-btn {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px dashed var(--runway-yellow);
+  color: var(--runway-yellow);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.inspect-promo-btn:hover {
+  background: var(--runway-yellow);
+  color: #0f172a;
+}
+
+/* CTA 按钮组合 */
+.inspect-card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn-inspect-report {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid var(--border-color);
+  color: #e2e8f0;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-align: center;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.btn-inspect-report:hover {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: var(--runway-yellow);
+  color: var(--runway-yellow);
+}
+
+@media (max-width: 768px) {
+  .inspect-highlight-bar {
+    grid-template-columns: 1fr;
+    padding: 14px 16px;
+  }
+  .inspect-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .inspect-card-actions {
+    grid-template-columns: 1fr;
   }
 }
 

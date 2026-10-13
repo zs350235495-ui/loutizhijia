@@ -1,11 +1,14 @@
 // 跑道上有只鹅 - SPA 客户端 Hash 路由与独立文章页逻辑
 (function() {
   const boardTbody = document.getElementById('boardTbody');
+  const inspectCardsGrid = document.getElementById('inspectCardsGrid');
+  const reviewFeedGrid = document.getElementById('reviewFeedGrid');
   const feedGrid = document.getElementById('feedGrid');
   const crashListGrid = document.getElementById('crashListGrid');
 
   // Multi-filter states
   let activeBlogCat = 'all';
+  let activeReviewCat = 'all';
 
   const mobileMenuToggle = document.getElementById('mobileMenuToggle');
   const navLinks = document.getElementById('navLinks');
@@ -41,6 +44,7 @@
   function init() {
     setupRouting();
     renderBoardTable();
+    renderReviewsView();
     renderFeedGrid();
     renderCrashGrid();
     setupEventListeners();
@@ -80,6 +84,7 @@
 
     const pageMap = {
       '/flights': 'pageFlights',
+      '/reviews': 'pageReviews',
       '/blog': 'pageBlog',
       '/crashes': 'pageCrashes',
       '/about': 'pageAbout'
@@ -438,6 +443,240 @@
     });
   }
 
+  // 3.5 试飞体检站 (/reviews) 核心实测数据与渲染引擎
+  const inspectBenchmarkData = [
+    {
+      flightCode: "TEST-01 · 旗舰全线专线",
+      airlineName: "环球梯 HuanqiuTi",
+      sub: "全节点 BGP/专线优化 · 23ms 低延迟",
+      category: ["speed", "peak", "iepl"],
+      lossRate: "0.0%",
+      buffer8k: "0.22s",
+      peakSpeed: "950 Mbps",
+      ipClean: "100% 原生",
+      tags: ["23ms极低延迟", "ChatGPT 4o", "4K/8K秒开", "原生IP全解"],
+      verdict: "全天候 21:00 晚高峰连续打点压测 0 丢包，23ms 极致低延迟，ChatGPT 4o 与 Netflix 秒开无障碍。",
+      price: "￥14.70 /月",
+      promoCode: "HQ66",
+      gooseScore: 5,
+      url: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0",
+      reportPostId: 100
+    },
+    {
+      flightCode: "TEST-02 · 超大频宽头等舱",
+      airlineName: "大佬云 DalaoCloud",
+      sub: "全 IPLC 专线 · 单节点峰值 2.5Gbps",
+      category: ["speed", "peak", "iepl"],
+      lossRate: "0.0%",
+      buffer8k: "0.26s",
+      peakSpeed: "980 Mbps",
+      ipClean: "100% 纯净",
+      tags: ["2.5Gbps峰值", "全IPLC专线", "Disney+", "4K高并发"],
+      verdict: "2.5Gbps 超大冗余带宽，多台 4K/8K 电视全家并发零卡顿，晚高峰稳如磐石。",
+      price: "￥16.10 /月",
+      promoCode: "dly88",
+      gooseScore: 5,
+      url: "https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa",
+      reportPostId: 101
+    },
+    {
+      flightCode: "TEST-03 · 均衡大流量专线",
+      airlineName: "云界线 Yunjiexian",
+      sub: "全 IPLC 专线 · 150GB/月大流量起",
+      category: ["speed", "peak", "iepl"],
+      lossRate: "0.1%",
+      buffer8k: "0.30s",
+      peakSpeed: "880 Mbps",
+      ipClean: "99.8% 洁净",
+      tags: ["150GB大流量", "1.0x真实倍率", "智能负载均衡", "防封降维"],
+      verdict: "150GB 大流量起步，全站 1.0x 真实倍率扣费，节点智能负载均衡，出差办公与科研首选。",
+      price: "￥15.40 /月",
+      promoCode: "yjx888",
+      gooseScore: 5,
+      url: "https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV",
+      reportPostId: 93
+    },
+    {
+      flightCode: "TEST-04 · 跨境电商专属通道",
+      airlineName: "闪电鼠 Shandianshu",
+      sub: "全线 IEPL 专线 · 单节点峰值 2.5Gbps",
+      category: ["speed", "peak", "iepl"],
+      lossRate: "0.0%",
+      buffer8k: "0.28s",
+      peakSpeed: "920 Mbps",
+      ipClean: "100% 原生",
+      tags: ["全线IEPL", "TikTok专属优化", "原生客户端", "海外电商"],
+      verdict: "专攻 TikTok 跨境带货与海外社交，全线 IEPL 专线，配套安卓/iOS 一键客户端极其丝滑。",
+      price: "￥15.40 /月",
+      promoCode: "sds88",
+      gooseScore: 5,
+      url: "https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB",
+      reportPostId: 94
+    },
+    {
+      flightCode: "TEST-05 · 冗余机群多国覆盖",
+      airlineName: "神行加速 Shenxing",
+      sub: "全 IPLC/IEPL 专线 · 23ms 低延迟 50+节点",
+      category: ["speed", "peak", "iepl"],
+      lossRate: "0.2%",
+      buffer8k: "0.34s",
+      peakSpeed: "860 Mbps",
+      ipClean: "99.9% 洁净",
+      tags: ["50+多国节点", "全协议伪装", "低延迟游戏", "高并发冗余"],
+      verdict: "50+ 节点冗余储备，冷门小众国家全覆盖，全协议智能抗封锁，游戏与高并发不掉线。",
+      price: "￥16.10 /月",
+      promoCode: "sx0077",
+      gooseScore: 5,
+      url: "https://pps123.shenxingaff.com/#/?code=6tQ7zHUc",
+      reportPostId: 96
+    },
+    {
+      flightCode: "TEST-06 · 极致平价口粮跑道",
+      airlineName: "极连云 Jilianyun",
+      sub: "IPLC 物理专线 · 不限设备数 / 极速抗封",
+      category: ["budget", "iepl"],
+      lossRate: "0.4%",
+      buffer8k: "0.42s",
+      peakSpeed: "680 Mbps",
+      ipClean: "99.5% 洁净",
+      tags: ["不限设备数", "IPLC内网专线", "平价口粮", "全屋设备接管"],
+      verdict: "入门平价神机！不限设备数量并发，IPLC 内网中转，学生党与备用跑道的性价比屠夫。",
+      price: "￥6.40 /月起",
+      promoCode: "JLY888",
+      gooseScore: 4,
+      url: "https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO",
+      reportPostId: 98
+    }
+  ];
+
+  function renderReviewsView(category = 'all') {
+    // 1. 渲染主力航班体检卡片
+    if (inspectCardsGrid) {
+      inspectCardsGrid.innerHTML = '';
+      const filteredBenchmark = category === 'all'
+        ? inspectBenchmarkData
+        : inspectBenchmarkData.filter(item => item.category.includes(category));
+
+      filteredBenchmark.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'inspect-card';
+        const gooseRatingHTML = renderGooseRatingHTML(item.gooseScore);
+        const tagsHTML = item.tags.map((t, idx) => `<span class="inspect-tag-pill ${idx === 0 ? 'pill-highlight' : ''}">${t}</span>`).join('');
+
+        card.innerHTML = `
+          <div>
+            <div class="inspect-card-head">
+              <span class="inspect-flight-code">✈ ${item.flightCode}</span>
+              <span class="inspect-pass-badge">[实测认证 / PASS]</span>
+            </div>
+            <div class="inspect-card-title-group">
+              <h4 class="inspect-card-title">${item.airlineName}</h4>
+              <span class="inspect-card-sub">${item.sub}</span>
+            </div>
+            <div style="margin-bottom: 12px;">
+              ${gooseRatingHTML}
+            </div>
+            <div class="inspect-telemetry-grid">
+              <div class="telemetry-cell">
+                <span class="telemetry-label">晚高峰 21:00 丢包率</span>
+                <span class="telemetry-val val-green">${item.lossRate} <span class="val-unit">(极稳)</span></span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-label">8K 首帧缓冲耗时</span>
+                <span class="telemetry-val val-cyan">${item.buffer8k} <span class="val-unit">(秒开)</span></span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-label">专线测速峰值</span>
+                <span class="telemetry-val val-yellow">${item.peakSpeed}</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-label">原生 IP 洁净度</span>
+                <span class="telemetry-val val-green">${item.ipClean}</span>
+              </div>
+            </div>
+            <div class="inspect-tags-row">
+              ${tagsHTML}
+            </div>
+            <div class="inspect-verdict-box">
+              <div class="inspect-verdict-title">🪿 鹅的试飞体检直言：</div>
+              <div>${item.verdict}</div>
+            </div>
+          </div>
+          <div>
+            <div class="inspect-footer-meta">
+              <span class="inspect-price-lbl">${item.price}</span>
+              <button class="inspect-promo-btn" onclick="copyPromoCode('${item.promoCode}')">
+                🔑 机长暗号: ${item.promoCode} (点击复制)
+              </button>
+            </div>
+            <div class="inspect-card-actions">
+              <a href="${item.url}" target="_blank" rel="noopener" class="btn-boarding" style="padding: 10px; text-align: center; justify-content: center;">
+                办理登机牌 (官网直达)
+              </a>
+              <a href="#/post/${item.reportPostId}" class="btn-inspect-report">
+                查看试飞研报 ➔
+              </a>
+            </div>
+          </div>
+        `;
+        inspectCardsGrid.appendChild(card);
+      });
+    }
+
+    // 2. 渲染深度研报瀑布流
+    if (reviewFeedGrid) {
+      reviewFeedGrid.innerHTML = '';
+      let filteredFeed = [];
+      if (category === 'all') {
+        filteredFeed = feedData.filter(f => f.cat === 'speed' || f.code.startsWith('SPEED-') || [100, 97, 95, 93, 92, 98, 99, 85].includes(f.id));
+      } else if (category === 'speed') {
+        filteredFeed = feedData.filter(f => f.cat === 'speed' || f.title.includes('测速') || f.title.includes('秒开'));
+      } else if (category === 'peak') {
+        filteredFeed = feedData.filter(f => f.title.includes('晚高峰') || f.title.includes('丢包') || f.title.includes('断流'));
+      } else if (category === 'iepl') {
+        filteredFeed = feedData.filter(f => f.title.includes('专线') || f.title.includes('IPLC') || f.title.includes('IEPL'));
+      } else if (category === 'budget') {
+        filteredFeed = feedData.filter(f => f.title.includes('平价') || f.title.includes('按量') || f.title.includes('高性价比'));
+      }
+      if (filteredFeed.length === 0) {
+        filteredFeed = feedData.slice(0, 6);
+      }
+
+      filteredFeed.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'boarding-pass-card';
+        const gooseRatingHTML = renderGooseRatingHTML(item.gooseScore || 5);
+        card.innerHTML = `
+          <div>
+            <div class="bp-header">
+              <span class="bp-code" style="color:var(--runway-yellow);">BENCHMARK · ${item.code}</span>
+              <span class="bp-date">${item.date}</span>
+            </div>
+            <a href="#/post/${item.id}" class="bp-title-link" style="text-decoration:none; color:inherit;">
+              <h3 class="bp-title">${item.title}</h3>
+            </a>
+            <p class="bp-summary">${item.summary}</p>
+            <div class="goose-comment-box">
+              <div class="gc-title">
+                <svg class="title-svg-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+                  <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L3 13.5V21h7.5z"></path>
+                  <line x1="16" y1="8" x2="2" y2="22"></line>
+                </svg>
+                <span>试飞员鹅的实测批注：</span>
+              </div>
+              <div>${item.proCon || item.summary}</div>
+            </div>
+          </div>
+          <div class="bp-footer">
+            ${gooseRatingHTML}
+            <a href="#/post/${item.id}" class="bp-read-btn">阅读试飞报告 ➔</a>
+          </div>
+        `;
+        reviewFeedGrid.appendChild(card);
+      });
+    }
+  }
+
   // 4. 跑道黑匣子 Feed Grid (已重构：点击卡片通过路由跳转至独立文章页)
   function renderFeedGrid() {
     if (!feedGrid) return;
@@ -531,13 +770,24 @@
 
   // 事件绑定与过滤器
   function setupEventListeners() {
-    // 博客分类 Filter
-    document.querySelectorAll('.post-cat-btn').forEach(btn => {
+    // 博客黑匣子分类 Filter
+    document.querySelectorAll('#pageBlog .post-cat-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.post-cat-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#pageBlog .post-cat-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeBlogCat = btn.dataset.cat;
         renderFeedGrid();
+        if (window.playClickBeep) window.playClickBeep();
+      });
+    });
+
+    // 试飞体检站分类 Filter
+    document.querySelectorAll('#reviewCatFilters .post-cat-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#reviewCatFilters .post-cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeReviewCat = btn.dataset.reviewCat;
+        renderReviewsView(activeReviewCat);
         if (window.playClickBeep) window.playClickBeep();
       });
     });
