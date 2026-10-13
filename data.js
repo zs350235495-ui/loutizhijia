@@ -8,7 +8,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "ai",
     unlock: "ChatGPT / AI服务 / 4K流媒体 / 原生IP",
-    price: "￥22.00 /月 (7折码 HQ66)",
+    price: "￥14.70 /月 (7折码 HQ66)",
     gooseScore: 5,
     promoCode: "HQ66",
     url: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0"
@@ -21,7 +21,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "ai",
     unlock: "原生 IP / Netflix / Disney+ / ChatGPT",
-    price: "￥23.00 /月 (7折码 dly88)",
+    price: "￥16.10 /月 (7折码 dly88)",
     gooseScore: 5,
     promoCode: "dly88",
     url: "https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa"
@@ -34,7 +34,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "ai",
     unlock: "原生 IP / Netflix / Disney+ / ChatGPT",
-    price: "￥22.00 /月 (7折码 yjx888)",
+    price: "￥15.40 /月 (7折码 yjx888)",
     gooseScore: 5,
     promoCode: "yjx888",
     url: "https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV"
@@ -47,7 +47,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "ai",
     unlock: "原生 IP / Netflix / Disney+ / ChatGPT / TikTok",
-    price: "￥22.00 /月 (7折码 sds88)",
+    price: "￥15.40 /月 (7折码 sds88)",
     gooseScore: 5,
     promoCode: "sds88",
     url: "https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB"
@@ -60,7 +60,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "ai",
     unlock: "原生 IP / Netflix / Disney+ / ChatGPT",
-    price: "￥23.00 /月 (7折码 sx0077)",
+    price: "￥16.10 /月 (7折码 sx0077)",
     gooseScore: 5,
     promoCode: "sx0077",
     url: "https://pps123.shenxingaff.com/#/?code=6tQ7zHUc"
@@ -73,7 +73,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "media",
     unlock: "原生 IP / Netflix / Disney+ / ChatGPT / YouTube 8K",
-    price: "￥22.00 /月 (7折码 ll88)",
+    price: "￥15.40 /月 (7折码 ll88)",
     gooseScore: 5,
     promoCode: "ll88",
     url: "https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G"
@@ -86,7 +86,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "ai",
     unlock: "金融级专线 / Netflix / Disney+ / ChatGPT",
-    price: "￥25.00 /月起 (8折码 yt88)",
+    price: "￥20.00 /月起 (8折码 yt88)",
     gooseScore: 5,
     promoCode: "yt88",
     url: "https://super.ytjcok.org/#/register?code=poKwFVTv"
@@ -99,7 +99,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "media",
     unlock: "物理专线 / 4K / 8K / AI 工具解锁",
-    price: "￥7.50 /月起 (8折码 GNT80)",
+    price: "￥6.00 /月起 (8折码 GNT80)",
     gooseScore: 5,
     promoCode: "GNT80",
     url: "https://gnt001.gntvipaff.cc/#/?code=PQhPFDhO"
@@ -112,7 +112,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "ai",
     unlock: "原生 IP / ChatGPT / 流媒体全解锁",
-    price: "￥8.00 /月起 (8折码 JLY888)",
+    price: "￥6.40 /月起 (8折码 JLY888)",
     gooseScore: 5,
     promoCode: "JLY888",
     url: "https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO"
@@ -151,7 +151,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "ai",
     unlock: "新手友好 / 客户端一键连接 / 流媒体解禁",
-    price: "￥10.00 /月起 (8折码 vpsknow)",
+    price: "￥8.00 /月起 (8折码 vpsknow)",
     gooseScore: 4,
     promoCode: "vpsknow",
     url: "https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F"
@@ -164,7 +164,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "media",
     unlock: "4K 秒开 / 全节点流媒体 / 极低延迟",
-    price: "￥12.00 /月起 (85折码 sy888)",
+    price: "￥10.20 /月起 (85折码 sy888)",
     gooseScore: 5,
     promoCode: "sy888",
     url: "https://ddd.jichang.best/#/register?code=nldUZaYc"
@@ -177,7 +177,7 @@ const boardData = [
     lineType: "bgp",
     usageType: "backup",
     unlock: "高性价比中转 / 超低丢包 / 网页秒开",
-    price: "￥9.00 /月起 (9折码 edge88)",
+    price: "￥8.10 /月起 (9折码 edge88)",
     gooseScore: 4,
     promoCode: "edge88",
     url: "https://wep.edgenovaaff.com/#/?code=mLLL6h6F"
@@ -190,7 +190,7 @@ const boardData = [
     lineType: "bgp",
     usageType: "media",
     unlock: "自研客户端 / 大带宽 4K / 新手推荐",
-    price: "￥7.50 /月起 (9折码 2026-99)",
+    price: "￥6.75 /月起 (9折码 2026-99)",
     gooseScore: 4,
     promoCode: "2026-99",
     url: "https://pygllc.speedworldaff.cc/#/?code=kcoensXG"
@@ -203,7 +203,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "ai",
     unlock: "Starlink 星链 / Disney+ / HBO / Netflix",
-    price: "￥39.00 /月 (8折码 L5R3TJJ8UM)",
+    price: "￥31.20 /月 (8折码 L5R3TJJ8UM)",
     gooseScore: 5,
     promoCode: "L5R3TJJ8UM",
     url: "https://bit.ly/3GXSiVD"
@@ -216,7 +216,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "ai",
     unlock: "Netflix / Disney+ / ChatGPT 解锁",
-    price: "￥15.00 /月 (85折码 fbzq2685)",
+    price: "￥12.75 /月 (85折码 fbzq2685)",
     gooseScore: 5,
     promoCode: "fbzq2685",
     url: "https://bit.ly/4oJDydt"
@@ -229,7 +229,7 @@ const boardData = [
     lineType: "iplc",
     usageType: "media",
     unlock: "Netflix / DAZN / Disney+ / 8K 秒开",
-    price: "￥36.00 /月 (85折码 MV3M88XZM)",
+    price: "￥30.60 /月 (85折码 MV3M88XZM)",
     gooseScore: 5,
     promoCode: "MV3M88XZM",
     url: "https://bit.ly/3RMx8wl"
@@ -671,10 +671,10 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 • 选择 Fake-IP 模式，开启本地 DNS 劫持，禁用 IPv6 解析防止流量绕过泄露。
 
 四、4 家适配软路由高吞吐的老牌专线
-1. 环球梯 HuanqiuTi (￥22.00/月，23ms 低延迟/高并发/全屋流畅，7折码: HQ66)
-2. 大佬云 DalaoCloud (￥23.00/月，2.5Gbps 超大频宽/多台电视4K，7折码: dly88)
-3. 云界线 Yunjiexian (￥22.00/月，150GB/月起/节点自动负载均衡，7折码: yjx888)
-4. 极连云 Jilianyun (￥8.00/月，不限设备数量挂载/极佳口粮，8折码: JLY888)`
+1. 环球梯 HuanqiuTi (￥14.70/月，23ms 低延迟/高并发/全屋流畅，7折码: HQ66)
+2. 大佬云 DalaoCloud (￥16.10/月，2.5Gbps 超大频宽/多台电视4K，7折码: dly88)
+3. 云界线 Yunjiexian (￥15.40/月，150GB/月起/节点自动负载均衡，7折码: yjx888)
+4. 极连云 Jilianyun (￥6.40/月，不限设备数量挂载/极佳口粮，8折码: JLY888)`
   },
   {
     id: 88,
@@ -697,10 +697,10 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 3. 允许系统自启动。
 
 三、4 家适配安卓平台极其稳定省电的服务商
-1. 环球梯 HuanqiuTi (￥22.00/月，23ms 低延迟/后心跳轻量，7折码: HQ66)
-2. 闪电鼠 Shandianshu (￥22.00/月，全线 IEPL/原生安卓一键客户端，7折码: sds88)
-3. 大佬云 DalaoCloud (￥23.00/月，2.5Gbps 大频宽/视频流拉满，7折码: dly88)
-4. 极连云 Jilianyun (￥8.00/月，不限设备数/多安卓机分发，8折码: JLY888)`
+1. 环球梯 HuanqiuTi (￥14.70/月，23ms 低延迟/后心跳轻量，7折码: HQ66)
+2. 闪电鼠 Shandianshu (￥15.40/月，全线 IEPL/原生安卓一键客户端，7折码: sds88)
+3. 大佬云 DalaoCloud (￥16.10/月，2.5Gbps 大频宽/视频流拉满，7折码: dly88)
+4. 极连云 Jilianyun (￥6.40/月，不限设备数/多安卓机分发，8折码: JLY888)`
   },
   {
     id: 89,
@@ -726,9 +726,9 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 • 首次连接：允许添加 VPN 配置，验证 Face ID。
 
 四、4 家适配小火箭体验爆表的服务商
-1. 环球梯 HuanqiuTi (￥22.00/月，23ms 低延迟/一键唤醒，7折码: HQ66)
-2. 闪电鼠 Shandianshu (￥22.00/月，全线 IEPL/扫码导入，7折码: sds88)
-3. 大佬云 DalaoCloud (￥23.00/月，2.5Gbps 大频宽/iPad秒开，7折码: dly88)
+1. 环球梯 HuanqiuTi (￥14.70/月，23ms 低延迟/一键唤醒，7折码: HQ66)
+2. 闪电鼠 Shandianshu (￥15.40/月，全线 IEPL/扫码导入，7折码: sds88)
+3. 大佬云 DalaoCloud (￥16.10/月，2.5Gbps 大频宽/iPad秒开，7折码: dly88)
 4. 泡芙云 (￥12.00/月，香港 IEPL 专线/4年稳定口碑，暗号: POFF_GOOSE)`
   },
   {
@@ -755,10 +755,10 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 选择【规则模式 (Rule)】，实现国内流量 DIRECT 直连、海外流量自动走代理。
 
 四、4 家适配 Clash Verge 极佳的服务商
-1. 环球梯 HuanqiuTi (￥22.00/月，23ms 低延迟/一键导入/TUN支持，7折码: HQ66)
-2. 闪电鼠 Shandianshu (￥22.00/月，全线 IEPL/策略组划分合理，7折码: sds88)
-3. 大佬云 DalaoCloud (￥23.00/月，2.5Gbps 峰值/PC下载拉满，7折码: dly88)
-4. 极连云 Jilianyun (￥8.00/月，不限设备数/PC与Mac多开，8折码: JLY888)`
+1. 环球梯 HuanqiuTi (￥14.70/月，23ms 低延迟/一键导入/TUN支持，7折码: HQ66)
+2. 闪电鼠 Shandianshu (￥15.40/月，全线 IEPL/策略组划分合理，7折码: sds88)
+3. 大佬云 DalaoCloud (￥16.10/月，2.5Gbps 峰值/PC下载拉满，7折码: dly88)
+4. 极连云 Jilianyun (￥6.40/月，不限设备数/PC与Mac多开，8折码: JLY888)`
   },
   {
     id: 91,
@@ -782,10 +782,10 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 • 100+ 节点解锁：大多为软路由虚拟广播节点。
 
 三、4 家真实透明老牌专线推荐
-1. 环球梯 HuanqiuTi (￥22.00/月，多入口 BGP/23ms 极低延迟，7折码: HQ66)
-2. 大佬云 DalaoCloud (￥23.00/月，真实 2.5Gbps 超大峰值，7折码: dly88)
-3. 云界线 Yunjiexian (￥22.00/月，150GB 大流量/1.0x 真实扣费，7折码: yjx888)
-4. 闪电鼠 Shandianshu (￥22.00/月，全线 IEPL 专线/配套客户端，7折码: sds88)`
+1. 环球梯 HuanqiuTi (￥14.70/月，多入口 BGP/23ms 极低延迟，7折码: HQ66)
+2. 大佬云 DalaoCloud (￥16.10/月，真实 2.5Gbps 超大峰值，7折码: dly88)
+3. 云界线 Yunjiexian (￥15.40/月，150GB 大流量/1.0x 真实扣费，7折码: yjx888)
+4. 闪电鼠 Shandianshu (￥15.40/月，全线 IEPL 专线/配套客户端，7折码: sds88)`
   },
   {
     id: 92,
@@ -809,9 +809,9 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 • CPU/省电效率：Shadowsocks 极佳
 
 三、4 家协议匹配度极佳的服务商
-1. 环球梯 HuanqiuTi (￥22.00/月，SS-2022/VLESS 物理专线/23ms 低延迟，7折码: HQ66)
-2. 闪电鼠 Shandianshu (￥22.00/月，IEPL 专线/全协议智能伪装，7折码: sds88)
-3. 神行加速 Shenxing (￥23.00/月，Hysteria 2/Reality 弱网拉速组，7折码: sx0077)
+1. 环球梯 HuanqiuTi (￥14.70/月，SS-2022/VLESS 物理专线/23ms 低延迟，7折码: HQ66)
+2. 闪电鼠 Shandianshu (￥15.40/月，IEPL 专线/全协议智能伪装，7折码: sds88)
+3. 神行加速 Shenxing (￥16.10/月，Hysteria 2/Reality 弱网拉速组，7折码: sx0077)
 4. 库洛米 Kuromis (￥34.00/月，深港/苏日专线/低延迟 UDP 游戏，暗号: KURO_BUG)`
   },
   {
@@ -835,10 +835,10 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 使用 sudo mtr --report -c 100 <节点IP> 诊断，若国际出口跳数 Loss% 瞬间飙升，证明为公网出口 QoS 所致。
 
 四、4 家晚高峰丢包率 < 0.5% 的硬核专线推荐
-1. 环球梯 HuanqiuTi (￥22.00/月，23ms 低延迟/0 丢包，7折码: HQ66)
-2. 大佬云 DalaoCloud (￥23.00/月，2.5Gbps 超大峰值，7折码: dly88)
-3. 云界线 Yunjiexian (￥22.00/月，150GB 大流量/99.9% 在线率，7折码: yjx888)
-4. 神行加速 Shenxing (￥23.00/月，IPLC/IEPL 50+ 多节点均衡，7折码: sx0077)`
+1. 环球梯 HuanqiuTi (￥14.70/月，23ms 低延迟/0 丢包，7折码: HQ66)
+2. 大佬云 DalaoCloud (￥16.10/月，2.5Gbps 超大峰值，7折码: dly88)
+3. 云界线 Yunjiexian (￥15.40/月，150GB 大流量/99.9% 在线率，7折码: yjx888)
+4. 神行加速 Shenxing (￥16.10/月，IPLC/IEPL 50+ 多节点均衡，7折码: sx0077)`
   },
   {
     id: 94,
@@ -860,10 +860,10 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 使用 whoer.net 检测，确保伪装度评分达 90%~100%。
 
 三、4 家 TikTok 运营与跨境带货服务商
-1. 闪电鼠 Shandianshu (￥22.00/月，全线 IEPL/TikTok 专项优化，7折码: sds88)
+1. 闪电鼠 Shandianshu (￥15.40/月，全线 IEPL/TikTok 专项优化，7折码: sds88)
 2. LinkCube 便利店 (￥15.00/月，美/英本土家宽 AT&T/Virgin IP，暗号: LINK_CUBE)
 3. 一云梯 (￥15.00/月，独享 IP/独享带宽直播带货定制，暗号: mx6VTmIv)
-4. 环球梯 HuanqiuTi (￥22.00/月，23ms 低延迟/全节点原生，7折码: HQ66)`
+4. 环球梯 HuanqiuTi (￥14.70/月，23ms 低延迟/全节点原生，7折码: HQ66)`
   },
   {
     id: 95,
@@ -884,9 +884,9 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 优质机场采用 DNS 分流重定向 (SNI Proxy) 技术，将流媒体 SNI 流量动态代理至海外原生/家宽落地机上，实现低成本全解锁。
 
 三、4 家影音体验爆表的老牌航线
-1. 榴莲云 LiulianCloud (￥22.00/月，极速解锁 4K/8K 与 YouTube 8K 秒开，7折码: ll88)
-2. 瞬云 Shunyun (￥12.00/月，全节点流媒体解禁/高性价比，85折码: sy888)
-3. YToo 歪兔 (￥36.00/月，Akari 顶级落地/8K 杜比视界秒开，85折码: MV3M88XZM)
+1. 榴莲云 LiulianCloud (￥15.40/月，极速解锁 4K/8K 与 YouTube 8K 秒开，7折码: ll88)
+2. 瞬云 Shunyun (￥10.20/月，全节点流媒体解禁/高性价比，85折码: sy888)
+3. YToo 歪兔 (￥30.60/月，Akari 顶级落地/8K 杜比视界秒开，85折码: MV3M88XZM)
 4. 泡芙云 (￥12.00/月，香港全线 IEPL/4年稳定老牌，暗号: POFF_GOOSE)`
   },
   {
@@ -911,9 +911,9 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 3. 连通性直连测试 (auth.anthropic.com)
 
 三、实测严选 4 家 AI 生产力专线
-1. 环球梯 HuanqiuTi (￥22.00/月，23ms 低延迟/纯净解禁，7折码: HQ66)
-2. 闪电鼠 Shandianshu (￥22.00/月，TikTok 与 AI 专项优化/全线 IEPL，7折码: sds88)
-3. 神行加速 Shenxing (￥23.00/月，50+ 多国家冗余节点/自动切路，7折码: sx0077)
+1. 环球梯 HuanqiuTi (￥14.70/月，23ms 低延迟/纯净解禁，7折码: HQ66)
+2. 闪电鼠 Shandianshu (￥15.40/月，TikTok 与 AI 专项优化/全线 IEPL，7折码: sds88)
+3. 神行加速 Shenxing (￥16.10/月，50+ 多国家冗余节点/自动切路，7折码: sx0077)
 4. 库洛米 Kuromis (￥34.00/月，深港/苏日专线/低延迟 UDP，暗号: KURO_BUG)`
   },
   {
@@ -943,8 +943,8 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 
 四、顶流“头等舱”专线航班推荐
 1. Nexitally 奶昔 (￥55.00/月，Anycast+火山引擎入口，暗号: NEXIT_GOOSE)
-2. FlowerCloud 花云 (￥39.00/月，双入口IEPL/星链落地，8折码: L5R3TJJ8UM)
-3. YToo 歪兔 (￥36.00/月，第一梯队老牌IPLC/Akari落地，85折码: MV3M88XZM)
+2. FlowerCloud 花云 (￥31.20/月，双入口IEPL/星链落地，8折码: L5R3TJJ8UM)
+3. YToo 歪兔 (￥30.60/月，第一梯队老牌IPLC/Akari落地，85折码: MV3M88XZM)
 4. ImmTel (￥17.30/月起，Anycast+AIA骨干加速，暗号: IMM_GOOSE)`
   },
   {
@@ -964,9 +964,9 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 
 二、实测优质备用跑道推荐
 1. 鲲鹏加速 Kunpeng (￥12.00/月起，全站 1.0x 真实倍率，暗号: WPugVZUe，支持1元试用)
-2. 光年梯 Guangnianti (￥7.50/月起，三年老牌 IPLC 物理专线，8折码: GNT80)
+2. 光年梯 Guangnianti (￥6.00/月起，三年老牌 IPLC 物理专线，8折码: GNT80)
 3. LinkCube 便利店 (￥15.00/月，多国原生本土家宽 IP/防风控，暗号: LINK_CUBE)
-4. 极连云 Jilianyun (￥8.00/月起，不限设备数/IPLC专线，8折码: JLY888)
+4. 极连云 Jilianyun (￥6.40/月起，不限设备数/IPLC专线，8折码: JLY888)
 
 三、客户端自动备用切路配置 (Fallback)
 在 Clash 中设置 fallback 策略组，只有当主力专线超时掉线时，才会毫秒级无缝自动接管至按量付费备用跑道，平时零消耗！`
@@ -993,7 +993,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
 4. 准备一个按量付费备用跑道
 
 三、实测严选 4 家平价好机场
-1. FlyingBird 飞鸟云 (￥15.00/月，IEPL专线/100G流量，85折码: fbzq2685)
+1. FlyingBird 飞鸟云 (￥12.75/月，IEPL专线/100G流量，85折码: fbzq2685)
 2. LinkCube 便利店 (￥15.00/月，北上广BGP/本土ISP家宽)
 3. SSRCloud 薯条云 (￥14.99/月，5年老牌双轨架构)
 4. 泡芙云 (￥12.00/月，香港IEPL专线/100G流量)`
