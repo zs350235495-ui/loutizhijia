@@ -626,6 +626,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 86,
     code: "SEO-ARTICLE-15",
+    file: "posts/post-15-troubleshooting-dns-sub-errors.md",
     date: "2026.10",
     cat: "avoid",
     title: "节点频繁超时红圈？5 大常见订阅更新失败、DNS 污染与分流冲突急救速查手册",
@@ -651,6 +652,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 87,
     code: "SEO-ARTICLE-14",
+    file: "posts/post-14-router-openwrt-transparent-proxy.md",
     date: "2026.10",
     cat: "tech",
     title: "软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践",
@@ -679,6 +681,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 88,
     code: "SEO-ARTICLE-13",
+    file: "posts/post-13-android-singbox-vs-clash-meta.md",
     date: "2026.10",
     cat: "tech",
     title: "Android 平台客户端对比：Sing-box 与 Clash Meta 哪个更省电稳定？",
@@ -705,6 +708,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 89,
     code: "SEO-ARTICLE-12",
+    file: "posts/post-12-ios-shadowrocket-complete-guide.md",
     date: "2026.10",
     cat: "tech",
     title: "iOS 必装神器：小火箭（Shadowrocket）从购买、订阅导入到按域名分流全图解",
@@ -734,6 +738,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 90,
     code: "SEO-ARTICLE-11",
+    file: "posts/post-11-clash-verge-rev-pc-mac-tutorial.md",
     date: "2026.10",
     cat: "tech",
     title: "Windows / Mac 客户端配置教程：Clash Verge Rev 核心使用与订阅自动分流指南",
@@ -763,6 +768,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 91,
     code: "SEO-ARTICLE-10",
+    file: "posts/post-10-beginner-jargon-deconstruction.md",
     date: "2026.10",
     cat: "avoid",
     title: "小白防忽悠手册：什么是 BGP 隧道、入口中继与落地机？拆解商家的画饼术语",
@@ -790,6 +796,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 92,
     code: "SEO-ARTICLE-09",
+    file: "posts/post-09-protocol-benchmark-hysteria2-reality.md",
     date: "2026.10",
     cat: "tech",
     title: "主流翻墙协议横评：Hysteria 2、VLESS-Reality 与 Shadowsocks 在弱网环境下的抗封锁表现",
@@ -817,6 +824,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 93,
     code: "SEO-ARTICLE-08",
+    file: "posts/post-08-peak-hours-packet-loss-truth.md",
     date: "2026.10",
     cat: "speed",
     title: "晚高峰丢包与断流真相：为什么公网中继在晚上 9 点会集体趴窝？",
@@ -843,6 +851,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 94,
     code: "SEO-ARTICLE-07",
+    file: "posts/post-07-tiktok-cross-border-guide.md",
     date: "2026.10",
     cat: "avoid",
     title: "TikTok 跨境运营网络环境搭建：固定原生独享 IP 与多设备防关联配置全攻略",
@@ -868,6 +877,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 95,
     code: "SEO-ARTICLE-06",
+    file: "posts/post-06-streaming-unlock-guide.md",
     date: "2026.10",
     cat: "speed",
     title: "2026 流媒体解锁完全指南：Netflix 非自制剧、Disney+ 与 HBO 落地节点体检",
@@ -892,6 +902,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 96,
     code: "SEO-ARTICLE-05",
+    file: "posts/post-05-chatgpt-claude-anti-ban-guide.md",
     date: "2026.10",
     cat: "tech",
     title: "ChatGPT / Claude 官方防封禁指南：原生住宅 IP、机房 IP 与防 1020 报错全解析",
@@ -919,6 +930,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 97,
     code: "SEO-ARTICLE-04",
+    file: "posts/post-04-iepl-iplc-deep-dive.md",
     date: "2026.10",
     cat: "speed",
     title: "高端头等舱专线深度体检：IEPL 与 IPLC 纯内网专线机场为什么这么贵？",
@@ -950,6 +962,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 98,
     code: "SEO-ARTICLE-03",
+    file: "posts/post-03-pay-as-you-go-airport-guide.md",
     date: "2026.10",
     cat: "avoid",
     title: "大流量与按量付费备用跑道推荐：不限时流量包机场避坑与选型盘点",
@@ -974,6 +987,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 99,
     code: "SEO-ARTICLE-02",
+    file: "posts/post-02-cheap-airport-guide.md",
     date: "2026.10",
     cat: "avoid",
     title: "平价经济舱实测：月付 15 元以下的高性价比机场到底能不能买？",
@@ -1001,6 +1015,7 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
   {
     id: 100,
     code: "SEO-ARTICLE-01",
+    file: "posts/post-01-2026-airport-guide.md",
     date: "2026.10",
     cat: "speed",
     title: "2026 最新机场推荐与选购指南：晚高峰 4K 不卡顿的 5 家老牌专线航班横评",

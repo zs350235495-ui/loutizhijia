@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>正在定位航标黑匣子...</title>
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var post = params.get('post') || params.get('id') || params.get('article') || '100';
+      // 静默重定向至首页对应文章 Hash 路由，杜绝死循环跳转
+      window.location.replace('./#/post/' + encodeURIComponent(post));
+    })();
+  </script>
+</head>
+<body>
+</body>
+</html>

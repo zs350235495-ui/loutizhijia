@@ -102,6 +102,21 @@
       }
     }
 
+    // 检查是否通过 URL Query 参数传入文章 (如 ?post=100 或 ?id=100)
+    if ((!targetPageId || targetPageId === 'pageFlights') && (!window.location.hash || window.location.hash === '' || window.location.hash === '#/flights')) {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryPost = urlParams.get('post') || urlParams.get('id') || urlParams.get('article');
+        if (queryPost) {
+          const article = findArticleByParam(queryPost);
+          if (article) {
+            matchedArticle = article;
+            targetPageId = 'pagePost';
+          }
+        }
+      } catch (e) {}
+    }
+
     if (!targetPageId) {
       targetPageId = 'pageFlights';
       route = '/flights';
