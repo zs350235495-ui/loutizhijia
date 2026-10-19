@@ -394,6 +394,17 @@ const boardData = [
 
 const feedData = [
   {
+    id: 83,
+    code: "SEO-ARTICLE-18",
+    file: "posts/post-18-node-crash-blackbox-analysis.md",
+    date: "2026.10",
+    cat: "avoid",
+    title: "跑道黑匣子解密：2026 常见机场节点“坠毁”与断连内幕，手把手教你避开超卖劣质跑道",
+    summary: "为什么节点白天飞得快，晚高峰直接坠毁？「跑道上有只鹅」深入拆解 2026 常见网络节点频繁断连、掉线与坠毁内幕。系统剖析虚假千兆超卖率、骨干网 QoS 限制、直连与 IPLC/IEPL 专线真实丢包延迟差异，并提供 TLS 握手超时、403 阻断故障自救排查与客户端分流配置避坑指南。",
+    proCon: "鹅的直白点评：白天测速千兆跑满毫无意义，晚高峰丢包与抖动才是照妖镜！谨防超卖爆仓跑道，善用专线与备用航道冗余，配置好客户端客货分流，告别晚高峰卡顿焦虑。",
+    gooseScore: 5
+  },
+  {
     id: 84,
     code: "SEO-ARTICLE-17",
     file: "posts/post-17-home-gateway-mosdns-transparent-proxy.md",
