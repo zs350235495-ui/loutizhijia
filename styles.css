@@ -2042,3 +2042,54 @@ body {
   }
 }
 
+/* Footer 静态知识库 Silo 内链网格 (SEO Link Equity) */
+.footer-silo-matrix {
+  margin: 30px 0 20px;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  border-radius: 12px;
+  text-align: left;
+}
+.silo-title {
+  color: #fbbf24;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.silo-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.silo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.silo-col-tag {
+  color: #38bdf8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.silo-link {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.silo-link:hover {
+  color: #f8fafc;
+  transform: translateX(3px);
+  text-shadow: 0 0 6px rgba(56, 189, 248, 0.4);
+}
+
+

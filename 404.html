@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 航道偏航指示 | 梯子之家 · 跑道上有只鹅</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .err-container {
+      max-width: 720px;
+      margin: 80px auto;
+      padding: 40px 24px;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .err-code {
+      font-size: 5rem;
+      font-weight: 900;
+      color: #f59e0b;
+      font-family: 'Fira Code', monospace;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+    .err-title {
+      font-size: 1.5rem;
+      color: #f8fafc;
+      margin-bottom: 16px;
+    }
+    .err-desc {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .err-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    .err-link-item {
+      display: block;
+      padding: 12px 16px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .err-link-item:hover {
+      background: #334155;
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+    }
+    .err-btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .err-btn-home:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+    }
+  </style>
+
+  <!-- 智能路由自愈脚本 -->
+  <script>
+    (function() {
+      var path = window.location.pathname || '';
+      var search = window.location.search || '';
+      // 捕获 /post/82 或 ?post=82 形式并自愈重定向
+      var matchId = path.match(/\/post\/(\d+)(?:\.html)?/) || search.match(/post=(\d+)/);
+      if (matchId && matchId[1]) {
+        window.location.replace('/post/' + matchId[1] + '.html');
+        return;
+      }
+      // 捕获 /# 遗留路由
+      if (path === '/' && window.location.hash.startsWith('#/post/')) {
+        var hashId = window.location.hash.replace('#/post/', '').split('?')[0];
+        if (hashId) {
+          window.location.replace('/post/' + hashId + '.html');
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="crt-overlay"></div>
+
+  <div class="err-container">
+    <div class="err-code">404</div>
+    <h1 class="err-title">航道偏航指示：未找到目标数据节点</h1>
+    <p class="err-desc">
+      当前航班可能遭遇链路割接、路由漂移或该档案已被归档移位。<br>
+      巡航雷达为你自动推荐以下核心技术白皮书：
+    </p>
+
+    <div class="err-links-grid">
+      <a href="/post/82.html" class="err-link-item">
+        📡 2026 骨干网丢包与抖动（Jitter）测算指南
+      </a>
+      <a href="/post/84.html" class="err-link-item">
+        🏠 全屋软路由 MosDNS 分流与防 DNS 泄漏白皮书
+      </a>
+      <a href="/post/83.html" class="err-link-item">
+        💥 跑道黑匣子：常见节点坠毁与断连内幕
+      </a>
+      <a href="/post/97.html" class="err-link-item">
+        ✈️ 高端头等舱专线：IEPL 与 IPLC 深度体检
+      </a>
+    </div>
+
+    <a href="/" class="err-btn-home">
+      🏠 返回梯子之家跑道控制台
+    </a>
+  </div>
+</body>
+</html>

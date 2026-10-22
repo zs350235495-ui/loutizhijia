@@ -2,8 +2,9 @@ User-agent: *
 Allow: /
 Allow: /post/
 Allow: /posts/
-Disallow: /*.js$
-Disallow: /*.json$
+Allow: /llms.txt
+Allow: /manifest.json
 Disallow: /build-ssg.js
+Disallow: /submit-indexnow.js
 
 Sitemap: https://tizizhijia.com/sitemap.xml

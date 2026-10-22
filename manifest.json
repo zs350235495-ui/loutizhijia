@@ -1,0 +1,17 @@
+{
+  "name": "梯子之家 · 跑道上有只鹅",
+  "short_name": "梯子之家",
+  "description": "2026 全球骨干网络加速、IPLC/IEPL 专线全链路实测与跑路避坑技术评测知识库",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
