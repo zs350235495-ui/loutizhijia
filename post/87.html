@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践 | 梯子之家 · 跑道上有只鹅</title>
+  <meta name="description" content="极客家庭终极浪漫！硬核拆解 iKuai 主路由拨号流控与 OpenWrt 旁路由科学上网分流架构，彻底破解网关环路与 Fake-IP DNS 防污染。">
+  <meta name="keywords" content="软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践, 梯子之家, tizizhijia, 跑道上有只鹅, IPLC专线, 节点测速, 晚高峰丢包, 科学上网, 软路由分流">
+  <link rel="canonical" href="https://tizizhijia.com/post/87.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="梯子之家 · 跑道上有只鹅">
+  <meta property="og:title" content="软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践">
+  <meta property="og:description" content="极客家庭终极浪漫！硬核拆解 iKuai 主路由拨号流控与 OpenWrt 旁路由科学上网分流架构，彻底破解网关环路与 Fake-IP DNS 防污染。">
+  <meta property="og:url" content="https://tizizhijia.com/post/87.html">
+  <meta property="og:image" content="https://tizizhijia.com/favicon.svg">
+  <meta property="article:published_time" content="2026-10">
+  <meta property="article:author" content="跑道上有只鹅·飞行遥测实验室">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践">
+  <meta name="twitter:description" content="极客家庭终极浪漫！硬核拆解 iKuai 主路由拨号流控与 OpenWrt 旁路由科学上网分流架构，彻底破解网关环路与 Fake-IP DNS 防污染。">
+  <meta name="twitter:image" content="https://tizizhijia.com/favicon.svg">
+
+  <!-- Schema.org TechArticle JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践",
+    "description": "极客家庭终极浪漫！硬核拆解 iKuai 主路由拨号流控与 OpenWrt 旁路由科学上网分流架构，彻底破解网关环路与 Fake-IP DNS 防污染。",
+    "url": "https://tizizhijia.com/post/87.html",
+    "datePublished": "2026-10",
+    "dateModified": "2026-10-22",
+    "inLanguage": "zh-CN",
+    "author": {
+      "@type": "Organization",
+      "name": "跑道上有只鹅 · 飞行遥测与网络安全实验室",
+      "url": "https://tizizhijia.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "梯子之家",
+      "url": "https://tizizhijia.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tizizhijia.com/favicon.svg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tizizhijia.com/post/87.html"
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="shortcut icon" href="../favicon.svg">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .ssg-static-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
+    }
+    .ssg-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ssg-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .ssg-home-btn:hover {
+      background: linear-gradient(135deg, #0369a1, #0284c7);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+    .ssg-breadcrumb {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    .ssg-breadcrumb a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    .ssg-article-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    @media (max-width: 768px) {
+      .ssg-article-card {
+        padding: 20px 16px;
+      }
+      .ssg-top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="crt-overlay"></div>
+
+  <div class="ssg-static-container">
+    <div class="ssg-top-bar">
+      <nav class="ssg-breadcrumb" aria-label="Breadcrumb">
+        <a href="../">🏠 梯子之家主页</a> &gt; 
+        <a href="../#/blog">跑道黑匣子</a> &gt; 
+        <span>技术原理</span>
+      </nav>
+      <a href="../#/flights" class="ssg-home-btn">
+        ✈️ 查看实时航班测速天梯图
+      </a>
+    </div>
+
+    <main class="ssg-article-card">
+      <header class="article-detail-header">
+        <div class="article-meta-tags">
+          <span class="art-tag art-cat-tag">[技术原理]</span>
+          <span class="art-tag art-code-tag">SEO-ARTICLE-14</span>
+          <span class="art-tag art-date-tag">2026.10</span>
+          <span class="art-tag art-author-tag">站长鹅 · 飞行遥测实验室</span>
+        </div>
+        <h1 class="article-detail-title">软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践</h1>
+        <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>全屋十几台智能设备如果每台都单独装客户端，维护起来简直是灾难！折腾软路由透明代理才是终极浪漫。记住本鹅真言：iKuai 主路由切频宽，OpenWrt 旁路由做分流！</p></div>
+      </header>
+
+      <article class="article-prose-body">
+        <blockquote class="prose-blockquote"><strong>关键词</strong>: 软路由翻墙 | iKuai旁路由 | OpenWrt科学上网 | DNS防污染 | 全屋透明代理</blockquote>
+<blockquote class="prose-blockquote"><strong>发布日期</strong>: 2026年10月  </blockquote>
+<blockquote class="prose-blockquote"><strong>作者</strong>: 跑道上有只鹅 (站长鹅)</blockquote>
+<hr class="prose-hr">
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"></div></div>
+<blockquote class="prose-blockquote">全屋十几台智能设备（Apple TV、PS5、Switch、智能电视、智能音箱）如果每台都单独装客户端，维护起来简直是灾难！折腾“软路由透明代理”才是极客家庭的终极浪漫。但很多小白搭完软路由后，百度经常打不开、DNS 污染导致国内 App 加载迟钝……记住本鹅的八字真言：iKuai 主路由切频宽，OpenWrt 旁路由做分流，DNS 防污染必须强制归位！</blockquote>
+<hr class="prose-hr">
+<h2 id="sec-10" class="prose-h2">序言：什么是全屋“透明代理（Transparent Proxy）”？</h2>
+<p class="prose-p">对于拥有智能电视、Apple TV、游戏主机（PS5 / Xbox Series X / Switch）以及大量 Smart Home 设备的发烧友家庭来说，“全屋透明代理”是网络体验的终极形态。</p>
+<p class="prose-p"><strong>透明代理</strong> 的优势在于：<br><ul class="prose-ul"><li class="prose-li-disc"><strong>设备零配置</strong>：手机、电视、游戏机连接家里 Wi-Fi 就能无感访问外网，无需安装任何客户端；</li><br><li class="prose-li-disc"><strong>全屋智能分流</strong>：国内流量走本地宽带直连、海外流量自动切专线；</li><br><li class="prose-li-disc"><strong>解决电视/游戏机局限</strong>：彻底解决 PS5 联机卡顿、Apple TV 无法安装常规客户端的痛点。</li><br></ul><br>本篇文章中，鹅将为你硬核拆解 <strong>iKuai (主路由) + OpenWrt (旁路由)</strong> 的黄金双软路由架构，并重点破解 <strong>DNS 防污染与网关环路</strong> 绝症！</p>
+<hr class="prose-hr">
+<h2 id="sec-11" class="prose-h2">一、 黄金架构拆解：iKuai 主路由 + OpenWrt 旁路由</h2>
+<p class="prose-p">在软路由拓扑设计中，“单旁路由”模式容易因为旁路由宕机导致全屋断网。因此，极客圈最推崇的架构是 <strong>iKuai 主路由（负责拨号/DHCP/流控） + OpenWrt 旁路由（负责透明代理与科学上网）</strong>。</p>
+<p class="prose-p"><pre class="code-block"><code>
+                          ┌────────────────────────────────┐
+                          │         光猫 (Modem)           │
+                          └───────────────┬────────────────┘
+                                          │ 宽带拨号 (PPPoE)
+                                          ▼
+                          ┌────────────────────────────────┐
+                          │   iKuai 主路由 (192.168.1.1)    │
+                          │ (负责多拨、DHCP分配、流控分流) │
+                          └───────┬────────────────┬───────┘
+                                  │                │
+            普通设备网关 192.168.1.1  │                │ 开启代理设备网关 192.168.1.2
+                                  ▼                ▼
+                     ┌──────────────────┐    ┌───────────────────────────┐
+                     │ 智能电视 / 打印机│    │ OpenWrt 旁路由(192.168.1.2)│
+                     │ (直连国内宽带)   │    │ (运行 OpenClash / PassWall│
+                     └──────────────────┘    └─────────────┬─────────────┘
+                                                           │ 海外流量切专线
+                                                           ▼
+                                                     Apple TV / PS5
+</code></pre></p>
+<h3 id="sec-1" class="prose-h3">1. 为什么选择 iKuai 作主路由？</h3>
+iKuai 在多拨叠加、DPI 流量识别与硬件流控上极其稳定，常年运行绝不掉线。
+<h3 id="sec-2" class="prose-h3">2. 为什么选择 OpenWrt 作旁路由？</h3>
+OpenWrt 拥有丰富的插件生态（OpenClash、PassWall、SSR-Plus），能完美承载 Clash Meta 内核的复杂分流算法。
+<hr class="prose-hr">
+<h2 id="sec-12" class="prose-h2">二、 关键网络参数配置步骤（防止网关环路与死锁）</h2>
+<h3 id="sec-3" class="prose-h3">步骤 1：OpenWrt 旁路由网络接口设置</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>IPv4 地址</strong>: 设为固定 IP <code class="inline-code">192.168.1.2</code></li>
+<li class="prose-li-disc"><strong>IPv4 网关</strong>: 指向 iKuai 主路由 <code class="inline-code">192.168.1.1</code></li>
+<li class="prose-li-disc"><strong>IPv4 DNS 服务器</strong>: 设为 <code class="inline-code">192.168.1.1</code> 或 <code class="inline-code">114.114.114.114</code></li>
+<li class="prose-li-disc"><strong>DHCP 服务</strong>: <strong>必须关闭</strong> OpenWrt 的 DHCP 服务（防止与 iKuai 冲突抢夺 IP）。</li>
+</ul>
+<h3 id="sec-4" class="prose-h3">步骤 2：iKuai 主路由 DHCP 高级设置</h3>
+在 iKuai 系统的 <code class="inline-code">网络设置 ➔ DHCP 服务端</code> 中：
+<ul class="prose-ul"><li class="prose-li-disc">如果想让<strong>全屋所有设备自动科学上网</strong>：将 DHCP 的“网关”直接填为 <code class="inline-code">192.168.1.2</code>（旁路由 IP）；</li>
+<li class="prose-li-disc">如果想让<strong>指定设备（如仅 Apple TV/PS5）科学上网</strong>：DHCP 网关依然保持 <code class="inline-code">192.168.1.1</code>，仅在 Apple TV 或 PS5 的网络设置中，手动将网关改为 <code class="inline-code">192.168.1.2</code>。</li>
+</ul>
+<hr class="prose-hr">
+<h2 id="sec-13" class="prose-h2">三、 绝症破解：DNS 防污染与回国流量优化 (MosDNS / OpenClash)</h2>
+<p class="prose-p">透明代理最常遇到的坑就是 <strong>DNS 污染</strong>：国内域名被污染成海外 IP，走代理变慢；或者海外域名在本地解析成错误 IP，导致无法访问。</p>
+<p class="prose-p"><pre class="code-block"><code>text
+┌───────────────────────────────────────────────────────────┐
+│                    MosDNS 智能防污染逻辑                   │
+└───────────────────────────────────────────────────────────┘
+ 用户 DNS 请求 ──&gt; MosDNS 智能分流引擎 
+                    ├── 国内域名 (如 aliyun.com)  ──&gt; 走 DNSPod/阿里 DNS (直连)
+                    └── 海外域名 (如 google.com)  ──&gt; 走 8.8.8.8 (通过代理加密解析)
+</code></pre></p>
+<h3 id="sec-5" class="prose-h3">解决方案：OpenClash 开启 Fake-IP 模式</h3>
+在 OpenClash 插件设置中：
+<ol class="prose-ol"><li class="prose-li-num">DNS 模式选择 <strong><code class="inline-code">Fake-IP</code> (伪装 IP 模式)</strong>；</li>
+<li class="prose-li-num">开启 <strong>本地 DNS 劫持</strong> 功能；</li>
+<li class="prose-li-num">禁用 IPv6 解析（如果不需要 IPv6），有效防止 IPv6 导致的流量绕过代理泄露。</li>
+</ol>
+<hr class="prose-hr">
+<h2 id="sec-14" class="prose-h2">四、 4 家适配软路由高吞吐、大频宽的老牌专线推荐</h2>
+<p class="prose-p">软路由作为全屋设备的出口，对机场的<strong>并发连接数、UDP 丢包率与大频宽</strong>要求极高：</p>
+<hr class="prose-hr">
+<h3 id="sec-6" class="prose-h3">1. 环球梯 HuanqiuTi —— 23ms 低延迟与全屋设备高并发</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全节点 BGP / IPLC 专线优化</li>
+<li class="prose-li-disc"><strong>软路由体验</strong>: 23ms 超低延迟，全节点支持 OpenClash 一键订阅，并发稳定性强</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥14.70 /月起 (<strong>7折专属优惠码：<code class="inline-code">HQ66</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 软路由挂载环球梯后，全屋 Apple TV 4K 秒开、PS5 游戏联机丢包率稳定在 0%，高并发下毫无卡顿。</div></div>
+<hr class="prose-hr">
+<h3 id="sec-7" class="prose-h3">2. 大佬云 DalaoCloud —— 2.5Gbps 超大峰值与全屋 4K/8K</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 专线</li>
+<li class="prose-li-disc"><strong>软路由体验</strong>: 2.5Gbps 超大频宽，适合家庭多设备同时观看 4K 影视</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">dly88</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 主打超高带宽。家里多台电视同时播放 Netflix 8K 视频，软路由吞吐依然从容不迫。</div></div>
+<hr class="prose-hr">
+<h3 id="sec-8" class="prose-h3">3. 云界线 Yunjiexian —— 150GB 大流量与软路由自动均衡</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 专线</li>
+<li class="prose-li-disc"><strong>软路由体验</strong>: 150GB/月起，节点冗余高，适合常驻旁路由</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥15.40 /月起 (<strong>7折专属优惠码：<code class="inline-code">yjx888</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 在 OpenClash 中配置自动负载均衡策略组，云界线的节点能保证 365 天不间断丝滑全屋代理。</div></div>
+<hr class="prose-hr">
+<h3 id="sec-9" class="prose-h3">4. 极连云 Jilianyun —— 不限设备数与多终端共享</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: IPLC 物理专线</li>
+<li class="prose-li-disc"><strong>软路由体验</strong>: 明确支持软路由等全屋设备不限数量挂载</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥6.40 /月起 (<strong>8折专属优惠码：<code class="inline-code">JLY888</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 极连云不限制同账号客户端数量的特性，使其成为软路由用户的性价比极佳的口粮选型。</div></div>
+<hr class="prose-hr">
+<div class="callout-box callout-warning"><div class="callout-header"><span class="callout-icon">🛡️</span><span class="callout-title">避坑安全守则：</span></div><div class="callout-text"></div></div>
+<blockquote class="prose-blockquote">1. <strong>切勿把旁路由当成唯一 DNS</strong>：旁路由系统更新或重启时，全屋网络可能断开。建议在主路由保留国内标准 DNS 后备。  </blockquote>
+<blockquote class="prose-blockquote">2. <strong>坚决月付保平安</strong>：即便软路由全屋透明代理搭建得再完美，也请坚守<strong>月付原则</strong>！  </blockquote>
+<blockquote class="prose-blockquote">3. <strong>随时查阅跑道心跳</strong>：查看全站 30 家跑道的实时软路由打点与优惠码，请随时前往站内 <a href="#/flights" class="prose-link" target="_blank" rel="noopener">航班推荐榜</a>！</blockquote>
+      </article>
+
+      <footer style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #334155; text-align: center;">
+        <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 16px;">
+          本文收录于 <strong>梯子之家 · 跑道上有只鹅</strong> 原创技术档案。未经许可禁止恶意抄袭与镜像。
+        </p>
+        <div style="display: inline-flex; gap: 12px;">
+          <a href="../#/blog" class="ssg-home-btn" style="background: #334155;">
+            📑 返回所有黑匣子档案
+          </a>
+          <a href="../" class="ssg-home-btn">
+            🏠 返回梯子之家控制台
+          </a>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

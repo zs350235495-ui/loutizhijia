@@ -98,6 +98,8 @@ $$v = \frac{c}{n_g} = \frac{299,792.458 \text{ km/s}}{1.4682} \approx 204,191 \t
 - **IPLC（International Private Leased Circuit，国际私有租用线路）**：传统意义上的跨国点对点物理二层租用线路。通过同步数字体系（SDH）或光传送网（OTN）在海底光缆中直接划分独立的时分复用（TDM）时隙通道。其链路完全与公网物理隔离，数据报文不经过公网国际交换网关，因此**天然零公网防火墙检查干扰、零国际公网出口 QoS 干扰**。
 - **IEPL（International Ethernet Private Line，国际以太网专线）**：新一代基于以太网标准的跨境专线，通常采用 EoMPLS（Ethernet over MPLS）或 VPLS 技术封装。提供端到端透明的 Layer 2 以太网帧传输，拥有比 IPLC 更高的带宽配置弹性与更优的协议开销，同样拥有全程专属带宽承载保障。
 
+> 📖 **专题延伸**：关于 IPLC 与 IEPL 的物理硬件切片与二层交付机制，可参阅知识库深度专著 [《高端头等舱专线深度体检：IEPL 与 IPLC 专线的底层技术逻辑与选型指南》](https://tizizhijia.com/post/97.html)。
+
 ---
 
 ### 2.3 三类主流传输链路工程特性横向基准对比表
@@ -126,6 +128,8 @@ $$v = \frac{c}{n_g} = \frac{299,792.458 \text{ km/s}}{1.4682} \approx 204,191 \t
    骨干网路由器根据报文 IP 首部的 DSCP（Differentiated Services Code Point）字段分配排队队列。政企金融专线、运营商信令通常标记为 `EF (Expedited Forwarding)` 或 `CS6/CS7`，进入绝对优先队列（Strict Priority Queue）；而民用公网流量默认归为 `BE (Best Effort，尽力而为)`。在出口过载时，`BE` 队列被分配到的调度时隙被大幅压缩。
 2. **承诺访问速率（CAR）与双桶限流**：
    边界路由器部署令牌桶算法（Token Bucket Algorithm）。当突发数据速率超过令牌生成速度（CIR）和突发尺寸（CBS/EBS）时，超额的数据报文不会被平滑缓冲，而是直接被强制执行硬丢弃（Drop），导致客户端链路瞬时丢包率骤增。
+
+> ⚠️ **深度关联排查**：关于骨干网 QoS 限流与单线程断崖式跳水的现场抓包复现，详见 [《晚高峰丢包与断流真相：为什么公网中继在晚上 9 点会集体断流？》](https://tizizhijia.com/post/93.html) 与 [《跑道黑匣子解密：常见机场节点坠毁与断连内幕》](https://tizizhijia.com/post/83.html)。
 
 ---
 
@@ -294,6 +298,8 @@ DNS 泄漏（DNS Leak）不仅涉及隐私泄露，更会导致跨境链路调�
 > [!CAUTION]
 > **警惕 Redir-Host 模式下的长尾延迟**  
 > 避免使用过时的 `Redir-Host` 模式。在 `Redir-Host` 模式下，客户端每次请求前必须等待代理节点在远端完成 DNS 解析并将真实 IP 返回，直接给所有新建连接增加了整整一个 RTT 的初始白屏时延。现代架构应全面迁移至 **Fake-IP（增强模式）**。
+
+> 🌐 **全屋架构方案**：多设备环境下彻底消除 DNS 泄漏与网关环路的完整实践，请参考白皮书 [《全屋智能与家庭多设备透明网关架构白皮书：软路由、MosDNS 智能分流与防 DNS 泄漏终极实践》](https://tizizhijia.com/post/84.html)。
 
 ---
 

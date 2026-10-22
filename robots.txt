@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Allow: /post/
+Allow: /posts/
+Disallow: /*.js$
+Disallow: /*.json$
+Disallow: /build-ssg.js
 
 Sitemap: https://tizizhijia.com/sitemap.xml

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS 必装神器：小火箭（Shadowrocket）从购买、订阅导入到按域名分流全图解 | 梯子之家 · 跑道上有只鹅</title>
+  <meta name="description" content="iPhone/iPad 必备装机神器！避坑美区 Apple ID 登录陷阱，掌握一键唤醒与 Subscribe 订阅导入，详解按域名分流与连通性测试。">
+  <meta name="keywords" content="iOS 必装神器：小火箭（Shadowrocket）从购买、订阅导入到按域名分流全图解, 梯子之家, tizizhijia, 跑道上有只鹅, IPLC专线, 节点测速, 晚高峰丢包, 科学上网, 软路由分流">
+  <link rel="canonical" href="https://tizizhijia.com/post/89.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="梯子之家 · 跑道上有只鹅">
+  <meta property="og:title" content="iOS 必装神器：小火箭（Shadowrocket）从购买、订阅导入到按域名分流全图解">
+  <meta property="og:description" content="iPhone/iPad 必备装机神器！避坑美区 Apple ID 登录陷阱，掌握一键唤醒与 Subscribe 订阅导入，详解按域名分流与连通性测试。">
+  <meta property="og:url" content="https://tizizhijia.com/post/89.html">
+  <meta property="og:image" content="https://tizizhijia.com/favicon.svg">
+  <meta property="article:published_time" content="2026-10">
+  <meta property="article:author" content="跑道上有只鹅·飞行遥测实验室">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iOS 必装神器：小火箭（Shadowrocket）从购买、订阅导入到按域名分流全图解">
+  <meta name="twitter:description" content="iPhone/iPad 必备装机神器！避坑美区 Apple ID 登录陷阱，掌握一键唤醒与 Subscribe 订阅导入，详解按域名分流与连通性测试。">
+  <meta name="twitter:image" content="https://tizizhijia.com/favicon.svg">
+
+  <!-- Schema.org TechArticle JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "iOS 必装神器：小火箭（Shadowrocket）从购买、订阅导入到按域名分流全图解",
+    "description": "iPhone/iPad 必备装机神器！避坑美区 Apple ID 登录陷阱，掌握一键唤醒与 Subscribe 订阅导入，详解按域名分流与连通性测试。",
+    "url": "https://tizizhijia.com/post/89.html",
+    "datePublished": "2026-10",
+    "dateModified": "2026-10-22",
+    "inLanguage": "zh-CN",
+    "author": {
+      "@type": "Organization",
+      "name": "跑道上有只鹅 · 飞行遥测与网络安全实验室",
+      "url": "https://tizizhijia.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "梯子之家",
+      "url": "https://tizizhijia.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tizizhijia.com/favicon.svg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tizizhijia.com/post/89.html"
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="shortcut icon" href="../favicon.svg">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .ssg-static-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
+    }
+    .ssg-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ssg-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .ssg-home-btn:hover {
+      background: linear-gradient(135deg, #0369a1, #0284c7);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+    .ssg-breadcrumb {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    .ssg-breadcrumb a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    .ssg-article-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    @media (max-width: 768px) {
+      .ssg-article-card {
+        padding: 20px 16px;
+      }
+      .ssg-top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="crt-overlay"></div>
+
+  <div class="ssg-static-container">
+    <div class="ssg-top-bar">
+      <nav class="ssg-breadcrumb" aria-label="Breadcrumb">
+        <a href="../">🏠 梯子之家主页</a> &gt; 
+        <a href="../#/blog">跑道黑匣子</a> &gt; 
+        <span>技术原理</span>
+      </nav>
+      <a href="../#/flights" class="ssg-home-btn">
+        ✈️ 查看实时航班测速天梯图
+      </a>
+    </div>
+
+    <main class="ssg-article-card">
+      <header class="article-detail-header">
+        <div class="article-meta-tags">
+          <span class="art-tag art-cat-tag">[技术原理]</span>
+          <span class="art-tag art-code-tag">SEO-ARTICLE-12</span>
+          <span class="art-tag art-date-tag">2026.10</span>
+          <span class="art-tag art-author-tag">站长鹅 · 飞行遥测实验室</span>
+        </div>
+        <h1 class="article-detail-title">iOS 必装神器：小火箭（Shadowrocket）从购买、订阅导入到按域名分流全图解</h1>
+        <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>iPhone 用户如果不装小火箭，网络体验相当于断了一只翅膀！别再花几十块去买破解版，美区 App Store 只需要 $2.99 就能买到这款霸榜十年的工具。</p></div>
+      </header>
+
+      <article class="article-prose-body">
+        <blockquote class="prose-blockquote"><strong>关键词</strong>: Shadowrocket教程 | 小火箭节点配置 | iOS翻墙教程 | 美区AppleID | 节点二维码导入</blockquote>
+<blockquote class="prose-blockquote"><strong>发布日期</strong>: 2026年10月  </blockquote>
+<blockquote class="prose-blockquote"><strong>作者</strong>: 跑道上有只鹅 (站长鹅)</blockquote>
+<hr class="prose-hr">
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"></div></div>
+<blockquote class="prose-blockquote">iPhone/iPad 用户如果不装小火箭 (Shadowrocket)，网络体验相当于断了一只翅膀！别再花几十块钱去买网上那些来路不明的破解版，美区 App Store 只需要 \$2.99 就能买到这款口碑霸榜十年的神仙工具。掌握了小火箭的扫码导入和按域名分流，你的苹果设备在公网上就能如灵鹅般丝滑走位！</blockquote>
+<hr class="prose-hr">
+<h2 id="sec-13" class="prose-h2">序言：iOS 端最受推崇的网络代理利器</h2>
+<p class="prose-p">在 iOS / iPadOS 封闭的生态系统中，要实现高效的网络代理与域名分流，<strong>Shadowrocket（俗称“小火箭”）</strong> 毫无疑问是装机量最大、生态最成熟的杀手级应用。</p>
+<p class="prose-p">它的核心优势在于：<br><ol class="prose-ol"><li class="prose-li-num"><strong>全协议支持</strong>：完美兼容 Shadowsocks、VMess、VLESS、Hysteria 2、TUIC、Trojan 等绝大多数现代加密协议；</li><br><li class="prose-li-num"><strong>极度省电</strong>：利用 iOS 的 <code class="inline-code">NetworkExtension</code> 原生框架，后台待机几乎不增加额外功耗；</li><br><li class="prose-li-num"><strong>域名级精准分流</strong>：国内 App 直连、海外 App 走节点、广告域名自动拦截。</li><br></ol><br>本篇文章中，鹅将从 <strong>美区 Apple ID 获取与购买</strong>、<strong>订阅一键导入</strong>、<strong>域名分流配置</strong> 到 <strong>4 家适配小火箭极佳的服务商</strong>，为你呈上一份图文级的终极小白指南。</p>
+<hr class="prose-hr">
+<h2 id="sec-14" class="prose-h2">一、 第一步：如何购买并下载正版小火箭？</h2>
+<p class="prose-p">因为众所周知的原因，小火箭在<strong>中国大陆区（China Mainland） App Store 是下架状态</strong>的。你必须拥有一个<strong>海外区 Apple ID（如美区、港区或台区）</strong> 才能下载。</p>
+<p class="prose-p"><pre class="code-block"><code>
+[步骤 1: 准备美区 Apple ID] ──&gt; [步骤 2: App Store 登录账户] ──&gt; [步骤 3: 搜索 Shadowrocket 购买 ($2.99)]
+</code></pre></p>
+<h3 id="sec-1" class="prose-h3">1. 安全提示（避免锁机死机！）</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>切勿在系统【设置 (Settings)】中登录外区 Apple ID</strong>！这会导致你的 iPhone 被远程锁死！</li>
+<li class="prose-li-disc"><strong>正确姿势</strong>：只在 <strong>App Store</strong> 软件右上角的个人头像处，退出原有账号并登录外区 Apple ID。</li>
+</ul>
+<h3 id="sec-2" class="prose-h3">2. 美区账户充值方法</h3>
+<ul class="prose-ul"><li class="prose-li-disc">小火箭售价为 <strong>\$2.99 美元</strong>；</li>
+<li class="prose-li-disc">建议通过 Apple 官网、支付宝（修改地区至旧金山购买 App Store Gift Card 礼品卡）或通过海外信用卡充值 \$3 到美区账号进行购买下载。</li>
+</ul>
+<hr class="prose-hr">
+<h2 id="sec-15" class="prose-h2">二、 第二步：小火箭订阅导入的两大快捷方式</h2>
+<p class="prose-p">下载安装完成后，打开小火箭，你会看到简洁的操作主界面。</p>
+<p class="prose-p"><pre class="code-block"><code>text
+┌───────────────────────────────────────────────────────────┐
+│                   Shadowrocket 主界面示意                 │
+└───────────────────────────────────────────────────────────┘
+ 未连接  [ 滑块开关 ]   ---------------------- (全局开关)
+ -----------------------------------------------------------
+ ➕ (右上角加号) ─── 导入节点 / 粘贴链接 / 扫码
+ 
+ 节点列表 (Servers):
+ 🟢 🇭🇰 香港 IPLC 专线 01  (ping: 23ms)  [ 选中 ]
+ 🟡 🇯🇵 东京 专线 02      (ping: 45ms)
+ 🔴 🇺🇸 纽约 备用 03      (ping: 180ms)
+</code></pre></p>
+<h3 id="sec-3" class="prose-h3">方法 1：一键网页唤醒导入（最简便）</h3>
+<ol class="prose-ol"><li class="prose-li-num">在 iPhone Safari 浏览器打开你的机场后台（如【航班推荐榜】推荐的环球梯、大佬云等）；</li>
+<li class="prose-li-num">找到 <strong>“一键导入 Shadowrocket”</strong> 按钮点击；</li>
+<li class="prose-li-num">手机会自动弹窗询问 <code class="inline-code">是否允许打开 Shadowrocket</code>，点击 <strong>允许</strong>，小火箭即可自动完成所有节点和配置的载入。</li>
+</ol>
+<h3 id="sec-4" class="prose-h3">方法 2：复制订阅 URL 或扫描二维码导入</h3>
+<ol class="prose-ol"><li class="prose-li-num">在机场后台复制 <strong>Clash / Shadowrocket 订阅链接</strong>；</li>
+<li class="prose-li-num">打开小火箭，点击右上角的 <strong>“➕”</strong> 号；</li>
+<li class="prose-li-num">类型 (Type) 选择 <strong><code class="inline-code">Subscribe</code></strong>；</li>
+<li class="prose-li-num">在 <strong>URL</strong> 一栏粘贴刚才复制的链接，备注 (Remark) 输入机场名称；</li>
+<li class="prose-li-num">点击右上角 <strong>保存 (Save)</strong> 即可完成节点列表更新。</li>
+</ol>
+<hr class="prose-hr">
+<h2 id="sec-16" class="prose-h2">三、 第三步：开启代理与配置“按域名分流”</h2>
+<p class="prose-p">导入节点后，千万不要盲目开启“全局代理”。我们需要配置智能分流：</p>
+<h3 id="sec-5" class="prose-h3">1. 选择全局路由模式 (Global Routing)</h3>
+在小火箭主界面的中间位置，找到 <strong>全局路由</strong> 选项：
+<ul class="prose-ul"><li class="prose-li-disc"><strong>配置 (Config)</strong>（<em>强烈推荐</em>）：自动识别域名。微信、淘宝、抖音走国内直连；YouTube、OpenAI、Twitter 自动走海外节点。</li>
+<li class="prose-li-disc"><strong>代理 (Proxy)</strong>：相当于全局代理，所有流量强制走所选节点。</li>
+<li class="prose-li-disc"><strong>直连 (Direct)</strong>：关闭代理功能。</li>
+</ul>
+<h3 id="sec-6" class="prose-h3">2. 首次启动授权</h3>
+<ol class="prose-ol"><li class="prose-li-num">在主界面挑选一个延迟最低的绿标节点（点击节点名称选中）；</li>
+<li class="prose-li-num">拨动最上方的 <strong>未连接 (Unconnected)</strong> 开关；</li>
+<li class="prose-li-num">首次开启时，iOS 系统会弹窗提示 <code class="inline-code">Shadowrocket 想要添加 VPN 配置</code>，点击 <strong>允许 (Allow)</strong>；</li>
+<li class="prose-li-num">按要求验证 iPhone 面容 ID (Face ID) 或输入解锁密码，状态栏出现 <strong>VPN</strong> 图标即表示连接成功！</li>
+</ol>
+<hr class="prose-hr">
+<h2 id="sec-17" class="prose-h2">四、 实操进阶：小火箭延迟测试与规则更新</h2>
+<h3 id="sec-7" class="prose-h3">1. 批量延迟打点 (Ping Test)</h3>
+在小火箭主界面点击 <strong>连通性测试 (Connectivity Test)</strong>，软件会自动对所有节点进行 ICMP/TCP 延迟打点：
+<ul class="prose-ul"><li class="prose-li-disc">绿色数字（如 <code class="inline-code">23ms</code>）：延迟低，线路极佳；</li>
+<li class="prose-li-disc">红色数字（如 <code class="inline-code">超时</code>）：该节点暂时不可用，小火箭会自动跳过该节点。</li>
+</ul>
+<h3 id="sec-8" class="prose-h3">2. 开启自动订阅更新</h3>
+<ol class="prose-ol"><li class="prose-li-num">点击小火箭底部菜单栏的 <strong>设置 (Settings)</strong> ➔ <strong>订阅 (Subscribe)</strong>；</li>
+<li class="prose-li-num">开启 <strong>打开时更新 (Update on Open)</strong> 和 <strong>自动后台更新</strong> 开关，确保每次打开小火箭都能用到最新变动的节点。</li>
+</ol>
+<hr class="prose-hr">
+<h2 id="sec-18" class="prose-h2">五、 4 家适配小火箭体验爆表的老牌专线推荐</h2>
+<p class="prose-p">为了保证在 iPhone/iPad 上体验到最快、最省电的上网速度，鹅精选了 4 家针对小火箭做好了完整测试的服务商：</p>
+<hr class="prose-hr">
+<h3 id="sec-9" class="prose-h3">1. 环球梯 HuanqiuTi —— 23ms 低延迟与小火箭极速唤醒</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全节点 BGP / IPLC 专线优化</li>
+<li class="prose-li-disc"><strong>小火箭适配</strong>: 23ms 超低延迟，支持一键唤醒小火箭导入，原生 IP 全解</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥14.70 /月起 (<strong>7折专属优惠码：<code class="inline-code">HQ66</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 在 iPhone 上搭配小火箭使用，节点响应极快，看 4K 视频毫无卡顿，待机一整天功耗几乎可以忽略不计。</div></div>
+<hr class="prose-hr">
+<h3 id="sec-10" class="prose-h3">2. 闪电鼠 Shandianshu —— 全线 IEPL 专线与一键订阅</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全线 IEPL 物理专线</li>
+<li class="prose-li-disc"><strong>小火箭适配</strong>: 后台小火箭二维码一键扫描导入，TikTok 与 AI 规则完善</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥15.40 /月起 (<strong>7折专属优惠码：<code class="inline-code">sds88</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 节点命名规范清晰，导入小火箭后会自动按地区分类，使用体验非常舒心。</div></div>
+<hr class="prose-hr">
+<h3 id="sec-11" class="prose-h3">3. 大佬云 DalaoCloud —— 2.5Gbps 单节点峰值与 4K 秒开</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 物理专线</li>
+<li class="prose-li-disc"><strong>小火箭适配</strong>: 单节点峰值吞吐生猛，适合 iPad 大屏看影视剧</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">dly88</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 在 iPad 端的 Shadowrocket 上开启“配置模式”，观看 Netflix 或 YouTube HDR 视频瞬间拉满带宽。</div></div>
+<hr class="prose-hr">
+<h3 id="sec-12" class="prose-h3">4. 泡芙云 —— 香港 IEPL 专线与 4 年老牌稳定口碑</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 香港全线 IEPL 内网专线</li>
+<li class="prose-li-disc"><strong>小火箭适配</strong>: 4 年稳定运行，针对 iOS 流量做了优化</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥12.00 /月起 (<strong>专属暗号：<code class="inline-code">POFF_GOOSE</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【平稳滑行 4/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 适合预算有限但追求 iOS 稳定体验的学生党与轻度办公飞行员。</div></div>
+<hr class="prose-hr">
+<div class="callout-box callout-warning"><div class="callout-header"><span class="callout-icon">🛡️</span><span class="callout-title">避坑安全守则：</span></div><div class="callout-text"></div></div>
+<blockquote class="prose-blockquote">1. <strong>严禁在系统设置中登录他人 Apple ID</strong>：再次强调！只在 App Store 登录下载小火箭！在手机设置中登录陌生账号极易被远程锁死手机变砖！  </blockquote>
+<blockquote class="prose-blockquote">2. <strong>坚决月付保平安</strong>：即便小火箭再省电流畅，也请坚守<strong>月付原则</strong>！  </blockquote>
+<blockquote class="prose-blockquote">3. <strong>随时查阅跑道心跳</strong>：查看全站 30 家跑道的实时小火箭连通打点与优惠码，请随时前往站内 <a href="#/flights" class="prose-link" target="_blank" rel="noopener">航班推荐榜</a>！</blockquote>
+      </article>
+
+      <footer style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #334155; text-align: center;">
+        <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 16px;">
+          本文收录于 <strong>梯子之家 · 跑道上有只鹅</strong> 原创技术档案。未经许可禁止恶意抄袭与镜像。
+        </p>
+        <div style="display: inline-flex; gap: 12px;">
+          <a href="../#/blog" class="ssg-home-btn" style="background: #334155;">
+            📑 返回所有黑匣子档案
+          </a>
+          <a href="../" class="ssg-home-btn">
+            🏠 返回梯子之家控制台
+          </a>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
