@@ -394,6 +394,17 @@ const boardData = [
 
 const feedData = [
   {
+    id: 82,
+    code: "SEO-ARTICLE-19",
+    file: "posts/post-19-backbone-jitter-packet-loss-benchmark.md",
+    date: "2026.10",
+    cat: "tech",
+    title: "2026 全球骨干网络丢包与抖动（Jitter）测算指南：公网中转与 IPLC/IEPL 专线全链路实测白皮书",
+    summary: "以光纤物理极限（5ms/1000km）与运营商晚高峰 QoS 调度为基准，全链路横向实测对比普通公网直连、优质公网中转与 IPLC/IEPL 内网专线在 RTT、丢包率及抖动（Jitter）上的本质差异，提供工程级 MTR 鉴伪指南与分流抗断流配置规范。",
+    proCon: "鹅的直白点评：网络品质绝非单纯的速度跑分！光纤物理极限决定了延迟下限，晚高峰 QoS 与抖动才是照妖镜。掌握 MTR 链路审计与标准差分析，远离虚标专线与断流陷阱。",
+    gooseScore: 5
+  },
+  {
     id: 83,
     code: "SEO-ARTICLE-18",
     file: "posts/post-18-node-crash-blackbox-analysis.md",
