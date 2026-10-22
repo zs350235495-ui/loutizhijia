@@ -11,8 +11,10 @@
 
 <p align="center">
   <a href="https://tizizhijia.com/"><img src="https://img.shields.io/badge/%E5%AE%98%E7%BD%91%E7%9B%B4%E8%BE%BE-tizizhijia.com-0284c7?style=flat-square&logo=safari" alt="官网直达"></a>
+  <a href="https://tizizhijia.com/feed.xml"><img src="https://img.shields.io/badge/RSS-Feed.xml-f97316?style=flat-square&logo=rss" alt="RSS 订阅"></a>
   <a href="https://tizizhijia.com/#/flights"><img src="https://img.shields.io/badge/%E8%88%AA%E7%8F%AD%E6%8E%A8%E8%8D%90%E6%A6%9C-%E5%AE%9E%E6%97%B6%E6%B5%8B%E9%80%9F-10b981?style=flat-square" alt="航班推荐榜"></a>
   <a href="https://tizizhijia.com/#/crashes"><img src="https://img.shields.io/badge/%E5%9D%A0%E6%AF%81%E8%AE%B0%E5%BD%95%E7%B0%BF-%E8%B7%91%E8%B7%AF%E9%A2%84%E8%AD%A6-ef4444?style=flat-square" alt="坠毁记录簿"></a>
+  <img src="https://img.shields.io/github/actions/workflow/status/zs350235495-ui/tizizhijia/seo-ci.yml?branch=main&label=SEO%20CI&style=flat-square" alt="SEO CI 状态">
   <img src="https://img.shields.io/badge/%E6%9C%80%E6%96%B0%E6%94%B6%E5%BD%95-2026%20%E5%BA%A6-f59e0b?style=flat-square" alt="更新年份">
   <img src="https://img.shields.io/badge/%E8%AF%84%E6%B5%8B%E5%8E%9F%E5%88%99-%E6%8B%92%E7%BB%9D%E8%99%9A%E5%81%87%E8%B6%85%E5%8D%96-8b5cf6?style=flat-square" alt="评测原则">
 </p>

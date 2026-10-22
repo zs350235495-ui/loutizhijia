@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>梯子之家 · 跑道上有只鹅</title>
+    <link>https://tizizhijia.com/</link>
+    <description>2026 全球骨干网络加速、IPLC/IEPL 专线全链路实测与跑路避坑技术评测知识库</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 22 Oct 2026 12:27:30 GMT</lastBuildDate>
+    <atom:link href="https://tizizhijia.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>2026 全球骨干网络丢包与抖动（Jitter）测算指南：公网中转与 IPLC/IEPL 专线全链路实测白皮书</title>
+      <link>https://tizizhijia.com/post/82.html</link>
+      <guid>https://tizizhijia.com/post/82.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>以光纤物理极限（5ms/1000km）与运营商晚高峰 QoS 调度为基准，全链路横向实测对比普通公网直连、优质公网中转与 IPLC/IEPL 内网专线在 RTT、丢包率及抖动（Jitter）上的本质差异，提供工程级 MTR 鉴伪指南与分流抗断流配置规范。</description>
+    </item>
+    <item>
+      <title>跑道黑匣子解密：2026 常见机场节点“坠毁”与断连内幕，手把手教你避开超卖劣质跑道</title>
+      <link>https://tizizhijia.com/post/83.html</link>
+      <guid>https://tizizhijia.com/post/83.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>为什么节点白天飞得快，晚高峰直接坠毁？「跑道上有只鹅」深入拆解 2026 常见网络节点频繁断连、掉线与坠毁内幕。系统剖析虚假千兆超卖率、骨干网 QoS 限制、直连与 IPLC/IEPL 专线真实丢包延迟差异，并提供 TLS 握手超时、403 阻断故障自救排查与客户端分流配置避坑指南。</description>
+    </item>
+    <item>
+      <title>梯子之家 2026 全屋智能与家庭多设备透明网关架构白皮书：软路由、MosDNS 智能分流与防 DNS 泄漏终极实践</title>
+      <link>https://tizizhijia.com/post/84.html</link>
+      <guid>https://tizizhijia.com/post/84.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>梯子之家·家庭网络拓扑与网关工程实验室 2026 年度技术白皮书。深入剖析单机客户端痛点、单网口旁路由 vs 双网口主路由拓扑与网络回环诱因，详解 MosDNS 预分流配合 Fake-IP TProxy 架构，彻底消除 DNS 污染与解析延迟，附带百兆/千兆/FTTR 硬件选型与故障排查手册。</description>
+    </item>
+    <item>
+      <title>机场节点为什么会失效？从线路维护、拥堵到平台风控的原因解析</title>
+      <link>https://tizizhijia.com/post/85.html</link>
+      <guid>https://tizizhijia.com/post/85.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>深入解析网络代理节点出现连接超时、网速变慢、延迟升高及流媒体地区识别异常的原因。涵盖线路维护、骨干网拥堵、出口 IP 信誉变化、服务平台风控策略、本地网络与客户端配置等维度，并提供科学客观的故障自查排查步骤。</description>
+    </item>
+    <item>
+      <title>节点频繁超时红圈？5 大常见订阅更新失败、DNS 污染与分流冲突急救速查手册</title>
+      <link>https://tizizhijia.com/post/86.html</link>
+      <guid>https://tizizhijia.com/post/86.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>拒绝焦虑！整理节点全红超时、订阅更新 HTTP 报错、浏览器网页连接失败、ChatGPT 1020 与 Netflix 降级 5 大核心故障诊断决策树与急救指令。</description>
+    </item>
+    <item>
+      <title>软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践</title>
+      <link>https://tizizhijia.com/post/87.html</link>
+      <guid>https://tizizhijia.com/post/87.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>极客家庭终极浪漫！硬核拆解 iKuai 主路由拨号流控与 OpenWrt 旁路由科学上网分流架构，彻底破解网关环路与 Fake-IP DNS 防污染。</description>
+    </item>
+    <item>
+      <title>Android 平台客户端对比：Sing-box 与 Clash Meta 哪个更省电稳定？</title>
+      <link>https://tizizhijia.com/post/88.html</link>
+      <guid>https://tizizhijia.com/post/88.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>拒绝安卓手机变暖手宝！硬核对比 Sing-box 极简内核与 Clash Meta 规则引擎功耗开销，提供 Sing-box JSON 导入与系统后台保活避坑指南。</description>
+    </item>
+    <item>
+      <title>iOS 必装神器：小火箭（Shadowrocket）从购买、订阅导入到按域名分流全图解</title>
+      <link>https://tizizhijia.com/post/89.html</link>
+      <guid>https://tizizhijia.com/post/89.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>iPhone/iPad 必备装机神器！避坑美区 Apple ID 登录陷阱，掌握一键唤醒与 Subscribe 订阅导入，详解按域名分流与连通性测试。</description>
+    </item>
+    <item>
+      <title>Windows / Mac 客户端配置教程：Clash Verge Rev 核心使用与订阅自动分流指南</title>
+      <link>https://tizizhijia.com/post/90.html</link>
+      <guid>https://tizizhijia.com/post/90.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>告别停更的旧版 CFW！全方位介绍基于 Mihomo 内核的开源神器 Clash Verge Rev，手把手教你订阅导入、TUN 虚拟网卡接管与规则分流。</description>
+    </item>
+    <item>
+      <title>小白防忽悠手册：什么是 BGP 隧道、入口中继与落地机？拆解商家的画饼术语</title>
+      <link>https://tizizhijia.com/post/91.html</link>
+      <guid>https://tizizhijia.com/post/91.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>拒绝当机场黑话的韭菜！硬核拆解代理链路入口、中继与落地三大件，扒下全网 BGP 专线、永久买断等画饼伪装，掌握去套路选型三看原则。</description>
+    </item>
+    <item>
+      <title>主流翻墙协议横评：Hysteria 2、VLESS-Reality 与 Shadowsocks 在弱网环境下的抗封锁表现</title>
+      <link>https://tizizhijia.com/post/92.html</link>
+      <guid>https://tizizhijia.com/post/92.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>拒绝裸奔与盲目神话！硬核拆解传统 TCP、Reality 偷取 TLS 证书与 Hy2 基于 QUIC/UDP 暴力发包机制，提供 Sing-box/Clash 节点配置示例。</description>
+    </item>
+    <item>
+      <title>晚高峰丢包与断流真相：为什么公网中继在晚上 9 点会集体趴窝？</title>
+      <link>https://tizizhijia.com/post/93.html</link>
+      <guid>https://tizizhijia.com/post/93.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>拆解运营商 QoS 流量整形与加密封包丢弃机制，硬核使用 MTR 工具抓出国际出口断流凶手，实测 4 家晚高峰 0 丢包物理专线。</description>
+    </item>
+    <item>
+      <title>TikTok 跨境运营网络环境搭建：固定原生独享 IP 与多设备防关联配置全攻略</title>
+      <link>https://tizizhijia.com/post/94.html</link>
+      <guid>https://tizizhijia.com/post/94.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>破解 0 播放量与批量黑屏绝症！拆解 TikTok SIM 卡/MCC 识别与 WebRTC 泄露机制，打造 100% 伪装度手机，严选 4 家跨境带货节点。</description>
+    </item>
+    <item>
+      <title>2026 流媒体解锁完全指南：Netflix 非自制剧、Disney+ 与 HBO 落地节点体检</title>
+      <link>https://tizizhijia.com/post/95.html</link>
+      <guid>https://tizizhijia.com/post/95.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>拒绝只给看自制剧的假解锁！揭秘流媒体 IP 降级防线与 DNS 住宅重定向技术，实操 Clash 影音策略组，体检 4 家 4K 秒开老牌航线。</description>
+    </item>
+    <item>
+      <title>ChatGPT / Claude 官方防封禁指南：原生住宅 IP、机房 IP 与防 1020 报错全解析</title>
+      <link>https://tizizhijia.com/post/96.html</link>
+      <guid>https://tizizhijia.com/post/96.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>别再怀疑账号风水不好！拆解 Cloudflare 风控拦截与 MaxMind 欺诈评分，实操 Clash Verge Rev 独立 AI 策略组与分流规则，实测 4 家 AI 生产力专线。</description>
+    </item>
+    <item>
+      <title>高端头等舱专线深度体检：IEPL 与 IPLC 纯内网专线机场为什么这么贵？</title>
+      <link>https://tizizhijia.com/post/97.html</link>
+      <guid>https://tizizhijia.com/post/97.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>硬核拆解物理内网专线与公网 BGP 传输架构差异，深挖运营商 Mbps 带宽独占计费模型，教你如何 3 步精准鉴别真假专线。</description>
+    </item>
+    <item>
+      <title>大流量与按量付费备用跑道推荐：不限时流量包机场避坑与选型盘点</title>
+      <link>https://tizizhijia.com/post/98.html</link>
+      <guid>https://tizizhijia.com/post/98.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>拒绝资金盘跑路！深入剖析不限时流量包的现金流衰减迷局，掌握按量付费选型四大铁律，实操 Clash 自动备用切路组。</description>
+    </item>
+    <item>
+      <title>平价经济舱实测：月付 15 元以下的高性价比机场到底能不能买？</title>
+      <link>https://tizizhijia.com/post/99.html</link>
+      <guid>https://tizizhijia.com/post/99.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>拆解低价机场超售比例与公网 BGP 成本逻辑，严选 4 家适合学生党与轻度用户的 15 元以下平价好机场。</description>
+    </item>
+    <item>
+      <title>2026 最新机场推荐与选购指南：晚高峰 4K 不卡顿的 5 家老牌专线航班横评</title>
+      <link>https://tizizhijia.com/post/100.html</link>
+      <guid>https://tizizhijia.com/post/100.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>拒绝套路充值！全方位拆解晚高峰公网 QoS 丢包与 IPLC/IEPL 物理专线硬核差异，实测 5 家真起飞老牌航班。</description>
+    </item>
+    <item>
+      <title>晚高峰 21:00 丢包率实测：哪些 IPLC 专线真能跑满 500M 宽带？</title>
+      <link>https://tizizhijia.com/post/101.html</link>
+      <guid>https://tizizhijia.com/post/101.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>针对当前 6 家热门服务商进行了连续 7 天的晚高峰 (20:00 - 23:00) 丢包率与测速打点。</description>
+    </item>
+    <item>
+      <title>ChatGPT 与 Claude 官方防封禁 IP 排雷与节点策略指南</title>
+      <link>https://tizizhijia.com/post/102.html</link>
+      <guid>https://tizizhijia.com/post/102.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>为什么你的 OpenAI 账号频繁被强制退登或提示 1020？详解机房 IP 与原生家宽 IP 的区别。</description>
+    </item>
+    <item>
+      <title>浅析 Hysteria 2 与 VLESS-Reality 协议在弱网环境下的抗封锁表现</title>
+      <link>https://tizizhijia.com/post/103.html</link>
+      <guid>https://tizizhijia.com/post/103.html</guid>
+      <pubDate>Thu, 22 Oct 2026 08:00:00 GMT</pubDate>
+      <description>在高丢包环境或公网高峰期，基于 UDP 的 Hysteria 2 协议如何实现快速发包补包？</description>
+    </item>
+  </channel>
+</rss>

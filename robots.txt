@@ -4,6 +4,7 @@ Allow: /post/
 Allow: /posts/
 Allow: /llms.txt
 Allow: /manifest.json
+Allow: /feed.xml
 Disallow: /build-ssg.js
 Disallow: /submit-indexnow.js
 

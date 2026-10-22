@@ -1,0 +1,44 @@
+name: Automated SEO & IndexNow CI
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 配置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 执行 SSG 静态预渲染与 Sitemap/RSS 构建
+        run: |
+          node build-ssg.js
+
+      - name: 向 IndexNow / Bing 提交收录广播
+        run: |
+          node submit-indexnow.js
+
+      - name: 检查并自动同步静态页面至仓库
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff-index --quiet HEAD --; then
+            echo "没有产生新的静态文件改动，无需提交。"
+          else
+            git commit -m "chore(ci): 自动化同步 SSG 静态文章库与 Sitemap [skip ci]"
+            git push origin main
+          fi

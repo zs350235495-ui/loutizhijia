@@ -402,6 +402,38 @@ function main() {
   const fullSitemap = sitemapHeader + sitemapBody + '\n</urlset>\n';
   fs.writeFileSync(SITEMAP_FILE, fullSitemap, 'utf8');
   console.log(`🎉 sitemap.xml 已同步重构为标准静态 URL，收录率保障提升 100%！`);
+
+  // 生成标准 RSS 2.0 feed.xml (极客生态与订阅聚合器分发)
+  const RSS_FILE = path.join(ROOT_DIR, 'feed.xml');
+  const rssItems = feedData.map(item => {
+    const postUrl = `https://tizizhijia.com/post/${item.id}.html`;
+    const pubDate = new Date('2026-10-22T08:00:00Z').toUTCString();
+    const cleanSummary = (item.summary || item.title).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const cleanTitle = item.title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return `    <item>
+      <title>${cleanTitle}</title>
+      <link>${postUrl}</link>
+      <guid>${postUrl}</guid>
+      <pubDate>${pubDate}</pubDate>
+      <description>${cleanSummary}</description>
+    </item>`;
+  }).join('\n');
+
+  const fullRss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>梯子之家 · 跑道上有只鹅</title>
+    <link>https://tizizhijia.com/</link>
+    <description>2026 全球骨干网络加速、IPLC/IEPL 专线全链路实测与跑路避坑技术评测知识库</description>
+    <language>zh-CN</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="https://tizizhijia.com/feed.xml" rel="self" type="application/rss+xml"/>
+${rssItems}
+  </channel>
+</rss>
+`;
+  fs.writeFileSync(RSS_FILE, fullRss, 'utf8');
+  console.log(`📡 feed.xml (RSS 2.0) 订阅源已同步生成！`);
 }
 
 main();

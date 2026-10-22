@@ -449,7 +449,7 @@
         </td>
         <td>
           <div class="action-btns-cell">
-            <a href="${item.url}" target="_blank" rel="noopener" class="btn-boarding">办理登机牌 (直达官网)</a>
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="btn-boarding">办理登机牌 (直达官网)</a>
             <button class="btn-promo-copy" onclick="copyPromoCode('${item.promoCode}')">
               🔑 机长暗号: ${item.promoCode} (点击复制)
             </button>
@@ -627,7 +627,7 @@
               </button>
             </div>
             <div class="inspect-card-actions">
-              <a href="${item.url}" target="_blank" rel="noopener" class="btn-boarding" style="padding: 10px; text-align: center; justify-content: center;">
+              <a href="${item.url}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="btn-boarding" style="padding: 10px; text-align: center; justify-content: center;">
                 办理登机牌 (官网直达)
               </a>
               <a href="#/post/${item.reportPostId}" class="btn-inspect-report">
