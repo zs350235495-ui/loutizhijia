@@ -122,6 +122,19 @@
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +163,37 @@
         <h1 class="article-detail-title">梯子之家 2026 全屋智能与家庭多设备透明网关架构白皮书：软路由、MosDNS 智能分流与防 DNS 泄漏终极实践</h1>
         <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>全屋多设备如果每台都单独装客户端，维护起来简直是灾难！折腾透明网关才是终极形态。通过主路由物理冗余、旁路由受控接管、MosDNS 国内外预分流以及 Fake-IP 零延迟解析，彻底告别 DNS 泄露与全家断网风险。</p></div>
       </header>
+
+      
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-1" style="color: inherit; text-decoration: none;">执行摘要 (Executive Summary)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-2" style="color: inherit; text-decoration: none;">1.1 碎片化生态与协议孤岛</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-3" style="color: inherit; text-decoration: none;">1.2 DNS 污染与 CDN 调度错位诱发的性能劣化</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-4" style="color: inherit; text-decoration: none;">1.3 证书注入困境与多设备维护的运维雪崩</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-5" style="color: inherit; text-decoration: none;">2.1 双网口物理主路由一体化方案的流量控制与潜在隐患</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-6" style="color: inherit; text-decoration: none;">2.2 单网口旁路由（旁路网关）数据流向：从 DHCP 选项下发到单臂调度</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-7" style="color: inherit; text-decoration: none;">2.3 致命的网络回环与次优路径（Suboptimal Routing）根因</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-8" style="color: inherit; text-decoration: none;">3.1 传统 Redir-Host 模式之殇与 Fake-IP 的机制革新</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-9" style="color: inherit; text-decoration: none;">3.2 生产级配置：MosDNS v5 声明式管道分流范式</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-10" style="color: inherit; text-decoration: none;">3.3 现代 Linux nftables 透明代理（TProxy）流量重定向核心语法</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-11" style="color: inherit; text-decoration: none;">4.1 局域网广播风暴与多 DHCP 冲突的根除方案</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-12" style="color: inherit; text-decoration: none;">4.2 全锥型 NAT (Full Cone NAT) 保护与主机游戏 UDP 联机穿透</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-13" style="color: inherit; text-decoration: none;">4.3 Apple TV 待机断流、HomeKit 中枢漂移与 IPv6 旁路泄露修复</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-14" style="color: inherit; text-decoration: none;">5.1 百兆带宽（基础家庭）：极简与低功耗高性价比方案</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-15" style="color: inherit; text-decoration: none;">5.2 千兆主流带宽（多设备并发 / 4K 高码率影音）：主力推荐架构</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-16" style="color: inherit; text-decoration: none;">5.3 2.5G / 10G 及 FTTR 全光组网（极限发烧友与大平层/别墅）：企业级拓扑</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-17" style="color: inherit; text-decoration: none;">全屋代理架构选型：三大模式多维工程指标评测</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-18" style="color: inherit; text-decoration: none;">1. 家庭网络痛点定性：为什么单机客户端无法满足全场景需求？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-19" style="color: inherit; text-decoration: none;">2. 网关拓扑演进：单网口旁路由 vs 双网口物理主路由的数据流走向与回环问题剖析</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-20" style="color: inherit; text-decoration: none;">3. 核心分流引擎调优：MosDNS 预分流配合 Fake-IP 模式消除 DNS 污染与解析延迟</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-21" style="color: inherit; text-decoration: none;">4. 常见故障排查手册：实战排坑与硬核优化</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-22" style="color: inherit; text-decoration: none;">5. 梯子之家全屋配置建议：不同家庭带宽等级的硬件选型与分流策略</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-23" style="color: inherit; text-decoration: none;">结语：以确定性的技术指标重构家庭数字底座</a></li>
+        </ul>
+      </div>
+    
 
       <article class="article-prose-body">
         <blockquote class="prose-blockquote"><strong>白皮书元数据档案</strong>  </blockquote>

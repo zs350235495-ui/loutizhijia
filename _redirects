@@ -1,0 +1,4 @@
+# Cloudflare Pages / Netlify 智能重定向规则
+/post/:id      /post/:id.html    301!
+/feed          /feed.xml         301
+/sitemap       /sitemap.xml      301

@@ -86,14 +86,19 @@ function parseMarkdownToHTML(markdownText) {
     return tableHTML;
   });
 
-  // H1, H2, H3 (保证文章正文内部使用 H2/H3，与页面主 H1 形成严谨语义树)
+  // H1, H2, H3 (保证文章正文内部使用 H2/H3，与页面主 H1 形成严谨语义树，并收集 TOC 目录)
+  const headings = [];
   let headingIdx = 0;
   src = src.replace(/^###\s+(.+)$/gm, (m, title) => {
     headingIdx++;
+    const cleanTitle = title.replace(/\*\*/g, '').replace(/`/g, '').trim();
+    headings.push({ level: 3, id: `sec-${headingIdx}`, title: cleanTitle });
     return `<h3 id="sec-${headingIdx}" class="prose-h3">${title}</h3>`;
   });
   src = src.replace(/^#{1,2}\s+(.+)$/gm, (m, title) => {
     headingIdx++;
+    const cleanTitle = title.replace(/\*\*/g, '').replace(/`/g, '').trim();
+    headings.push({ level: 2, id: `sec-${headingIdx}`, title: cleanTitle });
     return `<h2 id="sec-${headingIdx}" class="prose-h2">${title}</h2>`;
   });
 
@@ -129,16 +134,33 @@ function parseMarkdownToHTML(markdownText) {
     htmlResult = htmlResult.replace(`__INLINE_CODE_${idx}__`, codeHTML);
   });
 
-  return htmlResult;
+  return { html: htmlResult, headings };
 }
 
 // 生成单个独立文章 HTML 页面
 function buildArticlePageHTML(item, markdownText) {
   const postUrl = `https://tizizhijia.com/post/${item.id}.html`;
-  const articleHtml = parseMarkdownToHTML(markdownText || item.content || item.summary || '');
+  const { html: articleHtml, headings } = parseMarkdownToHTML(markdownText || item.content || item.summary || '');
   const publishDate = (item.date || '2026-10-22').replace('.', '-');
   const catNames = { speed: '硬核实测', avoid: '踩坑避雷', tech: '技术原理' };
   const catLabel = catNames[item.cat] || '跑道黑匣子';
+
+  // 生成顶部折叠目录 TOC
+  let tocHTML = '';
+  if (headings && headings.length > 2) {
+    const listItems = headings.map(h => {
+      const padClass = h.level === 3 ? 'padding-left: 20px; font-size: 0.82rem; color: #94a3b8;' : 'font-weight: 600; color: #38bdf8;';
+      return `<li style="margin: 4px 0; ${padClass}"><a href="#${h.id}" style="color: inherit; text-decoration: none;">${h.title}</a></li>`;
+    }).join('\n');
+    tocHTML = `
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          ${listItems}
+        </ul>
+      </div>
+    `;
+  }
 
   return `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -264,6 +286,19 @@ function buildArticlePageHTML(item, markdownText) {
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -292,6 +327,8 @@ function buildArticlePageHTML(item, markdownText) {
         <h1 class="article-detail-title">${item.title}</h1>
         ${item.proCon ? `<div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>${item.proCon.replace(/鹅的直白点评：/g, '')}</p></div>` : ''}
       </header>
+
+      ${tocHTML}
 
       <article class="article-prose-body">
         ${articleHtml}

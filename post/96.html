@@ -122,6 +122,19 @@
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +163,29 @@
         <h1 class="article-detail-title">ChatGPT / Claude 官方防封禁指南：原生住宅 IP、机房 IP 与防 1020 报错全解析</h1>
         <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>明明买的是正版 Plus/Team 订阅，却天天遇到 1020 报错？罪魁祸首就是你用的节点 IP 早就被上万人揉捏烂了！AI 厂商的风控算法专门盯着数据中心广播 IP 砍。</p></div>
       </header>
+
+      
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-1" style="color: inherit; text-decoration: none;">1. 机房广播 IP vs 原生 IP vs 住宅 IP（Residential IP）</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-2" style="color: inherit; text-decoration: none;">2. 触发封号与 1020 报错的“三大雷区”</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-3" style="color: inherit; text-decoration: none;">第 1 步：查验 IP 属性与 ASN</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-4" style="color: inherit; text-decoration: none;">第 2 步：MaxMind 欺诈评分（Fraud Score）</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-5" style="color: inherit; text-decoration: none;">第 3 步：Claude / OpenAI 连通性测试</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-6" style="color: inherit; text-decoration: none;">1. Clash 策略组 YAML 配置示例</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-7" style="color: inherit; text-decoration: none;">1. 环球梯 HuanqiuTi —— 全节点 BGP/专线与 23ms 低延迟</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-8" style="color: inherit; text-decoration: none;">2. 闪电鼠 Shandianshu —— TikTok 与 AI 专项优化</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-9" style="color: inherit; text-decoration: none;">3. 神行加速 Shenxing —— 50+ 多国家冗余节点</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-10" style="color: inherit; text-decoration: none;">4. 库洛米 Kuromis —— 深港/苏日专线与低延迟 UDP</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-11" style="color: inherit; text-decoration: none;">序言：AI 时代，IP 纯净度成了新的“通行证”</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-12" style="color: inherit; text-decoration: none;">一、 风控机制拆解：OpenAI 与 Claude 是如何抓到你的？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-13" style="color: inherit; text-decoration: none;">二、 4 步诊断法：如何检测你的节点是否符合 AI 生产力标准？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-14" style="color: inherit; text-decoration: none;">三、 防封实操指南：Clash Verge Rev 核心分流规则配置</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-15" style="color: inherit; text-decoration: none;">四、 实测严选：4 家 AI 生产力解锁极佳的专线航班推荐</a></li>
+        </ul>
+      </div>
+    
 
       <article class="article-prose-body">
         <blockquote class="prose-blockquote"><strong>关键词</strong>: ChatGPT解除限制 | Claude封号解决 | 原生IP机场 | OpenAI 1020 | 住宅IP代理</blockquote>

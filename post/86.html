@@ -122,6 +122,19 @@
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +163,31 @@
         <h1 class="article-detail-title">节点频繁超时红圈？5 大常见订阅更新失败、DNS 污染与分流冲突急救速查手册</h1>
         <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>遇到节点全红超时，别一上来就在群里喊机场跑路！90% 的故障都是系统时间不准、订阅域名被 DNS 污染或代理端口冲突引起的。存好本手册，30 秒搞定自救。</p></div>
       </header>
+
+      
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-1" style="color: inherit; text-decoration: none;">🚨 症状表现</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-2" style="color: inherit; text-decoration: none;">🛠️ 3 步排查与急救方法：</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-3" style="color: inherit; text-decoration: none;">🚨 症状表现</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-4" style="color: inherit; text-decoration: none;">🛠️ 3 步排查与急救方法：</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-5" style="color: inherit; text-decoration: none;">🚨 症状表现</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-6" style="color: inherit; text-decoration: none;">🛠️ 3 步排查与急救方法：</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-7" style="color: inherit; text-decoration: none;">🚨 症状表现</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-8" style="color: inherit; text-decoration: none;">🛠️ 3 步排查与急救方法：</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-9" style="color: inherit; text-decoration: none;">🚨 症状表现</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-10" style="color: inherit; text-decoration: none;">🛠️ 3 步排查与急救方法：</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-11" style="color: inherit; text-decoration: none;">序言：拒绝焦虑，学会极客故障排查</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-12" style="color: inherit; text-decoration: none;">一、 故障 1：节点全红显示“超时 (Timeout)”或 ping 不通</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-13" style="color: inherit; text-decoration: none;">二、 故障 2：订阅链接更新失败 (HTTP 403 / 500 / Fetch Error)</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-14" style="color: inherit; text-decoration: none;">三、 故障 3：能发微信QQ，但所有浏览器网页都打不开</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-15" style="color: inherit; text-decoration: none;">四、 故障 4：ChatGPT 提示 Error 1020 / Access Denied</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-16" style="color: inherit; text-decoration: none;">五、 故障 5：Netflix 只能看自制剧，搜不到特定剧集</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-17" style="color: inherit; text-decoration: none;">六、 常用急救命令与诊疗查表</a></li>
+        </ul>
+      </div>
+    
 
       <article class="article-prose-body">
         <blockquote class="prose-blockquote"><strong>关键词</strong>: 节点超时解决 | 订阅更新失败 | Clash无法连接网络 | 机场故障排查 | DNS急救</blockquote>

@@ -122,6 +122,19 @@
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +163,28 @@
         <h1 class="article-detail-title">主流翻墙协议横评：Hysteria 2、VLESS-Reality 与 Shadowsocks 在弱网环境下的抗封锁表现</h1>
         <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>别再以为 SS 协议能在 2026 年的公网上裸奔了！但在高丢包弱网下，盲目拥抱 Hy2 也可能被部分地区运营商粗暴 QoS 限速。理解基于 TCP 的 Reality 伪装与基于 UDP 的 Hy2 暴力发包，才能飞得最稳。</p></div>
       </header>
+
+      
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-1" style="color: inherit; text-decoration: none;">1. Shadowsocks (SS / SS-2022)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-2" style="color: inherit; text-decoration: none;">2. VLESS-Reality (Xray 内核)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-3" style="color: inherit; text-decoration: none;">3. Hysteria 2 (Hy2 / 基于 QUIC)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-4" style="color: inherit; text-decoration: none;">1. VLESS-Reality 客户端配置 (Sing-box 格式)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-5" style="color: inherit; text-decoration: none;">2. Hysteria 2 客户端配置 (Clash Verge Rev 格式)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-6" style="color: inherit; text-decoration: none;">1. 环球梯 HuanqiuTi —— 全节点 BGP/专线 + 多协议兼容</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-7" style="color: inherit; text-decoration: none;">2. 闪电鼠 Shandianshu —— IEPL 专线与全协议防封</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-8" style="color: inherit; text-decoration: none;">3. 神行加速 Shenxing —— Hysteria 2 / VLESS 多协议备用</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-9" style="color: inherit; text-decoration: none;">4. 库洛米 Kuromis —— 深港/苏日专线 + 低延迟 UDP 游戏协议</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-10" style="color: inherit; text-decoration: none;">序言：协议演进史与技术迷雾</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-11" style="color: inherit; text-decoration: none;">一、 硬核原理拆解：三大协议的物理底层机制</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-12" style="color: inherit; text-decoration: none;">二、 弱网环境与抗封锁表现横向对比</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-13" style="color: inherit; text-decoration: none;">三、 实操配置：Sing-box / Clash 协议配置节点示例</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-14" style="color: inherit; text-decoration: none;">四、 实测严选：4 家协议匹配度极佳的老牌专线航班推荐</a></li>
+        </ul>
+      </div>
+    
 
       <article class="article-prose-body">
         <blockquote class="prose-blockquote"><strong>关键词</strong>: Hysteria 2节点 | VLESS Reality配置 | 抗封锁协议 | 弱网加速 | QUIC拥塞控制</blockquote>

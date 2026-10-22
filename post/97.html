@@ -122,6 +122,19 @@
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +163,29 @@
         <h1 class="article-detail-title">高端头等舱专线深度体检：IEPL 与 IPLC 纯内网专线机场为什么这么贵？</h1>
         <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>真纯内网物理专线价格昂贵，是因为运营商按兆（Mbps）收取硬核月租。对于外贸商务、高频交易、AI 研发和追求 0 丢包的飞行员来说，贵的不是节点，而是不掉线的心理安全感！</p></div>
       </header>
+
+      
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-1" style="color: inherit; text-decoration: none;">1. IPLC (International Private Leased Circuit，国际私有专线)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-2" style="color: inherit; text-decoration: none;">2. IEPL (International Ethernet Private Line，国际以太网专线)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-3" style="color: inherit; text-decoration: none;">3. IPLC vs IEPL vs 公网 BGP 性能全方位对比</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-4" style="color: inherit; text-decoration: none;">伪专线的常见套路：</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-5" style="color: inherit; text-decoration: none;">🪿 鹅的硬核检测三部曲：</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-6" style="color: inherit; text-decoration: none;">1. Nexitally 奶昔 —— 机场圈天花板级的 Anycast 架构</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-7" style="color: inherit; text-decoration: none;">2. FlowerCloud 花云 —— 双入口 IEPL 专线与星链落地</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-8" style="color: inherit; text-decoration: none;">3. YToo 歪兔 —— 第一梯队老牌 Akari 顶级落地</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-9" style="color: inherit; text-decoration: none;">4. ImmTel —— Anycast + AIA 架构与极速响应</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-10" style="color: inherit; text-decoration: none;">序言：从普通公网到“物理内网头等舱”</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-11" style="color: inherit; text-decoration: none;">一、 硬核技术拆解：IPLC 与 IEPL 到底有何区别？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-12" style="color: inherit; text-decoration: none;">二、 成本迷雾：高端专线机场为什么这么贵？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-13" style="color: inherit; text-decoration: none;">三、 真假专线识别指南：如何避免花专线的钱买到假中转？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-14" style="color: inherit; text-decoration: none;">四、 顶流“头等舱”专线航班深度体检与推荐</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-15" style="color: inherit; text-decoration: none;">五、 总结与选购建议</a></li>
+        </ul>
+      </div>
+    
 
       <article class="article-prose-body">
         <blockquote class="prose-blockquote"><strong>关键词</strong>: IPLC机场 | IEPL专线 | 外贸办公稳定节点 | 低延迟游戏机场 | 头等舱机场</blockquote>

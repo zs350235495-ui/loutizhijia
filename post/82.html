@@ -122,6 +122,19 @@
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +163,35 @@
         <h1 class="article-detail-title">2026 全球骨干网络丢包与抖动（Jitter）测算指南：公网中转与 IPLC/IEPL 专线全链路实测白皮书</h1>
         <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>网络品质绝非单纯的速度跑分！光纤物理极限决定了延迟下限，晚高峰 QoS 与抖动才是照妖镜。掌握 MTR 链路审计与标准差分析，远离虚标专线与断流陷阱。</p></div>
       </header>
+
+      
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-1" style="color: inherit; text-decoration: none;">1.1 为什么传统的“峰值带宽跑分”无法表征真实网络质量？</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-2" style="color: inherit; text-decoration: none;">1.2 网络性能审计的三大核心基石：RTT、Jitter 与 Packet Loss</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-3" style="color: inherit; text-decoration: none;">2.1 光纤传输的物理极限与折射率测算模型</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-4" style="color: inherit; text-decoration: none;">2.2 公网直连、公网中转与 IPLC/IEPL 专线全链路拓扑解构</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-5" style="color: inherit; text-decoration: none;">2.3 三类主流传输链路工程特性横向基准对比表</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-6" style="color: inherit; text-decoration: none;">3.1 跨域骨干出口拥塞控制：DiffServ、CAR 与令牌桶限流机制</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-7" style="color: inherit; text-decoration: none;">3.2 缓冲区膨胀（Bufferbloat）与 TCP 拥塞控制崩塌</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-8" style="color: inherit; text-decoration: none;">3.3 抖动（Jitter）的工程数学定义（RFC 3550）与量化分析</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-9" style="color: inherit; text-decoration: none;">4.1 物理延迟下限反推法：用光速破除虚假宣传</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-10" style="color: inherit; text-decoration: none;">4.2 高级 MTR 与 Traceroute 报文拓扑追踪分析</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-11" style="color: inherit; text-decoration: none;">4.1 智能分流策略组编排模型（Direct / Proxy / Failover）</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-12" style="color: inherit; text-decoration: none;">4.2 避免 DNS 泄漏与跨域污染的解析链最佳实践</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-13" style="color: inherit; text-decoration: none;">4.3 TCP Keep-Alive、超时重试（Timeout）与心跳兜底调优</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-14" style="color: inherit; text-decoration: none;">目录（Table of Contents）</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-15" style="color: inherit; text-decoration: none;">导言：网络可用性评估维度的范式转移</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-16" style="color: inherit; text-decoration: none;">第一章：底层物理链路传输机制与架构演进</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-17" style="color: inherit; text-decoration: none;">第二章：晚高峰骨干网 QoS 调度与抖动劣化机理</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-18" style="color: inherit; text-decoration: none;">第三章：工程级真假内网专线鉴别与全链路实测方法论</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-19" style="color: inherit; text-decoration: none;">第四章：高可靠客户端分流与防断流配置规范</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-20" style="color: inherit; text-decoration: none;">结语：骨干网络链路选型核心法则速查</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-21" style="color: inherit; text-decoration: none;">搜索引擎 Meta Description 规范提取</a></li>
+        </ul>
+      </div>
+    
 
       <article class="article-prose-body">
         <blockquote class="prose-blockquote"><strong>文稿版本</strong>：v2.6 Enterprise RFC  </blockquote>

@@ -122,6 +122,19 @@
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +163,30 @@
         <h1 class="article-detail-title">Windows / Mac 客户端配置教程：Clash Verge Rev 核心使用与订阅自动分流指南</h1>
         <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>别再死守着已经停止维护的旧版 CFW 了！基于 Mihomo 内核的 Clash Verge Rev 才是桌面端的新王者，内存更低、TUN 模式一键开启、防 DNS 污染。</p></div>
       </header>
+
+      
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-1" style="color: inherit; text-decoration: none;">1. 官方开源获取渠道</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-2" style="color: inherit; text-decoration: none;">2. macOS 首次打开提示“无法验证开发者”解决办法</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-3" style="color: inherit; text-decoration: none;">步骤 1：复制机场机长暗号/订阅链接</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-4" style="color: inherit; text-decoration: none;">步骤 2：导入订阅配置文件 (Profiles)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-5" style="color: inherit; text-decoration: none;">步骤 3：开启系统代理 (System Proxy) 或 TUN 模式</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-6" style="color: inherit; text-decoration: none;">策略组模式详解：</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-7" style="color: inherit; text-decoration: none;">1. 环球梯 HuanqiuTi —— 23ms 低延迟与一键极速订阅</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-8" style="color: inherit; text-decoration: none;">2. 闪电鼠 Shandianshu —— 全线 IEPL 专线与分流规则优化</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-9" style="color: inherit; text-decoration: none;">3. 大佬云 DalaoCloud —— 2.5Gbps 大带宽峰值吞吐</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-10" style="color: inherit; text-decoration: none;">4. 极连云 Jilianyun —— 不限设备数与 PC/Mac 极速多开</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-11" style="color: inherit; text-decoration: none;">序言：为什么你应该立刻切换到 Clash Verge Rev？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-12" style="color: inherit; text-decoration: none;">一、 软件下载与安装避坑（Windows & macOS）</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-13" style="color: inherit; text-decoration: none;">二、 3 步核心配置实操：从订阅导入到系统代理</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-14" style="color: inherit; text-decoration: none;">三、 高级技巧：规则分流与策略组切换</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-15" style="color: inherit; text-decoration: none;">四、 常见报错与急救速查</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-16" style="color: inherit; text-decoration: none;">五、 4 家适配 Clash Verge Rev 极佳的老牌专线推荐</a></li>
+        </ul>
+      </div>
+    
 
       <article class="article-prose-body">
         <blockquote class="prose-blockquote"><strong>关键词</strong>: Clash Verge教程 | Clash订阅转换 | 分流规则设置 | PC端翻墙 | Meta内核</blockquote>

@@ -122,6 +122,19 @@
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +163,26 @@
         <h1 class="article-detail-title">晚高峰丢包与断流真相：为什么公网中继在晚上 9 点会集体趴窝？</h1>
         <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>白天跑满 1000M 别高兴太早！晚上 21:00 晚高峰公网出口拥堵得像十一高速公路，运营商的 QoS 限速阀门直接给你掐死。想要丝滑起飞，物理 IPLC/IEPL 专线才是唯一出路。</p></div>
       </header>
+
+      
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-1" style="color: inherit; text-decoration: none;">1. 什么是 QoS (Quality of Service) 限速？</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-2" style="color: inherit; text-decoration: none;">1. Windows / Mac 安装与执行命令</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-3" style="color: inherit; text-decoration: none;">2. MTR 诊断报告解读</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-4" style="color: inherit; text-decoration: none;">1. 环球梯 HuanqiuTi —— 全节点 BGP/专线与 23ms 极低延迟</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-5" style="color: inherit; text-decoration: none;">2. 大佬云 DalaoCloud —— 全 IPLC 专线与 2.5Gbps 超大峰值</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-6" style="color: inherit; text-decoration: none;">3. 云界线 Yunjiexian —— 大流量专线与高性价比选型</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-7" style="color: inherit; text-decoration: none;">4. 神行加速 Shenxing —— IPLC/IEPL 50+ 多节点均衡</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-8" style="color: inherit; text-decoration: none;">序言：“假起飞”现象背后的网络工程真相</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-9" style="color: inherit; text-decoration: none;">一、 底层原理：运营商 QoS (服务质量) 策略是如何宰杀封包的？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-10" style="color: inherit; text-decoration: none;">二、 架构对比：公网中继 vs 物理内网专线（IPLC / IEPL）</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-11" style="color: inherit; text-decoration: none;">三、 硬核诊断实操：如何使用 MTR 抓出断流的“真正凶手”？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-12" style="color: inherit; text-decoration: none;">四、 实测推荐：4 家晚高峰丢包率 < 0.5% 的硬核专线航班</a></li>
+        </ul>
+      </div>
+    
 
       <article class="article-prose-body">
         <blockquote class="prose-blockquote"><strong>关键词</strong>: 晚高峰断流 | 节点超时 | 公网中继vs专线 | QoS限速 | 丢包率测试 | MTR排查</blockquote>

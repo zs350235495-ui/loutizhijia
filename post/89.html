@@ -122,6 +122,19 @@
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +163,32 @@
         <h1 class="article-detail-title">iOS 必装神器：小火箭（Shadowrocket）从购买、订阅导入到按域名分流全图解</h1>
         <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>iPhone 用户如果不装小火箭，网络体验相当于断了一只翅膀！别再花几十块去买破解版，美区 App Store 只需要 $2.99 就能买到这款霸榜十年的工具。</p></div>
       </header>
+
+      
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-1" style="color: inherit; text-decoration: none;">1. 安全提示（避免锁机死机！）</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-2" style="color: inherit; text-decoration: none;">2. 美区账户充值方法</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-3" style="color: inherit; text-decoration: none;">方法 1：一键网页唤醒导入（最简便）</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-4" style="color: inherit; text-decoration: none;">方法 2：复制订阅 URL 或扫描二维码导入</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-5" style="color: inherit; text-decoration: none;">1. 选择全局路由模式 (Global Routing)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-6" style="color: inherit; text-decoration: none;">2. 首次启动授权</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-7" style="color: inherit; text-decoration: none;">1. 批量延迟打点 (Ping Test)</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-8" style="color: inherit; text-decoration: none;">2. 开启自动订阅更新</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-9" style="color: inherit; text-decoration: none;">1. 环球梯 HuanqiuTi —— 23ms 低延迟与小火箭极速唤醒</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-10" style="color: inherit; text-decoration: none;">2. 闪电鼠 Shandianshu —— 全线 IEPL 专线与一键订阅</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-11" style="color: inherit; text-decoration: none;">3. 大佬云 DalaoCloud —— 2.5Gbps 单节点峰值与 4K 秒开</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-12" style="color: inherit; text-decoration: none;">4. 泡芙云 —— 香港 IEPL 专线与 4 年老牌稳定口碑</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-13" style="color: inherit; text-decoration: none;">序言：iOS 端最受推崇的网络代理利器</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-14" style="color: inherit; text-decoration: none;">一、 第一步：如何购买并下载正版小火箭？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-15" style="color: inherit; text-decoration: none;">二、 第二步：小火箭订阅导入的两大快捷方式</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-16" style="color: inherit; text-decoration: none;">三、 第三步：开启代理与配置“按域名分流”</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-17" style="color: inherit; text-decoration: none;">四、 实操进阶：小火箭延迟测试与规则更新</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-18" style="color: inherit; text-decoration: none;">五、 4 家适配小火箭体验爆表的老牌专线推荐</a></li>
+        </ul>
+      </div>
+    
 
       <article class="article-prose-body">
         <blockquote class="prose-blockquote"><strong>关键词</strong>: Shadowrocket教程 | 小火箭节点配置 | iOS翻墙教程 | 美区AppleID | 节点二维码导入</blockquote>

@@ -122,6 +122,19 @@
         gap: 12px;
       }
     }
+    .ssg-toc-box {
+      margin: 24px 0 32px;
+      padding: 18px 24px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+    }
+    .ssg-toc-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +163,29 @@
         <h1 class="article-detail-title">跑道黑匣子解密：2026 常见机场节点“坠毁”与断连内幕，手把手教你避开超卖劣质跑道</h1>
         <div class="art-procon-banner"><p>🪿 <strong>鹅的直白点评：</strong>白天测速千兆跑满毫无意义，晚高峰丢包与抖动才是照妖镜！谨防超卖爆仓跑道，善用专线与备用航道冗余，配置好客户端客货分流，告别晚高峰卡顿焦虑。</p></div>
       </header>
+
+      
+      <div class="ssg-toc-box">
+        <div class="ssg-toc-header">📑 本文核心章节导航 (Table of Contents)</div>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-1" style="color: inherit; text-decoration: none;">1. 超卖率（Overselling Ratio）：一架 180 座的客机卖了 5000 张机票</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-2" style="color: inherit; text-decoration: none;">2. 骨干网 QoS（服务质量）限制：晚高峰公网流量的“配额断崖”</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-3" style="color: inherit; text-decoration: none;">3. TCP 致命死亡螺旋：拥塞控制算法下的断崖式降速</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-4" style="color: inherit; text-decoration: none;">跑道线路类型核心参数深度横评</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-5" style="color: inherit; text-decoration: none;">故障现场一：TLS 握手超时（Handshake Timeout / EOF）</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-6" style="color: inherit; text-decoration: none;">故障现场二：出现 HTTP 403 阻断 / 频繁人机验证（Cloudflare 1020 / Access Denied）</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-7" style="color: inherit; text-decoration: none;">故障现场三：DNS 污染与劫持（无法解析域名 / 资源被导向错误 IP）</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-8" style="color: inherit; text-decoration: none;">1. 核心航线策略逻辑</a></li>
+<li style="margin: 4px 0; padding-left: 20px; font-size: 0.82rem; color: #94a3b8;"><a href="#sec-9" style="color: inherit; text-decoration: none;">2. 标准生产级分流规则示例（以规则集配置为例）</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-10" style="color: inherit; text-decoration: none;">塔台引言：为什么你的节点一到晚高峰就“发动机空中停车”？</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-11" style="color: inherit; text-decoration: none;">第一章【黑匣子数据一】：拆解虚假带宽——1Gbps 峰值背后的超卖率与骨干网 QoS 真实机制</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-12" style="color: inherit; text-decoration: none;">第二章【黑匣子数据二】：线路体检——直连、中转与内网专线（IPLC/IEPL）的真实延迟与抖动差异</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-13" style="color: inherit; text-decoration: none;">第三章【坠毁自救手册】：连通性故障现场排查指南</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-14" style="color: inherit; text-decoration: none;">第四章【领航分流建议】：主流客户端分流规则配置，告别无效流量磨损</a></li>
+<li style="margin: 4px 0; font-weight: 600; color: #38bdf8;"><a href="#sec-15" style="color: inherit; text-decoration: none;">总结：跑道试飞选型 5 步避坑清单</a></li>
+        </ul>
+      </div>
+    
 
       <article class="article-prose-body">
         <blockquote class="prose-blockquote"><strong>黑匣子元数据档案</strong>  </blockquote>

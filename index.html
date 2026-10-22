@@ -81,6 +81,44 @@
             "item": "https://tizizhijia.com/#/crashes"
           }
         ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://tizizhijia.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "什么是真正的 IPLC / IEPL 内网专线？与普通公网中转有什么区别？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "IPLC（国际私有租用线路）与 IEPL（国际以太网专线）是在海底光缆中基于 SDH/OTN 划分的独立二层物理通道，完全不经过公网国际交换中心与公网防火墙，具有恒定物理延迟且晚高峰零丢包。普通公网中转仍运行在三层 IP 网络，晚高峰受国际出口拥堵影响仍会发生波动。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "为什么机场节点在晚高峰（20:00 - 23:30）会严重掉线和卡顿？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "晚高峰公网出口带宽过载，运营商骨干网路由器强制执行 QoS 流量工程管制，针对普通公网流量（Best Effort）实施令牌桶限流与丢包，同时路由器 FIFO 队列触发缓冲区膨胀（Bufferbloat），使 TCP 拥塞控制算法断崖式跳水。优质专线因享有专属物理通道可彻底免疫此问题。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "如何鉴别虚标 IPLC 专线的劣质超卖机场？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "1. 物理延迟下限检验：深圳到香港专线极限为 3-5ms，上海到日本为 26-30ms，若远超理论极限或晚高峰延迟增加 20ms 以上即为公网冒充；2. MTR 链路追踪：真专线跨国跳数通过内网保留地址直接交付，无公网骨干节点（如 202.97）；3. 24 小时 Ping 抖动标准差（StdDev）应小于 0.5ms。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "软路由与客户端如何彻底根除 DNS 泄漏与污染？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "推荐采用基于 Fake-IP（198.18.0.0/15）增强模式的透明代理分流，配合 MosDNS 或分流规则实现国内外双解析链（Split-DNS）。国内域名走运营商 LocalDNS/阿里公共 DNS 解析 CDN，境外域名由远端代理节点代解，本地不发起任何境外实际 DNS 查询，从底层根绝污染与泄漏。"
+            }
+          }
+        ]
       }
     ]
   }
