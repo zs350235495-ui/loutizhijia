@@ -15,8 +15,9 @@
   <meta property="og:description" content="以光纤物理极限（5ms/1000km）与运营商晚高峰 QoS 调度为基准，全链路横向实测对比普通公网直连、优质公网中转与 IPLC/IEPL 内网专线在 RTT、丢包率及抖动（Jitter）上的本质差异，提供工程级 MTR 鉴伪指南与分流抗断流配置规范。">
   <meta property="og:url" content="https://tizizhijia.com/post/82.html">
   <meta property="og:image" content="https://tizizhijia.com/favicon.svg">
-  <meta property="article:published_time" content="2026-10">
-  <meta property="article:author" content="跑道上有只鹅·飞行遥测实验室">
+  <meta property="article:published_time" content="2026-10-01T08:00:00+08:00">
+  <meta property="article:modified_time" content="2026-10-23T16:00:00+08:00">
+  <meta property="article:author" content="跑道巡检鹅 · 飞行遥测与网络安全实验室">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -24,46 +25,80 @@
   <meta name="twitter:description" content="以光纤物理极限（5ms/1000km）与运营商晚高峰 QoS 调度为基准，全链路横向实测对比普通公网直连、优质公网中转与 IPLC/IEPL 内网专线在 RTT、丢包率及抖动（Jitter）上的本质差异，提供工程级 MTR 鉴伪指南与分流抗断流配置规范。">
   <meta name="twitter:image" content="https://tizizhijia.com/favicon.svg">
 
-  <!-- Schema.org TechArticle JSON-LD -->
+  <!-- Schema.org JSON-LD (@graph 规范集成 TechArticle 与 BreadcrumbList) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "headline": "2026 全球骨干网络丢包与抖动（Jitter）测算指南：公网中转与 IPLC/IEPL 专线全链路实测白皮书",
-    "description": "以光纤物理极限（5ms/1000km）与运营商晚高峰 QoS 调度为基准，全链路横向实测对比普通公网直连、优质公网中转与 IPLC/IEPL 内网专线在 RTT、丢包率及抖动（Jitter）上的本质差异，提供工程级 MTR 鉴伪指南与分流抗断流配置规范。",
-    "url": "https://tizizhijia.com/post/82.html",
-    "datePublished": "2026-10",
-    "dateModified": "2026-10-22",
-    "inLanguage": "zh-CN",
-    "author": {
-      "@type": "Organization",
-      "name": "跑道上有只鹅 · 飞行遥测与网络安全实验室",
-      "url": "https://tizizhijia.com/"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "梯子之家",
-      "url": "https://tizizhijia.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://tizizhijia.com/favicon.svg"
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://tizizhijia.com/post/82.html#article",
+        "headline": "2026 全球骨干网络丢包与抖动（Jitter）测算指南：公网中转与 IPLC/IEPL 专线全链路实测白皮书",
+        "description": "以光纤物理极限（5ms/1000km）与运营商晚高峰 QoS 调度为基准，全链路横向实测对比普通公网直连、优质公网中转与 IPLC/IEPL 内网专线在 RTT、丢包率及抖动（Jitter）上的本质差异，提供工程级 MTR 鉴伪指南与分流抗断流配置规范。",
+        "url": "https://tizizhijia.com/post/82.html",
+        "datePublished": "2026-10-01T08:00:00+08:00",
+        "dateModified": "2026-10-23T16:00:00+08:00",
+        "inLanguage": "zh-CN",
+        "author": {
+          "@type": "Person",
+          "name": "跑道巡检鹅",
+          "jobTitle": "网络性能与安全架构工程师",
+          "url": "https://tizizhijia.com/#/about",
+          "sameAs": [
+            "https://t.me/huanqiuti8899"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "梯子之家",
+          "url": "https://tizizhijia.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://tizizhijia.com/favicon.svg"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://tizizhijia.com/post/82.html"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://tizizhijia.com/post/82.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "梯子之家首页",
+            "item": "https://tizizhijia.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "跑道黑匣子",
+            "item": "https://tizizhijia.com/#/blog"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "2026 全球骨干网络丢包与抖动（Jitter）测算指南：公网中转与 IPLC/IEPL 专线全链路实测白皮书",
+            "item": "https://tizizhijia.com/post/82.html"
+          }
+        ]
       }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://tizizhijia.com/post/82.html"
-    }
+    ]
   }
   </script>
 
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <link rel="shortcut icon" href="../favicon.svg">
+  <!-- 规范根绝对路径引入 Favicon 与 Stylesheet (杜绝深层路由样式裸奔) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg">
 
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="/styles.css">
 
   <style>
     .ssg-static-container {
@@ -143,11 +178,11 @@
   <div class="ssg-static-container">
     <div class="ssg-top-bar">
       <nav class="ssg-breadcrumb" aria-label="Breadcrumb">
-        <a href="../">🏠 梯子之家主页</a> &gt; 
-        <a href="../#/blog">跑道黑匣子</a> &gt; 
+        <a href="/">🏠 梯子之家主页</a> &gt; 
+        <a href="/#/blog">跑道黑匣子</a> &gt; 
         <span>技术原理</span>
       </nav>
-      <a href="../#/flights" class="ssg-home-btn">
+      <a href="/#/flights" class="ssg-home-btn">
         ✈️ 查看实时航班测速天梯图
       </a>
     </div>
@@ -396,15 +431,43 @@ Q2：是否追求极致的交互流畅度（网页瞬时响应、4K/8K 流媒体
 <blockquote class="prose-blockquote">本文深度解构全球骨干网络传输机理。以光纤物理极限（5ms/1000km）与运营商晚高峰 QoS 调度为基准，全链路横向实测对比普通公网直连、优质公网中转与 IPLC/IEPL 内网专线在 RTT、丢包率及抖动（Jitter）上的本质差异，提供工程级 MTR 鉴伪指南与分流抗断流配置规范。</blockquote>
       </article>
 
+      
+    <section class="ssg-related-section" style="margin-top: 48px; padding-top: 28px; border-top: 1px solid #1e293b;">
+      <h3 style="font-size: 1.15rem; color: #fbbf24; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+        <span>📑</span> 推荐延伸阅读与深度避坑档案
+      </h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
+        
+          <a href="/post/103.html" style="display: block; padding: 14px 16px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; text-decoration: none; transition: all 0.2s;">
+            <div style="font-size: 0.75rem; color: #38bdf8; margin-bottom: 6px;">[技术原理] 2026.09</div>
+            <div style="font-size: 0.92rem; font-weight: 600; color: #f1f5f9; line-height: 1.4;">浅析 Hysteria 2 与 VLESS-Reality 协议在弱网环境下的抗封锁表现</div>
+          </a>
+        
+
+          <a href="/post/96.html" style="display: block; padding: 14px 16px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; text-decoration: none; transition: all 0.2s;">
+            <div style="font-size: 0.75rem; color: #38bdf8; margin-bottom: 6px;">[技术原理] 2026.10</div>
+            <div style="font-size: 0.92rem; font-weight: 600; color: #f1f5f9; line-height: 1.4;">ChatGPT / Claude 官方防封禁指南：原生住宅 IP、机房 IP 与防 1020 报错全解析</div>
+          </a>
+        
+
+          <a href="/post/92.html" style="display: block; padding: 14px 16px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; text-decoration: none; transition: all 0.2s;">
+            <div style="font-size: 0.75rem; color: #38bdf8; margin-bottom: 6px;">[技术原理] 2026.10</div>
+            <div style="font-size: 0.92rem; font-weight: 600; color: #f1f5f9; line-height: 1.4;">主流翻墙协议横评：Hysteria 2、VLESS-Reality 与 Shadowsocks 在弱网环境下的抗封锁表现</div>
+          </a>
+        
+      </div>
+    </section>
+  
+
       <footer style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #334155; text-align: center;">
         <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 16px;">
           本文收录于 <strong>梯子之家 · 跑道上有只鹅</strong> 原创技术档案。未经许可禁止恶意抄袭与镜像。
         </p>
-        <div style="display: inline-flex; gap: 12px;">
-          <a href="../#/blog" class="ssg-home-btn" style="background: #334155;">
+        <div style="display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+          <a href="/#/blog" class="ssg-home-btn" style="background: #334155;">
             📑 返回所有黑匣子档案
           </a>
-          <a href="../" class="ssg-home-btn">
+          <a href="/" class="ssg-home-btn">
             🏠 返回梯子之家控制台
           </a>
         </div>

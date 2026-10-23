@@ -138,10 +138,11 @@ function parseMarkdownToHTML(markdownText) {
 }
 
 // 生成单个独立文章 HTML 页面
-function buildArticlePageHTML(item, markdownText) {
+function buildArticlePageHTML(item, markdownText, allFeedData = []) {
   const postUrl = `https://tizizhijia.com/post/${item.id}.html`;
   const { html: articleHtml, headings } = parseMarkdownToHTML(markdownText || item.content || item.summary || '');
-  const publishDate = (item.date || '2026-10-22').replace('.', '-');
+  const rawDate = (item.date || '2026-10-22').replace(/\./g, '-');
+  const publishDate = rawDate.length === 7 ? `${rawDate}-01` : rawDate;
   const catNames = { speed: '硬核实测', avoid: '踩坑避雷', tech: '技术原理' };
   const catLabel = catNames[item.cat] || '跑道黑匣子';
 
@@ -162,6 +163,28 @@ function buildArticlePageHTML(item, markdownText) {
     `;
   }
 
+  // 站内推荐网格闭环 (选取同分类或高权重 3 篇关联文章)
+  const relatedPosts = (allFeedData || [])
+    .filter(p => p.id !== item.id)
+    .sort((a, b) => (a.cat === item.cat ? -1 : 1))
+    .slice(0, 3);
+
+  const relatedHTML = relatedPosts.length > 0 ? `
+    <section class="ssg-related-section" style="margin-top: 48px; padding-top: 28px; border-top: 1px solid #1e293b;">
+      <h3 style="font-size: 1.15rem; color: #fbbf24; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+        <span>📑</span> 推荐延伸阅读与深度避坑档案
+      </h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
+        ${relatedPosts.map(rp => `
+          <a href="/post/${rp.id}.html" style="display: block; padding: 14px 16px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; text-decoration: none; transition: all 0.2s;">
+            <div style="font-size: 0.75rem; color: #38bdf8; margin-bottom: 6px;">[${catNames[rp.cat] || '跑道黑匣子'}] ${rp.date || '2026.10'}</div>
+            <div style="font-size: 0.92rem; font-weight: 600; color: #f1f5f9; line-height: 1.4;">${rp.title}</div>
+          </a>
+        `).join('\n')}
+      </div>
+    </section>
+  ` : '';
+
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -179,8 +202,9 @@ function buildArticlePageHTML(item, markdownText) {
   <meta property="og:description" content="${(item.summary || '').replace(/"/g, '&quot;')}">
   <meta property="og:url" content="${postUrl}">
   <meta property="og:image" content="https://tizizhijia.com/favicon.svg">
-  <meta property="article:published_time" content="${publishDate}">
-  <meta property="article:author" content="跑道上有只鹅·飞行遥测实验室">
+  <meta property="article:published_time" content="${publishDate}T08:00:00+08:00">
+  <meta property="article:modified_time" content="2026-10-23T16:00:00+08:00">
+  <meta property="article:author" content="跑道巡检鹅 · 飞行遥测与网络安全实验室">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -188,46 +212,80 @@ function buildArticlePageHTML(item, markdownText) {
   <meta name="twitter:description" content="${(item.summary || '').replace(/"/g, '&quot;')}">
   <meta name="twitter:image" content="https://tizizhijia.com/favicon.svg">
 
-  <!-- Schema.org TechArticle JSON-LD -->
+  <!-- Schema.org JSON-LD (@graph 规范集成 TechArticle 与 BreadcrumbList) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "headline": "${item.title.replace(/"/g, '\\"')}",
-    "description": "${(item.summary || '').replace(/"/g, '\\"')}",
-    "url": "${postUrl}",
-    "datePublished": "${publishDate}",
-    "dateModified": "2026-10-22",
-    "inLanguage": "zh-CN",
-    "author": {
-      "@type": "Organization",
-      "name": "跑道上有只鹅 · 飞行遥测与网络安全实验室",
-      "url": "https://tizizhijia.com/"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "梯子之家",
-      "url": "https://tizizhijia.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://tizizhijia.com/favicon.svg"
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "${postUrl}#article",
+        "headline": "${item.title.replace(/"/g, '\\"')}",
+        "description": "${(item.summary || '').replace(/"/g, '\\"')}",
+        "url": "${postUrl}",
+        "datePublished": "${publishDate}T08:00:00+08:00",
+        "dateModified": "2026-10-23T16:00:00+08:00",
+        "inLanguage": "zh-CN",
+        "author": {
+          "@type": "Person",
+          "name": "跑道巡检鹅",
+          "jobTitle": "网络性能与安全架构工程师",
+          "url": "https://tizizhijia.com/#/about",
+          "sameAs": [
+            "https://t.me/huanqiuti8899"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "梯子之家",
+          "url": "https://tizizhijia.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://tizizhijia.com/favicon.svg"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "${postUrl}"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "${postUrl}#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "梯子之家首页",
+            "item": "https://tizizhijia.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "跑道黑匣子",
+            "item": "https://tizizhijia.com/#/blog"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "${item.title.replace(/"/g, '\\"')}",
+            "item": "${postUrl}"
+          }
+        ]
       }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "${postUrl}"
-    }
+    ]
   }
   </script>
 
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <link rel="shortcut icon" href="../favicon.svg">
+  <!-- 规范根绝对路径引入 Favicon 与 Stylesheet (杜绝深层路由样式裸奔) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg">
 
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="/styles.css">
 
   <style>
     .ssg-static-container {
@@ -307,11 +365,11 @@ function buildArticlePageHTML(item, markdownText) {
   <div class="ssg-static-container">
     <div class="ssg-top-bar">
       <nav class="ssg-breadcrumb" aria-label="Breadcrumb">
-        <a href="../">🏠 梯子之家主页</a> &gt; 
-        <a href="../#/blog">跑道黑匣子</a> &gt; 
+        <a href="/">🏠 梯子之家主页</a> &gt; 
+        <a href="/#/blog">跑道黑匣子</a> &gt; 
         <span>${catLabel}</span>
       </nav>
-      <a href="../#/flights" class="ssg-home-btn">
+      <a href="/#/flights" class="ssg-home-btn">
         ✈️ 查看实时航班测速天梯图
       </a>
     </div>
@@ -334,15 +392,17 @@ function buildArticlePageHTML(item, markdownText) {
         ${articleHtml}
       </article>
 
+      ${relatedHTML}
+
       <footer style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #334155; text-align: center;">
         <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 16px;">
           本文收录于 <strong>梯子之家 · 跑道上有只鹅</strong> 原创技术档案。未经许可禁止恶意抄袭与镜像。
         </p>
-        <div style="display: inline-flex; gap: 12px;">
-          <a href="../#/blog" class="ssg-home-btn" style="background: #334155;">
+        <div style="display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+          <a href="/#/blog" class="ssg-home-btn" style="background: #334155;">
             📑 返回所有黑匣子档案
           </a>
-          <a href="../" class="ssg-home-btn">
+          <a href="/" class="ssg-home-btn">
             🏠 返回梯子之家控制台
           </a>
         </div>
@@ -369,7 +429,7 @@ function main() {
       mdContent = item.content || item.summary || '';
     }
 
-    const htmlOutput = buildArticlePageHTML(item, mdContent);
+    const htmlOutput = buildArticlePageHTML(item, mdContent, feedData);
     const fileName = `${item.id}.html`;
     const targetFile = path.join(OUTPUT_POST_DIR, fileName);
 
@@ -379,54 +439,24 @@ function main() {
     // 收集标准 sitemap 条目
     sitemapUrls.push({
       loc: `https://tizizhijia.com/post/${fileName}`,
-      lastmod: '2026-10-22',
+      lastmod: '2026-10-23',
       changefreq: 'weekly',
       priority: '0.85'
     });
   });
 
-  // 生成更新版 sitemap.xml
+  // 生成更新版 sitemap.xml (严格遵循 W3C 规范，杜绝 Fragment # 虚拟路由，保障 100% 页面返回 200 OK)
   const sitemapHeader = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- 首页核心页面 -->
+  <!-- 梯子之家主页 (Canonical Clean URL) -->
   <url>
     <loc>https://tizizhijia.com/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://tizizhijia.com/#/flights</loc>
-    <lastmod>2026-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tizizhijia.com/#/blog</loc>
-    <lastmod>2026-10-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tizizhijia.com/#/reviews</loc>
-    <lastmod>2026-10-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tizizhijia.com/#/crashes</loc>
-    <lastmod>2026-10-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tizizhijia.com/#/about</loc>
-    <lastmod>2026-10-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
 
-  <!-- 19 篇独立静态文章 (符合 W3C / Googlebot 绝对物理路径标准) -->
+  <!-- 独立预渲染静态文章库 (符合 W3C / Googlebot / Bingbot 标准 200 OK 绝对物理路径) -->
 `;
 
   const sitemapBody = sitemapUrls.map(u => `  <url>

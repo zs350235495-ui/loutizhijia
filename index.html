@@ -23,7 +23,7 @@
   <meta name="twitter:description" content="梯子之家 (tizizhijia.com) | 主打真实测速、晚高峰排雷、去套路化骨干网络与专线评测。">
   <meta name="twitter:image" content="https://tizizhijia.com/favicon.svg">
 
-  <!-- Schema.org JSON-LD 结构化数据 (E-E-A-T 搜索引擎权重增强) -->
+  <!-- Schema.org JSON-LD 结构化数据 (E-E-A-T 搜索引擎权威实体与富媒体增强) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,19 +38,106 @@
         "publisher": {
           "@id": "https://tizizhijia.com/#organization"
         },
+        "author": {
+          "@id": "https://tizizhijia.com/#author"
+        },
         "inLanguage": "zh-CN"
       },
       {
         "@type": "Organization",
         "@id": "https://tizizhijia.com/#organization",
-        "name": "跑道上有只鹅 · 飞行遥测与网络安全实验室",
-        "alternateName": "Runway Goose Telemetry & Network Lab",
+        "name": "梯子之家 · 跑道上有只鹅 飞行遥测与网络安全实验室",
+        "alternateName": ["Runway Goose Telemetry & Network Lab", "梯子之家", "tizizhijia.com"],
         "url": "https://tizizhijia.com/",
         "logo": {
           "@type": "ImageObject",
           "url": "https://tizizhijia.com/favicon.svg",
-          "caption": "跑道上有只鹅 Logo"
+          "caption": "梯子之家 · 跑道上有只鹅 Logo"
+        },
+        "founder": {
+          "@id": "https://tizizhijia.com/#author"
+        },
+        "sameAs": [
+          "https://t.me/huanqiuti8899"
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "url": "https://t.me/huanqiuti8899",
+            "availableLanguage": ["zh-CN"]
+          }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://tizizhijia.com/#author",
+        "name": "跑道巡检鹅",
+        "alternateName": ["Runway Inspector Goose", "站长鹅"],
+        "jobTitle": "资深网络架构评测工程师 / 专线遥测研究员",
+        "description": "专注于全球骨干网 QoS 延迟与抖动测算、IPLC/IEPL 跨境专线全链路质量与软路由透明网关分流研究。",
+        "url": "https://tizizhijia.com/#/about",
+        "image": "https://tizizhijia.com/favicon.svg",
+        "sameAs": [
+          "https://t.me/huanqiuti8899"
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://tizizhijia.com/#collection-flights",
+        "url": "https://tizizhijia.com/#/flights",
+        "name": "2026 稳定节点航班推荐榜与天梯图",
+        "description": "基于 24 小时真实晚高峰测速、丢包率与抖动严选的优质 IPLC/IEPL 专线航班推荐榜。",
+        "isPartOf": {
+          "@id": "https://tizizhijia.com/#website"
+        },
+        "breadcrumb": {
+          "@id": "https://tizizhijia.com/#breadcrumb"
         }
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://tizizhijia.com/#collection-blog",
+        "url": "https://tizizhijia.com/#/blog",
+        "name": "跑道黑匣子 · 原创技术档案库与避坑白皮书",
+        "description": "涵盖骨干网 QoS 测算、软路由 MosDNS 分流、流媒体与 ChatGPT 原生 IP 解锁及客户端实操教程。",
+        "isPartOf": {
+          "@id": "https://tizizhijia.com/#website"
+        },
+        "breadcrumb": {
+          "@id": "https://tizizhijia.com/#breadcrumb"
+        }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://tizizhijia.com/#core-reports-itemlist",
+        "name": "核心网络性能与避坑白皮书推荐",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "2026 全球骨干网络丢包与抖动（Jitter）测算指南",
+            "url": "https://tizizhijia.com/post/82.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "全屋智能与家庭多设备透明网关架构白皮书",
+            "url": "https://tizizhijia.com/post/84.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "跑道黑匣子解密：常见机场节点坠毁与断连内幕",
+            "url": "https://tizizhijia.com/post/83.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "高端头等舱专线深度体检：IEPL 与 IPLC 纯内网专线",
+            "url": "https://tizizhijia.com/post/97.html"
+          }
+        ]
       },
       {
         "@type": "BreadcrumbList",
@@ -124,9 +211,9 @@
   }
   </script>
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="shortcut icon" href="favicon.svg">
-  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg">
+  <link rel="manifest" href="/manifest.json">
   <link rel="alternate" type="application/rss+xml" title="梯子之家 · 跑道上有只鹅 (RSS 2.0)" href="https://tizizhijia.com/feed.xml">
   <meta name="theme-color" content="#0f172a">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -137,7 +224,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <!-- 跑道 Canvas 背景 -->
@@ -589,7 +676,7 @@
               <a href="https://t.me/huanqiuti8899" target="_blank" rel="noopener" class="radio-btn">
                 <span>💬 Telegram 官方频道</span>
               </a>
-              <a href="feed.xml" target="_blank" rel="noopener" class="radio-btn" title="查看原生 RSS 2.0 订阅源">
+              <a href="/feed.xml" target="_blank" rel="noopener" class="radio-btn" title="查看原生 RSS 2.0 订阅源">
                 <span>📻 RSS 订阅频段</span>
               </a>
             </div>
@@ -707,24 +794,24 @@
         <div class="silo-links-grid">
           <div class="silo-col">
             <span class="silo-col-tag">[底层链路与专线]</span>
-            <a href="post/82.html" class="silo-link">2026 骨干网丢包与 Jitter 测算白皮书</a>
-            <a href="post/97.html" class="silo-link">IEPL 与 IPLC 物理专线底层技术剖析</a>
-            <a href="post/93.html" class="silo-link">晚高峰骨干网 QoS 流量管制丢包真相</a>
-            <a href="post/92.html" class="silo-link">Hysteria 2 与 VLESS-Reality 弱网横评</a>
+            <a href="/post/82.html" class="silo-link">2026 骨干网丢包与 Jitter 测算白皮书</a>
+            <a href="/post/97.html" class="silo-link">IEPL 与 IPLC 物理专线底层技术剖析</a>
+            <a href="/post/93.html" class="silo-link">晚高峰骨干网 QoS 流量管制丢包真相</a>
+            <a href="/post/92.html" class="silo-link">Hysteria 2 与 VLESS-Reality 弱网横评</a>
           </div>
           <div class="silo-col">
             <span class="silo-col-tag">[网关架构与分流]</span>
-            <a href="post/84.html" class="silo-link">全屋软路由 MosDNS 智能分流架构实践</a>
-            <a href="post/87.html" class="silo-link">iKuai + OpenWrt 双软路由透明代理搭建</a>
-            <a href="post/90.html" class="silo-link">Clash Verge Rev PC/Mac 新手入门教程</a>
-            <a href="post/89.html" class="silo-link">iOS 小火箭 Shadowrocket 场景分流配置</a>
+            <a href="/post/84.html" class="silo-link">全屋软路由 MosDNS 智能分流架构实践</a>
+            <a href="/post/87.html" class="silo-link">iKuai + OpenWrt 双软路由透明代理搭建</a>
+            <a href="/post/90.html" class="silo-link">Clash Verge Rev PC/Mac 新手入门教程</a>
+            <a href="/post/89.html" class="silo-link">iOS 小火箭 Shadowrocket 场景分流配置</a>
           </div>
           <div class="silo-col">
             <span class="silo-col-tag">[黑匣子排障避坑]</span>
-            <a href="post/83.html" class="silo-link">跑道黑匣子：常见节点坠毁与断连内幕</a>
-            <a href="post/85.html" class="silo-link">机场节点为什么会失效？全链路自查手册</a>
-            <a href="post/86.html" class="silo-link">节点频繁超时红圈？5 大 DNS 订阅急救</a>
-            <a href="post/96.html" class="silo-link">ChatGPT 与 Claude 官方原生 IP 防封指南</a>
+            <a href="/post/83.html" class="silo-link">跑道黑匣子：常见节点坠毁与断连内幕</a>
+            <a href="/post/85.html" class="silo-link">机场节点为什么会失效？全链路自查手册</a>
+            <a href="/post/86.html" class="silo-link">节点频繁超时红圈？5 大 DNS 订阅急救</a>
+            <a href="/post/96.html" class="silo-link">ChatGPT 与 Claude 官方原生 IP 防封指南</a>
           </div>
         </div>
       </div>
@@ -744,9 +831,9 @@
   <div id="toastContainer" class="toast-container"></div>
 
   <!-- JS 脚本引用 -->
-  <script src="data.js"></script>
-  <script src="audio.js"></script>
-  <script src="radar.js"></script>
-  <script src="app.js"></script>
+  <script src="/data.js"></script>
+  <script src="/audio.js"></script>
+  <script src="/radar.js"></script>
+  <script src="/app.js"></script>
 </body>
 </html>

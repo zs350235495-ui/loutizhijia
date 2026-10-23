@@ -5,7 +5,39 @@ Allow: /posts/
 Allow: /llms.txt
 Allow: /manifest.json
 Allow: /feed.xml
+Allow: /favicon.svg
+Allow: /styles.css
+Allow: /*.js
 Disallow: /build-ssg.js
 Disallow: /submit-indexnow.js
+
+# Google & Bing Web Crawlers (Full DOM Rendering)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Mainstream AI & LLM Search Crawlers (Explicit Open Access)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
 
 Sitemap: https://tizizhijia.com/sitemap.xml
