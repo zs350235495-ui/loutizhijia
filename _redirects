@@ -1,4 +1,9 @@
 # Cloudflare Pages / Netlify 智能重定向规则
+/post/1.html   /post/100.html    301
+/post/2.html   /post/90.html     301
+/post/1        /post/100.html    301
+/post/2        /post/90.html     301
 /post/:id      /post/:id.html    301!
 /feed          /feed.xml         301
 /sitemap       /sitemap.xml      301
+
