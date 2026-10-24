@@ -645,13 +645,13 @@
       reviewFeedGrid.innerHTML = '';
       let filteredFeed = [];
       if (category === 'all') {
-        filteredFeed = feedData.filter(f => f.cat === 'speed' || f.code.startsWith('SPEED-') || [100, 97, 95, 93, 92, 98, 99, 85].includes(f.id));
+        filteredFeed = feedData.filter(f => f.cat === 'speed' || f.code.startsWith('SPEED-') || [100, 97, 95, 93, 92, 98, 99, 85].includes(f.id) || f.code.includes('WHITE-PAPER') || f.code.includes('SLA'));
       } else if (category === 'speed') {
         filteredFeed = feedData.filter(f => f.cat === 'speed' || f.title.includes('测速') || f.title.includes('秒开'));
       } else if (category === 'peak') {
-        filteredFeed = feedData.filter(f => f.title.includes('晚高峰') || f.title.includes('丢包') || f.title.includes('断流'));
+        filteredFeed = feedData.filter(f => f.title.includes('晚高峰') || f.title.includes('丢包') || f.title.includes('断流') || f.title.includes('SLA'));
       } else if (category === 'iepl') {
-        filteredFeed = feedData.filter(f => f.title.includes('专线') || f.title.includes('IPLC') || f.title.includes('IEPL'));
+        filteredFeed = feedData.filter(f => f.title.includes('专线') || f.title.includes('IPLC') || f.title.includes('IEPL') || f.title.includes('链路架构'));
       } else if (category === 'budget') {
         filteredFeed = feedData.filter(f => f.title.includes('平价') || f.title.includes('按量') || f.title.includes('高性价比'));
       }
@@ -663,13 +663,14 @@
         const card = document.createElement('div');
         card.className = 'boarding-pass-card';
         const gooseRatingHTML = renderGooseRatingHTML(item.gooseScore || 5);
+        const cardUrl = item.url || `#/post/${item.id}`;
         card.innerHTML = `
           <div>
             <div class="bp-header">
               <span class="bp-code" style="color:var(--runway-yellow);">BENCHMARK · ${item.code}</span>
               <span class="bp-date">${item.date}</span>
             </div>
-            <a href="#/post/${item.id}" class="bp-title-link" style="text-decoration:none; color:inherit;">
+            <a href="${cardUrl}" class="bp-title-link" style="text-decoration:none; color:inherit;">
               <h3 class="bp-title">${item.title}</h3>
             </a>
             <p class="bp-summary">${item.summary}</p>
@@ -686,7 +687,7 @@
           </div>
           <div class="bp-footer">
             ${gooseRatingHTML}
-            <a href="#/post/${item.id}" class="bp-read-btn">阅读试飞报告 ➔</a>
+            <a href="${cardUrl}" class="bp-read-btn">阅读试飞报告 ➔</a>
           </div>
         `;
         reviewFeedGrid.appendChild(card);
@@ -694,7 +695,7 @@
     }
   }
 
-  // 4. 跑道黑匣子 Feed Grid (已重构：点击卡片通过路由跳转至独立文章页)
+  // 4. 跑道黑匣子 Feed Grid (已重构：点击卡片优先跳转独立文章或 SPA 详情)
   function renderFeedGrid() {
     if (!feedGrid) return;
     feedGrid.innerHTML = '';
@@ -707,6 +708,7 @@
       const card = document.createElement('div');
       card.className = 'boarding-pass-card';
       const gooseRatingHTML = renderGooseRatingHTML(item.gooseScore);
+      const cardUrl = item.url || `#/post/${item.id}`;
 
       card.innerHTML = `
         <div>
@@ -714,7 +716,7 @@
             <span class="bp-code">${item.code}</span>
             <span class="bp-date">${item.date}</span>
           </div>
-          <a href="#/post/${item.id}" class="bp-title-link" style="text-decoration:none; color:inherit;">
+          <a href="${cardUrl}" class="bp-title-link" style="text-decoration:none; color:inherit;">
             <h3 class="bp-title">${item.title}</h3>
           </a>
           <p class="bp-summary">${item.summary}</p>
@@ -731,7 +733,7 @@
         </div>
         <div class="bp-footer">
           ${gooseRatingHTML}
-          <a href="#/post/${item.id}" class="bp-read-btn">阅读黑匣子 ➔</a>
+          <a href="${cardUrl}" class="bp-read-btn">阅读黑匣子 ➔</a>
         </div>
       `;
       feedGrid.appendChild(card);
