@@ -3,17 +3,9 @@
   <!-- 梯子之家主页 (Canonical Clean URL) -->
   <url>
     <loc>https://tizizhijia.com/</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-  </url>
-
-  <!-- 2026 跨境网络链路架构与多终端分流实测白皮书 (高权重技术研报) -->
-  <url>
-    <loc>https://tizizhijia.com/network-sla-gateway-architecture-2026.html</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
   </url>
 
   <!-- 独立预渲染静态文章库 (符合 W3C / Googlebot / Bingbot 标准 200 OK 绝对物理路径) -->
