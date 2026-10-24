@@ -402,7 +402,7 @@ const feedData = [
     title: "2026 全球跨境网络链路架构与多终端分流实测：家庭及工作室网络 SLA 可用性横评白皮书",
     summary: "针对家庭多设备与跨境工作室网络环境，深度解构网关级透明分流、DNS 污染防泄漏、BGP 多线容灾与 IPLC/IEPL 物理专线抗拥塞架构。基于 30 天连续遥测数据，从可用率 SLA、时钟抖动与并发丢包三维指标客观横评核心网络服务商，提供工程级落地决策树与避坑守则。",
     proCon: "巡检小组直白点评：现代家庭与高敏跨国工作室对跨境网络的需求已全面升级为“高可用、零抖动、多端透明分流与 99.9% 业务级 SLA”。掌握网关级隔离与 BGP 容灾，告别晚高峰丢包与断流。",
-    url: "/network-sla-gateway-architecture-2026.html",
+    url: "/network-sla-gateway-architecture-2026",
     gooseScore: 5
   },
   {

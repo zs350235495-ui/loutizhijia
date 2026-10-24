@@ -4,6 +4,5 @@
 /post/1        /post/100.html    301
 /post/2        /post/90.html     301
 /post/:id      /post/:id.html    301!
-/network-sla-gateway-architecture-2026   /network-sla-gateway-architecture-2026.html   200
 /feed          /feed.xml         301
 /sitemap       /sitemap.xml      301

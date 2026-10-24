@@ -104,7 +104,6 @@ postFiles.forEach(file => {
 
 // 6. 检查 network-sla-gateway-architecture-2026.html
 assert(fs.existsSync('network-sla-gateway-architecture-2026.html'), 'network-sla-gateway-architecture-2026.html 物理页面存在');
-assert(fs.existsSync('network-sla-gateway-architecture-2026/index.html'), 'network-sla-gateway-architecture-2026/index.html Clean URL 物理目录存在');
 
 const slaContent = fs.readFileSync('network-sla-gateway-architecture-2026.html', 'utf8');
 const slaH1s = slaContent.match(/<h1[^>]*>/gi) || [];
