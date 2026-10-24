@@ -25,6 +25,8 @@
 
 ## 三、 核心技术白皮书与物理链路审计 (Tech Deep Dives)
 
+- [2026 全球跨境网络链路架构与多终端分流实测：家庭及工作室网络 SLA 可用性横评白皮书](https://tizizhijia.com/network-sla-gateway-architecture-2026)
+  - 核心结论：解构软路由双网口流量隔离、MosDNS 防泄漏预分流、BDP 吞吐衰减模型与 BGP Anycast 容灾，实测 6 家服务商 SLA 与抖动指标（环球梯位列旗舰 TOP 1，大佬云紧随 TOP 2），提供场景决策树与排障规范。
 - [2026 全球骨干网络丢包与抖动（Jitter）测算指南：公网中转与 IPLC/IEPL 专线全链路实测白皮书](https://tizizhijia.com/post/82.html)
   - 核心结论：深入解析光纤物理极限、三类链路特性对比、晚高峰 QoS/Bufferbloat 崩塌机理、RFC 3550 抖动模型及 MTR 鉴伪实测方法。
 - [全屋智能与家庭多设备透明网关架构白皮书：软路由、MosDNS 智能分流与防 DNS 泄漏终极实践](https://tizizhijia.com/post/84.html)

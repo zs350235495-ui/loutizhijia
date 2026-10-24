@@ -102,8 +102,42 @@ postFiles.forEach(file => {
   assert(content.includes('ssg-related-section'), file + ' 包含相关文章内链推荐网格');
 });
 
-// 6. 检查 llms.txt
+// 6. 检查 network-sla-gateway-architecture-2026.html
+assert(fs.existsSync('network-sla-gateway-architecture-2026.html'), 'network-sla-gateway-architecture-2026.html 物理页面存在');
+assert(fs.existsSync('network-sla-gateway-architecture-2026/index.html'), 'network-sla-gateway-architecture-2026/index.html Clean URL 物理目录存在');
+
+const slaContent = fs.readFileSync('network-sla-gateway-architecture-2026.html', 'utf8');
+const slaH1s = slaContent.match(/<h1[^>]*>/gi) || [];
+assert(slaH1s.length === 1, '新白皮书严格有且仅有 1 个 <h1>');
+assert(slaContent.includes('<link rel="canonical" href="https://tizizhijia.com/network-sla-gateway-architecture-2026">'), '新白皮书具备规范 Clean URL Canonical');
+assert(slaContent.includes('href="/styles.css"'), '新白皮书使用规范 /styles.css');
+assert(slaContent.includes('href="/favicon.svg"'), '新白皮书使用规范 /favicon.svg');
+assert(slaContent.includes('"@type": "TechArticle"'), '新白皮书包含 TechArticle 结构化数据');
+assert(slaContent.includes('"@type": "BreadcrumbList"'), '新白皮书包含 BreadcrumbList 结构化数据');
+assert(slaContent.includes('"inLanguage": "zh-CN"'), '新白皮书结构化数据包含 inLanguage');
+assert(slaContent.includes('"author":'), '新白皮书包含权威作者实体');
+assert(slaContent.includes('资深网络架构巡检小组'), '新白皮书作者对齐资深网络架构巡检小组');
+assert(slaContent.includes('<meta property="og:title"'), '新白皮书具备 og:title');
+assert(slaContent.includes('<meta property="og:image"'), '新白皮书具备 og:image');
+assert(slaContent.includes('<meta name="twitter:card" content="summary_large_image">'), '新白皮书具备 twitter:card');
+assert(slaContent.includes('ssg-related-section'), '新白皮书包含相关文章内链推荐网格');
+assert(!slaContent.includes('?aff='), '新白皮书严禁包含商业返利参数 ?aff=');
+assert(!slaContent.includes('?ref='), '新白皮书严禁包含商业返利参数 ?ref=');
+assert(!slaContent.includes('?code='), '新白皮书严禁包含商业返利参数 ?code=');
+assert(!slaContent.includes('href="/#'), '新白皮书内链严禁使用 /# 哈希路由');
+
+// 校验 6 家服务商纯文本与正确排位
+assert(slaContent.includes('<strong>环球梯</strong>'), '新白皮书包含 TOP 1 环球梯');
+assert(slaContent.includes('<strong>大佬云</strong>'), '新白皮书包含 TOP 2 大佬云');
+assert(slaContent.includes('<strong>云界线</strong>'), '新白皮书包含 云界线');
+assert(slaContent.includes('<strong>闪电鼠</strong>'), '新白皮书包含 闪电鼠 (严禁误写为闪电云)');
+assert(!slaContent.includes('闪电云'), '新白皮书杜绝将闪电鼠误写为闪电云');
+assert(slaContent.includes('<strong>神行加速</strong>'), '新白皮书包含 神行加速');
+assert(slaContent.includes('<strong>榴莲云</strong>'), '新白皮书包含 榴莲云');
+
+// 7. 检查 llms.txt
 const llmsTxt = fs.readFileSync('llms.txt', 'utf8');
+assert(llmsTxt.includes('https://tizizhijia.com/network-sla-gateway-architecture-2026'), 'llms.txt 包含新白皮书条目');
 assert(llmsTxt.includes('https://tizizhijia.com/post/82.html'), 'llms.txt 包含核心研报 82');
 assert(llmsTxt.includes('https://tizizhijia.com/post/101.html'), 'llms.txt 包含高峰期压测 101');
 assert(llmsTxt.includes('https://tizizhijia.com/post/103.html'), 'llms.txt 包含协议横评 103');
