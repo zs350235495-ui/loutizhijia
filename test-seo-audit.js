@@ -63,9 +63,11 @@ sitemapLocs.forEach(loc => {
     assert(fs.existsSync('index.html'), 'Sitemap 首页文件真实存在');
   } else {
     const rel = loc.replace('https://tizizhijia.com/', '');
-    assert(fs.existsSync(rel), 'Sitemap 条目 ' + rel + ' 对应静态文件真实存在');
+    const fileExists = fs.existsSync(rel) || fs.existsSync(rel + '.html');
+    assert(fileExists, 'Sitemap 条目 ' + rel + ' 对应静态文件真实存在');
   }
 });
+assert(sitemapXml.includes('https://tizizhijia.com/network-sla-gateway-architecture-2026'), 'sitemap.xml 包含新白皮书条目');
 
 // 5. 检查所有 post/*.html
 const postFiles = fs.readdirSync('post').filter(f => f.endsWith('.html'));

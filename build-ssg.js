@@ -175,12 +175,14 @@ function buildArticlePageHTML(item, markdownText, allFeedData = []) {
         <span>📑</span> 推荐延伸阅读与深度避坑档案
       </h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
-        ${relatedPosts.map(rp => `
-          <a href="/post/${rp.id}.html" style="display: block; padding: 14px 16px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; text-decoration: none; transition: all 0.2s;">
+        ${relatedPosts.map(rp => {
+          const rpUrl = rp.url || `/post/${rp.id}.html`;
+          return `
+          <a href="${rpUrl}" style="display: block; padding: 14px 16px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; text-decoration: none; transition: all 0.2s;">
             <div style="font-size: 0.75rem; color: #38bdf8; margin-bottom: 6px;">[${catNames[rp.cat] || '跑道黑匣子'}] ${rp.date || '2026.10'}</div>
             <div style="font-size: 0.92rem; font-weight: 600; color: #f1f5f9; line-height: 1.4;">${rp.title}</div>
           </a>
-        `).join('\n')}
+        `;}).join('\n')}
       </div>
     </section>
   ` : '';
@@ -422,6 +424,19 @@ function main() {
   const sitemapUrls = [];
 
   feedData.forEach(item => {
+    // 独立根目录白皮书（已有专门维护的独立静态 HTML 与 Clean URL），避免重复生成至 post/ 目录造成页面冗余
+    if (item.url && !item.url.startsWith('/post/')) {
+      const cleanDate = item.date ? item.date.replace(/\./g, '-') : '2026-10-24';
+      sitemapUrls.push({
+        loc: `https://tizizhijia.com${item.url}`,
+        lastmod: cleanDate.length === 7 ? `${cleanDate}-01` : cleanDate,
+        changefreq: 'weekly',
+        priority: '0.90'
+      });
+      console.log(`⏩ 跳过独立根页面构建: ${item.url} (已保留专用白皮书并纳入 Sitemap)`);
+      return;
+    }
+
     let mdContent = '';
     if (item.file && fs.existsSync(path.join(ROOT_DIR, item.file))) {
       mdContent = fs.readFileSync(path.join(ROOT_DIR, item.file), 'utf8');
@@ -456,7 +471,7 @@ function main() {
     <priority>1.0</priority>
   </url>
 
-  <!-- 独立预渲染静态文章库 (符合 W3C / Googlebot / Bingbot 标准 200 OK 绝对物理路径) -->
+  <!-- 独立预渲染静态文章与白皮书库 (符合 W3C / Googlebot / Bingbot 标准 200 OK 绝对物理路径) -->
 `;
 
   const sitemapBody = sitemapUrls.map(u => `  <url>
@@ -473,8 +488,11 @@ function main() {
   // 生成标准 RSS 2.0 feed.xml (极客生态与订阅聚合器分发)
   const RSS_FILE = path.join(ROOT_DIR, 'feed.xml');
   const rssItems = feedData.map(item => {
-    const postUrl = `https://tizizhijia.com/post/${item.id}.html`;
-    const pubDate = new Date('2026-10-22T08:00:00Z').toUTCString();
+    const postUrl = item.url
+      ? (item.url.startsWith('http') ? item.url : `https://tizizhijia.com${item.url}`)
+      : `https://tizizhijia.com/post/${item.id}.html`;
+    const rawDate = item.date ? item.date.replace(/\./g, '-') : '2026-10-22';
+    const pubDate = new Date(`${rawDate.length === 7 ? rawDate + '-01' : rawDate}T08:00:00Z`).toUTCString();
     const cleanSummary = (item.summary || item.title).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     const cleanTitle = item.title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return `    <item>
