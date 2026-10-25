@@ -1,4 +1,4 @@
-# Android 平台客户端对比：Sing-box 与 Clash Meta 哪个更省电稳定？
+# Android 客户端对比：Sing-box 与 Clash Meta 省电与稳定性实测
 
 > **关键词**: Sing-box安卓教程 | 安卓机场客户端 | 手机翻墙省电 | Meta内核 | Surfboard
 > **发布日期**: 2026年10月  

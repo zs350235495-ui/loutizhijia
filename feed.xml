@@ -5,7 +5,7 @@
     <link>https://tizizhijia.com/</link>
     <description>2026 全球骨干网络加速、IPLC/IEPL 专线全链路实测与跑路避坑技术评测知识库</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 25 Oct 2026 10:13:26 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 15:10:15 GMT</lastBuildDate>
     <atom:link href="https://tizizhijia.com/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>2026 全球跨境网络链路架构与多终端分流实测：家庭及工作室网络 SLA 可用性横评白皮书</title>
@@ -15,7 +15,7 @@
       <description>针对家庭多设备与跨境工作室网络环境，深度解构网关级透明分流、DNS 污染防泄漏、BGP 多线容灾与 IPLC/IEPL 物理专线抗拥塞架构。基于 30 天连续遥测数据，从可用率 SLA、时钟抖动与并发丢包三维指标客观横评核心网络服务商，提供工程级落地决策树与避坑守则。</description>
     </item>
     <item>
-      <title>2026 全球骨干网络丢包与抖动（Jitter）测算指南：公网中转与 IPLC/IEPL 专线全链路实测白皮书</title>
+      <title>2026 骨干网丢包与抖动测算指南：公网中转与专线全链路实测</title>
       <link>https://tizizhijia.com/post/82.html</link>
       <guid>https://tizizhijia.com/post/82.html</guid>
       <pubDate>Thu, 01 Oct 2026 08:00:00 GMT</pubDate>
@@ -29,7 +29,7 @@
       <description>为什么节点白天飞得快，晚高峰直接坠毁？「跑道上有只鹅」深入拆解 2026 常见网络节点频繁断连、掉线与坠毁内幕。系统剖析虚假千兆超卖率、骨干网 QoS 限制、直连与 IPLC/IEPL 专线真实丢包延迟差异，并提供 TLS 握手超时、403 阻断故障自救排查与客户端分流配置避坑指南。</description>
     </item>
     <item>
-      <title>梯子之家 2026 全屋智能与家庭多设备透明网关架构白皮书：软路由、MosDNS 智能分流与防 DNS 泄漏终极实践</title>
+      <title>2026 家庭多设备透明网关架构：软路由 MosDNS 分流与防 DNS 泄漏</title>
       <link>https://tizizhijia.com/post/84.html</link>
       <guid>https://tizizhijia.com/post/84.html</guid>
       <pubDate>Thu, 01 Oct 2026 08:00:00 GMT</pubDate>
@@ -50,14 +50,14 @@
       <description>拒绝焦虑！整理节点全红超时、订阅更新 HTTP 报错、浏览器网页连接失败、ChatGPT 1020 与 Netflix 降级 5 大核心故障诊断决策树与急救指令。</description>
     </item>
     <item>
-      <title>软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践</title>
+      <title>软路由全屋透明代理搭建：iKuai+OpenWrt 分流与防污染实践</title>
       <link>https://tizizhijia.com/post/87.html</link>
       <guid>https://tizizhijia.com/post/87.html</guid>
       <pubDate>Thu, 01 Oct 2026 08:00:00 GMT</pubDate>
       <description>极客家庭终极浪漫！硬核拆解 iKuai 主路由拨号流控与 OpenWrt 旁路由科学上网分流架构，彻底破解网关环路与 Fake-IP DNS 防污染。</description>
     </item>
     <item>
-      <title>Android 平台客户端对比：Sing-box 与 Clash Meta 哪个更省电稳定？</title>
+      <title>Android 客户端对比：Sing-box 与 Clash Meta 省电与稳定性实测</title>
       <link>https://tizizhijia.com/post/88.html</link>
       <guid>https://tizizhijia.com/post/88.html</guid>
       <pubDate>Thu, 01 Oct 2026 08:00:00 GMT</pubDate>
@@ -71,7 +71,7 @@
       <description>iPhone/iPad 必备装机神器！避坑美区 Apple ID 登录陷阱，掌握一键唤醒与 Subscribe 订阅导入，详解按域名分流与连通性测试。</description>
     </item>
     <item>
-      <title>Windows / Mac 客户端配置教程：Clash Verge Rev 核心使用与订阅自动分流指南</title>
+      <title>Clash Verge Rev 配置教程：Win/Mac 客户端与订阅分流指南</title>
       <link>https://tizizhijia.com/post/90.html</link>
       <guid>https://tizizhijia.com/post/90.html</guid>
       <pubDate>Thu, 01 Oct 2026 08:00:00 GMT</pubDate>
@@ -85,7 +85,7 @@
       <description>拒绝当机场黑话的韭菜！硬核拆解代理链路入口、中继与落地三大件，扒下全网 BGP 专线、永久买断等画饼伪装，掌握去套路选型三看原则。</description>
     </item>
     <item>
-      <title>主流翻墙协议横评：Hysteria 2、VLESS-Reality 与 Shadowsocks 在弱网环境下的抗封锁表现</title>
+      <title>主流翻墙协议横评：Hysteria 2、Reality 与 SS 弱网抗封锁实测</title>
       <link>https://tizizhijia.com/post/92.html</link>
       <guid>https://tizizhijia.com/post/92.html</guid>
       <pubDate>Thu, 01 Oct 2026 08:00:00 GMT</pubDate>
@@ -106,14 +106,14 @@
       <description>破解 0 播放量与批量黑屏绝症！拆解 TikTok SIM 卡/MCC 识别与 WebRTC 泄露机制，打造 100% 伪装度手机，严选 4 家跨境带货节点。</description>
     </item>
     <item>
-      <title>2026 流媒体解锁完全指南：Netflix 非自制剧、Disney+ 与 HBO 落地节点体检</title>
+      <title>2026 流媒体解锁指南：Netflix 非自制剧与 Disney+ 落地节点体检</title>
       <link>https://tizizhijia.com/post/95.html</link>
       <guid>https://tizizhijia.com/post/95.html</guid>
       <pubDate>Thu, 01 Oct 2026 08:00:00 GMT</pubDate>
       <description>拒绝只给看自制剧的假解锁！揭秘流媒体 IP 降级防线与 DNS 住宅重定向技术，实操 Clash 影音策略组，体检 4 家 4K 秒开老牌航线。</description>
     </item>
     <item>
-      <title>ChatGPT / Claude 官方防封禁指南：原生住宅 IP、机房 IP 与防 1020 报错全解析</title>
+      <title>ChatGPT 与 Claude 防封指南：住宅/机房 IP 差异与 1020 报错解析</title>
       <link>https://tizizhijia.com/post/96.html</link>
       <guid>https://tizizhijia.com/post/96.html</guid>
       <pubDate>Thu, 01 Oct 2026 08:00:00 GMT</pubDate>

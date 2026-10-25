@@ -1,4 +1,4 @@
-# ChatGPT / Claude 官方防封禁指南：原生住宅 IP、机房 IP 与防 1020 报错全解析
+# ChatGPT 与 Claude 防封指南：住宅/机房 IP 差异与 1020 报错解析
 
 > **关键词**: ChatGPT解除限制 | Claude封号解决 | 原生IP机场 | OpenAI 1020 | 住宅IP代理
 > **发布日期**: 2026年10月  

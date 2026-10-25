@@ -411,7 +411,7 @@ const feedData = [
     file: "posts/post-19-backbone-jitter-packet-loss-benchmark.md",
     date: "2026.10",
     cat: "tech",
-    title: "2026 全球骨干网络丢包与抖动（Jitter）测算指南：公网中转与 IPLC/IEPL 专线全链路实测白皮书",
+    title: "2026 骨干网丢包与抖动测算指南：公网中转与专线全链路实测",
     summary: "以光纤物理极限（5ms/1000km）与运营商晚高峰 QoS 调度为基准，全链路横向实测对比普通公网直连、优质公网中转与 IPLC/IEPL 内网专线在 RTT、丢包率及抖动（Jitter）上的本质差异，提供工程级 MTR 鉴伪指南与分流抗断流配置规范。",
     proCon: "鹅的直白点评：网络品质绝非单纯的速度跑分！光纤物理极限决定了延迟下限，晚高峰 QoS 与抖动才是照妖镜。掌握 MTR 链路审计与标准差分析，远离虚标专线与断流陷阱。",
     gooseScore: 5
@@ -433,7 +433,7 @@ const feedData = [
     file: "posts/post-17-home-gateway-mosdns-transparent-proxy.md",
     date: "2026.10",
     cat: "tech",
-    title: "梯子之家 2026 全屋智能与家庭多设备透明网关架构白皮书：软路由、MosDNS 智能分流与防 DNS 泄漏终极实践",
+    title: "2026 家庭多设备透明网关架构：软路由 MosDNS 分流与防 DNS 泄漏",
     summary: "梯子之家·家庭网络拓扑与网关工程实验室 2026 年度技术白皮书。深入剖析单机客户端痛点、单网口旁路由 vs 双网口主路由拓扑与网络回环诱因，详解 MosDNS 预分流配合 Fake-IP TProxy 架构，彻底消除 DNS 污染与解析延迟，附带百兆/千兆/FTTR 硬件选型与故障排查手册。",
     proCon: "鹅的直白点评：全屋多设备如果每台都单独装客户端，维护起来简直是灾难！折腾透明网关才是终极形态。通过主路由物理冗余、旁路由受控接管、MosDNS 国内外预分流以及 Fake-IP 零延迟解析，彻底告别 DNS 泄露与全家断网风险。",
     gooseScore: 5
@@ -689,11 +689,11 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
     file: "posts/post-14-router-openwrt-transparent-proxy.md",
     date: "2026.10",
     cat: "tech",
-    title: "软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践",
+    title: "软路由全屋透明代理搭建：iKuai+OpenWrt 分流与防污染实践",
     summary: "极客家庭终极浪漫！硬核拆解 iKuai 主路由拨号流控与 OpenWrt 旁路由科学上网分流架构，彻底破解网关环路与 Fake-IP DNS 防污染。",
     proCon: "鹅的直白点评：全屋十几台智能设备如果每台都单独装客户端，维护起来简直是灾难！折腾软路由透明代理才是终极浪漫。记住本鹅真言：iKuai 主路由切频宽，OpenWrt 旁路由做分流！",
     gooseScore: 5,
-    content: `【软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践】
+    content: `【软路由全屋透明代理搭建：iKuai+OpenWrt 分流与防污染实践】
 
 一、黄金双软路由架构拆解：
 • iKuai 主路由 (192.168.1.1)：负责多拨、DHCP 分配、DPI 流控分流。
@@ -718,11 +718,11 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
     file: "posts/post-13-android-singbox-vs-clash-meta.md",
     date: "2026.10",
     cat: "tech",
-    title: "Android 平台客户端对比：Sing-box 与 Clash Meta 哪个更省电稳定？",
+    title: "Android 客户端对比：Sing-box 与 Clash Meta 省电与稳定性实测",
     summary: "拒绝安卓手机变暖手宝！硬核对比 Sing-box 极简内核与 Clash Meta 规则引擎功耗开销，提供 Sing-box JSON 导入与系统后台保活避坑指南。",
     proCon: "鹅的直白点评：安卓手机变暖手宝，80% 是因为跑了发热的垃圾代理内核！选对 Sing-box 或 Clash Meta 内核并关闭 Debug 日志，能让手机续航多坚挺 2 个小时。",
     gooseScore: 5,
-    content: `【Android 平台客户端对比：Sing-box 与 Clash Meta 哪个更省电稳定？】
+    content: `【Android 客户端对比：Sing-box 与 Clash Meta 省电与稳定性实测】
 
 一、内核架构与功耗对比：
 • Sing-box (Sbox)：内存占用极低 (~35MB)，发热与功耗极小，全能协议支持，偏向极客。
@@ -775,11 +775,11 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
     file: "posts/post-11-clash-verge-rev-pc-mac-tutorial.md",
     date: "2026.10",
     cat: "tech",
-    title: "Windows / Mac 客户端配置教程：Clash Verge Rev 核心使用与订阅自动分流指南",
+    title: "Clash Verge Rev 配置教程：Win/Mac 客户端与订阅分流指南",
     summary: "告别停更的旧版 CFW！全方位介绍基于 Mihomo 内核的开源神器 Clash Verge Rev，手把手教你订阅导入、TUN 虚拟网卡接管与规则分流。",
     proCon: "鹅的直白点评：别再死守着已经停止维护的旧版 CFW 了！基于 Mihomo 内核的 Clash Verge Rev 才是桌面端的新王者，内存更低、TUN 模式一键开启、防 DNS 污染。",
     gooseScore: 5,
-    content: `【Windows / Mac 客户端配置教程：Clash Verge Rev 核心使用与订阅自动分流指南】
+    content: `【Clash Verge Rev 配置教程：Win/Mac 客户端与订阅分流指南】
 
 一、软件获取与安装避坑：
 • GitHub 官方仓库下载，防止第三方木马。
@@ -833,11 +833,11 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
     file: "posts/post-09-protocol-benchmark-hysteria2-reality.md",
     date: "2026.10",
     cat: "tech",
-    title: "主流翻墙协议横评：Hysteria 2、VLESS-Reality 与 Shadowsocks 在弱网环境下的抗封锁表现",
+    title: "主流翻墙协议横评：Hysteria 2、Reality 与 SS 弱网抗封锁实测",
     summary: "拒绝裸奔与盲目神话！硬核拆解传统 TCP、Reality 偷取 TLS 证书与 Hy2 基于 QUIC/UDP 暴力发包机制，提供 Sing-box/Clash 节点配置示例。",
     proCon: "鹅的直白点评：别再以为 SS 协议能在 2026 年的公网上裸奔了！但在高丢包弱网下，盲目拥抱 Hy2 也可能被部分地区运营商粗暴 QoS 限速。理解基于 TCP 的 Reality 伪装与基于 UDP 的 Hy2 暴力发包，才能飞得最稳。",
     gooseScore: 5,
-    content: `【主流翻墙协议横评：Hysteria 2、VLESS-Reality 与 Shadowsocks 在弱网环境下的抗封锁表现】
+    content: `【主流翻墙协议横评：Hysteria 2、Reality 与 SS 弱网抗封锁实测】
 
 一、三大协议底层机制拆解
 1. Shadowsocks (SS-2022)：基于 TCP，适合物理专线 (IPLC/IEPL)，开销极低。
@@ -914,11 +914,11 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
     file: "posts/post-06-streaming-unlock-guide.md",
     date: "2026.10",
     cat: "speed",
-    title: "2026 流媒体解锁完全指南：Netflix 非自制剧、Disney+ 与 HBO 落地节点体检",
+    title: "2026 流媒体解锁指南：Netflix 非自制剧与 Disney+ 落地节点体检",
     summary: "拒绝只给看自制剧的假解锁！揭秘流媒体 IP 降级防线与 DNS 住宅重定向技术，实操 Clash 影音策略组，体检 4 家 4K 秒开老牌航线。",
     proCon: "鹅的直白点评：许多机场打着全解 Netflix 的招牌，结果只能看怪奇物语！想追跨国非自制剧，落地节点必须具备原生 IP DNS 住宅重定向能力。",
     gooseScore: 5,
-    content: `【2026 流媒体解锁完全指南：Netflix 非自制剧、Disney+ 与 HBO 落地节点体检】
+    content: `【2026 流媒体解锁指南：Netflix 非自制剧与 Disney+ 落地节点体检】
 
 一、版权检测大揭秘：自制剧 vs 非自制剧
 • 自制剧 (Originals)：Netflix 独家版权，审查宽松，普通机房 IP 也可看。
@@ -939,11 +939,11 @@ Netflix、Disney+、YouTube Premium、Hulu 等流媒体平台拥有极其严格�
     file: "posts/post-05-chatgpt-claude-anti-ban-guide.md",
     date: "2026.10",
     cat: "tech",
-    title: "ChatGPT / Claude 官方防封禁指南：原生住宅 IP、机房 IP 与防 1020 报错全解析",
+    title: "ChatGPT 与 Claude 防封指南：住宅/机房 IP 差异与 1020 报错解析",
     summary: "别再怀疑账号风水不好！拆解 Cloudflare 风控拦截与 MaxMind 欺诈评分，实操 Clash Verge Rev 独立 AI 策略组与分流规则，实测 4 家 AI 生产力专线。",
     proCon: "鹅的直白点评：明明买的是正版 Plus/Team 订阅，却天天遇到 1020 报错？罪魁祸首就是你用的节点 IP 早就被上万人揉捏烂了！AI 厂商的风控算法专门盯着数据中心广播 IP 砍。",
     gooseScore: 5,
-    content: `【ChatGPT / Claude 官方防封禁指南：原生住宅 IP、机房 IP 与防 1020 报错全解析】
+    content: `【ChatGPT 与 Claude 防封指南：住宅/机房 IP 差异与 1020 报错解析】
 
 一、风控机制拆解：OpenAI 与 Claude 如何抓到你？
 1. 机房广播 IP (IDC)：极高风险，Cloudflare 集中拦截，报 Error 1020。

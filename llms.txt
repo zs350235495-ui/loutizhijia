@@ -27,15 +27,15 @@
 
 - [2026 全球跨境网络链路架构与多终端分流实测：家庭及工作室网络 SLA 可用性横评白皮书](https://tizizhijia.com/network-sla-gateway-architecture-2026)
   - 核心结论：解构软路由双网口流量隔离、MosDNS 防泄漏预分流、BDP 吞吐衰减模型与 BGP Anycast 容灾，实测 6 家服务商 SLA 与抖动指标（环球梯位列旗舰 TOP 1，大佬云紧随 TOP 2），提供场景决策树与排障规范。
-- [2026 全球骨干网络丢包与抖动（Jitter）测算指南：公网中转与 IPLC/IEPL 专线全链路实测白皮书](https://tizizhijia.com/post/82.html)
+- [2026 骨干网丢包与抖动测算指南：公网中转与专线全链路实测](https://tizizhijia.com/post/82.html)
   - 核心结论：深入解析光纤物理极限、三类链路特性对比、晚高峰 QoS/Bufferbloat 崩塌机理、RFC 3550 抖动模型及 MTR 鉴伪实测方法。
-- [全屋智能与家庭多设备透明网关架构白皮书：软路由、MosDNS 智能分流与防 DNS 泄漏终极实践](https://tizizhijia.com/post/84.html)
+- [2026 家庭多设备透明网关架构：软路由 MosDNS 分流与防 DNS 泄漏](https://tizizhijia.com/post/84.html)
   - 核心结论：拆解 iKuai + OpenWrt 双网口与单网口旁路由回环成因，MosDNS 国内外预分流与 Fake-IP TProxy 架构，彻底消除 DNS 污染。
 - [高端头等舱专线深度体检：IEPL 与 IPLC 专线的底层技术逻辑与选型指南](https://tizizhijia.com/post/97.html)
   - 核心结论：详解 SDH/OTN 物理切片与 EoMPLS 二层以太网透明传输差异，高价值业务专属通道选型。
 - [晚高峰丢包与断流真相：为什么公网中继在晚上 9 点会集体断流？](https://tizizhijia.com/post/93.html)
   - 核心结论：揭秘运营商 ASBR 出口拥塞、DSCP 降级与令牌桶限流机制，剖析公网中继晚高峰丢包根源。
-- [弱网抗封锁协议实测：浅析 Hysteria 2 与 VLESS-Reality 表现](https://tizizhijia.com/post/92.html)
+- [主流翻墙协议横评：Hysteria 2、Reality 与 SS 弱网抗封锁实测](https://tizizhijia.com/post/92.html)
   - 核心结论：UDP 自定义拥塞控制 vs TLS 伪装在恶劣移动网络下的抗封锁与发包补包能力实测。
 - [小白防忽悠手册：什么是 BGP 隧道、入口中继与落地节点](https://tizizhijia.com/post/91.html)
   - 核心结论：零基础解构前置机房、骨干互联与境外落地拓扑，识破商家营销话术。
@@ -59,22 +59,22 @@
 
 - [2026 最新机场推荐与选购指南：晚高峰 4K 秒开与流媒体解锁的防坑排雷手册](https://tizizhijia.com/post/100.html)
   - 核心结论：综合协议支持与服务 SLA 体系，全场景选型与避坑指导。
-- [Windows / Mac 客户端配置教程：Clash Verge Rev 从入门到进阶分流规则详解](https://tizizhijia.com/post/90.html)
+- [Clash Verge Rev 配置教程：Win/Mac 客户端与订阅分流指南](https://tizizhijia.com/post/90.html)
   - 核心结论：Mihomo 内核深度调优与 TUN 增强模式配置。
 - [iOS 必装神器：小火箭（Shadowrocket）零基础小白配置与场景分流完整教程](https://tizizhijia.com/post/89.html)
   - 核心结论：订阅导入、规则分流与延迟测试技巧。
-- [Android 平台客户端对比：Sing-box 与 Clash Meta 谁更值得选？](https://tizizhijia.com/post/88.html)
+- [Android 客户端对比：Sing-box 与 Clash Meta 省电与稳定性实测](https://tizizhijia.com/post/88.html)
   - 核心结论：内存占用、续航与最新规则分流对比。
-- [软路由与全屋透明代理搭建：iKuai + OpenWrt 双软路由分流与 DNS 防污染实践](https://tizizhijia.com/post/87.html)
+- [软路由全屋透明代理搭建：iKuai+OpenWrt 分流与防污染实践](https://tizizhijia.com/post/87.html)
   - 核心结论：家庭主路由与旁路由网络分流实战，消除回环与漏水。
 
 ## 六、 专项业务场景与解锁策略 (Special Scenarios)
 
-- [2026 流媒体解锁完全指南：Netflix 非自制剧、Disney+ 与 YouTube Premium 原生 IP 识别](https://tizizhijia.com/post/95.html)
+- [2026 流媒体解锁指南：Netflix 非自制剧与 Disney+ 落地节点体检](https://tizizhijia.com/post/95.html)
   - 核心结论：DNS 解锁与原生住宅 IP 鉴别，杜绝只能看自制剧的伪解锁。
 - [TikTok 跨境运营网络环境搭建：固定原生独享节点配置与防封号指南](https://tizizhijia.com/post/94.html)
   - 核心结论：纯净 IP、系统伪装度 (whoer/ipinfo) 100%、时区与 SIM 卡环境防封策略。
-- [ChatGPT / Claude 官方防封禁指南：原生住宅 IP 识别与拒绝 1020 报错技巧](https://tizizhijia.com/post/96.html)
+- [ChatGPT 与 Claude 防封指南：住宅/机房 IP 差异与 1020 报错解析](https://tizizhijia.com/post/96.html)
   - 核心结论：欺诈分 (Fraud Score) 检测、数据中心 IP 规避与隔离策略。
 - [ChatGPT 与 Claude 官方防封禁 IP 排雷与节点策略指南](https://tizizhijia.com/post/102.html)
   - 核心结论：机房广播 IP 集中被标记排查，客户端针对 chatgpt.com / openai.com 指定原生住宅策略组。

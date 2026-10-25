@@ -187,12 +187,17 @@ function buildArticlePageHTML(item, markdownText, allFeedData = []) {
     </section>
   ` : '';
 
+  const fullTitle = `${item.title} | 梯子之家 · 跑道上有只鹅`;
+  if (fullTitle.length > 65) {
+    console.warn(`⚠️ 警告: 文章 ${item.id} 标题长度 (${fullTitle.length}) 接近或超过 65 字符限制: ${fullTitle}`);
+  }
+
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${item.title} | 梯子之家 · 跑道上有只鹅</title>
+  <title>${fullTitle}</title>
   <meta name="description" content="${(item.summary || '').replace(/"/g, '&quot;')}">
   <meta name="keywords" content="${item.title}, 梯子之家, tizizhijia, 跑道上有只鹅, IPLC专线, 节点测速, 晚高峰丢包, 科学上网, 软路由分流">
   <link rel="canonical" href="${postUrl}">

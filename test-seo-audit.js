@@ -32,9 +32,12 @@ assert(indexHtml.includes('href="/favicon.svg"'), 'index.html Favicon 使用根�
 assert(!indexHtml.includes('href="post/'), 'index.html 杜绝了相对路径 post/*.html');
 assert(indexHtml.includes('href="/post/82.html"'), 'index.html 底层内链使用根绝对路径');
 
-// 标题数量检查
+// 标题数量检查与 title 长度校验
 const indexH1Matches = indexHtml.match(/<h1[^>]*>/gi) || [];
 assert(indexH1Matches.length === 1, 'index.html 严格仅包含 1 个 <h1> 顶级标题 (当前: ' + indexH1Matches.length + ')');
+const indexTitleMatch = indexHtml.match(/<title>([^<]+)<\/title>/i);
+const indexTitleText = indexTitleMatch ? indexTitleMatch[1] : '';
+assert(indexTitleText.length > 0 && indexTitleText.length <= 65, 'index.html title 长度 (' + indexTitleText.length + ') 严格 <= 65 字符');
 
 // 2. 检查 404.html
 const errHtml = fs.readFileSync('404.html', 'utf8');
@@ -102,6 +105,11 @@ postFiles.forEach(file => {
   
   // 内链推荐网格
   assert(content.includes('ssg-related-section'), file + ' 包含相关文章内链推荐网格');
+
+  // title 长度严格符合 Bing/Google 标准 (必须 <= 65 字符，杜绝 > 70 字符警告)
+  const titleMatch = content.match(/<title>([^<]+)<\/title>/i);
+  const titleText = titleMatch ? titleMatch[1] : '';
+  assert(titleText.length > 0 && titleText.length <= 65, file + ' title 长度 (' + titleText.length + ') 严格 <= 65 字符');
 });
 
 // 6. 检查 network-sla-gateway-architecture-2026.html
@@ -121,6 +129,9 @@ assert(slaContent.includes('资深网络架构巡检小组'), '新白皮书作�
 assert(slaContent.includes('<meta property="og:title"'), '新白皮书具备 og:title');
 assert(slaContent.includes('<meta property="og:image"'), '新白皮书具备 og:image');
 assert(slaContent.includes('<meta name="twitter:card" content="summary_large_image">'), '新白皮书具备 twitter:card');
+const slaTitleMatch = slaContent.match(/<title>([^<]+)<\/title>/i);
+const slaTitleText = slaTitleMatch ? slaTitleMatch[1] : '';
+assert(slaTitleText.length > 0 && slaTitleText.length <= 65, '新白皮书 title 长度 (' + slaTitleText.length + ') 严格 <= 65 字符');
 assert(slaContent.includes('ssg-related-section'), '新白皮书包含相关文章内链推荐网格');
 assert(!slaContent.includes('?aff='), '新白皮书严禁包含商业返利参数 ?aff=');
 assert(!slaContent.includes('?ref='), '新白皮书严禁包含商业返利参数 ?ref=');

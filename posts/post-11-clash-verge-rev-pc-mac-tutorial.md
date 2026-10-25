@@ -1,4 +1,4 @@
-# Windows / Mac 客户端配置教程：Clash Verge Rev 核心使用与订阅自动分流指南
+# Clash Verge Rev 配置教程：Win/Mac 客户端与订阅分流指南
 
 > **关键词**: Clash Verge教程 | Clash订阅转换 | 分流规则设置 | PC端翻墙 | Meta内核
 > **发布日期**: 2026年10月  
