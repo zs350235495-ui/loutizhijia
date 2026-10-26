@@ -222,30 +222,19 @@
     
 
       <article class="article-prose-body">
-        <blockquote class="prose-blockquote"><strong>关键词</strong>: Hysteria 2节点 | VLESS Reality配置 | 抗封锁协议 | 弱网加速 | QUIC拥塞控制</blockquote>
-<blockquote class="prose-blockquote"><strong>发布日期</strong>: 2026年10月  </blockquote>
-<blockquote class="prose-blockquote"><strong>作者</strong>: 跑道上有只鹅 (站长鹅)</blockquote>
-
+        <blockquote class="prose-blockquote"><strong>关键词</strong>: Hysteria 2节点 | VLESS Reality配置 | 抗封锁协议 | 弱网加速 | QUIC拥塞控制</blockquote>
+<blockquote class="prose-blockquote"><strong>发布日期</strong>: 2026年10月  </blockquote>
+<blockquote class="prose-blockquote"><strong>作者</strong>: 跑道上有只鹅 (站长鹅)</blockquote>
 <hr class="prose-hr">
-
 <div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"></div></div>
-<blockquote class="prose-blockquote">别再以为 ShadowSocks (SS) 协议能在 2026 年的公网上裸奔了！老旧协议在 GFW 的 AI 卷积神经网络扫描面前就像穿透明雨衣。但在高丢包的移动宽带或公网弱网下，盲目拥抱 Hysteria 2 也可能被部分地区的运营商粗暴 QoS 限速。协议没有神话，理解基于 TCP 的 Reality 伪装与基于 UDP 的 Hy2 暴力发包，才能在不同跑道上飞得最稳！</blockquote>
-
+<blockquote class="prose-blockquote">别再以为 ShadowSocks (SS) 协议能在 2026 年的公网上裸奔了！老旧协议在 GFW 的 AI 卷积神经网络扫描面前就像穿透明雨衣。但在高丢包的移动宽带或公网弱网下，盲目拥抱 Hysteria 2 也可能被部分地区的运营商粗暴 QoS 限速。协议没有神话，理解基于 TCP 的 Reality 伪装与基于 UDP 的 Hy2 暴力发包，才能在不同跑道上飞得最稳！</blockquote>
 <hr class="prose-hr">
-
 <h2 id="sec-10" class="prose-h2">序言：协议演进史与技术迷雾</h2>
-
-在科学上网技术发展的十几年中，代理协议经历了几次划时代的迭代：<ol class="prose-ol"><li class="prose-li-num"><strong>第一代：Shadowsocks / Trojan / VMess (TCP 基础协议)</strong></li></ol><ol class="prose-ol"><li class="prose-li-num"><strong>第二代：VLESS + XTLS / gRPC (握手优化与去特征化)</strong></li></ol><ol class="prose-ol"><li class="prose-li-num"><strong>第三代：VLESS-Reality (偷取真实 TLS 证书) & Hysteria 2 (基于 QUIC/UDP 的拥塞控制)</strong></li></ol>
-
-许多飞行员在面对客户端里密密麻麻的协议选项（SS, VMess, VLESS-Reality, Hysteria 2, Tuic v5）时，往往一头雾水。
-
-为什么有的协议在晚高峰能强行拉满速度？为什么有的协议连接极其稳定但速度上限不高？本篇文章中，鹅将带你硬核拆解 <strong>Shadowsocks、VLESS-Reality 与 Hysteria 2</strong> 三大主流协议的技术底层逻辑、抗封锁原理及弱网表现。
-
+<p class="prose-p">在科学上网技术发展的十几年中，代理协议经历了几次划时代的迭代：<br><ol class="prose-ol"><li class="prose-li-num"><strong>第一代：Shadowsocks / Trojan / VMess (TCP 基础协议)</strong></li><br><li class="prose-li-num"><strong>第二代：VLESS + XTLS / gRPC (握手优化与去特征化)</strong></li><br><li class="prose-li-num"><strong>第三代：VLESS-Reality (偷取真实 TLS 证书) & Hysteria 2 (基于 QUIC/UDP 的拥塞控制)</strong></li><br></ol><br>许多飞行员在面对客户端里密密麻麻的协议选项（SS, VMess, VLESS-Reality, Hysteria 2, Tuic v5）时，往往一头雾水。</p>
+<p class="prose-p">为什么有的协议在晚高峰能强行拉满速度？为什么有的协议连接极其稳定但速度上限不高？本篇文章中，鹅将带你硬核拆解 <strong>Shadowsocks、VLESS-Reality 与 Hysteria 2</strong> 三大主流协议的技术底层逻辑、抗封锁原理及弱网表现。</p>
 <hr class="prose-hr">
-
 <h2 id="sec-11" class="prose-h2">一、 硬核原理拆解：三大协议的物理底层机制</h2>
-
-<pre class="code-block"><code>
+<p class="prose-p"><pre class="code-block"><code>
 【三大协议握手与传输架构对比】:
 
 Shadowsocks (传统 TCP):
@@ -256,35 +245,30 @@ VLESS-Reality (TCP + TLS 伪装):
 
 Hysteria 2 (UDP + 自定义拥塞控制):
 客户端 ──&gt; [UDP 暴力发包 + BBR 拥塞加速] ──&gt; 绕过 TCP 丢包重传等待 ──&gt; 弱网跑满带宽
-</code></pre>
-
-<h3 id="sec-1" class="prose-h3">1. Shadowsocks (SS / SS-2022)</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>底层传输</strong>: 基于标准 TCP 协议。</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>核心机制</strong>: 使用对称加密（AEAD 算法，如 <code class="inline-code">aes-128-gcm</code> 或 <code class="inline-code">222-blake3</code>）保护 payload。</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>致命弱点</strong>: 在直连公网环境下，GFW 能够通过主动探测（Active Probing）和重放攻击（Replay Attack）识别出节点的响应特征，从而批量阻断 IP。但在<strong>专线（IPLC/IEPL）内网</strong>中，由于不过 GFW，Shadowsocks 依然拥有最低的 CPU 开销与极高的传输效率。</li></ul>
-
-<h3 id="sec-2" class="prose-h3">2. VLESS-Reality (Xray 内核)</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>底层传输</strong>: 基于 TCP + TLS 1.3 协议。</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>核心机制</strong>: 彻底废弃了服务端自行配置域名证书的繁琐流程，转而<strong>“偷取（Borrow）”真实合规大厂网站的 TLS 证书</strong>（如 <code class="inline-code">apple.com</code>、<code class="inline-code">microsoft.com</code>）。</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>抗封锁表现</strong>: 在 GFW 眼中，你的所有流量与访问苹果/微软官方服务器的合法 HTTPS 流量完全一致。因为 GFW 不敢贸然切断苹果或微软的服务器 IP，所以 Reality 具备<strong>近乎无解的公网抗封锁生存能力</strong>。</li></ul>
-
-<h3 id="sec-3" class="prose-h3">3. Hysteria 2 (Hy2 / 基于 QUIC)</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>底层传输</strong>: 基于 UDP 协议（修改版 QUIC 协议）。</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>核心机制</strong>: 传统 TCP 协议遇到 10% 的丢包时，会强行将发送窗口减半并等待重传，导致网速断崖式下跌。而 Hysteria 2 采用了自定义的拥塞控制算法，<strong>在丢包率高达 30% 的弱网下，依然暴力持续发包</strong>，将物理频宽强行拉满。</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>潜在风险</strong>: 部分地区的运营商（如部分省份的移动/联通）对 UDP 协议实施了极其严苛的 <strong>QoS 限速或 UDP 阻断</strong>。如果在这些地区使用 Hy2，可能会遭遇断流或被直接丢弃 UDP 封包。</li></ul>
-
+</code></pre></p>
+<h3 id="sec-1" class="prose-h3">1. Shadowsocks (SS / SS-2022)</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>底层传输</strong>: 基于标准 TCP 协议。</li>
+<li class="prose-li-disc"><strong>核心机制</strong>: 使用对称加密（AEAD 算法，如 <code class="inline-code">aes-128-gcm</code> 或 <code class="inline-code">222-blake3</code>）保护 payload。</li>
+<li class="prose-li-disc"><strong>致命弱点</strong>: 在直连公网环境下，GFW 能够通过主动探测（Active Probing）和重放攻击（Replay Attack）识别出节点的响应特征，从而批量阻断 IP。但在<strong>专线（IPLC/IEPL）内网</strong>中，由于不过 GFW，Shadowsocks 依然拥有最低的 CPU 开销与极高的传输效率。</li>
+</ul>
+<h3 id="sec-2" class="prose-h3">2. VLESS-Reality (Xray 内核)</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>底层传输</strong>: 基于 TCP + TLS 1.3 协议。</li>
+<li class="prose-li-disc"><strong>核心机制</strong>: 彻底废弃了服务端自行配置域名证书的繁琐流程，转而<strong>“偷取（Borrow）”真实合规大厂网站的 TLS 证书</strong>（如 <code class="inline-code">apple.com</code>、<code class="inline-code">microsoft.com</code>）。</li>
+<li class="prose-li-disc"><strong>抗封锁表现</strong>: 在 GFW 眼中，你的所有流量与访问苹果/微软官方服务器的合法 HTTPS 流量完全一致。因为 GFW 不敢贸然切断苹果或微软的服务器 IP，所以 Reality 具备<strong>近乎无解的公网抗封锁生存能力</strong>。</li>
+</ul>
+<h3 id="sec-3" class="prose-h3">3. Hysteria 2 (Hy2 / 基于 QUIC)</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>底层传输</strong>: 基于 UDP 协议（修改版 QUIC 协议）。</li>
+<li class="prose-li-disc"><strong>核心机制</strong>: 传统 TCP 协议遇到 10% 的丢包时，会强行将发送窗口减半并等待重传，导致网速断崖式下跌。而 Hysteria 2 采用了自定义的拥塞控制算法，<strong>在丢包率高达 30% 的弱网下，依然暴力持续发包</strong>，将物理频宽强行拉满。</li>
+<li class="prose-li-disc"><strong>潜在风险</strong>: 部分地区的运营商（如部分省份的移动/联通）对 UDP 协议实施了极其严苛的 <strong>QoS 限速或 UDP 阻断</strong>。如果在这些地区使用 Hy2，可能会遭遇断流或被直接丢弃 UDP 封包。</li>
+</ul>
 <hr class="prose-hr">
-
 <h2 id="sec-12" class="prose-h2">二、 弱网环境与抗封锁表现横向对比</h2>
-
-在晚高峰 (21:00) 丢包率 20%、RTT 延迟 150ms 的模拟弱网环境下，我们对三大协议进行了打点与测试：
-
-| 对比维度 | Shadowsocks (SS-2022) | VLESS-Reality | Hysteria 2 (Hy2) |
-| :--- | :--- | :--- | :--- |
-| <strong>抗 GFW 主动探测</strong> | 🔴 弱（仅限专线使用） | 🟢 <strong>极强 (偷取大厂 TLS)</strong> | 🟠 中等（依赖 UDP 混淆） |
-| <strong>高丢包环境吞吐量</strong> | 🔴 差 (TCP 降速严重) | 🟠 中等 (标准 TCP 机制) | 🟢 <strong>极强 (UDP 暴力补包)</strong> |
-| <strong>运营商 QoS 抵抗</strong> | 🟠 一般 | 🟢 <strong>极强 (伪装标准 HTTPS)</strong> | 🔴 差 (易受部分地区 UDP QoS 限速) |
-| <strong>设备 CPU/电量消耗</strong> | 🟢 <strong>极低</strong> | 🟠 中等 | 🔴 较高 (UDP 高频打点) |
-| <strong>最佳应用场景</strong> | <strong>IPLC / IEPL 物理专线</strong> | <strong>公网直连 / 应急抗封锁</strong> | <strong>高丢包移动宽带 / 弱网拉速</strong> |
-
+<p class="prose-p">在晚高峰 (21:00) 丢包率 20%、RTT 延迟 150ms 的模拟弱网环境下，我们对三大协议进行了打点与测试：</p>
+<div class="table-responsive-wrapper"><table class="prose-table"><thead><tr><th>对比维度</th><th>Shadowsocks (SS-2022)</th><th>VLESS-Reality</th><th>Hysteria 2 (Hy2)</th></tr></thead><tbody><tr><td><strong>抗 GFW 主动探测</strong></td><td>🔴 弱（仅限专线使用）</td><td>🟢 <strong>极强 (偷取大厂 TLS)</strong></td><td>🟠 中等（依赖 UDP 混淆）</td></tr><tr><td><strong>高丢包环境吞吐量</strong></td><td>🔴 差 (TCP 降速严重)</td><td>🟠 中等 (标准 TCP 机制)</td><td>🟢 <strong>极强 (UDP 暴力补包)</strong></td></tr><tr><td><strong>运营商 QoS 抵抗</strong></td><td>🟠 一般</td><td>🟢 <strong>极强 (伪装标准 HTTPS)</strong></td><td>🔴 差 (易受部分地区 UDP QoS 限速)</td></tr><tr><td><strong>设备 CPU/电量消耗</strong></td><td>🟢 <strong>极低</strong></td><td>🟠 中等</td><td>🔴 较高 (UDP 高频打点)</td></tr><tr><td><strong>最佳应用场景</strong></td><td><strong>IPLC / IEPL 物理专线</strong></td><td><strong>公网直连 / 应急抗封锁</strong></td><td><strong>高丢包移动宽带 / 弱网拉速</strong></td></tr></tbody></table></div>
 <hr class="prose-hr">
-
 <h2 id="sec-13" class="prose-h2">三、 实操配置：Sing-box / Clash 协议配置节点示例</h2>
-
 <h3 id="sec-4" class="prose-h3">1. VLESS-Reality 客户端配置 (Sing-box 格式)</h3>
-
-<pre class="code-block"><code>json
+<p class="prose-p"><pre class="code-block"><code>json
 {
   "type": "vless",
   "tag": "🛡️ VLESS-Reality-公网抗封锁",
@@ -306,11 +290,9 @@ Hysteria 2 (UDP + 自定义拥塞控制):
     }
   }
 }
-</code></pre>
-
+</code></pre></p>
 <h3 id="sec-5" class="prose-h3">2. Hysteria 2 客户端配置 (Clash Verge Rev 格式)</h3>
-
-<pre class="code-block"><code>yaml
+<p class="prose-p"><pre class="code-block"><code>yaml
 proxies:
   - name: 🚀 Hysteria2-弱网拉速
     type: hysteria2
@@ -322,43 +304,50 @@ proxies:
     obfs-password: YOUR_OBFS_PASSWORD
     up: 100 Mbps
     down: 500 Mbps
-</code></pre>
-
+</code></pre></p>
 <hr class="prose-hr">
-
 <h2 id="sec-14" class="prose-h2">四、 实测严选：4 家协议匹配度极佳的老牌专线航班推荐</h2>
-
-针对不同协议的使用场景，鹅挑选了以下 4 家在底层协议部署与节点冗余上极其出色的服务商：
-
+<p class="prose-p">针对不同协议的使用场景，鹅挑选了以下 4 家在底层协议部署与节点冗余上极其出色的服务商：</p>
 <hr class="prose-hr">
-
-<h3 id="sec-6" class="prose-h3">1. 环球梯 HuanqiuTi —— 全节点 BGP/专线 + 多协议兼容</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=huanqiuti" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>协议架构</strong>: SS-2022 / VLESS 物理专线</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>适用场景</strong>: 23ms 超低延迟，物理专线内网传输，跑满 500M 宽带</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥14.70 /月起 (<strong>7折专属优惠码：<code class="inline-code">HQ66</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 环球梯在专线内网中采用了极低开销的 Shadowsocks 和 VMess 协议，把宝贵的 CPU 算力全留给了数据吞吐，极低延迟与高吞吐兼得。</div></div>
-
+<h3 id="sec-6" class="prose-h3">1. 环球梯 HuanqiuTi —— 全节点 BGP/专线 + 多协议兼容</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=huanqiuti" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔</a></li>
+<li class="prose-li-disc"><strong>协议架构</strong>: SS-2022 / VLESS 物理专线</li>
+<li class="prose-li-disc"><strong>适用场景</strong>: 23ms 超低延迟，物理专线内网传输，跑满 500M 宽带</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥14.70 /月起 (<strong>7折专属优惠码：<code class="inline-code">HQ66</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 环球梯在专线内网中采用了极低开销的 Shadowsocks 和 VMess 协议，把宝贵的 CPU 算力全留给了数据吞吐，极低延迟与高吞吐兼得。</div></div>
 <hr class="prose-hr">
-
-<h3 id="sec-7" class="prose-h3">2. 闪电鼠 Shandianshu —— IEPL 专线与全协议防封</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=shandianshu" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（闪电鼠 Shandianshu 官网直达 (专属7折码 sds88)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>协议架构</strong>: IEPL 内网专线 + 智能分流协议</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>适用场景</strong>: 针对 TikTok、OpenAI 和跨国办公进行了完整的协议加密伪装</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥15.40 /月起 (<strong>7折专属优惠码：<code class="inline-code">sds88</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 自研客户端内置协议切换机制，能够根据你的本地网络类型（电信/联通/移动）自动选择最匹配的传输协议。</div></div>
-
+<h3 id="sec-7" class="prose-h3">2. 闪电鼠 Shandianshu —— IEPL 专线与全协议防封</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=shandianshu" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（闪电鼠 Shandianshu 官网直达 (专属7折码 sds88)）➔</a></li>
+<li class="prose-li-disc"><strong>协议架构</strong>: IEPL 内网专线 + 智能分流协议</li>
+<li class="prose-li-disc"><strong>适用场景</strong>: 针对 TikTok、OpenAI 和跨国办公进行了完整的协议加密伪装</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥15.40 /月起 (<strong>7折专属优惠码：<code class="inline-code">sds88</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 自研客户端内置协议切换机制，能够根据你的本地网络类型（电信/联通/移动）自动选择最匹配的传输协议。</div></div>
 <hr class="prose-hr">
-
-<h3 id="sec-8" class="prose-h3">3. 神行加速 Shenxing —— Hysteria 2 / VLESS 多协议备用</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=shenxing" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（神行加速 Shenxing 官网直达 (专属7折码 sx0077)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>协议架构</strong>: Hysteria 2 / VLESS-Reality 混合部署</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>适用场景</strong>: 移动宽带高丢包环境或公网弱网冲浪</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">sx0077</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 对于家中是移动宽带、晚高峰丢包严重的飞行员，神行加速提供的 Hy2 节点能瞬间把卡顿的网页重新拉飞。</div></div>
-
+<h3 id="sec-8" class="prose-h3">3. 神行加速 Shenxing —— Hysteria 2 / VLESS 多协议备用</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=shenxing" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（神行加速 Shenxing 官网直达 (专属7折码 sx0077)）➔</a></li>
+<li class="prose-li-disc"><strong>协议架构</strong>: Hysteria 2 / VLESS-Reality 混合部署</li>
+<li class="prose-li-disc"><strong>适用场景</strong>: 移动宽带高丢包环境或公网弱网冲浪</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">sx0077</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 对于家中是移动宽带、晚高峰丢包严重的飞行员，神行加速提供的 Hy2 节点能瞬间把卡顿的网页重新拉飞。</div></div>
 <hr class="prose-hr">
-
-<h3 id="sec-9" class="prose-h3">4. 库洛米 Kuromis —— 深港/苏日专线 + 低延迟 UDP 游戏协议</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=kuromi" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（库洛米 Kuromis 官网直达）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>协议架构</strong>: 深港专线 / 苏日专线 · 自研技术架构</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>适用场景</strong>: 全节点支持 UDP 协议，极低 RTT 游戏加速</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥34.00 /月 (<strong>专属暗号：<code class="inline-code">KURO_BUG</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【平稳滑行 4/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 针对外服游戏（Steam、Apex、Valorant）进行了 UDP 协议底层调优，延迟平稳无掉包。</div></div>
-
+<h3 id="sec-9" class="prose-h3">4. 库洛米 Kuromis —— 深港/苏日专线 + 低延迟 UDP 游戏协议</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=kuromi" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（库洛米 Kuromis 官网直达）➔</a></li>
+<li class="prose-li-disc"><strong>协议架构</strong>: 深港专线 / 苏日专线 · 自研技术架构</li>
+<li class="prose-li-disc"><strong>适用场景</strong>: 全节点支持 UDP 协议，极低 RTT 游戏加速</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥34.00 /月 (<strong>专属暗号：<code class="inline-code">KURO_BUG</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【平稳滑行 4/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 针对外服游戏（Steam、Apex、Valorant）进行了 UDP 协议底层调优，延迟平稳无掉包。</div></div>
 <hr class="prose-hr">
-
 <div class="callout-box callout-warning"><div class="callout-header"><span class="callout-icon">🛡️</span><span class="callout-title">避坑安全守则：</span></div><div class="callout-text"></div></div>
-<blockquote class="prose-blockquote">1. <strong>不要迷信“单一万能协议”</strong>：公网直连用 VLESS-Reality 最抗封，移动高丢包用 Hysteria 2 最拉速，物理专线用 Shadowsocks 最省电。根据网络环境灵活切路才是硬道理！  </blockquote>
-<blockquote class="prose-blockquote">2. <strong>坚决月付保平安</strong>：即便协议再先进，机场服务器机房的物理稳定性依然是第一位的。坚守<strong>月付原则</strong>，随时掌握主动权。  </blockquote>
+<blockquote class="prose-blockquote">1. <strong>不要迷信“单一万能协议”</strong>：公网直连用 VLESS-Reality 最抗封，移动高丢包用 Hysteria 2 最拉速，物理专线用 Shadowsocks 最省电。根据网络环境灵活切路才是硬道理！  </blockquote>
+<blockquote class="prose-blockquote">2. <strong>坚决月付保平安</strong>：即便协议再先进，机场服务器机房的物理稳定性依然是第一位的。坚守<strong>月付原则</strong>，随时掌握主动权。  </blockquote>
 <blockquote class="prose-blockquote">3. <strong>随时查阅跑道心跳</strong>：查看全站 30 家跑道的实时协议状态与优惠码，请随时前往站内 <a href="#/flights" class="prose-link">航班推荐榜</a>！</blockquote>
       </article>
 
