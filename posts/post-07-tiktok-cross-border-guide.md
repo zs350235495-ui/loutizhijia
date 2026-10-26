@@ -90,6 +90,7 @@ TikTok 的安全反作弊系统会通过客户端 API 采集设备的数十项�
 ---
 
 ### 1. 闪电鼠 Shandianshu —— IEPL 专线与 TikTok 运营专项优化
+- **官方直达通道**: [🛫 办理登机牌（闪电鼠 Shandianshu 官网直达 (专属7折码 sds88)）➔](/go.html?id=shandianshu)
 
 - **线路类型**: 全线 IEPL 物理专线
 - **TikTok 适用性**: 部署独立 TikTok 住宅 IP 策略组，解禁原生 IP
@@ -101,6 +102,7 @@ TikTok 的安全反作弊系统会通过客户端 API 采集设备的数十项�
 ---
 
 ### 2. LinkCube 便利店 —— 美/英本土家宽 IP 与防关联首选
+- **官方直达通道**: [🛫 办理登机牌（LinkCube 便利店 官网直达）➔](/go.html?id=linkcube)
 
 - **线路类型**: 北上广 BGP 中转 + 海外本土 ISP 家宽 (AT&T / Virgin)
 - **TikTok 适用性**: 原生本土家宽 IP，适合 TikTok 店铺运营与美区矩阵养号
@@ -112,6 +114,7 @@ TikTok 的安全反作弊系统会通过客户端 API 采集设备的数十项�
 ---
 
 ### 3. 一云梯 —— 独享 IP/独享带宽跨境定制
+- **官方直达通道**: [🛫 办理登机牌（一云梯 官网直达）➔](/go.html?id=yiyunti)
 
 - **线路类型**: 专线中转 · 提供独享 IP 及定制通道
 - **TikTok 适用性**: 支持 TikTok 实时直播带货、高吞吐独享带宽
@@ -123,6 +126,7 @@ TikTok 的安全反作弊系统会通过客户端 API 采集设备的数十项�
 ---
 
 ### 4. 环球梯 HuanqiuTi —— 23ms 低延迟与全节点原生解锁
+- **官方直达通道**: [🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔](/go.html?id=huanqiuti)
 
 - **线路类型**: 全节点 BGP / IPLC 专线优化
 - **TikTok 适用性**: 23ms 低延迟，全节点支持原生 IP 识别

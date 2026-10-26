@@ -123,6 +123,7 @@ proxies:
 ---
 
 ### 1. 环球梯 HuanqiuTi —— 全节点 BGP/专线 + 多协议兼容
+- **官方直达通道**: [🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔](/go.html?id=huanqiuti)
 
 - **协议架构**: SS-2022 / VLESS 物理专线
 - **适用场景**: 23ms 超低延迟，物理专线内网传输，跑满 500M 宽带
@@ -134,6 +135,7 @@ proxies:
 ---
 
 ### 2. 闪电鼠 Shandianshu —— IEPL 专线与全协议防封
+- **官方直达通道**: [🛫 办理登机牌（闪电鼠 Shandianshu 官网直达 (专属7折码 sds88)）➔](/go.html?id=shandianshu)
 
 - **协议架构**: IEPL 内网专线 + 智能分流协议
 - **适用场景**: 针对 TikTok、OpenAI 和跨国办公进行了完整的协议加密伪装
@@ -145,6 +147,7 @@ proxies:
 ---
 
 ### 3. 神行加速 Shenxing —— Hysteria 2 / VLESS 多协议备用
+- **官方直达通道**: [🛫 办理登机牌（神行加速 Shenxing 官网直达 (专属7折码 sx0077)）➔](/go.html?id=shenxing)
 
 - **协议架构**: Hysteria 2 / VLESS-Reality 混合部署
 - **适用场景**: 移动宽带高丢包环境或公网弱网冲浪
@@ -156,6 +159,7 @@ proxies:
 ---
 
 ### 4. 库洛米 Kuromis —— 深港/苏日专线 + 低延迟 UDP 游戏协议
+- **官方直达通道**: [🛫 办理登机牌（库洛米 Kuromis 官网直达）➔](/go.html?id=kuromi)
 
 - **协议架构**: 深港专线 / 苏日专线 · 自研技术架构
 - **适用场景**: 全节点支持 UDP 协议，极低 RTT 游戏加速

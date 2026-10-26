@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>安全起飞导航 - 梯子之家 (tizizhijia.com)</title>
+  <!-- 核心防爬虫/防建索隔离声明：搜索引擎严禁收录此过渡承接页 -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+  <meta name="bingbot" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    :root {
+      --bg-dark: #111318;
+      --bg-card: rgba(22, 28, 43, 0.92);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --runway-yellow: #fbbf24;
+      --runway-orange: #f4a261;
+      --goose-orange: #f97316;
+      --status-green: #34d399;
+      --status-red: #ef4444;
+      --text-main: #ffffff;
+      --text-sub: #94a3b8;
+      --text-dim: #64748b;
+      --font-mono: 'Fira Code', ui-monospace, Menlo, Monaco, Consolas, monospace;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(ellipse at 50% 20%, rgba(251, 191, 36, 0.08) 0%, transparent 60%),
+        linear-gradient(to bottom, rgba(17, 19, 24, 0.95), rgba(17, 19, 24, 0.98));
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .dispatch-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(251, 191, 36, 0.1);
+      max-width: 520px;
+      width: 100%;
+      padding: 36px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+    .dispatch-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--runway-yellow), var(--goose-orange));
+    }
+    .radar-icon-box {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: rgba(251, 191, 36, 0.12);
+      border: 2px solid rgba(251, 191, 36, 0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .radar-pulse {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid var(--runway-yellow);
+      animation: pulseAnim 2s infinite;
+      opacity: 0;
+    }
+    @keyframes pulseAnim {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    .goose-emoji {
+      font-size: 38px;
+    }
+    .dispatch-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .target-airline-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(251, 191, 36, 0.15);
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      color: var(--runway-yellow);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      margin-bottom: 18px;
+    }
+    .dispatch-desc {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .progress-bar-wrap {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .progress-bar-inner {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--runway-yellow), var(--goose-orange));
+      border-radius: 4px;
+      transition: width 0.4s ease;
+    }
+    .action-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn-direct {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px 20px;
+      background: linear-gradient(135deg, var(--runway-yellow) 0%, var(--runway-orange) 100%);
+      color: #111318;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-direct:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(251, 191, 36, 0.35);
+    }
+    .btn-home {
+      display: block;
+      padding: 11px;
+      color: var(--text-dim);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .btn-home:hover {
+      color: var(--text-sub);
+    }
+    .security-notice {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .security-notice svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--status-green);
+    }
+  </style>
+</head>
+<body>
+  <div class="dispatch-card">
+    <div class="radar-icon-box">
+      <div class="radar-pulse"></div>
+      <span class="goose-emoji">🪿</span>
+    </div>
+    <h1 class="dispatch-title" id="pageTitle">跑道塔台起飞调度中...</h1>
+    <div>
+      <span class="target-airline-badge" id="airlineBadge">✈ 识别航线中</span>
+    </div>
+    <p class="dispatch-desc" id="statusDesc">
+      正在通过梯子之家加密信道连接目标航班，系统将在数秒内为您安全重定向...
+    </p>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-inner" id="progressBar"></div>
+    </div>
+
+    <div class="action-group">
+      <a id="directLink" href="#" class="btn-direct" rel="nofollow sponsored noopener noreferrer">
+        立即起飞直达官网 ➔
+      </a>
+      <a href="/" class="btn-home">取消并返回梯子之家首页</a>
+    </div>
+
+    <div class="security-notice">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <span>301 安全隔离保障 · 已附加 nofollow / sponsored 商业标示</span>
+    </div>
+  </div>
+
+  <script>
+    // 30 个机场直连 301 映射矩阵数据库
+    const AIRPORT_REGISTRY = {
+      // 1-15 重点专线与平价航班
+      "1": { name: "环球梯 HuanqiuTi", key: "huanqiuti", target: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" },
+      "huanqiuti": { name: "环球梯 HuanqiuTi", key: "huanqiuti", target: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" },
+      "hq": { name: "环球梯 HuanqiuTi", key: "huanqiuti", target: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" },
+
+      "2": { name: "大佬云 DalaoCloud", key: "dalaoyun", target: "https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa" },
+      "dalaoyun": { name: "大佬云 DalaoCloud", key: "dalaoyun", target: "https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa" },
+      "dly": { name: "大佬云 DalaoCloud", key: "dalaoyun", target: "https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa" },
+
+      "3": { name: "云界线 Yunjiexian", key: "yunjiexian", target: "https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV" },
+      "yunjiexian": { name: "云界线 Yunjiexian", key: "yunjiexian", target: "https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV" },
+      "yjx": { name: "云界线 Yunjiexian", key: "yunjiexian", target: "https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV" },
+
+      "4": { name: "闪电鼠 Shandianshu", key: "shandianshu", target: "https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB" },
+      "shandianshu": { name: "闪电鼠 Shandianshu", key: "shandianshu", target: "https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB" },
+      "sds": { name: "闪电鼠 Shandianshu", key: "shandianshu", target: "https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB" },
+
+      "5": { name: "神行加速 Shenxing", key: "shenxing", target: "https://pps123.shenxingaff.com/#/?code=6tQ7zHUc" },
+      "shenxing": { name: "神行加速 Shenxing", key: "shenxing", target: "https://pps123.shenxingaff.com/#/?code=6tQ7zHUc" },
+
+      "6": { name: "榴莲云 LiulianCloud", key: "liulianyun", target: "https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G" },
+      "liulianyun": { name: "榴莲云 LiulianCloud", key: "liulianyun", target: "https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G" },
+
+      "7": { name: "云图机场 Yuntu", key: "yuntu", target: "https://super.ytjcok.org/#/register?code=poKwFVTv" },
+      "yuntu": { name: "云图机场 Yuntu", key: "yuntu", target: "https://super.ytjcok.org/#/register?code=poKwFVTv" },
+
+      "8": { name: "光年梯 Guangnianti", key: "guangnianti", target: "https://gnt001.gntvipaff.cc/#/?code=PQhPFDhO" },
+      "guangnianti": { name: "光年梯 Guangnianti", key: "guangnianti", target: "https://gnt001.gntvipaff.cc/#/?code=PQhPFDhO" },
+
+      "9": { name: "极连云 Jilianyun", key: "jilianyun", target: "https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO" },
+      "jilianyun": { name: "极连云 Jilianyun", key: "jilianyun", target: "https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO" },
+
+      "10": { name: "鲲鹏加速 Kunpeng", key: "kunpeng", target: "https://kunpengjiasu.com/#/register?code=WPugVZUe" },
+      "kunpeng": { name: "鲲鹏加速 Kunpeng", key: "kunpeng", target: "https://kunpengjiasu.com/#/register?code=WPugVZUe" },
+
+      "11": { name: "可信云 Kexinyun", key: "kexinyun", target: "https://everett7623.kosingaff.com/#/?code=sFKkfEYs" },
+      "kexinyun": { name: "可信云 Kexinyun", key: "kexinyun", target: "https://everett7623.kosingaff.com/#/?code=sFKkfEYs" },
+
+      "12": { name: "快狸快狸 Kuaili", key: "kuaili", target: "https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F" },
+      "kuaili": { name: "快狸快狸 Kuaili", key: "kuaili", target: "https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F" },
+
+      "13": { name: "瞬云 Shunyun", key: "shunyun", target: "https://ddd.jichang.best/#/register?code=nldUZaYc" },
+      "shunyun": { name: "瞬云 Shunyun", key: "shunyun", target: "https://ddd.jichang.best/#/register?code=nldUZaYc" },
+
+      "14": { name: "边缘节点 EdgeNode", key: "edgenode", target: "https://wep.edgenovaaff.com/#/?code=mLLL6h6F" },
+      "edgenode": { name: "边缘节点 EdgeNode", key: "edgenode", target: "https://wep.edgenovaaff.com/#/?code=mLLL6h6F" },
+
+      "15": { name: "速界 SpeedWorld", key: "sujie", target: "https://pygllc.speedworldaff.cc/#/?code=kcoensXG" },
+      "sujie": { name: "速界 SpeedWorld", key: "sujie", target: "https://pygllc.speedworldaff.cc/#/?code=kcoensXG" },
+
+      // 16-30 精选老牌与旗舰航班
+      "16": { name: "FlowerCloud 花云", key: "flowercloud", target: "https://bit.ly/3GXSiVD" },
+      "flowercloud": { name: "FlowerCloud 花云", key: "flowercloud", target: "https://bit.ly/3GXSiVD" },
+
+      "17": { name: "FlyingBird 飞鸟云", key: "flyingbird", target: "https://bit.ly/4oJDydt" },
+      "flyingbird": { name: "FlyingBird 飞鸟云", key: "flyingbird", target: "https://bit.ly/4oJDydt" },
+
+      "18": { name: "YToo 歪兔", key: "ytoo", target: "https://bit.ly/3RMx8wl" },
+      "ytoo": { name: "YToo 歪兔", key: "ytoo", target: "https://bit.ly/3RMx8wl" },
+
+      "19": { name: "Nexitally 奶昔", key: "nexitally", target: "https://bit.ly/479JoLM" },
+      "nexitally": { name: "Nexitally 奶昔", key: "nexitally", target: "https://bit.ly/479JoLM" },
+
+      "20": { name: "FastLink 快连", key: "fastlink", target: "https://bit.ly/3Ju3ie9" },
+      "fastlink": { name: "FastLink 快连", key: "fastlink", target: "https://bit.ly/3Ju3ie9" },
+
+      "21": { name: "AmyTelecom", key: "amytelecom", target: "https://bit.ly/477rsS1" },
+      "amytelecom": { name: "AmyTelecom", key: "amytelecom", target: "https://bit.ly/477rsS1" },
+
+      "22": { name: "ImmTel", key: "immtel", target: "https://bit.ly/479KxD4" },
+      "immtel": { name: "ImmTel", key: "immtel", target: "https://bit.ly/479KxD4" },
+
+      "23": { name: "库洛米 Kuromis", key: "kuromi", target: "https://bit.ly/4aqnWVG" },
+      "kuromi": { name: "库洛米 Kuromis", key: "kuromi", target: "https://bit.ly/4aqnWVG" },
+
+      "24": { name: "LinkCube 便利店", key: "linkcube", target: "https://bit.ly/3B5FN7e" },
+      "linkcube": { name: "LinkCube 便利店", key: "linkcube", target: "https://bit.ly/3B5FN7e" },
+
+      "25": { name: "CreamData 奶油云", key: "creamdata", target: "https://bit.ly/47ZjWtC" },
+      "creamdata": { name: "CreamData 奶油云", key: "creamdata", target: "https://bit.ly/47ZjWtC" },
+
+      "26": { name: "西部数据", key: "westdata", target: "https://bit.ly/475KsQI" },
+      "westdata": { name: "西部数据", key: "westdata", target: "https://bit.ly/475KsQI" },
+
+      "27": { name: "SSRCloud", key: "ssrcloud", target: "https://bit.ly/480VOqI" },
+      "ssrcloud": { name: "SSRCloud", key: "ssrcloud", target: "https://bit.ly/480VOqI" },
+
+      "28": { name: "一云梯", key: "yiyunti", target: "https://bit.ly/4n3YqdU" },
+      "yiyunti": { name: "一云梯", key: "yiyunti", target: "https://bit.ly/4n3YqdU" },
+
+      "29": { name: "Luckin 瑞幸云", key: "luckin", target: "https://bit.ly/49HL2Fz" },
+      "luckin": { name: "Luckin 瑞幸云", key: "luckin", target: "https://bit.ly/49HL2Fz" },
+
+      "30": { name: "泡芙云", key: "paofu", target: "https://bit.ly/480Yp3W" },
+      "paofu": { name: "泡芙云", key: "paofu", target: "https://bit.ly/480Yp3W" }
+    };
+
+    (function() {
+      // 解析参数：支持 ?id=xxx 或 ?target=xxx 或 /go.html#xxx 或 path 解析
+      const params = new URLSearchParams(window.location.search);
+      let queryId = params.get('id') || params.get('target') || params.get('name') || '';
+      
+      if (!queryId && window.location.hash) {
+        queryId = window.location.hash.replace('#', '').trim();
+      }
+
+      const cleanKey = queryId.toLowerCase().trim();
+      const entry = AIRPORT_REGISTRY[cleanKey];
+
+      const pageTitle = document.getElementById('pageTitle');
+      const airlineBadge = document.getElementById('airlineBadge');
+      const statusDesc = document.getElementById('statusDesc');
+      const progressBar = document.getElementById('progressBar');
+      const directLink = document.getElementById('directLink');
+
+      if (entry && entry.target) {
+        pageTitle.textContent = "已获准起飞，正在直达官网...";
+        airlineBadge.textContent = "✈ 目标航班: " + entry.name;
+        statusDesc.textContent = "正在为您安全直达 " + entry.name + " 官方接入跑道，请稍候...";
+        directLink.href = entry.target;
+
+        // 动画并在 300ms 后安全静默跳转
+        setTimeout(() => {
+          progressBar.style.width = "100%";
+        }, 50);
+
+        setTimeout(() => {
+          window.location.replace(entry.target);
+        }, 320);
+      } else {
+        pageTitle.textContent = "⚠️ 未找到指定起飞航班";
+        airlineBadge.textContent = "✈ 航班代码异常: " + (cleanKey || "未知");
+        airlineBadge.style.borderColor = "var(--status-red)";
+        airlineBadge.style.color = "var(--status-red)";
+        statusDesc.textContent = "抱歉，调度台未检索到该服务商代码。3秒后将自动为您返回梯子之家跑道大厅...";
+        directLink.textContent = "立即返回跑道大厅";
+        directLink.href = "/";
+        progressBar.style.background = "var(--status-red)";
+        progressBar.style.width = "100%";
+
+        setTimeout(() => {
+          window.location.replace("/");
+        }, 3000);
+      }
+    })();
+  </script>
+</body>
+</html>

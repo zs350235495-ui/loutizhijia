@@ -92,6 +92,7 @@
 ---
 
 ### 1. Nexitally 奶昔 —— 机场圈天花板级的 Anycast 架构
+- **官方直达通道**: [🛫 办理登机牌（Nexitally 奶昔 官网直达）➔](/go.html?id=nexitally)
 
 - **线路架构**: 高端全线 Anycast 接入 + 火山引擎/移动入口 + 自研 AnyTLS 协议
 - **节点覆盖**: 全球 100+ 顶级机房，全原生 ISP 落地
@@ -104,6 +105,7 @@
 ---
 
 ### 2. FlowerCloud 花云 —— 双入口 IEPL 专线与星链落地
+- **官方直达通道**: [🛫 办理登机牌（FlowerCloud 花云 官网直达）➔](/go.html?id=flowercloud)
 
 - **线路架构**: 联通 + 移动双入口 · 全线 IEPL 物理专线 / 特别接入 Starlink 星链落地
 - **解锁能力**: Starlink 星链 / Disney+ / HBO / Netflix / Claude 全解锁
@@ -115,6 +117,7 @@
 ---
 
 ### 3. YToo 歪兔 —— 第一梯队老牌 Akari 顶级落地
+- **官方直达通道**: [🛫 办理登机牌（YToo 歪兔 官网直达）➔](/go.html?id=ytoo)
 
 - **线路架构**: 第一梯队老牌 IPLC / IEPL 专线 · 接入 Akari / Jinx 优质落地
 - **解锁能力**: Netflix 8K 秒开、DAZN 体育直播、Disney+ 原生解锁
@@ -126,6 +129,7 @@
 ---
 
 ### 4. ImmTel —— Anycast + AIA 架构与极速响应
+- **官方直达通道**: [🛫 办理登机牌（ImmTel 官网直达）➔](/go.html?id=immtel)
 
 - **线路架构**: 第一梯队高端机场 · Anycast + 腾讯云 AIA 骨干加速
 - **节点规模**: 100+ 节点，覆盖全球热门及冷门地区原生 ISP

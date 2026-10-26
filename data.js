@@ -11,7 +11,8 @@ const boardData = [
     price: "￥14.70 /月 (7折码 HQ66)",
     gooseScore: 5,
     promoCode: "HQ66",
-    url: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0"
+    url: "/go.html?id=huanqiuti",
+    affTargetUrl: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0"
   },
   {
     id: 2,
@@ -24,7 +25,8 @@ const boardData = [
     price: "￥16.10 /月 (7折码 dly88)",
     gooseScore: 5,
     promoCode: "dly88",
-    url: "https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa"
+    url: "/go.html?id=dalaoyun",
+    affTargetUrl: "https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa"
   },
   {
     id: 3,
@@ -37,7 +39,8 @@ const boardData = [
     price: "￥15.40 /月 (7折码 yjx888)",
     gooseScore: 5,
     promoCode: "yjx888",
-    url: "https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV"
+    url: "/go.html?id=yunjiexian",
+    affTargetUrl: "https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV"
   },
   {
     id: 4,
@@ -50,7 +53,8 @@ const boardData = [
     price: "￥15.40 /月 (7折码 sds88)",
     gooseScore: 5,
     promoCode: "sds88",
-    url: "https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB"
+    url: "/go.html?id=shandianshu",
+    affTargetUrl: "https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB"
   },
   {
     id: 5,
@@ -63,7 +67,8 @@ const boardData = [
     price: "￥16.10 /月 (7折码 sx0077)",
     gooseScore: 5,
     promoCode: "sx0077",
-    url: "https://pps123.shenxingaff.com/#/?code=6tQ7zHUc"
+    url: "/go.html?id=shenxing",
+    affTargetUrl: "https://pps123.shenxingaff.com/#/?code=6tQ7zHUc"
   },
   {
     id: 6,
@@ -76,7 +81,8 @@ const boardData = [
     price: "￥15.40 /月 (7折码 ll88)",
     gooseScore: 5,
     promoCode: "ll88",
-    url: "https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G"
+    url: "/go.html?id=liulianyun",
+    affTargetUrl: "https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G"
   },
   {
     id: 7,
@@ -89,7 +95,8 @@ const boardData = [
     price: "￥20.00 /月起 (8折码 yt88)",
     gooseScore: 5,
     promoCode: "yt88",
-    url: "https://super.ytjcok.org/#/register?code=poKwFVTv"
+    url: "/go.html?id=yuntu",
+    affTargetUrl: "https://super.ytjcok.org/#/register?code=poKwFVTv"
   },
   {
     id: 8,
@@ -102,7 +109,8 @@ const boardData = [
     price: "￥6.00 /月起 (8折码 GNT80)",
     gooseScore: 5,
     promoCode: "GNT80",
-    url: "https://gnt001.gntvipaff.cc/#/?code=PQhPFDhO"
+    url: "/go.html?id=guangnianti",
+    affTargetUrl: "https://gnt001.gntvipaff.cc/#/?code=PQhPFDhO"
   },
   {
     id: 9,
@@ -115,7 +123,8 @@ const boardData = [
     price: "￥6.40 /月起 (8折码 JLY888)",
     gooseScore: 5,
     promoCode: "JLY888",
-    url: "https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO"
+    url: "/go.html?id=jilianyun",
+    affTargetUrl: "https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO"
   },
   {
     id: 10,
@@ -128,7 +137,8 @@ const boardData = [
     price: "￥12.00 /月起 (暗号 WPugVZUe)",
     gooseScore: 5,
     promoCode: "WPugVZUe",
-    url: "https://kunpengjiasu.com/#/register?code=WPugVZUe"
+    url: "/go.html?id=kunpeng",
+    affTargetUrl: "https://kunpengjiasu.com/#/register?code=WPugVZUe"
   },
   {
     id: 11,
@@ -141,7 +151,8 @@ const boardData = [
     price: "￥8.00 /月起 (暗号 sFKkfEYs)",
     gooseScore: 5,
     promoCode: "sFKkfEYs",
-    url: "https://everett7623.kosingaff.com/#/?code=sFKkfEYs"
+    url: "/go.html?id=kexinyun",
+    affTargetUrl: "https://everett7623.kosingaff.com/#/?code=sFKkfEYs"
   },
   {
     id: 12,
@@ -154,7 +165,8 @@ const boardData = [
     price: "￥8.00 /月起 (8折码 vpsknow)",
     gooseScore: 4,
     promoCode: "vpsknow",
-    url: "https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F"
+    url: "/go.html?id=kuaili",
+    affTargetUrl: "https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F"
   },
   {
     id: 13,
@@ -167,7 +179,8 @@ const boardData = [
     price: "￥10.20 /月起 (85折码 sy888)",
     gooseScore: 5,
     promoCode: "sy888",
-    url: "https://ddd.jichang.best/#/register?code=nldUZaYc"
+    url: "/go.html?id=shunyun",
+    affTargetUrl: "https://ddd.jichang.best/#/register?code=nldUZaYc"
   },
   {
     id: 14,
@@ -180,7 +193,8 @@ const boardData = [
     price: "￥8.10 /月起 (9折码 edge88)",
     gooseScore: 4,
     promoCode: "edge88",
-    url: "https://wep.edgenovaaff.com/#/?code=mLLL6h6F"
+    url: "/go.html?id=edgenode",
+    affTargetUrl: "https://wep.edgenovaaff.com/#/?code=mLLL6h6F"
   },
   {
     id: 15,
@@ -193,7 +207,8 @@ const boardData = [
     price: "￥6.75 /月起 (9折码 2026-99)",
     gooseScore: 4,
     promoCode: "2026-99",
-    url: "https://pygllc.speedworldaff.cc/#/?code=kcoensXG"
+    url: "/go.html?id=sujie",
+    affTargetUrl: "https://pygllc.speedworldaff.cc/#/?code=kcoensXG"
   },
   {
     id: 16,
@@ -206,7 +221,8 @@ const boardData = [
     price: "￥31.20 /月 (8折码 L5R3TJJ8UM)",
     gooseScore: 5,
     promoCode: "L5R3TJJ8UM",
-    url: "https://bit.ly/3GXSiVD"
+    url: "/go.html?id=flowercloud",
+    affTargetUrl: "https://bit.ly/3GXSiVD"
   },
   {
     id: 17,
@@ -219,7 +235,8 @@ const boardData = [
     price: "￥12.75 /月 (85折码 fbzq2685)",
     gooseScore: 5,
     promoCode: "fbzq2685",
-    url: "https://bit.ly/4oJDydt"
+    url: "/go.html?id=flyingbird",
+    affTargetUrl: "https://bit.ly/4oJDydt"
   },
   {
     id: 18,
@@ -232,7 +249,8 @@ const boardData = [
     price: "￥30.60 /月 (85折码 MV3M88XZM)",
     gooseScore: 5,
     promoCode: "MV3M88XZM",
-    url: "https://bit.ly/3RMx8wl"
+    url: "/go.html?id=ytoo",
+    affTargetUrl: "https://bit.ly/3RMx8wl"
   },
   {
     id: 19,
@@ -245,7 +263,8 @@ const boardData = [
     price: "￥55.00 /月",
     gooseScore: 5,
     promoCode: "NEXIT_GOOSE",
-    url: "https://bit.ly/479JoLM"
+    url: "/go.html?id=nexitally",
+    affTargetUrl: "https://bit.ly/479JoLM"
   },
   {
     id: 20,
@@ -258,7 +277,8 @@ const boardData = [
     price: "￥20.00 /月",
     gooseScore: 4,
     promoCode: "zx3c",
-    url: "https://bit.ly/3Ju3ie9"
+    url: "/go.html?id=fastlink",
+    affTargetUrl: "https://bit.ly/3Ju3ie9"
   },
   {
     id: 21,
@@ -271,7 +291,8 @@ const boardData = [
     price: "￥22.70 /月",
     gooseScore: 5,
     promoCode: "AMY_2026",
-    url: "https://bit.ly/477rsS1"
+    url: "/go.html?id=amytelecom",
+    affTargetUrl: "https://bit.ly/477rsS1"
   },
   {
     id: 22,
@@ -284,7 +305,8 @@ const boardData = [
     price: "￥17.30 /月起",
     gooseScore: 5,
     promoCode: "IMM_GOOSE",
-    url: "https://bit.ly/479KxD4"
+    url: "/go.html?id=immtel",
+    affTargetUrl: "https://bit.ly/479KxD4"
   },
   {
     id: 23,
@@ -297,7 +319,8 @@ const boardData = [
     price: "￥34.00 /月",
     gooseScore: 4,
     promoCode: "KURO_BUG",
-    url: "https://bit.ly/4aqnWVG"
+    url: "/go.html?id=kuromi",
+    affTargetUrl: "https://bit.ly/4aqnWVG"
   },
   {
     id: 24,
@@ -310,7 +333,8 @@ const boardData = [
     price: "￥15.00 /月",
     gooseScore: 4,
     promoCode: "LINK_CUBE",
-    url: "https://bit.ly/3B5FN7e"
+    url: "/go.html?id=linkcube",
+    affTargetUrl: "https://bit.ly/3B5FN7e"
   },
   {
     id: 25,
@@ -323,7 +347,8 @@ const boardData = [
     price: "￥29.00 /月",
     gooseScore: 4,
     promoCode: "CREAM_88",
-    url: "https://bit.ly/47ZjWtC"
+    url: "/go.html?id=creamdata",
+    affTargetUrl: "https://bit.ly/47ZjWtC"
   },
   {
     id: 26,
@@ -336,7 +361,8 @@ const boardData = [
     price: "￥20.00 /月",
     gooseScore: 4,
     promoCode: "WEST_DATA",
-    url: "https://bit.ly/475KsQI"
+    url: "/go.html?id=westdata",
+    affTargetUrl: "https://bit.ly/475KsQI"
   },
   {
     id: 27,
@@ -349,7 +375,8 @@ const boardData = [
     price: "￥14.99 /月",
     gooseScore: 4,
     promoCode: "SSR_CLOUD",
-    url: "https://bit.ly/480VOqI"
+    url: "/go.html?id=ssrcloud",
+    affTargetUrl: "https://bit.ly/480VOqI"
   },
   {
     id: 28,
@@ -362,7 +389,8 @@ const boardData = [
     price: "￥15.00 /月",
     gooseScore: 4,
     promoCode: "mx6VTmIv",
-    url: "https://bit.ly/4n3YqdU"
+    url: "/go.html?id=yiyunti",
+    affTargetUrl: "https://bit.ly/4n3YqdU"
   },
   {
     id: 29,
@@ -375,7 +403,8 @@ const boardData = [
     price: "￥20.00 /月",
     gooseScore: 4,
     promoCode: "LUCKIN_20",
-    url: "https://bit.ly/49HL2Fz"
+    url: "/go.html?id=luckin",
+    affTargetUrl: "https://bit.ly/49HL2Fz"
   },
   {
     id: 30,
@@ -388,7 +417,8 @@ const boardData = [
     price: "￥12.00 /月",
     gooseScore: 4,
     promoCode: "POFF_GOOSE",
-    url: "https://bit.ly/480Yp3W"
+    url: "/go.html?id=paofu",
+    affTargetUrl: "https://bit.ly/480Yp3W"
   }
 ];
 

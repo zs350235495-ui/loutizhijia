@@ -1,4 +1,8 @@
-# Cloudflare Pages / Netlify 智能重定向规则
+# ==============================================================================
+# Cloudflare Pages / Netlify 智能 301 重定向规则矩阵
+# ==============================================================================
+
+# 文章与系统历史 URL 兼容
 /post/1.html   /post/100.html    301
 /post/2.html   /post/90.html     301
 /post/1        /post/100.html    301
@@ -6,3 +10,100 @@
 /post/:id      /post/:id.html    301!
 /feed          /feed.xml         301
 /sitemap       /sitemap.xml      301
+
+# ------------------------------------------------------------------------------
+# 全站 AFF 商业推广链接 301 隔离跳转 (支持 key 与 数字 id)
+# ------------------------------------------------------------------------------
+# 环球梯 HuanqiuTi
+/go/huanqiuti    https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0    301
+/go/1     https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0    301
+# 大佬云 DalaoCloud
+/go/dalaoyun    https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa    301
+/go/2     https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa    301
+# 云界线 Yunjiexian
+/go/yunjiexian    https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV    301
+/go/3     https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV    301
+# 闪电鼠 Shandianshu
+/go/shandianshu    https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB    301
+/go/4     https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB    301
+# 神行加速 Shenxing
+/go/shenxing    https://pps123.shenxingaff.com/#/?code=6tQ7zHUc    301
+/go/5     https://pps123.shenxingaff.com/#/?code=6tQ7zHUc    301
+# 榴莲云 LiulianCloud
+/go/liulianyun    https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G    301
+/go/6     https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G    301
+# 云图机场 Yuntu
+/go/yuntu    https://super.ytjcok.org/#/register?code=poKwFVTv    301
+/go/7     https://super.ytjcok.org/#/register?code=poKwFVTv    301
+# 光年梯 Guangnianti
+/go/guangnianti    https://gnt001.gntvipaff.cc/#/?code=PQhPFDhO    301
+/go/8     https://gnt001.gntvipaff.cc/#/?code=PQhPFDhO    301
+# 极连云 Jilianyun
+/go/jilianyun    https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO    301
+/go/9     https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO    301
+# 鲲鹏加速 Kunpeng
+/go/kunpeng    https://kunpengjiasu.com/#/register?code=WPugVZUe    301
+/go/10     https://kunpengjiasu.com/#/register?code=WPugVZUe    301
+# 可信云 Kexinyun
+/go/kexinyun    https://everett7623.kosingaff.com/#/?code=sFKkfEYs    301
+/go/11     https://everett7623.kosingaff.com/#/?code=sFKkfEYs    301
+# 快狸快狸 Kuaili
+/go/kuaili    https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F    301
+/go/12     https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F    301
+# 瞬云 Shunyun
+/go/shunyun    https://ddd.jichang.best/#/register?code=nldUZaYc    301
+/go/13     https://ddd.jichang.best/#/register?code=nldUZaYc    301
+# 边缘节点 EdgeNode
+/go/edgenode    https://wep.edgenovaaff.com/#/?code=mLLL6h6F    301
+/go/14     https://wep.edgenovaaff.com/#/?code=mLLL6h6F    301
+# 速界 SpeedWorld
+/go/sujie    https://pygllc.speedworldaff.cc/#/?code=kcoensXG    301
+/go/15     https://pygllc.speedworldaff.cc/#/?code=kcoensXG    301
+# FlowerCloud 花云
+/go/flowercloud    https://bit.ly/3GXSiVD    301
+/go/16     https://bit.ly/3GXSiVD    301
+# FlyingBird 飞鸟云
+/go/flyingbird    https://bit.ly/4oJDydt    301
+/go/17     https://bit.ly/4oJDydt    301
+# YToo 歪兔
+/go/ytoo    https://bit.ly/3RMx8wl    301
+/go/18     https://bit.ly/3RMx8wl    301
+# Nexitally 奶昔
+/go/nexitally    https://bit.ly/479JoLM    301
+/go/19     https://bit.ly/479JoLM    301
+# FastLink 快连
+/go/fastlink    https://bit.ly/3Ju3ie9    301
+/go/20     https://bit.ly/3Ju3ie9    301
+# AmyTelecom
+/go/amytelecom    https://bit.ly/477rsS1    301
+/go/21     https://bit.ly/477rsS1    301
+# ImmTel
+/go/immtel    https://bit.ly/479KxD4    301
+/go/22     https://bit.ly/479KxD4    301
+# 库洛米 Kuromis
+/go/kuromi    https://bit.ly/4aqnWVG    301
+/go/23     https://bit.ly/4aqnWVG    301
+# LinkCube 便利店
+/go/linkcube    https://bit.ly/3B5FN7e    301
+/go/24     https://bit.ly/3B5FN7e    301
+# CreamData 奶油云
+/go/creamdata    https://bit.ly/47ZjWtC    301
+/go/25     https://bit.ly/47ZjWtC    301
+# 西部数据
+/go/westdata    https://bit.ly/475KsQI    301
+/go/26     https://bit.ly/475KsQI    301
+# SSRCloud
+/go/ssrcloud    https://bit.ly/480VOqI    301
+/go/27     https://bit.ly/480VOqI    301
+# 一云梯
+/go/yiyunti    https://bit.ly/4n3YqdU    301
+/go/28     https://bit.ly/4n3YqdU    301
+# Luckin 瑞幸云
+/go/luckin    https://bit.ly/49HL2Fz    301
+/go/29     https://bit.ly/49HL2Fz    301
+# 泡芙云
+/go/paofu    https://bit.ly/480Yp3W    301
+/go/30     https://bit.ly/480Yp3W    301
+
+# 兜底：未匹配到的 /go/:id 自动路由至 /go.html 承接页解析
+/go/:id         /go.html?id=:id   301

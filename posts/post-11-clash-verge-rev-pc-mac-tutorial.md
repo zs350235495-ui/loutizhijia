@@ -101,6 +101,7 @@
 ---
 
 ### 1. 环球梯 HuanqiuTi —— 23ms 低延迟与一键极速订阅
+- **官方直达通道**: [🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔](/go.html?id=huanqiuti)
 
 - **线路类型**: 全节点 BGP / IPLC 专线优化
 - **Clash 适配**: 后台提供标准 Clash Verge 一键导入，节点自动负载均衡
@@ -112,6 +113,7 @@
 ---
 
 ### 2. 闪电鼠 Shandianshu —— 全线 IEPL 专线与分流规则优化
+- **官方直达通道**: [🛫 办理登机牌（闪电鼠 Shandianshu 官网直达 (专属7折码 sds88)）➔](/go.html?id=shandianshu)
 
 - **线路类型**: 全线 IEPL 物理专线
 - **Clash 适配**: 内置完善的 OpenAI、TikTok 和 Netflix 分流策略组
@@ -123,6 +125,7 @@
 ---
 
 ### 3. 大佬云 DalaoCloud —— 2.5Gbps 大带宽峰值吞吐
+- **官方直达通道**: [🛫 办理登机牌（大佬云 DalaoCloud 官网直达 (专属7折码 dly88)）➔](/go.html?id=dalaoyun)
 
 - **线路类型**: 全 IPLC 专线
 - **Clash 适配**: 支持超高并发频宽，适合 PC 端大文件下载
@@ -134,6 +137,7 @@
 ---
 
 ### 4. 极连云 Jilianyun —— 不限设备数与 PC/Mac 极速多开
+- **官方直达通道**: [🛫 办理登机牌（极连云 Jilianyun 官网直达 (专属优惠码 JLY888)）➔](/go.html?id=jilianyun)
 
 - **线路类型**: IPLC 物理专线
 - **Clash 适配**: 不限客户端同享，适合台式机与笔记本共用同一个订阅

@@ -28,3 +28,11 @@
 
 /feed.xml
   Cache-Control: public, max-age=3600, must-revalidate
+
+/go.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/go/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-cache, no-store, must-revalidate

@@ -103,6 +103,7 @@ Host                                  Loss%   Snt   Last   Avg  Best  Wrst StDev
 ---
 
 ### 1. 环球梯 HuanqiuTi —— 全节点 BGP/专线与 23ms 极低延迟
+- **官方直达通道**: [🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔](/go.html?id=huanqiuti)
 
 - **线路类型**: 全节点 BGP / IPLC 专线优化
 - **晚高峰实测**: 丢包率 **0.0%**，Speedtest 跑满 500M 宽带
@@ -114,6 +115,7 @@ Host                                  Loss%   Snt   Last   Avg  Best  Wrst StDev
 ---
 
 ### 2. 大佬云 DalaoCloud —— 全 IPLC 专线与 2.5Gbps 超大峰值
+- **官方直达通道**: [🛫 办理登机牌（大佬云 DalaoCloud 官网直达 (专属7折码 dly88)）➔](/go.html?id=dalaoyun)
 
 - **线路类型**: 全 IPLC 物理专线
 - **晚高峰实测**: 单节点峰值吞吐量极高，多人并发下载毫无衰减
@@ -125,6 +127,7 @@ Host                                  Loss%   Snt   Last   Avg  Best  Wrst StDev
 ---
 
 ### 3. 云界线 Yunjiexian —— 大流量专线与高性价比选型
+- **官方直达通道**: [🛫 办理登机牌（云界线 Yunjiexian 官网直达 (专属7折码 yjx888)）➔](/go.html?id=yunjiexian)
 
 - **线路类型**: 全 IPLC 物理专线
 - **晚高峰实测**: 150GB/月大流量配额，晚高峰在线率 99.9%
@@ -136,6 +139,7 @@ Host                                  Loss%   Snt   Last   Avg  Best  Wrst StDev
 ---
 
 ### 4. 神行加速 Shenxing —— IPLC/IEPL 50+ 多节点均衡
+- **官方直达通道**: [🛫 办理登机牌（神行加速 Shenxing 官网直达 (专属7折码 sx0077)）➔](/go.html?id=shenxing)
 
 - **线路类型**: 全 IPLC / IEPL 专线
 - **晚高峰实测**: 自动负载均衡调度，晚高峰自动分流拥堵通道

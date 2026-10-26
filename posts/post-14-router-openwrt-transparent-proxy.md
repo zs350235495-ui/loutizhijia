@@ -101,6 +101,7 @@ OpenWrt 拥有丰富的插件生态（OpenClash、PassWall、SSR-Plus），能�
 ---
 
 ### 1. 环球梯 HuanqiuTi —— 23ms 低延迟与全屋设备高并发
+- **官方直达通道**: [🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔](/go.html?id=huanqiuti)
 
 - **线路类型**: 全节点 BGP / IPLC 专线优化
 - **软路由体验**: 23ms 超低延迟，全节点支持 OpenClash 一键订阅，并发稳定性强
@@ -112,6 +113,7 @@ OpenWrt 拥有丰富的插件生态（OpenClash、PassWall、SSR-Plus），能�
 ---
 
 ### 2. 大佬云 DalaoCloud —— 2.5Gbps 超大峰值与全屋 4K/8K
+- **官方直达通道**: [🛫 办理登机牌（大佬云 DalaoCloud 官网直达 (专属7折码 dly88)）➔](/go.html?id=dalaoyun)
 
 - **线路类型**: 全 IPLC 专线
 - **软路由体验**: 2.5Gbps 超大频宽，适合家庭多设备同时观看 4K 影视
@@ -123,6 +125,7 @@ OpenWrt 拥有丰富的插件生态（OpenClash、PassWall、SSR-Plus），能�
 ---
 
 ### 3. 云界线 Yunjiexian —— 150GB 大流量与软路由自动均衡
+- **官方直达通道**: [🛫 办理登机牌（云界线 Yunjiexian 官网直达 (专属7折码 yjx888)）➔](/go.html?id=yunjiexian)
 
 - **线路类型**: 全 IPLC 专线
 - **软路由体验**: 150GB/月起，节点冗余高，适合常驻旁路由
@@ -134,6 +137,7 @@ OpenWrt 拥有丰富的插件生态（OpenClash、PassWall、SSR-Plus），能�
 ---
 
 ### 4. 极连云 Jilianyun —— 不限设备数与多终端共享
+- **官方直达通道**: [🛫 办理登机牌（极连云 Jilianyun 官网直达 (专属优惠码 JLY888)）➔](/go.html?id=jilianyun)
 
 - **线路类型**: IPLC 物理专线
 - **软路由体验**: 明确支持软路由等全屋设备不限数量挂载

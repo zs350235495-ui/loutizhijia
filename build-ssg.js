@@ -112,7 +112,13 @@ function parseMarkdownToHTML(markdownText) {
   // 样式
   src = src.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   src = src.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-  src = src.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="prose-link" target="_blank" rel="noopener">$1</a>');
+  src = src.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+    const isAffOrExternal = url.startsWith('/go') || url.startsWith('http://') || url.startsWith('https://');
+    if (isAffOrExternal) {
+      return `<a href="${url}" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">${text}</a>`;
+    }
+    return `<a href="${url}" class="prose-link">${text}</a>`;
+  });
   src = src.replace(/^---$/gm, '<hr class="prose-hr">');
 
   // 段落

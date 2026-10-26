@@ -360,7 +360,13 @@
     src = src.replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
     // 超链接
-    src = src.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="prose-link">$1</a>');
+    src = src.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+      const isAffOrExternal = url.startsWith('/go') || url.startsWith('http://') || url.startsWith('https://');
+      if (isAffOrExternal) {
+        return `<a href="${url}" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">${text}</a>`;
+      }
+      return `<a href="${url}" class="prose-link">${text}</a>`;
+    });
 
     // 分割线
     src = src.replace(/^---$/gm, '<hr class="prose-hr">');
@@ -476,7 +482,7 @@
       price: "￥14.70 /月",
       promoCode: "HQ66",
       gooseScore: 5,
-      url: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0",
+      url: "/go.html?id=huanqiuti",
       reportPostId: 100
     },
     {
@@ -493,7 +499,7 @@
       price: "￥16.10 /月",
       promoCode: "dly88",
       gooseScore: 5,
-      url: "https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa",
+      url: "/go.html?id=dalaoyun",
       reportPostId: 101
     },
     {
@@ -510,7 +516,7 @@
       price: "￥15.40 /月",
       promoCode: "yjx888",
       gooseScore: 5,
-      url: "https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV",
+      url: "/go.html?id=yunjiexian",
       reportPostId: 93
     },
     {
@@ -527,7 +533,7 @@
       price: "￥15.40 /月",
       promoCode: "sds88",
       gooseScore: 5,
-      url: "https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB",
+      url: "/go.html?id=shandianshu",
       reportPostId: 94
     },
     {
@@ -544,7 +550,7 @@
       price: "￥16.10 /月",
       promoCode: "sx0077",
       gooseScore: 5,
-      url: "https://pps123.shenxingaff.com/#/?code=6tQ7zHUc",
+      url: "/go.html?id=shenxing",
       reportPostId: 96
     },
     {
@@ -561,7 +567,7 @@
       price: "￥6.40 /月起",
       promoCode: "JLY888",
       gooseScore: 4,
-      url: "https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO",
+      url: "/go.html?id=jilianyun",
       reportPostId: 98
     }
   ];

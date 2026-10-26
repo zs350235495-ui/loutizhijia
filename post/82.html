@@ -235,27 +235,27 @@
 <blockquote class="prose-blockquote"><strong>面向对象</strong>：网络基础设施架构师、高可用系统运维工程师、跨境数据传输审计员</blockquote>
 <hr class="prose-hr">
 <h2 id="sec-14" class="prose-h2">目录（Table of Contents）</h2>
-<ol class="prose-ol"><li class="prose-li-num"><a href="#导言网络可用性评估维度的范式转移" class="prose-link" target="_blank" rel="noopener">导言：网络可用性评估维度的范式转移</a></li>
+<ol class="prose-ol"><li class="prose-li-num"><a href="#导言网络可用性评估维度的范式转移" class="prose-link">导言：网络可用性评估维度的范式转移</a></li>
 </ol><ul class="prose-ul"><li class="prose-li-disc">1.1 为什么传统的“峰值带宽跑分”无法表征真实网络质量？</li>
 <li class="prose-li-disc">1.2 网络性能审计的三大核心基石：RTT、Jitter 与 Packet Loss</li>
-</ul>2. <a href="#第一章底层物理链路传输机制与架构演进" class="prose-link" target="_blank" rel="noopener">第一章：底层物理链路传输机制与架构演进</a>
+</ul>2. <a href="#第一章底层物理链路传输机制与架构演进" class="prose-link">第一章：底层物理链路传输机制与架构演进</a>
 <ul class="prose-ul"><li class="prose-li-disc">2.1 光纤传输的物理极限与折射率测算模型</li>
 <li class="prose-li-disc">2.2 公网直连、公网中转与 IPLC/IEPL 专线全链路拓扑解构</li>
 <li class="prose-li-disc">2.3 三类主流传输链路工程特性横向基准对比表</li>
-</ul>3. <a href="#第二章晚高峰骨干网-qos-调度与抖动劣化机理" class="prose-link" target="_blank" rel="noopener">第二章：晚高峰骨干网 QoS 调度与抖动劣化机理</a>
+</ul>3. <a href="#第二章晚高峰骨干网-qos-调度与抖动劣化机理" class="prose-link">第二章：晚高峰骨干网 QoS 调度与抖动劣化机理</a>
 <ul class="prose-ul"><li class="prose-li-disc">3.1 跨域骨干出口拥塞控制：DiffServ、CAR 与令牌桶限流机制</li>
 <li class="prose-li-disc">3.2 缓冲区膨胀（Bufferbloat）与 TCP 拥塞控制崩塌</li>
 <li class="prose-li-disc">3.3 抖动（Jitter）的工程数学定义（RFC 3550）与量化分析</li>
-</ul>4. <a href="#第三章工程级真假内网专线鉴别与全链路实测方法论" class="prose-link" target="_blank" rel="noopener">第三章：工程级真假内网专线鉴别与全链路实测方法论</a>
+</ul>4. <a href="#第三章工程级真假内网专线鉴别与全链路实测方法论" class="prose-link">第三章：工程级真假内网专线鉴别与全链路实测方法论</a>
 <ul class="prose-ul"><li class="prose-li-disc">4.1 物理延迟下限反推法：用光速破除虚假宣传</li>
 <li class="prose-li-disc">4.2 高级 MTR 与 Traceroute 报文拓扑追踪分析</li>
 <li class="prose-li-disc">4.3 持续脉冲采样与标准差（StdDev）统计测试实操</li>
-</ul>5. <a href="#第四章高可靠客户端分流与防断流配置规范" class="prose-link" target="_blank" rel="noopener">第四章：高可靠客户端分流与防断流配置规范</a>
+</ul>5. <a href="#第四章高可靠客户端分流与防断流配置规范" class="prose-link">第四章：高可靠客户端分流与防断流配置规范</a>
 <ul class="prose-ul"><li class="prose-li-disc">4.1 智能分流策略组编排模型（Direct / Proxy / Failover）</li>
 <li class="prose-li-disc">4.2 避免 DNS 泄漏与跨域污染的解析链最佳实践</li>
 <li class="prose-li-disc">4.3 TCP Keep-Alive、超时重试（Timeout）与心跳兜底调优</li>
-</ul>6. <a href="#结语骨干网络链路选型核心法则速查" class="prose-link" target="_blank" rel="noopener">结语：骨干网络链路选型核心法则速查</a>
-<ol class="prose-ol"><li class="prose-li-num"><a href="#搜索引擎-meta-description-规范提取" class="prose-link" target="_blank" rel="noopener">搜索引擎 Meta Description 规范提取</a></li>
+</ul>6. <a href="#结语骨干网络链路选型核心法则速查" class="prose-link">结语：骨干网络链路选型核心法则速查</a>
+<ol class="prose-ol"><li class="prose-li-num"><a href="#搜索引擎-meta-description-规范提取" class="prose-link">搜索引擎 Meta Description 规范提取</a></li>
 </ol>
 <hr class="prose-hr">
 <h2 id="sec-15" class="prose-h2">导言：网络可用性评估维度的范式转移</h2>
@@ -276,7 +276,7 @@
 <h3 id="sec-4" class="prose-h3">2.2 公网直连、公网中转与 IPLC/IEPL 专线全链路拓扑解构</h3>
 <p class="prose-p">根据跨境网络数据流经的网络层次与物理基础设施，主流链路可划分为三大代际架构：</p>
 <p class="prose-p">#### 1. 公网直连（Public Transit Direct）<br>数据包由本地 ISP 直接投递至国家级公网国际交换中心（如中国电信 163 骨干网 AS4134、中国联通 163 骨干网 AS4837）。所有普通民用流量在此高度汇聚，必须穿透公网防火墙检查及公网国际出口路由器。其特点是成本低廉、路由路径受动态 BGP 策略影响严重，晚高峰受公网出口总带宽物理拥塞制约，丢包与抖动波动剧烈。</p>
-<p class="prose-p">#### 2. 公网中转（Public Relay / Optimized BGP Transit）<br>通过在境内网络边缘建立高可用 BGP 前置节点，让终端用户先通过低延迟境内网络接入边缘机房，再由该机房通过运营商的高端优化传输产品（如电信 CN2 GIA AS4809、联通 9929/A 网、移动 CMIN2 AS58807）接入国际公网。<br><ul class="prose-ul"><li class="prose-li-disc"><strong>优点</strong>：规避了本地运营商到出口之间的普通公网拥堵，接入延迟极为稳定。</li><br><li class="prose-li-disc"><strong>缺点</strong>：本质上仍然是运行在公网 IP 层（Layer 3）的传输方案，报文仍需经过公网国际海缆交换路由，依然受公网国际链路故障切线、晚高峰总带宽配额管控的制约。</li><br></ul><br>#### 3. IPLC / IEPL 物理内网专线<br><ul class="prose-ul"><li class="prose-li-disc"><strong>IPLC（International Private Leased Circuit，国际私有租用线路）</strong>：传统意义上的跨国点对点物理二层租用线路。通过同步数字体系（SDH）或光传送网（OTN）在海底光缆中直接划分独立的时分复用（TDM）时隙通道。其链路完全与公网物理隔离，数据报文不经过公网国际交换网关，因此<strong>天然零公网防火墙检查干扰、零国际公网出口 QoS 干扰</strong>。</li><br><li class="prose-li-disc"><strong>IEPL（International Ethernet Private Line，国际以太网专线）</strong>：新一代基于以太网标准的跨境专线，通常采用 EoMPLS（Ethernet over MPLS）或 VPLS 技术封装。提供端到端透明的 Layer 2 以太网帧传输，拥有比 IPLC 更高的带宽配置弹性与更优的协议开销，同样拥有全程专属带宽承载保障。</li><br></ul><br><blockquote class="prose-blockquote">📖 <strong>专题延伸</strong>：关于 IPLC 与 IEPL 的物理硬件切片与二层交付机制，可参阅知识库深度专著 <a href="https://tizizhijia.com/post/97.html" class="prose-link" target="_blank" rel="noopener">《高端头等舱专线深度体检：IEPL 与 IPLC 专线的底层技术逻辑与选型指南》</a>。</blockquote></p>
+<p class="prose-p">#### 2. 公网中转（Public Relay / Optimized BGP Transit）<br>通过在境内网络边缘建立高可用 BGP 前置节点，让终端用户先通过低延迟境内网络接入边缘机房，再由该机房通过运营商的高端优化传输产品（如电信 CN2 GIA AS4809、联通 9929/A 网、移动 CMIN2 AS58807）接入国际公网。<br><ul class="prose-ul"><li class="prose-li-disc"><strong>优点</strong>：规避了本地运营商到出口之间的普通公网拥堵，接入延迟极为稳定。</li><br><li class="prose-li-disc"><strong>缺点</strong>：本质上仍然是运行在公网 IP 层（Layer 3）的传输方案，报文仍需经过公网国际海缆交换路由，依然受公网国际链路故障切线、晚高峰总带宽配额管控的制约。</li><br></ul><br>#### 3. IPLC / IEPL 物理内网专线<br><ul class="prose-ul"><li class="prose-li-disc"><strong>IPLC（International Private Leased Circuit，国际私有租用线路）</strong>：传统意义上的跨国点对点物理二层租用线路。通过同步数字体系（SDH）或光传送网（OTN）在海底光缆中直接划分独立的时分复用（TDM）时隙通道。其链路完全与公网物理隔离，数据报文不经过公网国际交换网关，因此<strong>天然零公网防火墙检查干扰、零国际公网出口 QoS 干扰</strong>。</li><br><li class="prose-li-disc"><strong>IEPL（International Ethernet Private Line，国际以太网专线）</strong>：新一代基于以太网标准的跨境专线，通常采用 EoMPLS（Ethernet over MPLS）或 VPLS 技术封装。提供端到端透明的 Layer 2 以太网帧传输，拥有比 IPLC 更高的带宽配置弹性与更优的协议开销，同样拥有全程专属带宽承载保障。</li><br></ul><br><blockquote class="prose-blockquote">📖 <strong>专题延伸</strong>：关于 IPLC 与 IEPL 的物理硬件切片与二层交付机制，可参阅知识库深度专著 <a href="https://tizizhijia.com/post/97.html" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">《高端头等舱专线深度体检：IEPL 与 IPLC 专线的底层技术逻辑与选型指南》</a>。</blockquote></p>
 <hr class="prose-hr">
 <h3 id="sec-5" class="prose-h3">2.3 三类主流传输链路工程特性横向基准对比表</h3>
 <div class="table-responsive-wrapper"><table class="prose-table"><thead><tr><th>对比工程指标</th><th>普通公网直连 (163/4837)</th><th>优质公网中转 (CN2 GIA/9929/CMIN2)</th><th>IPLC / IEPL 内网专线</th></tr></thead><tbody><tr><td><strong>网络 OSI 工作层级</strong></td><td>Layer 3 (IP 路由转发)</td><td>Layer 3 (优化 IP 路由转发)</td><td><strong>Layer 2 (以太网/OTN 物理切片)</strong></td></tr><tr><td><strong>物理出口审查模式</strong></td><td>全面穿透公网出口过滤</td><td>穿透公网出口过滤（通道较优）</td><td><strong>完全绕过公网出口防火墙</strong></td></tr><tr><td><strong>晚高峰丢包率预期</strong></td><td>15.0% - 45.0%（严重拥塞）</td><td>0.5% - 3.0%（受控范围内）</td><td><strong>< 0.01%（工程级零丢包）</strong></td></tr><tr><td><strong>Jitter 抖动方差</strong></td><td>极高（> 50ms 突发抖动）</td><td>较低（< 5ms 轻微抖动）</td><td><strong>极低（< 0.5ms，时钟同步级）</strong></td></tr><tr><td><strong>物理 RTT 稳定性</strong></td><td>容易发生 BGP 绕路与震荡</td><td>相对稳定，但光缆故障会漂移</td><td><strong>绝对稳定，物理延迟恒定锁定</strong></td></tr><tr><td><strong>IP 阻断与漂移风险</strong></td><td>极高，需频繁更换落地 IP</td><td>较高，受公网阻断波及</td><td><strong>零跨境阻断风险（内网通道无阻断）</strong></td></tr><tr><td><strong>单 Gbps 带宽建设成本</strong></td><td>极低（消费级成本）</td><td>中等偏高（商用 BGP 计费）</td><td><strong>极高（按兆/月专网昂贵计费）</strong></td></tr><tr><td><strong>业务承载适配性</strong></td><td>容忍延迟的离线非关键任务</td><td>个人高端交互、日常流媒体</td><td><strong>金融高频量化、跨国容灾、核心生产</strong></td></tr></tbody></table></div>
@@ -285,7 +285,7 @@
 <h3 id="sec-6" class="prose-h3">3.1 跨域骨干出口拥塞控制：DiffServ、CAR 与令牌桶限流机制</h3>
 每当北京时间进入 <strong>20:00 - 23:30（晚高峰时段）</strong>，公网跨域出口总带宽需求呈现指数级暴增，瞬间远超国际出口交换机端口的线速转发吞吐上限。
 <p class="prose-p">为了防止核心层交换机发生死锁崩溃，运营商在国家级骨干网边界路由器（ASBR）上强制执行严苛的 <strong>QoS（服务质量）流量工程管制</strong>：<br><ol class="prose-ol"><li class="prose-li-num"><strong>差分服务（DiffServ）模型与 DSCP 降级</strong>：</li><br></ol>   骨干网路由器根据报文 IP 首部的 DSCP（Differentiated Services Code Point）字段分配排队队列。政企金融专线、运营商信令通常标记为 <code class="inline-code">EF (Expedited Forwarding)</code> 或 <code class="inline-code">CS6/CS7</code>，进入绝对优先队列（Strict Priority Queue）；而民用公网流量默认归为 <code class="inline-code">BE (Best Effort，尽力而为)</code>。在出口过载时，<code class="inline-code">BE</code> 队列被分配到的调度时隙被大幅压缩。<br><ol class="prose-ol"><li class="prose-li-num"><strong>承诺访问速率（CAR）与双桶限流</strong>：</li><br></ol>   边界路由器部署令牌桶算法（Token Bucket Algorithm）。当突发数据速率超过令牌生成速度（CIR）和突发尺寸（CBS/EBS）时，超额的数据报文不会被平滑缓冲，而是直接被强制执行硬丢弃（Drop），导致客户端链路瞬时丢包率骤增。</p>
-<div class="callout-box callout-warning"><div class="callout-header"><span class="callout-icon">🛡️</span><span class="callout-title">避坑安全守则：</span></div><div class="callout-text">⚠️ <strong>深度关联排查</strong>：关于骨干网 QoS 限流与单线程断崖式跳水的现场抓包复现，详见 <a href="https://tizizhijia.com/post/93.html" class="prose-link" target="_blank" rel="noopener">《晚高峰丢包与断流真相：为什么公网中继在晚上 9 点会集体断流？》</a> 与 <a href="https://tizizhijia.com/post/83.html" class="prose-link" target="_blank" rel="noopener">《跑道黑匣子解密：常见机场节点坠毁与断连内幕》</a>。</div></div>
+<div class="callout-box callout-warning"><div class="callout-header"><span class="callout-icon">🛡️</span><span class="callout-title">避坑安全守则：</span></div><div class="callout-text">⚠️ <strong>深度关联排查</strong>：关于骨干网 QoS 限流与单线程断崖式跳水的现场抓包复现，详见 <a href="https://tizizhijia.com/post/93.html" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">《晚高峰丢包与断流真相：为什么公网中继在晚上 9 点会集体断流？》</a> 与 <a href="https://tizizhijia.com/post/83.html" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">《跑道黑匣子解密：常见机场节点坠毁与断连内幕》</a>。</div></div>
 <hr class="prose-hr">
 <h3 id="sec-7" class="prose-h3">3.2 缓冲区膨胀（Bufferbloat）与 TCP 拥塞控制崩塌</h3>
 在出现物理丢包之前，路由器为了防止丢包，往往配置了巨大的 FIFO（先进先出）数据包缓冲区。这一设计却在广域网中催生了灾难性的<strong>缓冲区膨胀（Bufferbloat）</strong>：
@@ -397,7 +397,7 @@ DNS 泄漏（DNS Leak）不仅涉及隐私泄露，更会导致跨境链路调�
 <div class="callout-box callout-warning"><div class="callout-header"><span class="callout-icon">🛡️</span><span class="callout-title">避坑安全守则：</span></div><div class="callout-text">[!CAUTION]</div></div>
 <blockquote class="prose-blockquote"><strong>警惕 Redir-Host 模式下的长尾延迟</strong>  </blockquote>
 <blockquote class="prose-blockquote">避免使用过时的 <code class="inline-code">Redir-Host</code> 模式。在 <code class="inline-code">Redir-Host</code> 模式下，客户端每次请求前必须等待代理节点在远端完成 DNS 解析并将真实 IP 返回，直接给所有新建连接增加了整整一个 RTT 的初始白屏时延。现代架构应全面迁移至 <strong>Fake-IP（增强模式）</strong>。</blockquote>
-<blockquote class="prose-blockquote">🌐 <strong>全屋架构方案</strong>：多设备环境下彻底消除 DNS 泄漏与网关环路的完整实践，请参考白皮书 <a href="https://tizizhijia.com/post/84.html" class="prose-link" target="_blank" rel="noopener">《全屋智能与家庭多设备透明网关架构白皮书：软路由、MosDNS 智能分流与防 DNS 泄漏终极实践》</a>。</blockquote>
+<blockquote class="prose-blockquote">🌐 <strong>全屋架构方案</strong>：多设备环境下彻底消除 DNS 泄漏与网关环路的完整实践，请参考白皮书 <a href="https://tizizhijia.com/post/84.html" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">《全屋智能与家庭多设备透明网关架构白皮书：软路由、MosDNS 智能分流与防 DNS 泄漏终极实践》</a>。</blockquote>
 <hr class="prose-hr">
 <h3 id="sec-13" class="prose-h3">4.3 TCP Keep-Alive、超时重试（Timeout）与心跳兜底调优</h3>
 许多用户在进行长会话（如数据库远程连接、SSH、WebRTC、流媒体）时，常遇到“闲置数分钟后突然失去响应、卡死几十秒才断开”的问题。这是由于中间网关路由器的 NAT 表项（NAT Session Table）老化超时被清理。

@@ -115,6 +115,7 @@ rules:
 ---
 
 ### 1. 环球梯 HuanqiuTi —— 全节点 BGP/专线与 23ms 低延迟
+- **官方直达通道**: [🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔](/go.html?id=huanqiuti)
 
 - **线路类型**: 全节点 BGP / IPLC 专线优化
 - **AI 解锁率**: 100% 顺畅通过 ChatGPT / Claude 无感验证
@@ -126,6 +127,7 @@ rules:
 ---
 
 ### 2. 闪电鼠 Shandianshu —— TikTok 与 AI 专项优化
+- **官方直达通道**: [🛫 办理登机牌（闪电鼠 Shandianshu 官网直达 (专属7折码 sds88)）➔](/go.html?id=shandianshu)
 
 - **线路类型**: 全线 IEPL 专线
 - **AI 解锁率**: 针对 OpenAI 官方 API 及 Web 端防封进行策略组优化
@@ -137,6 +139,7 @@ rules:
 ---
 
 ### 3. 神行加速 Shenxing —— 50+ 多国家冗余节点
+- **官方直达通道**: [🛫 办理登机牌（神行加速 Shenxing 官网直达 (专属7折码 sx0077)）➔](/go.html?id=shenxing)
 
 - **线路类型**: 全 IPLC / IEPL 专线
 - **AI 解锁率**: 覆盖美、日、新、英等多国原生 IP 策略
@@ -148,6 +151,7 @@ rules:
 ---
 
 ### 4. 库洛米 Kuromis —— 深港/苏日专线与低延迟 UDP
+- **官方直达通道**: [🛫 办理登机牌（库洛米 Kuromis 官网直达）➔](/go.html?id=kuromi)
 
 - **线路类型**: 深港专线 / 苏日专线 · 自研技术架构
 - **AI 解锁率**: 高端原生 IP 支持，UDP 响应极快

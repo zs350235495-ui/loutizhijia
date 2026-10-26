@@ -114,6 +114,7 @@ rules:
 ---
 
 ### 1. 榴莲云 LiulianCloud —— 极速解锁 4K/8K 与 YouTube 8K 秒开
+- **官方直达通道**: [🛫 办理登机牌（榴莲云 LiulianCloud 官网直达）➔](/go.html?id=liulianyun)
 
 - **线路架构**: 全 IPLC 专线
 - **流媒体解锁**: Netflix 全区非自制剧、Disney+、HBO Max、YouTube 8K
@@ -125,6 +126,7 @@ rules:
 ---
 
 ### 2. 瞬云 Shunyun —— 极速专线中转与全节点流媒体解禁
+- **官方直达通道**: [🛫 办理登机牌（瞬云 Shunyun 官网直达）➔](/go.html?id=shunyun)
 
 - **线路架构**: 高速专线中转
 - **流媒体解锁**: 全节点解锁 Netflix / Disney+ / HBO
@@ -136,6 +138,7 @@ rules:
 ---
 
 ### 3. YToo 歪兔 —— 第一梯队 Akari 顶级落地与 8K 极致缓冲
+- **官方直达通道**: [🛫 办理登机牌（YToo 歪兔 官网直达）➔](/go.html?id=ytoo)
 
 - **线路架构**: 第一梯队老牌物理专线 · Akari 顶级落地
 - **流媒体解锁**: Netflix / DAZN / Disney+ / HBO 8K 秒开
@@ -147,6 +150,7 @@ rules:
 ---
 
 ### 4. 泡芙云 —— 香港全线 IEPL 专线与 4 年老牌口碑
+- **官方直达通道**: [🛫 办理登机牌（泡芙云 官网直达）➔](/go.html?id=paofu)
 
 - **线路架构**: 香港全线 IEPL 独立内网专线
 - **流媒体解锁**: 4K 秒开 / 独立内网专线 / 港台韩日区域全解
