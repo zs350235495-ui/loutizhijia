@@ -220,20 +220,32 @@
     
 
       <article class="article-prose-body">
-        <blockquote class="prose-blockquote"><strong>关键词</strong>: 晚高峰断流 | 节点超时 | 公网中继vs专线 | QoS限速 | 丢包率测试 | MTR排查</blockquote>
-<blockquote class="prose-blockquote"><strong>发布日期</strong>: 2026年10月  </blockquote>
-<blockquote class="prose-blockquote"><strong>作者</strong>: 跑道上有只鹅 (站长鹅)</blockquote>
+        <blockquote class="prose-blockquote"><strong>关键词</strong>: 晚高峰断流 | 节点超时 | 公网中继vs专线 | QoS限速 | 丢包率测试 | MTR排查</blockquote>
+<blockquote class="prose-blockquote"><strong>发布日期</strong>: 2026年10月  </blockquote>
+<blockquote class="prose-blockquote"><strong>作者</strong>: 跑道上有只鹅 (站长鹅)</blockquote>
+
 <hr class="prose-hr">
+
 <div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"></div></div>
-<blockquote class="prose-blockquote">白天跑满 1000M 宽带别高兴太早！到了晚上 21:00 晚高峰，公网国际出口拥堵得像十一假期的景区高速公路，运营商的 QoS 限速阀门直接给你掐死。这时候公网中继节点超时、红圈连排，根本不是你的路由器坏了，而是共享公网骨干网的必然惨状。想在晚高峰丝滑起飞？物理 IPLC/IEPL 专线才是唯一的出路！</blockquote>
+<blockquote class="prose-blockquote">白天跑满 1000M 宽带别高兴太早！到了晚上 21:00 晚高峰，公网国际出口拥堵得像十一假期的景区高速公路，运营商的 QoS 限速阀门直接给你掐死。这时候公网中继节点超时、红圈连排，根本不是你的路由器坏了，而是共享公网骨干网的必然惨状。想在晚高峰丝滑起飞？物理 IPLC/IEPL 专线才是唯一的出路！</blockquote>
+
 <hr class="prose-hr">
+
 <h2 id="sec-8" class="prose-h2">序言：“假起飞”现象背后的网络工程真相</h2>
-<p class="prose-p">每一位经常出海的飞行员，都对下面这个时间段恨之入骨：<strong>每晚 20:00 至 23:30</strong>。</p>
-<p class="prose-p">在这个被称为“网络晚高峰”的黄金时段里，绝大多数便宜机场和公网中转节点会遭遇毁灭性的性能下滑：<br><ul class="prose-ul"><li class="prose-li-disc"><strong>画质陡降</strong>：YouTube 视频从秒开 4K 瞬间降级到 360P 甚至无限缓冲圈；</li><br><li class="prose-li-disc"><strong>响应极慢</strong>：打开 Google 或 GitHub 需要等待十几秒，甚至频繁提示 <code class="inline-code">连接超时</code>；</li><br><li class="prose-li-disc"><strong>游戏断线</strong>：外服游戏 Ping 值从 40ms 瞬间飙升至 300ms 以上，丢包率冲上 50%。</li><br></ul><br>究竟是什么力量在晚上 9 点准时给你的网络“拉闸”？这是机场商家在偷懒超售，还是运营商在背后搞鬼？本篇文章中，鹅将带你从<strong>网络工程底层、运营商 QoS 策略、TCP/UDP 丢包原理</strong>到 <strong>MTR 故障诊断</strong>，揭开晚高峰断流的终极真相。</p>
+
+每一位经常出海的飞行员，都对下面这个时间段恨之入骨：<strong>每晚 20:00 至 23:30</strong>。
+
+在这个被称为“网络晚高峰”的黄金时段里，绝大多数便宜机场和公网中转节点会遭遇毁灭性的性能下滑：<ul class="prose-ul"><li class="prose-li-disc"><strong>画质陡降</strong>：YouTube 视频从秒开 4K 瞬间降级到 360P 甚至无限缓冲圈；</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>响应极慢</strong>：打开 Google 或 GitHub 需要等待十几秒，甚至频繁提示 <code class="inline-code">连接超时</code>；</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>游戏断线</strong>：外服游戏 Ping 值从 40ms 瞬间飙升至 300ms 以上，丢包率冲上 50%。</li></ul>
+
+究竟是什么力量在晚上 9 点准时给你的网络“拉闸”？这是机场商家在偷懒超售，还是运营商在背后搞鬼？本篇文章中，鹅将带你从<strong>网络工程底层、运营商 QoS 策略、TCP/UDP 丢包原理</strong>到 <strong>MTR 故障诊断</strong>，揭开晚高峰断流的终极真相。
+
 <hr class="prose-hr">
+
 <h2 id="sec-9" class="prose-h2">一、 底层原理：运营商 QoS (服务质量) 策略是如何宰杀封包的？</h2>
-<p class="prose-p">要理解晚高峰断流，首先要明白国际出口带宽的物理极限与运营商的流量调度机制。</p>
-<p class="prose-p"><pre class="code-block"><code>
+
+要理解晚高峰断流，首先要明白国际出口带宽的物理极限与运营商的流量调度机制。
+
+<pre class="code-block"><code>
 【晚高峰公网数据传输与 QoS 丢包过程】:
 家庭宽带 ──&gt; 省内骨干网 ──&gt; 国际出口路由器 (容量告警 95%+) 
                               │
@@ -241,81 +253,93 @@
                      [运营商 QoS 自动丢包引擎]
                       ├── 判定为加密 UDP / 疑似代理 ──&gt; 强制丢弃 30%~70% 封包 (断流/超时)
                       └── 判定为高优先商务流量     ──&gt; 优先放行
-</code></pre></p>
+</code></pre>
+
 <h3 id="sec-1" class="prose-h3">1. 什么是 QoS (Quality of Service) 限速？</h3>
 国际出口光缆的总带宽是固定的（例如几十 Tbps）。在白天，上网流量较少，公网出口宽裕，你的数据包能顺畅通过。
-<p class="prose-p">到了晚上 21:00 晚高峰，海量用户同时开始看视频、下载、刷网页，国际出口带宽瞬间爆满（利用率 > 95%）。此时，电信（163骨干网）、联通（164骨干网）和移动（CMI）的出口路由器会强制激活 <strong>QoS 流量整形算法</strong>：<br><ul class="prose-ul"><li class="prose-li-disc"><strong>识别加密特征</strong>：QoS 引擎通过深度包检测（DPI），识别出未知的跨国长连接加密流量（如 Shadowsocks、VMess 等）；</li><br><li class="prose-li-disc"><strong>主动丢包（Packet Dropping）</strong>：为了优先保障企业专线和普通网页访问，QoS 策略会<strong>主动将加密代理封包丢弃 30% ~ 70%</strong>。</li><br></ul><br>丢包发生后，TCP 协议会触发重传机制。随着重传包越来越多，网络拥塞进一步加剧，最终导致你的客户端显示“节点超时”。</p>
+
+到了晚上 21:00 晚高峰，海量用户同时开始看视频、下载、刷网页，国际出口带宽瞬间爆满（利用率 > 95%）。此时，电信（163骨干网）、联通（164骨干网）和移动（CMI）的出口路由器会强制激活 <strong>QoS 流量整形算法</strong>：<ul class="prose-ul"><li class="prose-li-disc"><strong>识别加密特征</strong>：QoS 引擎通过深度包检测（DPI），识别出未知的跨国长连接加密流量（如 Shadowsocks、VMess 等）；</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>主动丢包（Packet Dropping）</strong>：为了优先保障企业专线和普通网页访问，QoS 策略会<strong>主动将加密代理封包丢弃 30% ~ 70%</strong>。</li></ul>
+
+丢包发生后，TCP 协议会触发重传机制。随着重传包越来越多，网络拥塞进一步加剧，最终导致你的客户端显示“节点超时”。
+
 <hr class="prose-hr">
+
 <h2 id="sec-10" class="prose-h2">二、 架构对比：公网中继 vs 物理内网专线（IPLC / IEPL）</h2>
-<p class="prose-p">为什么同样的晚高峰，有的机场趴窝，而高端专线却能毫发无损？秘密就在于物理传输路径。</p>
-<p class="prose-p"><pre class="code-block"><code>
+
+为什么同样的晚高峰，有的机场趴窝，而高端专线却能毫发无损？秘密就在于物理传输路径。
+
+<pre class="code-block"><code>
 【公网 BGP 中转路径】:
 国内用户 ──&gt; 国内 BGP 机房 ──&gt; [公网出口/过 GFW / 遭 QoS 丢包] ──&gt; 海外落地机 (晚高峰炸开)
 
 【物理内网专线 (IPLC/IEPL) 路径】:
 国内用户 ──&gt; 国内入口机房 ──&gt; [运营商内网光缆直连/不过 GFW] ──&gt; 海外落地机 (晚高峰 0 丢包)
-</code></pre></p>
-<div class="table-responsive-wrapper"><table class="prose-table"><thead><tr><th>性能指标</th><th>普通公网 BGP 中转 / 直连</th><th>物理内网专线 (IPLC / IEPL)</th></tr></thead><tbody><tr><td><strong>晚高峰 (21:00) 丢包率</strong></td><td>🔴 <strong>15% ~ 60%</strong> (剧烈断流)</td><td>🟢 <strong>0.0% ~ 0.5%</strong> (几乎无丢包)</td></tr><tr><td><strong>延迟抖动 (Jitter)</strong></td><td>🔴 <strong>±100ms ~ 300ms</strong></td><td>🟢 <strong>±1ms ~ 3ms</strong> (极度稳定)</td></tr><tr><td><strong>QoS 限速干预</strong></td><td>🚨 极其严重 (DPI 识别并惩罚)</td><td>🛡️ 无 QoS 干预 (内网独占频宽)</td></tr><tr><td><strong>运营商月租成本</strong></td><td>极低（按流量计费）</td><td>极高（按 Mbps 独占带宽计费）</td></tr></tbody></table></div>
+</code></pre>
+
+| 性能指标 | 普通公网 BGP 中转 / 直连 | 物理内网专线 (IPLC / IEPL) |
+| :--- | :--- | :--- |
+| <strong>晚高峰 (21:00) 丢包率</strong> | 🔴 <strong>15% ~ 60%</strong> (剧烈断流) | 🟢 <strong>0.0% ~ 0.5%</strong> (几乎无丢包) |
+| <strong>延迟抖动 (Jitter)</strong> | 🔴 <strong>±100ms ~ 300ms</strong> | 🟢 <strong>±1ms ~ 3ms</strong> (极度稳定) |
+| <strong>QoS 限速干预</strong> | 🚨 极其严重 (DPI 识别并惩罚) | 🛡️ 无 QoS 干预 (内网独占频宽) |
+| <strong>运营商月租成本</strong> | 极低（按流量计费） | 极高（按 Mbps 独占带宽计费） |
+
 <hr class="prose-hr">
+
 <h2 id="sec-11" class="prose-h2">三、 硬核诊断实操：如何使用 MTR 抓出断流的“真正凶手”？</h2>
-<p class="prose-p">当你的节点出现超时卡顿，不要盲目重启路由器。使用网络诊断神器 <strong>MTR (My Traceroute)</strong> 进行链路打点追踪，3 秒钟就能看出是本地宽带问题还是公网出口拥堵。</p>
-<h3 id="sec-2" class="prose-h3">1. Windows / Mac 安装与执行命令</h3>
-<ul class="prose-ul"><li class="prose-li-disc"><strong>Windows</strong>: 下载 [BestTrace] 或 [WinMTR]；</li>
-<li class="prose-li-disc"><strong>Mac / Linux</strong>: 终端运行 <code class="inline-code">brew install mtr</code> 后输入：</li>
-</ul>  <pre class="code-block"><code>bash
+
+当你的节点出现超时卡顿，不要盲目重启路由器。使用网络诊断神器 <strong>MTR (My Traceroute)</strong> 进行链路打点追踪，3 秒钟就能看出是本地宽带问题还是公网出口拥堵。
+
+<h3 id="sec-2" class="prose-h3">1. Windows / Mac 安装与执行命令</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>Windows</strong>: 下载 [BestTrace] 或 [WinMTR]；</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>Mac / Linux</strong>: 终端运行 <code class="inline-code">brew install mtr</code> 后输入：</li></ul>
+  <pre class="code-block"><code>bash
   sudo mtr --report -c 100 &lt;你的节点IP或域名&gt;
   </code></pre>
+
 <h3 id="sec-3" class="prose-h3">2. MTR 诊断报告解读</h3>
-<p class="prose-p"><pre class="code-block"><code>text
+
+<pre class="code-block"><code>text
 Host                                  Loss%   Snt   Last   Avg  Best  Wrst StDev
 1. 192.168.1.1 (本地路由器)            0.0%   100    1ms   1ms   1ms   3ms   0.3
 2. 116.228.x.x (上海电信本地网关)       0.0%   100    4ms   5ms   3ms  12ms   1.2
 3. 202.97.x.x  (电信 163 骨干网)        0.0%   100   15ms  16ms  14ms  25ms   1.8
 4. 202.97.y.y  (上海国际出口路由器)     58.0%  100  180ms 195ms 150ms 310ms  42.5  &lt;-- 🚨 凶手在此！丢包率高达 58%
 5. 45.125.z.z  (海外落地机)             58.5%  100  185ms 198ms 152ms 315ms  41.2
-</code></pre><br><ul class="prose-ul"><li class="prose-li-disc"><strong>分析结果</strong>：如果在第 4 跳（国际出口路由器 <code class="inline-code">202.97</code>）之前 Loss% 均为 0%，而在第 4 跳瞬间飚升至 <code class="inline-code">58.0%</code>，这直接证实了<strong>你的宽带没问题，纯粹是公网出口在晚高峰遭到了运营商 QoS 严重丢包拦截</strong>！</li><br></ul><br><hr class="prose-hr"></p>
+</code></pre><ul class="prose-ul"><li class="prose-li-disc"><strong>分析结果</strong>：如果在第 4 跳（国际出口路由器 <code class="inline-code">202.97</code>）之前 Loss% 均为 0%，而在第 4 跳瞬间飚升至 <code class="inline-code">58.0%</code>，这直接证实了<strong>你的宽带没问题，纯粹是公网出口在晚高峰遭到了运营商 QoS 严重丢包拦截</strong>！</li></ul>
+
+<hr class="prose-hr">
+
 <h2 id="sec-12" class="prose-h2">四、 实测推荐：4 家晚高峰丢包率 < 0.5% 的硬核专线航班</h2>
-<p class="prose-p">为了保证晚高峰的绝对流畅，鹅在每晚 21:00 ~ 22:30 的极端拥堵时段对多家服务商进行了连续 30 天的打点监控：</p>
+
+为了保证晚高峰的绝对流畅，鹅在每晚 21:00 ~ 22:30 的极端拥堵时段对多家服务商进行了连续 30 天的打点监控：
+
 <hr class="prose-hr">
-<h3 id="sec-4" class="prose-h3">1. 环球梯 HuanqiuTi —— 全节点 BGP/专线与 23ms 极低延迟</h3>
-<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=huanqiuti" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔</a></li>
-<li class="prose-li-disc"><strong>线路类型</strong>: 全节点 BGP / IPLC 专线优化</li>
-<li class="prose-li-disc"><strong>晚高峰实测</strong>: 丢包率 <strong>0.0%</strong>，Speedtest 跑满 500M 宽带</li>
-<li class="prose-li-disc"><strong>价格方案</strong>: ￥14.70 /月起 (<strong>7折专属优惠码：<code class="inline-code">HQ66</code></strong>)</li>
-<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
-</ul>
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 环球梯凭借优质的入口节点与充足的 IPLC 内网频宽，在晚高峰 21:15 的极度拥堵期依然能保持 23ms 的低延迟，拖动 4K 视频毫无缓冲顿挫。</div></div>
+
+<h3 id="sec-4" class="prose-h3">1. 环球梯 HuanqiuTi —— 全节点 BGP/专线与 23ms 极低延迟</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=huanqiuti" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全节点 BGP / IPLC 专线优化</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>晚高峰实测</strong>: 丢包率 <strong>0.0%</strong>，Speedtest 跑满 500M 宽带</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥14.70 /月起 (<strong>7折专属优惠码：<code class="inline-code">HQ66</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
+
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 环球梯凭借优质的入口节点与充足的 IPLC 内网频宽，在晚高峰 21:15 的极度拥堵期依然能保持 23ms 的低延迟，拖动 4K 视频毫无缓冲顿挫。</div></div>
+
 <hr class="prose-hr">
-<h3 id="sec-5" class="prose-h3">2. 大佬云 DalaoCloud —— 全 IPLC 专线与 2.5Gbps 超大峰值</h3>
-<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=dalaoyun" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（大佬云 DalaoCloud 官网直达 (专属7折码 dly88)）➔</a></li>
-<li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 物理专线</li>
-<li class="prose-li-disc"><strong>晚高峰实测</strong>: 单节点峰值吞吐量极高，多人并发下载毫无衰减</li>
-<li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">dly88</code></strong>)</li>
-<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
-</ul>
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 主打高吞吐量与大带宽，海外落地冗余极高。晚高峰播放 YouTube 8K 视频码率稳居 100,000+ Kbps 以上。</div></div>
+
+<h3 id="sec-5" class="prose-h3">2. 大佬云 DalaoCloud —— 全 IPLC 专线与 2.5Gbps 超大峰值</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=dalaoyun" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（大佬云 DalaoCloud 官网直达 (专属7折码 dly88)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 物理专线</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>晚高峰实测</strong>: 单节点峰值吞吐量极高，多人并发下载毫无衰减</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">dly88</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
+
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 主打高吞吐量与大带宽，海外落地冗余极高。晚高峰播放 YouTube 8K 视频码率稳居 100,000+ Kbps 以上。</div></div>
+
 <hr class="prose-hr">
-<h3 id="sec-6" class="prose-h3">3. 云界线 Yunjiexian —— 大流量专线与高性价比选型</h3>
-<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=yunjiexian" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（云界线 Yunjiexian 官网直达 (专属7折码 yjx888)）➔</a></li>
-<li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 物理专线</li>
-<li class="prose-li-disc"><strong>晚高峰实测</strong>: 150GB/月大流量配额，晚高峰在线率 99.9%</li>
-<li class="prose-li-disc"><strong>价格方案</strong>: ￥15.40 /月起 (<strong>7折专属优惠码：<code class="inline-code">yjx888</code></strong>)</li>
-<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
-</ul>
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 对于日常有大量大文件下载与高清影音需求的用户，云界线在专线稳定性与流量性价比之间取得了完美的平衡。</div></div>
+
+<h3 id="sec-6" class="prose-h3">3. 云界线 Yunjiexian —— 大流量专线与高性价比选型</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=yunjiexian" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（云界线 Yunjiexian 官网直达 (专属7折码 yjx888)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 物理专线</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>晚高峰实测</strong>: 150GB/月大流量配额，晚高峰在线率 99.9%</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥15.40 /月起 (<strong>7折专属优惠码：<code class="inline-code">yjx888</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
+
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 对于日常有大量大文件下载与高清影音需求的用户，云界线在专线稳定性与流量性价比之间取得了完美的平衡。</div></div>
+
 <hr class="prose-hr">
-<h3 id="sec-7" class="prose-h3">4. 神行加速 Shenxing —— IPLC/IEPL 50+ 多节点均衡</h3>
-<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=shenxing" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（神行加速 Shenxing 官网直达 (专属7折码 sx0077)）➔</a></li>
-<li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC / IEPL 专线</li>
-<li class="prose-li-disc"><strong>晚高峰实测</strong>: 自动负载均衡调度，晚高峰自动分流拥堵通道</li>
-<li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">sx0077</code></strong>)</li>
-<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
-</ul>
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 节点规模大、覆盖多国。当某个热门节点负载偏高时，软件会自动将其无缝切换至空闲专线，体验极其平稳。</div></div>
+
+<h3 id="sec-7" class="prose-h3">4. 神行加速 Shenxing —— IPLC/IEPL 50+ 多节点均衡</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=shenxing" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（神行加速 Shenxing 官网直达 (专属7折码 sx0077)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC / IEPL 专线</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>晚高峰实测</strong>: 自动负载均衡调度，晚高峰自动分流拥堵通道</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">sx0077</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
+
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 节点规模大、覆盖多国。当某个热门节点负载偏高时，软件会自动将其无缝切换至空闲专线，体验极其平稳。</div></div>
+
 <hr class="prose-hr">
+
 <div class="callout-box callout-warning"><div class="callout-header"><span class="callout-icon">🛡️</span><span class="callout-title">避坑安全守则：</span></div><div class="callout-text"></div></div>
-<blockquote class="prose-blockquote">1. <strong>拒绝商家“白天测速图”画饼</strong>：在论坛或 Telegram 看到别人发的几百兆测速图，先看测试时间！白天测速跑满几百兆毫无参考价值，唯有<strong>晚高峰 21:00 的 MTR 丢包率与测速打点</strong>才是检验真专线的唯一标准！  </blockquote>
-<blockquote class="prose-blockquote">2. <strong>坚决月付保平安</strong>：即便优质专线在晚高峰表现优秀，也请坚持<strong>月付原则</strong>！月付能确保你随时拥有选择权。  </blockquote>
+<blockquote class="prose-blockquote">1. <strong>拒绝商家“白天测速图”画饼</strong>：在论坛或 Telegram 看到别人发的几百兆测速图，先看测试时间！白天测速跑满几百兆毫无参考价值，唯有<strong>晚高峰 21:00 的 MTR 丢包率与测速打点</strong>才是检验真专线的唯一标准！  </blockquote>
+<blockquote class="prose-blockquote">2. <strong>坚决月付保平安</strong>：即便优质专线在晚高峰表现优秀，也请坚持<strong>月付原则</strong>！月付能确保你随时拥有选择权。  </blockquote>
 <blockquote class="prose-blockquote">3. <strong>随时查阅跑道心跳</strong>：查看全站 30 家跑道在晚高峰的实时丢包打点与优惠码，请随时前往站内 <a href="#/flights" class="prose-link">航班推荐榜</a>！</blockquote>
       </article>
 
