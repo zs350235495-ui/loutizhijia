@@ -42,13 +42,26 @@ assert(indexTitleText.length > 0 && indexTitleText.length <= 65, 'index.html tit
 // 2. 检查 404.html
 const errHtml = fs.readFileSync('404.html', 'utf8');
 assert(errHtml.includes('<meta name="robots" content="noindex, follow">'), '404.html 正确声明 noindex, follow');
+assert(errHtml.includes('name="description"'), '404.html 包含 meta description 标签');
 assert(errHtml.includes('href="/styles.css"'), '404.html 样式表采用根绝对路径');
 assert(errHtml.includes('href="/favicon.svg"'), '404.html Favicon 采用根绝对路径');
 assert(errHtml.includes('href="/"'), '404.html 提供指向首页的根绝对路径有效内链');
 
+// 2.1 检查 go.html (出站跳转/承接页 SEO 隔离)
+const goHtml = fs.readFileSync('go.html', 'utf8');
+assert(goHtml.includes('name="description"'), 'go.html 包含 meta description 标签 (修复 Bing 现场扫描 missing 错误)');
+assert(goHtml.includes('noindex'), 'go.html 正确声明 noindex 防爬虫索引');
+
+// 2.2 检查 article.html (中转页)
+const articleHtml = fs.readFileSync('article.html', 'utf8');
+assert(articleHtml.includes('name="description"'), 'article.html 包含 meta description 标签');
+
 // 3. 检查 robots.txt
 const robotsTxt = fs.readFileSync('robots.txt', 'utf8');
 assert(robotsTxt.includes('User-agent: Googlebot'), 'robots.txt 显式支持 Googlebot');
+assert(robotsTxt.includes('User-agent: Bingbot'), 'robots.txt 显式支持 Bingbot');
+assert(robotsTxt.includes('Disallow: /go'), 'robots.txt 全局与主流爬虫屏蔽 /go 出站路由');
+assert(robotsTxt.includes('Disallow: /go.html'), 'robots.txt 屏蔽 /go.html');
 assert(robotsTxt.includes('User-agent: GPTBot'), 'robots.txt 显式支持 GPTBot');
 assert(robotsTxt.includes('User-agent: ClaudeBot'), 'robots.txt 显式支持 ClaudeBot');
 assert(robotsTxt.includes('User-agent: PerplexityBot'), 'robots.txt 显式支持 PerplexityBot');

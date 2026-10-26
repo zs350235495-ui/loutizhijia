@@ -8,36 +8,76 @@ Allow: /feed.xml
 Allow: /favicon.svg
 Allow: /styles.css
 Allow: /*.js
+Disallow: /go
+Disallow: /go/
+Disallow: /go*
+Disallow: /go.html
 Disallow: /build-ssg.js
 Disallow: /submit-indexnow.js
 
 # Google & Bing Web Crawlers (Full DOM Rendering)
 User-agent: Googlebot
 Allow: /
+Disallow: /go
+Disallow: /go/
+Disallow: /go*
+Disallow: /go.html
 
 User-agent: Bingbot
 Allow: /
+Disallow: /go
+Disallow: /go/
+Disallow: /go*
+Disallow: /go.html
 
 # Mainstream AI & LLM Search Crawlers (Explicit Open Access)
 User-agent: GPTBot
 Allow: /
+Disallow: /go
+Disallow: /go/
+Disallow: /go*
+Disallow: /go.html
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /go
+Disallow: /go/
+Disallow: /go*
+Disallow: /go.html
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /go
+Disallow: /go/
+Disallow: /go*
+Disallow: /go.html
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /go
+Disallow: /go/
+Disallow: /go*
+Disallow: /go.html
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /go
+Disallow: /go/
+Disallow: /go*
+Disallow: /go.html
 
 User-agent: Bytespider
 Allow: /
+Disallow: /go
+Disallow: /go/
+Disallow: /go*
+Disallow: /go.html
 
 User-agent: cohere-ai
 Allow: /
+Disallow: /go
+Disallow: /go/
+Disallow: /go*
+Disallow: /go.html
 
 Sitemap: https://tizizhijia.com/sitemap.xml
