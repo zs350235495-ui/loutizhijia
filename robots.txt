@@ -1,83 +1,40 @@
+# 注意：/go.html 与 /go/* 跳转承接页不再通过 robots.txt 屏蔽。
+# 原因：被 robots 屏蔽的页面爬虫无法读取其 noindex 指令，且会触发 Bing "Blocked by robots.txt" 报错。
+# 现改由 X-Robots-Tag 响应头 (_headers) + 页面 <meta name="robots" content="noindex"> 保证不被收录，
+# 站内所有出站链接均已标注 rel="nofollow sponsored"。
+
 User-agent: *
 Allow: /
-Allow: /post/
-Allow: /posts/
-Allow: /llms.txt
-Allow: /manifest.json
-Allow: /feed.xml
-Allow: /favicon.svg
-Allow: /styles.css
-Allow: /*.js
-Disallow: /go
-Disallow: /go/
-Disallow: /go*
-Disallow: /go.html
 Disallow: /build-ssg.js
 Disallow: /submit-indexnow.js
 
 # Google & Bing Web Crawlers (Full DOM Rendering)
 User-agent: Googlebot
 Allow: /
-Disallow: /go
-Disallow: /go/
-Disallow: /go*
-Disallow: /go.html
 
 User-agent: Bingbot
 Allow: /
-Disallow: /go
-Disallow: /go/
-Disallow: /go*
-Disallow: /go.html
 
 # Mainstream AI & LLM Search Crawlers (Explicit Open Access)
 User-agent: GPTBot
 Allow: /
-Disallow: /go
-Disallow: /go/
-Disallow: /go*
-Disallow: /go.html
 
 User-agent: ClaudeBot
 Allow: /
-Disallow: /go
-Disallow: /go/
-Disallow: /go*
-Disallow: /go.html
 
 User-agent: PerplexityBot
 Allow: /
-Disallow: /go
-Disallow: /go/
-Disallow: /go*
-Disallow: /go.html
 
 User-agent: Applebot-Extended
 Allow: /
-Disallow: /go
-Disallow: /go/
-Disallow: /go*
-Disallow: /go.html
 
 User-agent: Google-Extended
 Allow: /
-Disallow: /go
-Disallow: /go/
-Disallow: /go*
-Disallow: /go.html
 
 User-agent: Bytespider
 Allow: /
-Disallow: /go
-Disallow: /go/
-Disallow: /go*
-Disallow: /go.html
 
 User-agent: cohere-ai
 Allow: /
-Disallow: /go
-Disallow: /go/
-Disallow: /go*
-Disallow: /go.html
 
 Sitemap: https://tizizhijia.com/sitemap.xml

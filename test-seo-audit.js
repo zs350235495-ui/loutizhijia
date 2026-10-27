@@ -60,8 +60,10 @@ assert(articleHtml.includes('name="description"'), 'article.html 包含 meta des
 const robotsTxt = fs.readFileSync('robots.txt', 'utf8');
 assert(robotsTxt.includes('User-agent: Googlebot'), 'robots.txt 显式支持 Googlebot');
 assert(robotsTxt.includes('User-agent: Bingbot'), 'robots.txt 显式支持 Bingbot');
-assert(robotsTxt.includes('Disallow: /go'), 'robots.txt 全局与主流爬虫屏蔽 /go 出站路由');
-assert(robotsTxt.includes('Disallow: /go.html'), 'robots.txt 屏蔽 /go.html');
+// go.html 不可被 robots 屏蔽，否则爬虫读不到 noindex 且触发 Bing "Blocked by robots.txt" 报错
+assert(!/^Disallow:\s*\/go/m.test(robotsTxt), 'robots.txt 未屏蔽 /go 路由 (改由 noindex 隔离，避免 Bing Blocked by robots.txt)');
+const headersTxt = fs.readFileSync('_headers', 'utf8');
+assert(/\/go\.html\s+X-Robots-Tag:\s*noindex/.test(headersTxt), '_headers 为 /go.html 下发 X-Robots-Tag: noindex');
 assert(robotsTxt.includes('User-agent: GPTBot'), 'robots.txt 显式支持 GPTBot');
 assert(robotsTxt.includes('User-agent: ClaudeBot'), 'robots.txt 显式支持 ClaudeBot');
 assert(robotsTxt.includes('User-agent: PerplexityBot'), 'robots.txt 显式支持 PerplexityBot');

@@ -361,7 +361,7 @@
 
     // 超链接
     src = src.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
-      const isAffOrExternal = url.startsWith('/go') || url.startsWith('http://') || url.startsWith('https://');
+      const isAffOrExternal = url.startsWith('/go.html') || url.startsWith('/go/') || url.startsWith('http://') || url.startsWith('https://');
       if (isAffOrExternal) {
         return `<a href="${url}" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">${text}</a>`;
       }

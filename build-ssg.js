@@ -113,7 +113,7 @@ function parseMarkdownToHTML(markdownText) {
   src = src.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   src = src.replace(/\*([^*]+)\*/g, '<em>$1</em>');
   src = src.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
-    const isAffOrExternal = url.startsWith('/go') || url.startsWith('http://') || url.startsWith('https://');
+    const isAffOrExternal = url.startsWith('/go.html') || url.startsWith('/go/') || url.startsWith('http://') || url.startsWith('https://');
     if (isAffOrExternal) {
       return `<a href="${url}" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">${text}</a>`;
     }
