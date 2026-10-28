@@ -424,6 +424,17 @@ const boardData = [
 
 const feedData = [
   {
+    id: 81,
+    code: "TECH-DEEP-2026-TCP",
+    file: "posts/post-21-tcp-keepalive-nat-timeout-dead-connection.md",
+    date: "2026-10-28",
+    cat: "tech",
+    title: "为什么 AI 对话输出一半突然报错中断？深度拆解长连接心跳、NAT 映射超时与空闲连接假死",
+    summary: "大模型生成长文本时回答突发中断（Network error），或者远程 SSH 终端静置几分钟就假死无响应？深度拆解长连接心跳、NAT 映射超时（NAT Idle Timeout）、单向静默丢弃与 TCP Keepalive 内核参数对抗机理，提供全链路保活自检与抓包排查手册。",
+    proCon: "巡检小组直白点评：网络不仅追求吞吐峰值，更依赖低频长连接的状态机健壮性。掌握 NAT 映射表熔断机理与双向轻量心跳协同，告别 AI 对话中断与终端假死。",
+    gooseScore: 5
+  },
+  {
     id: "network-sla-gateway-architecture-2026",
     code: "WHITE-PAPER-2026-SLA",
     file: "posts/post-20-network-sla-gateway-architecture.md",
