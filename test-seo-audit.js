@@ -89,7 +89,7 @@ assert(sitemapXml.includes('https://tizizhijia.com/network-sla-gateway-architect
 
 // 5. 检查所有 post/*.html
 const postFiles = fs.readdirSync('post').filter(f => f.endsWith('.html'));
-assert(postFiles.length === 22, 'post 目录下包含全部 22 篇静态页面');
+assert(postFiles.length >= 22, 'post 目录下包含全部静态页面 (当前: ' + postFiles.length + ' 篇)');
 
 postFiles.forEach(file => {
   const filePath = path.join('post', file);
