@@ -219,30 +219,18 @@
     
 
       <article class="article-prose-body">
-        <blockquote class="prose-blockquote"><strong>关键词</strong>: Sing-box安卓教程 | 安卓机场客户端 | 手机翻墙省电 | Meta内核 | Surfboard</blockquote>
-<blockquote class="prose-blockquote"><strong>发布日期</strong>: 2026年10月  </blockquote>
-<blockquote class="prose-blockquote"><strong>作者</strong>: 跑道上有只鹅 (站长鹅)</blockquote>
-
+        <blockquote class="prose-blockquote"><strong>关键词</strong>: Sing-box安卓教程 | 安卓机场客户端 | 手机翻墙省电 | Meta内核 | Surfboard</blockquote>
+<blockquote class="prose-blockquote"><strong>发布日期</strong>: 2026年10月  </blockquote>
+<blockquote class="prose-blockquote"><strong>作者</strong>: 跑道上有只鹅 (站长鹅)</blockquote>
 <hr class="prose-hr">
-
 <div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"></div></div>
-<blockquote class="prose-blockquote">安卓手机天天被当成“暖手宝”，80% 都是因为背景里跑了一个垃圾发热的代理内核！老旧的 Clash for Android (NekoBox/v2rayNG) 在后台不断进行昂贵的 Golang 垃圾回收，电池发烫电量掉得比瀑布还快。在 2026 年，要么选由 Go/C++ 极度精简的 <strong>Sing-box</strong>，要么选优化了多核电量调度的 <strong>Clash Meta (Flclash/Clash Verge)</strong>，选对客户端能让手机续航多坚挺 2 个小时！</blockquote>
-
+<blockquote class="prose-blockquote">安卓手机天天被当成“暖手宝”，80% 都是因为背景里跑了一个垃圾发热的代理内核！老旧的 Clash for Android (NekoBox/v2rayNG) 在后台不断进行昂贵的 Golang 垃圾回收，电池发烫电量掉得比瀑布还快。在 2026 年，要么选由 Go/C++ 极度精简的 <strong>Sing-box</strong>，要么选优化了多核电量调度的 <strong>Clash Meta (Flclash/Clash Verge)</strong>，选对客户端能让手机续航多坚挺 2 个小时！</blockquote>
 <hr class="prose-hr">
-
 <h2 id="sec-7" class="prose-h2">序言：安卓生态下的代理客户端“功耗暗战”</h2>
-
-在开源开放的 Android 生态系统中，选择代理客户端的自由度极高：<ul class="prose-ul"><li class="prose-li-disc"><strong>Clash Meta (Flclash / Surfboard)</strong>：经典的规则分流代表；</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>Sing-box (Sbox)</strong>：新一代极客通用内核；</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>v2rayNG / NekoBox</strong>：老牌多协议工具。</li></ul>
-
-然而，几乎每一位安卓手机用户都抱怨过类似的问题：<ol class="prose-ol"><li class="prose-li-num"><strong>耗电极快</strong>：系统电池排行榜中，代理 App 的耗电占比高达 20% ~ 30%；</li></ol><ol class="prose-ol"><li class="prose-li-num"><strong>后台被杀</strong>：锁屏半小时后，后台代理连接悄悄断开，微信通知收不到；</li></ol><ol class="prose-ol"><li class="prose-li-num"><strong>CPU 疯狂发烫</strong>：看 10 分钟 1080P 视频，手机背板烫得无法握持。</li></ol>
-
-本篇文章中，鹅将带你硬核测评 2026 年安卓端最火爆的 <strong>Sing-box</strong> 与 <strong>Clash Meta</strong> 两大内核在功耗、内存占用与配置难度上的硬核表现。
-
+<p class="prose-p">在开源开放的 Android 生态系统中，选择代理客户端的自由度极高：<br><ul class="prose-ul"><li class="prose-li-disc"><strong>Clash Meta (Flclash / Surfboard)</strong>：经典的规则分流代表；</li><br><li class="prose-li-disc"><strong>Sing-box (Sbox)</strong>：新一代极客通用内核；</li><br><li class="prose-li-disc"><strong>v2rayNG / NekoBox</strong>：老牌多协议工具。</li><br></ul><br>然而，几乎每一位安卓手机用户都抱怨过类似的问题：<br><ol class="prose-ol"><li class="prose-li-num"><strong>耗电极快</strong>：系统电池排行榜中，代理 App 的耗电占比高达 20% ~ 30%；</li><br><li class="prose-li-num"><strong>后台被杀</strong>：锁屏半小时后，后台代理连接悄悄断开，微信通知收不到；</li><br><li class="prose-li-num"><strong>CPU 疯狂发烫</strong>：看 10 分钟 1080P 视频，手机背板烫得无法握持。</li><br></ol><br>本篇文章中，鹅将带你硬核测评 2026 年安卓端最火爆的 <strong>Sing-box</strong> 与 <strong>Clash Meta</strong> 两大内核在功耗、内存占用与配置难度上的硬核表现。</p>
 <hr class="prose-hr">
-
 <h2 id="sec-8" class="prose-h2">一、 内核架构与功耗对比：Sing-box vs Clash Meta</h2>
-
-<pre class="code-block"><code>
+<p class="prose-p"><pre class="code-block"><code>
 【安卓后台代理功耗与架构对比】:
 
 Clash Meta (Mihomo 内核):
@@ -250,65 +238,67 @@ Clash Meta (Mihomo 内核):
 
 Sing-box (新一代精简内核):
 全新通用规则引擎 ──&gt; 极简结构设计 ──&gt; 内存占用极低 (~40MB)，手机发热量大幅降低
-</code></pre>
-
-| 测评维度 | Sing-box (安卓官方版) | Clash Meta (Flclash / Surfboard) |
-| :--- | :--- | :--- |
-| <strong>内存占用 (RAM)</strong> | 🟢 <strong>极低 (~35MB - 50MB)</strong> | 🟠 中等 (~90MB - 140MB) |
-| <strong>发热与耗电控制</strong> | 🟢 <strong>极其省电</strong> (内核极致精简) | 🟠 一般 (策略组繁多时偶有发热) |
-| <strong>协议兼容性</strong> | 🟢 <strong>全能</strong> (VLESS-Reality / Hy2 / TUIC) | 🟢 <strong>全能</strong> (支持 Mihomo 专属语法) |
-| <strong>UI 交互与易用度</strong> | 🟠 偏向极客 (需适配 json/sbox 格式) | 🟢 <strong>小白极其友好</strong> (支持一键 Clash 订阅) |
-| <strong>适合用户群体</strong> | <strong>硬核极客、追求续航与强杀后台的用户</strong> | <strong>常规用户、看影音、喜欢多策略组的用户</strong> |
-
+</code></pre></p>
+<div class="table-responsive-wrapper"><table class="prose-table"><thead><tr><th>测评维度</th><th>Sing-box (安卓官方版)</th><th>Clash Meta (Flclash / Surfboard)</th></tr></thead><tbody><tr><td><strong>内存占用 (RAM)</strong></td><td>🟢 <strong>极低 (~35MB - 50MB)</strong></td><td>🟠 中等 (~90MB - 140MB)</td></tr><tr><td><strong>发热与耗电控制</strong></td><td>🟢 <strong>极其省电</strong> (内核极致精简)</td><td>🟠 一般 (策略组繁多时偶有发热)</td></tr><tr><td><strong>协议兼容性</strong></td><td>🟢 <strong>全能</strong> (VLESS-Reality / Hy2 / TUIC)</td><td>🟢 <strong>全能</strong> (支持 Mihomo 专属语法)</td></tr><tr><td><strong>UI 交互与易用度</strong></td><td>🟠 偏向极客 (需适配 json/sbox 格式)</td><td>🟢 <strong>小白极其友好</strong> (支持一键 Clash 订阅)</td></tr><tr><td><strong>适合用户群体</strong></td><td><strong>硬核极客、追求续航与强杀后台的用户</strong></td><td><strong>常规用户、看影音、喜欢多策略组的用户</strong></td></tr></tbody></table></div>
 <hr class="prose-hr">
-
 <h2 id="sec-9" class="prose-h2">二、 手把手实操：Sing-box 安卓端配置指南</h2>
-
-<h3 id="sec-1" class="prose-h3">1. 软件下载渠道</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>GitHub 开源仓库</strong>: <code class="inline-code">SagerNet/sing-box</code></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>Google Play 商店</strong>: 搜索 <code class="inline-code">sing-box</code> 安装官方稳定版。</li></ul>
-
-<h3 id="sec-2" class="prose-h3">2. 导入订阅配置文件</h3><ol class="prose-ol"><li class="prose-li-num">前往机场后台（如【航班推荐榜】推荐的环球梯、大佬云等）；</li></ol><ol class="prose-ol"><li class="prose-li-num">复制 <strong>Sing-box 格式订阅</strong>（若机场未提供，可选择“订阅转换”生成 Sing-box JSON）；</li></ol><ol class="prose-ol"><li class="prose-li-num">打开 Sing-box 软件，切换到 <strong>Profiles</strong> 页面；</li></ol><ol class="prose-ol"><li class="prose-li-num">点击右上角 <strong>➕</strong> ➔ 选择 <strong>Type: Remote (远程订阅)</strong>；</li></ol><ol class="prose-ol"><li class="prose-li-num">粘贴 URL 链接并命名，点击 <strong>Create (创建)</strong> 并刷新；</li></ol><ol class="prose-ol"><li class="prose-li-num">返回 <strong>Dashboard</strong> 页面，开启 <strong>Service 开关</strong>。</li></ol>
-
+<h3 id="sec-1" class="prose-h3">1. 软件下载渠道</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>GitHub 开源仓库</strong>: <code class="inline-code">SagerNet/sing-box</code></li>
+<li class="prose-li-disc"><strong>Google Play 商店</strong>: 搜索 <code class="inline-code">sing-box</code> 安装官方稳定版。</li>
+</ul>
+<h3 id="sec-2" class="prose-h3">2. 导入订阅配置文件</h3>
+<ol class="prose-ol"><li class="prose-li-num">前往机场后台（如【航班推荐榜】推荐的环球梯、大佬云等）；</li>
+<li class="prose-li-num">复制 <strong>Sing-box 格式订阅</strong>（若机场未提供，可选择“订阅转换”生成 Sing-box JSON）；</li>
+<li class="prose-li-num">打开 Sing-box 软件，切换到 <strong>Profiles</strong> 页面；</li>
+<li class="prose-li-num">点击右上角 <strong>➕</strong> ➔ 选择 <strong>Type: Remote (远程订阅)</strong>；</li>
+<li class="prose-li-num">粘贴 URL 链接并命名，点击 <strong>Create (创建)</strong> 并刷新；</li>
+<li class="prose-li-num">返回 <strong>Dashboard</strong> 页面，开启 <strong>Service 开关</strong>。</li>
+</ol>
 <hr class="prose-hr">
-
 <h2 id="sec-10" class="prose-h2">三、 防止安卓后台保活与防杀指南</h2>
-
-为了避免小米 (HyperOS)、华为 (HarmonyOS)、OPPO/vivo 等系统在后台杀死代理进程，必须进行以下系统级设置：<ol class="prose-ol"><li class="prose-li-num"><strong>关闭电池无限制 / 优化</strong>：长按代理 App 图标 ➔ 应用信息 ➔ 省电策略 ➔ 修改为 <strong>“无限制” (No Restrictions)</strong>；</li></ol><ol class="prose-ol"><li class="prose-li-num"><strong>开启锁定后台卡片</strong>：在多任务后台界面中，找到 Sing-box 或 Clash，下滑或长按点击 <strong>“锁定图标”</strong>；</li></ol><ol class="prose-ol"><li class="prose-li-num"><strong>开启自动启动权限</strong>：在系统自启动管理中，允许代理 App 自启动与关联启动。</li></ol>
-
-<hr class="prose-hr">
-
+<p class="prose-p">为了避免小米 (HyperOS)、华为 (HarmonyOS)、OPPO/vivo 等系统在后台杀死代理进程，必须进行以下系统级设置：<br><ol class="prose-ol"><li class="prose-li-num"><strong>关闭电池无限制 / 优化</strong>：长按代理 App 图标 ➔ 应用信息 ➔ 省电策略 ➔ 修改为 <strong>“无限制” (No Restrictions)</strong>；</li><br><li class="prose-li-num"><strong>开启锁定后台卡片</strong>：在多任务后台界面中，找到 Sing-box 或 Clash，下滑或长按点击 <strong>“锁定图标”</strong>；</li><br><li class="prose-li-num"><strong>开启自动启动权限</strong>：在系统自启动管理中，允许代理 App 自启动与关联启动。</li><br></ol><br><hr class="prose-hr"></p>
 <h2 id="sec-11" class="prose-h2">四、 4 家适配安卓平台极其稳定省电的老牌专线推荐</h2>
-
-鹅在小米 14 与三星 S24 上对多家机场进行了连续 8 小时的电池消耗监控，精选出 4 家表现优异的服务商：
-
+<p class="prose-p">鹅在小米 14 与三星 S24 上对多家机场进行了连续 8 小时的电池消耗监控，精选出 4 家表现优异的服务商：</p>
 <hr class="prose-hr">
-
-<h3 id="sec-3" class="prose-h3">1. 环球梯 HuanqiuTi —— 23ms 低延迟与 Sing-box/Clash 双适配</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=huanqiuti" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全节点 BGP / IPLC 专线优化</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>安卓体验</strong>: 23ms 低延迟，后台心跳打点极轻量，电量消耗非常低</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥14.70 /月起 (<strong>7折专属优惠码：<code class="inline-code">HQ66</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 专线延迟极低，节点稳定性强，在安卓端搭配 Sing-box 待机一整天功耗小于 3%，非常适合高频社交办公。</div></div>
-
+<h3 id="sec-3" class="prose-h3">1. 环球梯 HuanqiuTi —— 23ms 低延迟与 Sing-box/Clash 双适配</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=huanqiuti" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔</a></li>
+<li class="prose-li-disc"><strong>线路类型</strong>: 全节点 BGP / IPLC 专线优化</li>
+<li class="prose-li-disc"><strong>安卓体验</strong>: 23ms 低延迟，后台心跳打点极轻量，电量消耗非常低</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥14.70 /月起 (<strong>7折专属优惠码：<code class="inline-code">HQ66</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 专线延迟极低，节点稳定性强，在安卓端搭配 Sing-box 待机一整天功耗小于 3%，非常适合高频社交办公。</div></div>
 <hr class="prose-hr">
-
-<h3 id="sec-4" class="prose-h3">2. 闪电鼠 Shandianshu —— 全线 IEPL 专线与一键客户端</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=shandianshu" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（闪电鼠 Shandianshu 官网直达 (专属7折码 sds88)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全线 IEPL 物理专线</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>安卓体验</strong>: 专门开发了安卓原生一键连接客户端，新手无需复杂配置</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥15.40 /月起 (<strong>7折专属优惠码：<code class="inline-code">sds88</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 对于搞不懂订阅转换小白来说，闪电鼠的安卓客户端体验极佳，装上即可一键起飞。</div></div>
-
+<h3 id="sec-4" class="prose-h3">2. 闪电鼠 Shandianshu —— 全线 IEPL 专线与一键客户端</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=shandianshu" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（闪电鼠 Shandianshu 官网直达 (专属7折码 sds88)）➔</a></li>
+<li class="prose-li-disc"><strong>线路类型</strong>: 全线 IEPL 物理专线</li>
+<li class="prose-li-disc"><strong>安卓体验</strong>: 专门开发了安卓原生一键连接客户端，新手无需复杂配置</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥15.40 /月起 (<strong>7折专属优惠码：<code class="inline-code">sds88</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 对于搞不懂订阅转换小白来说，闪电鼠的安卓客户端体验极佳，装上即可一键起飞。</div></div>
 <hr class="prose-hr">
-
-<h3 id="sec-5" class="prose-h3">3. 大佬云 DalaoCloud —— 2.5Gbps 大带宽与 4K 高清续航</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=dalaoyun" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（大佬云 DalaoCloud 官网直达 (专属7折码 dly88)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 专线</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>安卓体验</strong>: 大频宽输出，看 4K 视频吐吞速度极快</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">dly88</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 适合喜欢用安卓大屏手机或平板看哔哩哔哩/YouTube 视频的用户。</div></div>
-
+<h3 id="sec-5" class="prose-h3">3. 大佬云 DalaoCloud —— 2.5Gbps 大带宽与 4K 高清续航</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=dalaoyun" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（大佬云 DalaoCloud 官网直达 (专属7折码 dly88)）➔</a></li>
+<li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 专线</li>
+<li class="prose-li-disc"><strong>安卓体验</strong>: 大频宽输出，看 4K 视频吐吞速度极快</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">dly88</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 适合喜欢用安卓大屏手机或平板看哔哩哔哩/YouTube 视频的用户。</div></div>
 <hr class="prose-hr">
-
-<h3 id="sec-6" class="prose-h3">4. 极连云 Jilianyun —— 不限设备数与超强抗封锁</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=jilianyun" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（极连云 Jilianyun 官网直达 (专属优惠码 JLY888)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: IPLC 物理专线</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>安卓体验</strong>: 不限同账号连接设备数，多台安卓备用机轻松分发</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥6.40 /月起 (<strong>8折专属优惠码：<code class="inline-code">JLY888</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 适合拥有多台安卓测试机或软路由的极客用户。</div></div>
-
+<h3 id="sec-6" class="prose-h3">4. 极连云 Jilianyun —— 不限设备数与超强抗封锁</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=jilianyun" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（极连云 Jilianyun 官网直达 (专属优惠码 JLY888)）➔</a></li>
+<li class="prose-li-disc"><strong>线路类型</strong>: IPLC 物理专线</li>
+<li class="prose-li-disc"><strong>安卓体验</strong>: 不限同账号连接设备数，多台安卓备用机轻松分发</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥6.40 /月起 (<strong>8折专属优惠码：<code class="inline-code">JLY888</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 适合拥有多台安卓测试机或软路由的极客用户。</div></div>
 <hr class="prose-hr">
-
 <div class="callout-box callout-warning"><div class="callout-header"><span class="callout-icon">🛡️</span><span class="callout-title">避坑安全守则：</span></div><div class="callout-text"></div></div>
-<blockquote class="prose-blockquote">1. <strong>注意关闭不必要的日志打印</strong>：在 Sing-box 或 Clash 设置中，将日志级别 (Log Level) 改为 <code class="inline-code">warning</code> 或 <code class="inline-code">error</code>，关闭 <code class="inline-code">debug</code> 模式，能显著减少写入存储造成的系统耗电！  </blockquote>
-<blockquote class="prose-blockquote">2. <strong>坚决月付保平安</strong>：无论手机端软件配置多省电，也请坚守<strong>月付原则</strong>！  </blockquote>
+<blockquote class="prose-blockquote">1. <strong>注意关闭不必要的日志打印</strong>：在 Sing-box 或 Clash 设置中，将日志级别 (Log Level) 改为 <code class="inline-code">warning</code> 或 <code class="inline-code">error</code>，关闭 <code class="inline-code">debug</code> 模式，能显著减少写入存储造成的系统耗电！  </blockquote>
+<blockquote class="prose-blockquote">2. <strong>坚决月付保平安</strong>：无论手机端软件配置多省电，也请坚守<strong>月付原则</strong>！  </blockquote>
 <blockquote class="prose-blockquote">3. <strong>随时查阅跑道心跳</strong>：查看全站 30 家跑道的实时打点与优惠码，请随时前往站内 <a href="#/flights" class="prose-link">航班推荐榜</a>！</blockquote>
       </article>
 
