@@ -8,6 +8,7 @@
 /post/1        /post/100.html    301
 /post/2        /post/90.html     301
 /post/:id      /post/:id.html    301!
+/articles/active-probing-sla-monitoring-failover-2026   /articles/active-probing-sla-monitoring-failover-2026.html   301
 /feed          /feed.xml         301
 /sitemap       /sitemap.xml      301
 

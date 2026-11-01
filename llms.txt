@@ -25,6 +25,8 @@
 
 ## 三、 核心技术白皮书与物理链路审计 (Tech Deep Dives)
 
+- [2026跨境链路主动探测与节点SLA监控自动化淘汰实测](https://tizizhijia.com/articles/active-probing-sla-monitoring-failover-2026.html)
+  - 核心结论：拆解传统 ICMP/TCP 单点探测四大盲区与应用层假死，搭建基于 TTFB 首字节、TLS 握手与连续 10 次请求成功率的 SLO 指标体系，实测多地域跨网合成监控数据矩阵，提供滑动窗口熔断淘汰与防闪断自愈生产级配置。
 - [2026 全球跨境网络链路架构与多终端分流实测：家庭及工作室网络 SLA 可用性横评白皮书](https://tizizhijia.com/network-sla-gateway-architecture-2026)
   - 核心结论：解构软路由双网口流量隔离、MosDNS 防泄漏预分流、BDP 吞吐衰减模型与 BGP Anycast 容灾，实测 6 家服务商 SLA 与抖动指标（环球梯位列旗舰 TOP 1，大佬云紧随 TOP 2），提供场景决策树与排障规范。
 - [2026 骨干网丢包与抖动测算指南：公网中转与专线全链路实测](https://tizizhijia.com/post/82.html)

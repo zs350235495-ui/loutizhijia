@@ -162,8 +162,32 @@ assert(!slaContent.includes('闪电云'), '新白皮书杜绝将闪电鼠误写�
 assert(slaContent.includes('<strong>神行加速</strong>'), '新白皮书包含 神行加速');
 assert(slaContent.includes('<strong>榴莲云</strong>'), '新白皮书包含 榴莲云');
 
+// 6.1 检查 articles/active-probing-sla-monitoring-failover-2026.html
+assert(fs.existsSync('articles/active-probing-sla-monitoring-failover-2026.html'), 'articles/active-probing-sla-monitoring-failover-2026.html 物理页面存在');
+const probeContent = fs.readFileSync('articles/active-probing-sla-monitoring-failover-2026.html', 'utf8');
+const probeH1s = probeContent.match(/<h1[^>]*>/gi) || [];
+assert(probeH1s.length === 1, '主动探测新文章严格有且仅有 1 个 <h1>');
+assert(probeContent.includes('<link rel="canonical" href="https://tizizhijia.com/articles/active-probing-sla-monitoring-failover-2026.html">'), '主动探测新文章具备规范 Canonical');
+assert(probeContent.includes('href="/styles.css"'), '主动探测新文章使用规范 /styles.css');
+assert(probeContent.includes('href="/favicon.svg"'), '主动探测新文章使用规范 /favicon.svg');
+assert(probeContent.includes('"@type": "TechArticle"'), '主动探测新文章包含 TechArticle 结构化数据');
+assert(probeContent.includes('"@type": "BreadcrumbList"'), '主动探测新文章包含 BreadcrumbList 结构化数据');
+assert(probeContent.includes('"inLanguage": "zh-CN"'), '主动探测新文章结构化数据包含 inLanguage');
+assert(probeContent.includes('"author":'), '主动探测新文章包含权威作者实体');
+assert(probeContent.includes('<meta property="og:title"'), '主动探测新文章具备 og:title');
+assert(probeContent.includes('<meta property="og:image"'), '主动探测新文章具备 og:image');
+assert(probeContent.includes('<meta name="twitter:card" content="summary_large_image">'), '主动探测新文章具备 twitter:card');
+const probeTitleMatch = probeContent.match(/<title>([^<]+)<\/title>/i);
+const probeTitleText = probeTitleMatch ? probeTitleMatch[1] : '';
+assert(probeTitleText.length > 0 && probeTitleText.length <= 65, '主动探测新文章 title 长度 (' + probeTitleText.length + ') 严格 <= 65 字符');
+assert(probeContent.includes('ssg-related-section'), '主动探测新文章包含相关文章内链推荐网格');
+assert(!probeContent.includes('?aff='), '主动探测新文章严禁包含商业返利参数 ?aff=');
+assert(!probeContent.includes('?ref='), '主动探测新文章严禁包含商业返利参数 ?ref=');
+assert(!probeContent.includes('?code='), '主动探测新文章严禁包含商业返利参数 ?code=');
+
 // 7. 检查 llms.txt
 const llmsTxt = fs.readFileSync('llms.txt', 'utf8');
+assert(llmsTxt.includes('https://tizizhijia.com/articles/active-probing-sla-monitoring-failover-2026.html'), 'llms.txt 包含主动探测新文章条目');
 assert(llmsTxt.includes('https://tizizhijia.com/network-sla-gateway-architecture-2026'), 'llms.txt 包含新白皮书条目');
 assert(llmsTxt.includes('https://tizizhijia.com/post/82.html'), 'llms.txt 包含核心研报 82');
 assert(llmsTxt.includes('https://tizizhijia.com/post/101.html'), 'llms.txt 包含高峰期压测 101');

@@ -5,8 +5,15 @@
     <link>https://tizizhijia.com/</link>
     <description>2026 全球骨干网络加速、IPLC/IEPL 专线全链路实测与跑路避坑技术评测知识库</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 28 Oct 2026 09:27:48 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 15:32:14 GMT</lastBuildDate>
     <atom:link href="https://tizizhijia.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>2026跨境链路主动探测与节点SLA监控自动化淘汰实测</title>
+      <link>https://tizizhijia.com/articles/active-probing-sla-monitoring-failover-2026.html</link>
+      <guid>https://tizizhijia.com/articles/active-probing-sla-monitoring-failover-2026.html</guid>
+      <pubDate>Sun, 01 Nov 2026 08:00:00 GMT</pubDate>
+      <description>网络评测实验室发布2026跨境网络服务SLA监控与主动探测实战。详解多地域合成监控（Synthetic Monitoring）指标体系，实测高抖动与虚假健康节点的自动化熔断剔除与自愈调优方案。</description>
+    </item>
     <item>
       <title>为什么 AI 对话输出一半突然报错中断？深度拆解长连接心跳、NAT 映射超时与空闲连接假死</title>
       <link>https://tizizhijia.com/post/81.html</link>

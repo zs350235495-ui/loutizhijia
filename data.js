@@ -424,6 +424,18 @@ const boardData = [
 
 const feedData = [
   {
+    id: "active-probing-sla-monitoring-failover-2026",
+    code: "TECH-PROBE-2026",
+    file: "posts/post-22-active-probing-sla-monitoring-failover.md",
+    date: "2026-11-01",
+    cat: "speed",
+    title: "2026跨境链路主动探测与节点SLA监控自动化淘汰实测",
+    summary: "网络评测实验室发布2026跨境网络服务SLA监控与主动探测实战。详解多地域合成监控（Synthetic Monitoring）指标体系，实测高抖动与虚假健康节点的自动化熔断剔除与自愈调优方案。",
+    proCon: "巡检小组直白点评：摆脱 ICMP 虚假绿色的安全幻觉！从 TTFB、TLS 握手及连续 10 次成功率建立立体 SLO 观测模型，引入滑动窗口熔断与静默冷却，终结跨境路由频振与应用假死。",
+    url: "/articles/active-probing-sla-monitoring-failover-2026.html",
+    gooseScore: 5
+  },
+  {
     id: 81,
     code: "TECH-DEEP-2026-TCP",
     file: "posts/post-21-tcp-keepalive-nat-timeout-dead-connection.md",
