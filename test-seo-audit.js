@@ -185,8 +185,35 @@ assert(!probeContent.includes('?aff='), '主动探测新文章严禁包含商业
 assert(!probeContent.includes('?ref='), '主动探测新文章严禁包含商业返利参数 ?ref=');
 assert(!probeContent.includes('?code='), '主动探测新文章严禁包含商业返利参数 ?code=');
 
+// 6.2 检查 articles/best-stable-airport-ladder-recommendation-rankings-2026.html (2026好用稳定的翻墙梯子机场推荐与测速横评天梯榜)
+assert(fs.existsSync('articles/best-stable-airport-ladder-recommendation-rankings-2026.html'), 'articles/best-stable-airport-ladder-recommendation-rankings-2026.html 物理页面存在');
+const rankContent = fs.readFileSync('articles/best-stable-airport-ladder-recommendation-rankings-2026.html', 'utf8');
+const rankH1s = rankContent.match(/<h1[^>]*>/gi) || [];
+assert(rankH1s.length === 1, '天梯榜新文章严格有且仅有 1 个 <h1>');
+assert(rankContent.includes('<link rel="canonical" href="https://tizizhijia.com/articles/best-stable-airport-ladder-recommendation-rankings-2026.html">'), '天梯榜新文章具备规范 Canonical');
+assert(rankContent.includes('"@type": "TechArticle"'), '天梯榜新文章包含 TechArticle 结构化数据');
+assert(rankContent.includes('"@type": "BreadcrumbList"'), '天梯榜新文章包含 BreadcrumbList 结构化数据');
+assert(rankContent.includes('"inLanguage": "zh-CN"'), '天梯榜新文章结构化数据包含 inLanguage');
+assert(rankContent.includes('"author":'), '天梯榜新文章包含权威作者实体');
+assert(rankContent.includes('<meta property="og:title"'), '天梯榜新文章具备 og:title');
+assert(rankContent.includes('<meta property="og:image"'), '天梯榜新文章具备 og:image');
+assert(rankContent.includes('<meta name="twitter:card" content="summary_large_image">'), '天梯榜新文章具备 twitter:card');
+const rankTitleMatch = rankContent.match(/<title>([^<]+)<\/title>/i);
+const rankTitleText = rankTitleMatch ? rankTitleMatch[1] : '';
+assert(rankTitleText.length > 0 && rankTitleText.length <= 65, '天梯榜新文章 title 长度 (' + rankTitleText.length + ') 严格 <= 65 字符');
+assert(!rankContent.includes('?aff='), '天梯榜新文章严禁包含商业返利参数 ?aff=');
+assert(!rankContent.includes('?ref='), '天梯榜新文章严禁包含商业返利参数 ?ref=');
+assert(!rankContent.includes('?code='), '天梯榜新文章严禁包含商业返利参数 ?code=');
+assert(rankContent.includes('<strong>环球梯</strong>'), '天梯榜包含 环球梯');
+assert(rankContent.includes('<strong>大佬云</strong>'), '天梯榜包含 大佬云');
+assert(rankContent.includes('<strong>云界线</strong>'), '天梯榜包含 云界线');
+assert(rankContent.includes('<strong>闪电鼠</strong>'), '天梯榜包含 闪电鼠');
+assert(rankContent.includes('<strong>神行加速</strong>'), '天梯榜包含 神行加速');
+assert(rankContent.includes('<strong>榴莲云</strong>'), '天梯榜包含 榴莲云');
+
 // 7. 检查 llms.txt
 const llmsTxt = fs.readFileSync('llms.txt', 'utf8');
+assert(llmsTxt.includes('https://tizizhijia.com/articles/best-stable-airport-ladder-recommendation-rankings-2026.html'), 'llms.txt 包含天梯榜新文章条目');
 assert(llmsTxt.includes('https://tizizhijia.com/articles/active-probing-sla-monitoring-failover-2026.html'), 'llms.txt 包含主动探测新文章条目');
 assert(llmsTxt.includes('https://tizizhijia.com/network-sla-gateway-architecture-2026'), 'llms.txt 包含新白皮书条目');
 assert(llmsTxt.includes('https://tizizhijia.com/post/82.html'), 'llms.txt 包含核心研报 82');
