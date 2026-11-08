@@ -40,7 +40,7 @@ const boardData = [
     gooseScore: 5,
     promoCode: "yjx888",
     url: "/go.html?id=yunjiexian",
-    affTargetUrl: "https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV"
+    affTargetUrl: "https://pp01.yunjiexianaff.com/#/?code=6Y9vSMcc"
   },
   {
     id: 4,
