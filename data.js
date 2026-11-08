@@ -424,6 +424,17 @@ const boardData = [
 
 const feedData = [
   {
+    id: "isp-telecom-unicom-mobile-airport-ladder-recommendations-2026",
+    code: "ISP-BENCHMARK-2026",
+    date: "2026-11-08",
+    cat: "speed",
+    title: "2026电信联通移动宽带翻墙梯子与高速机场推荐横评",
+    summary: "2026年最新电信、联通、移动宽带专用翻墙梯子与高速机场选型推荐指南。深度实测CN2 GIA、AS9929、AS4837与CMIN2在三大运营商晚高峰的丢包率、首包时延与抗QoS限速表现，提供客观权威天梯榜。",
+    proCon: "巡检小组直白点评：脱离宽带 ISP 谈节点速度无异于刻舟求剑！深度拆解三大运营商晚高峰丢包根源与跨网结算壁垒，量身定制各宽带最佳线路天梯与客户端调优方案。",
+    url: "/articles/isp-telecom-unicom-mobile-airport-ladder-recommendations-2026.html",
+    gooseScore: 5
+  },
+  {
     id: "best-stable-airport-ladder-recommendation-rankings-2026",
     code: "RANK-ANNUAL-2026",
     date: "2026-11-04",

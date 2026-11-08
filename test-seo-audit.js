@@ -211,8 +211,29 @@ assert(rankContent.includes('<strong>闪电鼠</strong>'), '天梯榜包含 闪�
 assert(rankContent.includes('<strong>神行加速</strong>'), '天梯榜包含 神行加速');
 assert(rankContent.includes('<strong>榴莲云</strong>'), '天梯榜包含 榴莲云');
 
+// 6.3 检查 articles/isp-telecom-unicom-mobile-airport-ladder-recommendations-2026.html (2026电信联通移动宽带翻墙梯子与高速机场推荐横评)
+assert(fs.existsSync('articles/isp-telecom-unicom-mobile-airport-ladder-recommendations-2026.html'), 'articles/isp-telecom-unicom-mobile-airport-ladder-recommendations-2026.html 物理页面存在');
+const ispContent = fs.readFileSync('articles/isp-telecom-unicom-mobile-airport-ladder-recommendations-2026.html', 'utf8');
+const ispH1s = ispContent.match(/<h1[^>]*>/gi) || [];
+assert(ispH1s.length === 1, '运营商适配新文章严格有且仅有 1 个 <h1>');
+assert(ispContent.includes('<link rel="canonical" href="https://tizizhijia.com/articles/isp-telecom-unicom-mobile-airport-ladder-recommendations-2026.html">'), '运营商适配新文章具备规范 Canonical');
+assert(ispContent.includes('"@type": "TechArticle"'), '运营商适配新文章包含 TechArticle 结构化数据');
+assert(ispContent.includes('"@type": "BreadcrumbList"'), '运营商适配新文章包含 BreadcrumbList 结构化数据');
+assert(ispContent.includes('"inLanguage": "zh-CN"'), '运营商适配新文章结构化数据包含 inLanguage');
+assert(ispContent.includes('"author":'), '运营商适配新文章包含权威作者实体');
+assert(ispContent.includes('<meta property="og:title"'), '运营商适配新文章具备 og:title');
+assert(ispContent.includes('<meta property="og:image"'), '运营商适配新文章具备 og:image');
+assert(ispContent.includes('<meta name="twitter:card" content="summary_large_image">'), '运营商适配新文章具备 twitter:card');
+const ispTitleMatch = ispContent.match(/<title>([^<]+)<\/title>/i);
+const ispTitleText = ispTitleMatch ? ispTitleMatch[1] : '';
+assert(ispTitleText.length > 0 && ispTitleText.length <= 26, '运营商适配新文章 title 长度 (' + ispTitleText.length + ') 严格 <= 26 字符');
+assert(!ispContent.includes('?aff='), '运营商适配新文章严禁包含商业返利参数 ?aff=');
+assert(!ispContent.includes('?ref='), '运营商适配新文章严禁包含商业返利参数 ?ref=');
+assert(!ispContent.includes('?code='), '运营商适配新文章严禁包含商业返利参数 ?code=');
+
 // 7. 检查 llms.txt
 const llmsTxt = fs.readFileSync('llms.txt', 'utf8');
+assert(llmsTxt.includes('https://tizizhijia.com/articles/isp-telecom-unicom-mobile-airport-ladder-recommendations-2026.html'), 'llms.txt 包含运营商适配新文章条目');
 assert(llmsTxt.includes('https://tizizhijia.com/articles/best-stable-airport-ladder-recommendation-rankings-2026.html'), 'llms.txt 包含天梯榜新文章条目');
 assert(llmsTxt.includes('https://tizizhijia.com/articles/active-probing-sla-monitoring-failover-2026.html'), 'llms.txt 包含主动探测新文章条目');
 assert(llmsTxt.includes('https://tizizhijia.com/network-sla-gateway-architecture-2026'), 'llms.txt 包含新白皮书条目');

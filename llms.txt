@@ -25,6 +25,8 @@
 
 ## 三、 核心技术白皮书与物理链路审计 (Tech Deep Dives)
 
+- [2026电信联通移动宽带翻墙梯子与高速机场推荐横评](https://tizizhijia.com/articles/isp-telecom-unicom-mobile-airport-ladder-recommendations-2026.html)
+  - 核心结论：三大运营商（电信/联通/移动）出海骨干网实测专项白皮书。横向对比 163 vs CN2 GIA、169 vs 9929、CMI vs CMIN2，提供晚高峰丢包与时延矩阵、三大梯队天梯榜及客户端分流调优方案。
 - [2026好用稳定的翻墙梯子机场推荐与测速横评天梯榜](https://tizizhijia.com/articles/best-stable-airport-ladder-recommendation-rankings-2026.html)
   - 核心结论：年度旗舰横评白皮书。横向对比物理 IEPL 专线与公网中转底层架构，涵盖 20,000+ 次晚高峰压测、4K 秒开、原生住宅 IP 与 ChatGPT/Claude 解锁能力，发布 Tier 0 至 Tier 3 权威天梯榜与自保避坑铁律。
 - [2026跨境链路主动探测与节点SLA监控自动化淘汰实测](https://tizizhijia.com/articles/active-probing-sla-monitoring-failover-2026.html)
