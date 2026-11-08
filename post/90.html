@@ -224,57 +224,53 @@
     
 
       <article class="article-prose-body">
-        <blockquote class="prose-blockquote"><strong>关键词</strong>: Clash Verge教程 | Clash订阅转换 | 分流规则设置 | PC端翻墙 | Meta内核</blockquote>
-<blockquote class="prose-blockquote"><strong>发布日期</strong>: 2026年10月  </blockquote>
-<blockquote class="prose-blockquote"><strong>作者</strong>: 跑道上有只鹅 (站长鹅)</blockquote>
-
+        <blockquote class="prose-blockquote"><strong>关键词</strong>: Clash Verge教程 | Clash订阅转换 | 分流规则设置 | PC端翻墙 | Meta内核</blockquote>
+<blockquote class="prose-blockquote"><strong>发布日期</strong>: 2026年10月  </blockquote>
+<blockquote class="prose-blockquote"><strong>作者</strong>: 跑道上有只鹅 (站长鹅)</blockquote>
 <hr class="prose-hr">
-
 <div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"></div></div>
-<blockquote class="prose-blockquote">别再死守着已经停止维护的旧版 Clash for Windows (CFW) 了！在 2026 年，基于 Mihomo (Clash Meta) 内核的 <strong>Clash Verge Rev</strong> 才是桌面端的新王者。支持内存占用更低、TUN 模式一键开启、订阅一键刷新以及更加丝滑的防 DNS 污染分流。不懂配置没关系，照着本鹅的步骤点几下，3 分钟就能让你的 PC/Mac 平稳起飞！</blockquote>
-
+<blockquote class="prose-blockquote">别再死守着已经停止维护的旧版 Clash for Windows (CFW) 了！在 2026 年，基于 Mihomo (Clash Meta) 内核的 <strong>Clash Verge Rev</strong> 才是桌面端的新王者。支持内存占用更低、TUN 模式一键开启、订阅一键刷新以及更加丝滑的防 DNS 污染分流。不懂配置没关系，照着本鹅的步骤点几下，3 分钟就能让你的 PC/Mac 平稳起飞！</blockquote>
 <hr class="prose-hr">
-
 <h2 id="sec-11" class="prose-h2">序言：为什么你应该立刻切换到 Clash Verge Rev？</h2>
-
-对于 Windows 和 macOS 用户来说，Clash 系列一直是网络代理的绝对标杆。然而，随着 2023 年底原版 Clash 内核及 CFW 开发者相继删库停更，老旧客户端暴露出越来越多的严重问题：<ol class="prose-ol"><li class="prose-li-num"><strong>不支持新协议</strong>：无法原生解析 Hysteria 2、VLESS-Reality 等现代加密协议；</li></ol><ol class="prose-ol"><li class="prose-li-num"><strong>内存泄露与卡顿</strong>：长时间运行后系统内存占用高达数 GB；</li></ol><ol class="prose-ol"><li class="prose-li-num"><strong>分流失效与 DNS 污染</strong>：遇到新版网页或 Discord 音频通话时频繁连接失败。</li></ol>
-
-<strong>Clash Verge Rev</strong> 是目前社区活跃度最高、开源且UI美观的替代品。它集成了 Mihomo 内核，全面支持最新协议与系统级 TUN 虚拟网卡模式。
-
-本篇文章中，鹅将手把手教你完成安装、订阅导入、TUN 模式配置以及智能分流规则调优！
-
+<p class="prose-p">对于 Windows 和 macOS 用户来说，Clash 系列一直是网络代理的绝对标杆。然而，随着 2023 年底原版 Clash 内核及 CFW 开发者相继删库停更，老旧客户端暴露出越来越多的严重问题：<br><ol class="prose-ol"><li class="prose-li-num"><strong>不支持新协议</strong>：无法原生解析 Hysteria 2、VLESS-Reality 等现代加密协议；</li><br><li class="prose-li-num"><strong>内存泄露与卡顿</strong>：长时间运行后系统内存占用高达数 GB；</li><br><li class="prose-li-num"><strong>分流失效与 DNS 污染</strong>：遇到新版网页或 Discord 音频通话时频繁连接失败。</li><br></ol><br><strong>Clash Verge Rev</strong> 是目前社区活跃度最高、开源且UI美观的替代品。它集成了 Mihomo 内核，全面支持最新协议与系统级 TUN 虚拟网卡模式。</p>
+<p class="prose-p">本篇文章中，鹅将手把手教你完成安装、订阅导入、TUN 模式配置以及智能分流规则调优！</p>
 <hr class="prose-hr">
-
 <h2 id="sec-12" class="prose-h2">一、 软件下载与安装避坑（Windows & macOS）</h2>
-
 <h3 id="sec-1" class="prose-h3">1. 官方开源获取渠道</h3>
-千万不要在百度或谷歌搜索结果的第一页随意点击“第三方破解网站”或广告下载！许多包含了恶意木马程序。<ul class="prose-ul"><li class="prose-li-disc"><strong>官方 GitHub 开源仓库</strong>: GitHub 搜索 <code class="inline-code">clash-verge-rev/clash-verge-rev</code></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>版本选择</strong>:</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>Windows</strong>: 下载 <code class="inline-code">Clash.Verge_x.x.x_x64-setup.exe</code> (或 Portable 便携版)；</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>Mac (Intel 芯片)</strong>: 下载 <code class="inline-code">Clash.Verge_x.x.x_x64.dmg</code>；</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>Mac (Apple Silicon M1/M2/M3/M4)</strong>: 下载 <code class="inline-code">Clash.Verge_x.x.x_aarch64.dmg</code>。</li></ul>
-
+千万不要在百度或谷歌搜索结果的第一页随意点击“第三方破解网站”或广告下载！许多包含了恶意木马程序。
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方 GitHub 开源仓库</strong>: GitHub 搜索 <code class="inline-code">clash-verge-rev/clash-verge-rev</code></li>
+<li class="prose-li-disc"><strong>版本选择</strong>:</li>
+<li class="prose-li-disc"><strong>Windows</strong>: 下载 <code class="inline-code">Clash.Verge_x.x.x_x64-setup.exe</code> (或 Portable 便携版)；</li>
+<li class="prose-li-disc"><strong>Mac (Intel 芯片)</strong>: 下载 <code class="inline-code">Clash.Verge_x.x.x_x64.dmg</code>；</li>
+<li class="prose-li-disc"><strong>Mac (Apple Silicon M1/M2/M3/M4)</strong>: 下载 <code class="inline-code">Clash.Verge_x.x.x_aarch64.dmg</code>。</li>
+</ul>
 <h3 id="sec-2" class="prose-h3">2. macOS 首次打开提示“无法验证开发者”解决办法</h3>
-在 Mac 上打开提示软件已损坏或无法打开时，无需慌张：<ol class="prose-ol"><li class="prose-li-num">打开终端（Terminal）；</li></ol><ol class="prose-ol"><li class="prose-li-num">输入命令：<code class="inline-code">sudo xattr -r -d com.apple.quarantine /Applications/Clash\ Verge.app</code> 并回车输入密码即可解除隔离。</li></ol>
-
+在 Mac 上打开提示软件已损坏或无法打开时，无需慌张：
+<ol class="prose-ol"><li class="prose-li-num">打开终端（Terminal）；</li>
+<li class="prose-li-num">输入命令：<code class="inline-code">sudo xattr -r -d com.apple.quarantine /Applications/Clash\ Verge.app</code> 并回车输入密码即可解除隔离。</li>
+</ol>
 <hr class="prose-hr">
-
 <h2 id="sec-13" class="prose-h2">二、 3 步核心配置实操：从订阅导入到系统代理</h2>
-
-<pre class="code-block"><code>
+<p class="prose-p"><pre class="code-block"><code>
 [步骤 1: 复制订阅] ──&gt; [步骤 2: 粘贴至 Profiles 导入] ──&gt; [步骤 3: 开启 System Proxy 开启滑行]
-</code></pre>
-
+</code></pre></p>
 <h3 id="sec-3" class="prose-h3">步骤 1：复制机场机长暗号/订阅链接</h3>
 前往你的机场后台（如【航班推荐榜】中推荐的环球梯、大佬云等），找到 <strong>“Clash 订阅 / 一键导入”</strong> 按钮，复制 URL 链接。
-
-<h3 id="sec-4" class="prose-h3">步骤 2：导入订阅配置文件 (Profiles)</h3><ol class="prose-ol"><li class="prose-li-num">打开 Clash Verge Rev 客户端；</li></ol><ol class="prose-ol"><li class="prose-li-num">点击左侧边栏的 <strong>订阅 (Profiles)</strong> 菜单；</li></ol><ol class="prose-ol"><li class="prose-li-num">在上方输入框粘贴刚才复制的订阅 URL 链接；</li></ol><ol class="prose-ol"><li class="prose-li-num">点击右侧的 <strong>导入 (Import)</strong> 按钮；</li></ol><ol class="prose-ol"><li class="prose-li-num">导入成功后，鼠标<strong>单击选中该订阅卡片</strong>，使其变为高亮激活状态。</li></ol>
-
-<h3 id="sec-5" class="prose-h3">步骤 3：开启系统代理 (System Proxy) 或 TUN 模式</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>常规上网（网页/看视频）</strong>: 点击左侧边栏的 <strong>设置 (Settings)</strong>，开启 <strong>系统代理 (System Proxy)</strong> 开关，右下角状态栏变成彩色图标即可；</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>硬核应用（游戏/终端/Uplay/Epic/Steam）</strong>: 在设置中找到 <strong>TUN 模式 (TUN Mode)</strong>，点击安装服务模式（Service Mode）并开启。TUN 模式能够接管整台电脑的所有 UDP/TCP 流量，无需手动配置软件代理地址。</li></ul>
-
+<h3 id="sec-4" class="prose-h3">步骤 2：导入订阅配置文件 (Profiles)</h3>
+<ol class="prose-ol"><li class="prose-li-num">打开 Clash Verge Rev 客户端；</li>
+<li class="prose-li-num">点击左侧边栏的 <strong>订阅 (Profiles)</strong> 菜单；</li>
+<li class="prose-li-num">在上方输入框粘贴刚才复制的订阅 URL 链接；</li>
+<li class="prose-li-num">点击右侧的 <strong>导入 (Import)</strong> 按钮；</li>
+<li class="prose-li-num">导入成功后，鼠标<strong>单击选中该订阅卡片</strong>，使其变为高亮激活状态。</li>
+</ol>
+<h3 id="sec-5" class="prose-h3">步骤 3：开启系统代理 (System Proxy) 或 TUN 模式</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>常规上网（网页/看视频）</strong>: 点击左侧边栏的 <strong>设置 (Settings)</strong>，开启 <strong>系统代理 (System Proxy)</strong> 开关，右下角状态栏变成彩色图标即可；</li>
+<li class="prose-li-disc"><strong>硬核应用（游戏/终端/Uplay/Epic/Steam）</strong>: 在设置中找到 <strong>TUN 模式 (TUN Mode)</strong>，点击安装服务模式（Service Mode）并开启。TUN 模式能够接管整台电脑的所有 UDP/TCP 流量，无需手动配置软件代理地址。</li>
+</ul>
 <hr class="prose-hr">
-
 <h2 id="sec-14" class="prose-h2">三、 高级技巧：规则分流与策略组切换</h2>
-
-在左侧边栏点击 <strong>代理 (Proxies)</strong>，你将看到清晰的策略组面板：
-
-<pre class="code-block"><code>text
+<p class="prose-p">在左侧边栏点击 <strong>代理 (Proxies)</strong>，你将看到清晰的策略组面板：</p>
+<p class="prose-p"><pre class="code-block"><code>text
 ┌───────────────────────────────────────────────────────────┐
 │                    Clash Verge 策略组面板                  │
 └───────────────────────────────────────────────────────────┘
@@ -282,55 +278,58 @@
  🎬 节点流媒体 (Media)       ──&gt;  [ 🇸🇬 新加坡 原生 01      ▼ ]
  🤖 AI 助手 (OpenAI)       ──&gt;  [ 🇺🇸 美国 住宅 IP 01    ▼ ]
  🎯 直连流量 (DIRECT)        ──&gt;  [ 局域网/国内网站       ]
-</code></pre>
-
-<h3 id="sec-6" class="prose-h3">策略组模式详解：</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>规则模式 (Rule)</strong>（<em>推荐</em>）：根据内置规则，访问国内网站（百度、淘宝、哔哩哔哩）自动走 <code class="inline-code">DIRECT</code> 直连，速度极快；访问海外网站自动走节点，省流量且不卡顿。</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>全局模式 (Global)</strong>：强制整台电脑的所有流量全部走选定的海外节点，通常用于测试或特定访问。</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>直连模式 (Direct)</strong>：关闭所有代理，恢复普通网络访问。</li></ul>
-
+</code></pre></p>
+<h3 id="sec-6" class="prose-h3">策略组模式详解：</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>规则模式 (Rule)</strong>（<em>推荐</em>）：根据内置规则，访问国内网站（百度、淘宝、哔哩哔哩）自动走 <code class="inline-code">DIRECT</code> 直连，速度极快；访问海外网站自动走节点，省流量且不卡顿。</li>
+<li class="prose-li-disc"><strong>全局模式 (Global)</strong>：强制整台电脑的所有流量全部走选定的海外节点，通常用于测试或特定访问。</li>
+<li class="prose-li-disc"><strong>直连模式 (Direct)</strong>：关闭所有代理，恢复普通网络访问。</li>
+</ul>
 <hr class="prose-hr">
-
 <h2 id="sec-15" class="prose-h2">四、 常见报错与急救速查</h2>
-
-| 故障现象 | 根源排查 | 解决方案 |
-| :--- | :--- | :--- |
-| <strong>订阅导入失败 (HTTP 403/500)</strong> | 机场订阅链接被本地 DNS 污染，或需要挂代理更新 | 先开启原有代理，或使用机场提供的“订阅转换”功能生成新链接 |
-| <strong>开启代理后网页打不开</strong> | 原有系统代理残留，或端口冲突 | 在设置中点击“重置系统代理”，或重启 Clash Verge |
-| <strong>Uplay/Epic 客户端登录超时</strong> | 软件不走 HTTP 代理 | 开启 <strong>TUN 模式</strong> 并重启游戏客户端 |
-
+<div class="table-responsive-wrapper"><table class="prose-table"><thead><tr><th>故障现象</th><th>根源排查</th><th>解决方案</th></tr></thead><tbody><tr><td><strong>订阅导入失败 (HTTP 403/500)</strong></td><td>机场订阅链接被本地 DNS 污染，或需要挂代理更新</td><td>先开启原有代理，或使用机场提供的“订阅转换”功能生成新链接</td></tr><tr><td><strong>开启代理后网页打不开</strong></td><td>原有系统代理残留，或端口冲突</td><td>在设置中点击“重置系统代理”，或重启 Clash Verge</td></tr><tr><td><strong>Uplay/Epic 客户端登录超时</strong></td><td>软件不走 HTTP 代理</td><td>开启 <strong>TUN 模式</strong> 并重启游戏客户端</td></tr></tbody></table></div>
 <hr class="prose-hr">
-
 <h2 id="sec-16" class="prose-h2">五、 4 家适配 Clash Verge Rev 极佳的老牌专线推荐</h2>
-
-为了让你拥有最丝滑的配置导入体验，鹅精选了 4 家原生支持 Clash Verge 一键导入的服务商：
-
+<p class="prose-p">为了让你拥有最丝滑的配置导入体验，鹅精选了 4 家原生支持 Clash Verge 一键导入的服务商：</p>
 <hr class="prose-hr">
-
-<h3 id="sec-7" class="prose-h3">1. 环球梯 HuanqiuTi —— 23ms 低延迟与一键极速订阅</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=huanqiuti" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全节点 BGP / IPLC 专线优化</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>Clash 适配</strong>: 后台提供标准 Clash Verge 一键导入，节点自动负载均衡</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥14.70 /月起 (<strong>7折专属优惠码：<code class="inline-code">HQ66</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 导入订阅极快，节点名称标注清晰，且专线延迟极低。开启 TUN 模式后在 Windows 上玩外服游戏几乎感觉不到延迟抖动。</div></div>
-
+<h3 id="sec-7" class="prose-h3">1. 环球梯 HuanqiuTi —— 23ms 低延迟与一键极速订阅</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=huanqiuti" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（环球梯 HuanqiuTi 官网直达 (专属7折码 HQ66)）➔</a></li>
+<li class="prose-li-disc"><strong>线路类型</strong>: 全节点 BGP / IPLC 专线优化</li>
+<li class="prose-li-disc"><strong>Clash 适配</strong>: 后台提供标准 Clash Verge 一键导入，节点自动负载均衡</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥14.70 /月起 (<strong>7折专属优惠码：<code class="inline-code">HQ66</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 导入订阅极快，节点名称标注清晰，且专线延迟极低。开启 TUN 模式后在 Windows 上玩外服游戏几乎感觉不到延迟抖动。</div></div>
 <hr class="prose-hr">
-
-<h3 id="sec-8" class="prose-h3">2. 闪电鼠 Shandianshu —— 全线 IEPL 专线与分流规则优化</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=shandianshu" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（闪电鼠 Shandianshu 官网直达 (专属7折码 sds88)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全线 IEPL 物理专线</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>Clash 适配</strong>: 内置完善的 OpenAI、TikTok 和 Netflix 分流策略组</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥15.40 /月起 (<strong>7折专属优惠码：<code class="inline-code">sds88</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 导入 Clash Verge 后省去了手动配置分流规则的麻烦，策略组划分合理，影音与办公自动切路。</div></div>
-
+<h3 id="sec-8" class="prose-h3">2. 闪电鼠 Shandianshu —— 全线 IEPL 专线与分流规则优化</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=shandianshu" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（闪电鼠 Shandianshu 官网直达 (专属7折码 sds88)）➔</a></li>
+<li class="prose-li-disc"><strong>线路类型</strong>: 全线 IEPL 物理专线</li>
+<li class="prose-li-disc"><strong>Clash 适配</strong>: 内置完善的 OpenAI、TikTok 和 Netflix 分流策略组</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥15.40 /月起 (<strong>7折专属优惠码：<code class="inline-code">sds88</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 导入 Clash Verge 后省去了手动配置分流规则的麻烦，策略组划分合理，影音与办公自动切路。</div></div>
 <hr class="prose-hr">
-
-<h3 id="sec-9" class="prose-h3">3. 大佬云 DalaoCloud —— 2.5Gbps 大带宽峰值吞吐</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=dalaoyun" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（大佬云 DalaoCloud 官网直达 (专属7折码 dly88)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 专线</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>Clash 适配</strong>: 支持超高并发频宽，适合 PC 端大文件下载</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">dly88</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 在 Mac 端配合 Clash Verge 拖动 YouTube 8K 视频，后台 CPU 占用极低，吞吐速度拉满。</div></div>
-
+<h3 id="sec-9" class="prose-h3">3. 大佬云 DalaoCloud —— 2.5Gbps 大带宽峰值吞吐</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=dalaoyun" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（大佬云 DalaoCloud 官网直达 (专属7折码 dly88)）➔</a></li>
+<li class="prose-li-disc"><strong>线路类型</strong>: 全 IPLC 专线</li>
+<li class="prose-li-disc"><strong>Clash 适配</strong>: 支持超高并发频宽，适合 PC 端大文件下载</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥16.10 /月起 (<strong>7折专属优惠码：<code class="inline-code">dly88</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 在 Mac 端配合 Clash Verge 拖动 YouTube 8K 视频，后台 CPU 占用极低，吞吐速度拉满。</div></div>
 <hr class="prose-hr">
-
-<h3 id="sec-10" class="prose-h3">4. 极连云 Jilianyun —— 不限设备数与 PC/Mac 极速多开</h3><ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=jilianyun" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（极连云 Jilianyun 官网直达 (专属优惠码 JLY888)）➔</a></li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>线路类型</strong>: IPLC 物理专线</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>Clash 适配</strong>: 不限客户端同享，适合台式机与笔记本共用同一个订阅</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>价格方案</strong>: ￥6.40 /月起 (<strong>8折专属优惠码：<code class="inline-code">JLY888</code></strong>)</li></ul><ul class="prose-ul"><li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li></ul>
-
-<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 一份订阅可以在办公室 Mac 和家里 Windows 电脑上同时使用 Clash Verge，性价比极高。</div></div>
-
+<h3 id="sec-10" class="prose-h3">4. 极连云 Jilianyun —— 不限设备数与 PC/Mac 极速多开</h3>
+<ul class="prose-ul"><li class="prose-li-disc"><strong>官方直达通道</strong>: <a href="/go.html?id=jilianyun" class="prose-link" target="_blank" rel="nofollow sponsored noopener noreferrer">🛫 办理登机牌（极连云 Jilianyun 官网直达 (专属优惠码 JLY888)）➔</a></li>
+<li class="prose-li-disc"><strong>线路类型</strong>: IPLC 物理专线</li>
+<li class="prose-li-disc"><strong>Clash 适配</strong>: 不限客户端同享，适合台式机与笔记本共用同一个订阅</li>
+<li class="prose-li-disc"><strong>价格方案</strong>: ￥6.40 /月起 (<strong>8折专属优惠码：<code class="inline-code">JLY888</code></strong>)</li>
+<li class="prose-li-disc"><strong>鹅的起降评级</strong>: 【顺畅起飞 5/5】</li>
+</ul>
+<div class="callout-box callout-goose"><div class="callout-header"><span class="callout-icon">🪿</span><span class="callout-title">鹅的直白点评：</span></div><div class="callout-text"><strong>鹅的实测点评</strong>: 一份订阅可以在办公室 Mac 和家里 Windows 电脑上同时使用 Clash Verge，性价比极高。</div></div>
 <hr class="prose-hr">
-
 <div class="callout-box callout-warning"><div class="callout-header"><span class="callout-icon">🛡️</span><span class="callout-title">避坑安全守则：</span></div><div class="callout-text"></div></div>
-<blockquote class="prose-blockquote">1. <strong>定时更新订阅</strong>：建议在 Clash Verge 的“订阅”设置中，开启 <strong>“自动更新订阅”</strong>（设置间隔为 24 小时），确保节点 IP 变更后客户端能自动获取最新跑道。  </blockquote>
-<blockquote class="prose-blockquote">2. <strong>坚决月付保平安</strong>：即便客户端配置得再完美，也请坚守<strong>月付原则</strong>！  </blockquote>
+<blockquote class="prose-blockquote">1. <strong>定时更新订阅</strong>：建议在 Clash Verge 的“订阅”设置中，开启 <strong>“自动更新订阅”</strong>（设置间隔为 24 小时），确保节点 IP 变更后客户端能自动获取最新跑道。  </blockquote>
+<blockquote class="prose-blockquote">2. <strong>坚决月付保平安</strong>：即便客户端配置得再完美，也请坚守<strong>月付原则</strong>！  </blockquote>
 <blockquote class="prose-blockquote">3. <strong>随时查阅跑道心跳</strong>：获取最新专线打点数据及机长优惠码，请随时前往站内 <a href="#/flights" class="prose-link">航班推荐榜</a> 查阅！</blockquote>
       </article>
 
