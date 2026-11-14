@@ -424,6 +424,17 @@ const boardData = [
 
 const feedData = [
   {
+    id: "lan-proxy-sharing-vm-container-bridge-airport-ladder-2026",
+    code: "LAN-PROXY-2026",
+    date: "2026-11-14",
+    cat: "avoid",
+    title: "2026局域网共享与虚拟机容器翻墙梯子机场推荐指南",
+    summary: "2026年最新局域网端口共享与虚拟机容器翻墙梯子及高速机场推荐指南。深度拆解Mixed-Port混合监听、WSL2与Docker网桥穿透、主机游戏SOCKS5网关分发与并发连接数限制，提供多端共享专线天梯榜。",
+    proCon: "巡检小组直白点评：多设备协同不必人手一份客户端！开启局域网共享与网关转发，搞定虚拟机容器穿透与主机联网，兼顾资源利用与专线稳定性。",
+    url: "/articles/lan-proxy-sharing-vm-container-bridge-airport-ladder-2026.html",
+    gooseScore: 5
+  },
+  {
     id: "isp-telecom-unicom-mobile-airport-ladder-recommendations-2026",
     code: "ISP-BENCHMARK-2026",
     date: "2026-11-08",

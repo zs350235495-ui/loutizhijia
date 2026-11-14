@@ -5,8 +5,15 @@
     <link>https://tizizhijia.com/</link>
     <description>2026 全球骨干网络加速、IPLC/IEPL 专线全链路实测与跑路避坑技术评测知识库</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 14 Nov 2026 09:00:57 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 09:28:40 GMT</lastBuildDate>
     <atom:link href="https://tizizhijia.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>2026局域网共享与虚拟机容器翻墙梯子机场推荐指南</title>
+      <link>https://tizizhijia.com/articles/lan-proxy-sharing-vm-container-bridge-airport-ladder-2026.html</link>
+      <guid>https://tizizhijia.com/articles/lan-proxy-sharing-vm-container-bridge-airport-ladder-2026.html</guid>
+      <pubDate>Sat, 14 Nov 2026 08:00:00 GMT</pubDate>
+      <description>2026年最新局域网端口共享与虚拟机容器翻墙梯子及高速机场推荐指南。深度拆解Mixed-Port混合监听、WSL2与Docker网桥穿透、主机游戏SOCKS5网关分发与并发连接数限制，提供多端共享专线天梯榜。</description>
+    </item>
     <item>
       <title>2026电信联通移动宽带翻墙梯子与高速机场推荐横评</title>
       <link>https://tizizhijia.com/articles/isp-telecom-unicom-mobile-airport-ladder-recommendations-2026.html</link>
