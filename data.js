@@ -424,6 +424,17 @@ const boardData = [
 
 const feedData = [
   {
+    id: "2026-airport-ladder-subscription-routing-guide",
+    code: "SUB-ROUTING-2026",
+    date: "2026-11-19",
+    cat: "avoid",
+    title: "2026机场推荐与梯子推荐指南：订阅管理、规则分流与账号安全全攻略",
+    summary: "2026年最新机场推荐与梯子推荐核心实战指南。深度解析多机场订阅源管理、策略分组优化、国内外精细化分流规则调优及账号安全防线，解决节点更新报错、卡顿慢速与分流冲突等关键难题。",
+    proCon: "巡检小组直白点评：选对线路只是起点，规范管理订阅与精细分流才是长期稳如磐石的核心！掌握策略分组、DNS防污染与主备高可用习惯，告别频繁断连与卡顿。",
+    url: "/articles/2026-airport-ladder-subscription-routing-guide.html",
+    gooseScore: 5
+  },
+  {
     id: "lan-proxy-sharing-vm-container-bridge-airport-ladder-2026",
     code: "LAN-PROXY-2026",
     date: "2026-11-14",

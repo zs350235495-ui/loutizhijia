@@ -3,12 +3,18 @@
   <!-- 梯子之家主页 (Canonical Clean URL) -->
   <url>
     <loc>https://tizizhijia.com/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- 独立预渲染静态文章与白皮书库 (符合 W3C / Googlebot / Bingbot 标准 200 OK 绝对物理路径) -->
+  <url>
+    <loc>https://tizizhijia.com/articles/2026-airport-ladder-subscription-routing-guide.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
   <url>
     <loc>https://tizizhijia.com/articles/lan-proxy-sharing-vm-container-bridge-airport-ladder-2026.html</loc>
     <lastmod>2026-11-14</lastmod>
